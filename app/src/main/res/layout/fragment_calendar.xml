@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/materials_background"
+    android:orientation="vertical">
+
+    <ua.profarma.medbook.ui.custom_views.MainVisitCalendarView
+        android:id="@+id/fragment_calendar_calendar_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="264dp" />
+
+    <LinearLayout
+        android:id="@+id/fragment_calendar_frame_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/rectangle_rounded_top_4">
+
+        <ua.profarma.medbook.recyclerviews.visits.VisitsRecyclerView
+            android:id="@+id/fragment_calendar_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+</LinearLayout>

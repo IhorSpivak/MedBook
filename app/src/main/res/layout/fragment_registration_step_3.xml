@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:id="@+id/fragment_registration_page_3_imv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="@dimen/margin_default"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:srcCompat="@drawable/ic_img_loginlogo" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fragment_registration_page_3_til_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:theme="@style/TextInputLayoutAuth"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_registration_page_3_til_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_registration_page_3_imv"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/fragment_registration_page_3_tiet_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/registration_page_3_tiet_email_caption"
+            android:inputType="textEmailAddress"
+            android:lines="1"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fragment_registration_page_3_til_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_default_half"
+        android:theme="@style/TextInputLayoutAuth"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_registration_page_3_til_password_confirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_registration_page_3_til_email">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/fragment_registration_page_3_tiet_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/registration_page_3_tiet_password_caption"
+            android:inputType="textPassword"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fragment_registration_page_3_til_password_confirm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_default_half"
+        android:theme="@style/TextInputLayoutAuth"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_registration_page_3_btn_registration"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_registration_page_3_til_password">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/fragment_registration_page_3_tiet_confirm_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/registration_page_3_tiet_password_confirm_caption"
+            android:inputType="textPassword"
+            android:lines="1"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/fragment_registration_page_3_btn_registration"
+        style="@style/ButtonAuth"
+        android:layout_width="219dp"
+        android:layout_height="@dimen/btn_auth_h"
+        android:layout_marginTop="@dimen/margin_default"
+        android:text="@string/registration_page_3_btn_registration_caption"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_registration_page_3_tv_prev"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_registration_page_3_til_password_confirm" />
+
+    <TextView
+        android:id="@+id/fragment_registration_page_3_tv_prev"
+        android:layout_width="@dimen/btn_auth_w"
+        android:layout_height="@dimen/btn_auth_h"
+        android:layout_marginTop="@dimen/margin_default"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/prev_caption"
+        android:textColor="#80FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_registration_page_3_btn_registration" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@mipmap/img_mdm_logo_auth" />
+</androidx.constraintlayout.widget.ConstraintLayout>

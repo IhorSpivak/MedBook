@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_test_ll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/padding_default"
+        android:paddingTop="@dimen/padding_default"
+        android:layout_marginBottom="@dimen/margin_default"
+        android:background="@color/ballBgColor">
+
+        <TextView
+            android:id="@+id/fragment_test_tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/padding_default_double"
+            android:paddingRight="@dimen/padding_default_double"
+            android:text="TextView"
+            android:textStyle="bold"
+            android:textColor="#363636"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/fragment_test_tv_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_default"
+            android:textColor="#767676"
+            android:textSize="14sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <ua.profarma.medbook.recyclerviews.tests_choice.tests_single_choice.TestAnswerSingleChoiceRecyclerView
+        android:id="@+id/fragment_test_list_single_choice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <ua.profarma.medbook.recyclerviews.tests_choice.tests_multiple_choice.TestAnswerMultipleChoiceRecyclerView
+        android:id="@+id/fragment_test_list_multiple_choice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fragment_test_type_3_til"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginEnd="@dimen/margin_default"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:visibility="gone">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/fragment_test_type_3_tiet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Введіть ваш варіант відповіді"
+            android:imeOptions="actionDone"
+            android:inputType="textMultiLine"
+            android:maxLines="5"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="16sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+</LinearLayout>

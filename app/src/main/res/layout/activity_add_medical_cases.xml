@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/materials_background"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:elevation="@dimen/toolbar_elevation">
+
+        <ImageView
+            android:id="@+id/activity_add_clinical_cases_toolbar_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_default_double"
+            android:tint="@drawable/background_pressed_vector_drawable"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_back" />
+
+        <TextView
+            android:id="@+id/activity_add_clinical_cases_toolbar_title"
+            style="@style/TextViewTitleStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/activity_add_clinical_cases_toolbar_close"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rectangle_rounded_4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/activity_add_clinical_cases_add_title_caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_default"
+                android:layout_marginTop="@dimen/margin_default_and_half"
+                android:layout_marginEnd="@dimen/margin_default"
+                android:textAllCaps="true"
+                android:textColor="#777777"
+                android:textSize="12sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/activity_add_clinical_cases_add_title_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_default"
+                android:layout_marginEnd="@dimen/margin_default"
+                android:theme="@style/TextInputLayoutOnWhite"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_add_visit_title">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/activity_add_clinical_cases_add_title_input"
+                    android:layout_width="match_parent"
+                    android:hint="@string/name_clinical_casse"
+                    android:layout_height="wrap_content"
+                    android:textColor="#333333"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:layout_marginTop="@dimen/margin_default_fourth"
+                android:layout_marginBottom="@dimen/margin_default_fourth"
+                android:background="@drawable/line_divider_new" />
+
+            <TextView
+                android:id="@+id/activity_add_clinical_cases_add_icod_caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_default"
+                android:layout_marginTop="@dimen/margin_default_and_half"
+                android:layout_marginEnd="@dimen/margin_default"
+                android:textAllCaps="true"
+                android:textColor="#777777"
+                android:textSize="12sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:descendantFocusability="blocksDescendants">
+
+                <ua.profarma.medbook.recyclerviews.icod_selected.IcodSelectedRecyclerView
+                    android:id="@+id/activity_add_clinical_cases_icod_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/activity_add_clinical_cases_add_icod_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_default"
+                android:layout_marginTop="@dimen/margin_default_half"
+                android:layout_marginEnd="@dimen/margin_default"
+                android:layout_marginBottom="@dimen/margin_default_half"
+                android:background="@drawable/rectangle_rounded_5_e6e6e6"
+                android:drawableLeft="@drawable/ic_plus_clinical_case"
+                android:drawablePadding="@dimen/padding_half"
+                android:padding="@dimen/padding_default"
+                android:textColor="#363636"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:layout_marginTop="@dimen/margin_default_fourth"
+                android:layout_marginBottom="@dimen/margin_default_fourth"
+                android:background="@drawable/line_divider_new" />
+
+            <TextView
+                android:id="@+id/activity_add_clinical_cases_add_drug_caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_default"
+                android:layout_marginTop="@dimen/margin_default_and_half"
+                android:layout_marginEnd="@dimen/margin_default"
+                android:textAllCaps="true"
+                android:textColor="#777777"
+                android:textSize="12sp" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:descendantFocusability="blocksDescendants">
+
+                <ua.profarma.medbook.recyclerviews.drug_selected.DrugsSelectedRecyclerView
+                    android:id="@+id/activity_add_clinical_cases_drug_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/activity_add_clinical_cases_add_drug_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_default"
+                android:layout_marginTop="@dimen/margin_default_half"
+                android:layout_marginEnd="@dimen/margin_default"
+                android:layout_marginBottom="@dimen/margin_default_half"
+                android:background="@drawable/rectangle_rounded_5_e6e6e6"
+                android:drawableLeft="@drawable/ic_plus_clinical_case"
+                android:drawablePadding="@dimen/padding_half"
+                android:padding="@dimen/padding_default"
+                android:textColor="#363636"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:layout_marginTop="@dimen/margin_default_fourth"
+                android:layout_marginBottom="@dimen/margin_default_fourth"
+                android:background="@drawable/line_divider_new" />
+
+            <TextView
+                android:id="@+id/activity_add_clinical_cases_add_details_caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_default"
+                android:layout_marginTop="@dimen/margin_default_and_half"
+                android:layout_marginEnd="@dimen/margin_default"
+                android:textAllCaps="true"
+                android:textColor="#777777"
+                android:textSize="12sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/activity_add_clinical_cases_add_details_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/margin_default"
+                android:layout_marginEnd="@dimen/margin_default"
+                android:theme="@style/TextInputLayoutOnWhite">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/activity_add_clinical_cases_add_details_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint=""
+                    android:imeOptions="actionDone"
+                    android:inputType="textMultiLine"
+                    android:maxLines="20"
+                    android:textSize="16sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:layout_marginTop="@dimen/margin_default_fourth"
+                android:layout_marginBottom="@dimen/margin_default_fourth"
+                android:background="@drawable/line_divider_new" />
+
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"  android:layout_marginStart="@dimen/margin_default"
+                android:layout_marginTop="@dimen/margin_default_half"
+                android:layout_marginEnd="@dimen/margin_default"
+                android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/margin_default_half"
+                android:background="@drawable/rectangle_rounded_5_e6e6e6">
+            <TextView
+                android:id="@+id/activity_add_clinical_cases_add_image_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_plus_clinical_case"
+                android:drawablePadding="@dimen/padding_half"
+                android:padding="@dimen/padding_default"
+                android:textColor="#363636"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+            <ProgressBar
+                android:indeterminateDrawable="@drawable/progressbar_small"
+                android:indeterminateOnly="true"
+                android:visibility="invisible"
+                android:id="@+id/activity_add_clinical_cases_add_image_progress_bar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"/></LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:descendantFocusability="blocksDescendants">
+
+                <ua.profarma.medbook.recyclerviews.image_cc_selected.ImageCCSelectedRecyclerView
+                    android:id="@+id/activity_add_clinical_cases_image_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+
+
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/activity_add_clinical_cases_as_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_default"
+                android:textColor="#333333"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/activity_add_clinical_cases_btn_send"
+                style="@style/Button_type_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_default" />
+            <Button
+                android:id="@+id/activity_add_clinical_cases_btn_save"
+                style="@style/Button_type_1"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="@dimen/btn_auth_w_2"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_default" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

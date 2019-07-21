@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/materials_background"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:elevation="@dimen/toolbar_elevation">
+
+        <ImageView
+            android:id="@+id/activity_comments_toolbar_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_default_double"
+            android:tint="@drawable/background_pressed_vector_drawable"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_back" />
+
+        <TextView
+            android:id="@+id/activity_comments_toolbar_title"
+            style="@style/TextViewTitleStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            app:layout_constraintBottom_toTopOf="@+id/activity_comments_toolbar_subtitle"
+            app:layout_constraintStart_toEndOf="@+id/activity_comments_toolbar_close"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/activity_comments_toolbar_subtitle"
+            style="@style/TextViewTitleStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/activity_comments_toolbar_close"
+            app:layout_constraintTop_toBottomOf="@+id/activity_comments_toolbar_title" />
+
+        <TextView
+            android:id="@+id/activity_comments_toolbar_title_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#417fcd"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/activity_comments_toolbar_subtitle"
+            app:layout_constraintTop_toBottomOf="@+id/activity_comments_toolbar_title" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/rectangle_rounded_4"
+        android:orientation="vertical">
+
+        <ua.profarma.medbook.recyclerviews.comments.CommentsRecyclerView
+            android:id="@+id/activity_comments_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:background="#e7ebee">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/activity_comments_input"
+                android:layout_width="0dp"
+                android:padding="@dimen/padding_default"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_default"
+                android:background="@drawable/rectangle_rounded_4"
+                android:inputType="textMultiLine"
+                android:maxLines="5"
+                android:textColor="@color/black"
+                android:textColorHint="#C4C4C4"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/activity_comments_add"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/activity_comments_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_default"
+                android:layout_marginEnd="@dimen/margin_default"
+                android:layout_marginBottom="@dimen/margin_default"
+                android:background="@drawable/add_comment"
+                android:elevation="4dp"
+                android:padding="@dimen/padding_default"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_add_comment_inactive" />
+
+            <LinearLayout
+                android:layout_margin="@dimen/margin_default_half"
+                android:id="@+id/activity_comments_ll_reply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:background="@drawable/drawable_comment_reply"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_half"
+                android:text="TextView"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/activity_comments_input"
+                app:layout_constraintTop_toTopOf="@+id/activity_comments_input">
+
+                <ImageView
+                    android:id="@+id/activity_comments_reply_clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_half"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_add_comment_clear_reply" />
+
+                <TextView
+                    android:id="@+id/activity_comments_reply_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textColor="#9F9F9F"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

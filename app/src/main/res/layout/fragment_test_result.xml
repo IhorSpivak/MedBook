@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fragment_test_result_ll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/fragment_test_result_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textColor="#363636"
+        android:textSize="18sp"
+        android:paddingLeft="@dimen/padding_default_double"
+        android:paddingRight="@dimen/padding_default_double"
+        android:background="@color/ballBgColor"
+        android:layout_marginBottom="@dimen/margin_default" />
+
+    <TextView
+        android:id="@+id/fragment_test_result_tv_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:textColor="#767676"
+        android:textSize="14sp"
+        android:layout_marginBottom="@dimen/margin_default"
+        />
+
+    <ua.profarma.medbook.recyclerviews.tests_results.TestResultRecyclerView
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:id="@+id/fragment_test_result_list"
+        android:layout_height="wrap_content"/>
+
+
+    <LinearLayout
+        android:id="@+id/fragment_test_result_open_answer_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginTop="@dimen/margin_default_half"
+        android:layout_marginEnd="@dimen/margin_default"
+        android:layout_marginBottom="@dimen/margin_default_half"
+        android:background="@color/answer_open"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/padding_default_double"
+        android:paddingBottom="@dimen/padding_default_double"
+        android:paddingStart="@dimen/padding_default"
+        android:paddingEnd="@dimen/padding_default_double">
+
+        <ImageView
+            android:id="@+id/fragment_test_result_open_answer_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_answer_open" />
+
+        <TextView
+            android:layout_marginStart="@dimen/margin_default"
+            android:id="@+id/fragment_test_result_open_answer_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/answer_text_color"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+</LinearLayout>

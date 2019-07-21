@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/fragment_page_exchange_fishka"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_default">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_default">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/fishka" />
+
+            <TextView
+                android:layout_marginStart="@dimen/margin_default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fishka" />
+        </LinearLayout>
+
+        <View style="@style/Divider" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fragment_page_exchange_likiwiki"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:padding="@dimen/padding_default">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_default">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/likiwiki" />
+
+            <TextView
+                android:layout_marginStart="@dimen/margin_default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/likiwiki" />
+
+        </LinearLayout>
+
+        <View style="@style/Divider" />
+    </LinearLayout>
+
+</LinearLayout>

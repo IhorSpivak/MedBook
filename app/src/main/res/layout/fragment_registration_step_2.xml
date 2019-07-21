@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/fragment_registration_page_2_imv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="@dimen/margin_default"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread_inside"
+        app:srcCompat="@drawable/ic_img_loginlogo" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fragment_registration_page_2_til_spes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:theme="@style/TextInputLayoutAuth"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_registration_page_2_til_medical_institutes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_registration_page_2_imv"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <AutoCompleteTextView
+            android:id="@+id/fragment_registration_page_2_tiet_spes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:dropDownAnchor="@+id/fragment_registration_page_2_til_spes"
+            android:hint="@string/registration_page_2_tiet_spec_caption"
+            android:lines="1"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:id="@+id/fragment_registration_page_2_til_medical_institutes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:layout_marginTop="@dimen/margin_default"
+        android:layout_marginEnd="@dimen/margin_default"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_registration_page_2_bnt_next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_registration_page_2_til_spes">
+
+        <TextView
+            android:id="@+id/fragment_registration_page_2_tv_medical_institute"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_default_fourth"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:text="@string/registration_page_2_tv_med_istitutes_caption"
+            android:textColor="@color/gainsboro"
+            android:textSize="18sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginEnd="3dp"
+            android:background="@color/gainsboro" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/fragment_registration_page_2_bnt_next"
+        style="@style/ButtonAuth"
+        android:layout_width="@dimen/btn_auth_w"
+        android:layout_height="@dimen/btn_auth_h"
+        android:layout_marginTop="@dimen/margin_default"
+        android:text="@string/next_caption"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_registration_page_2_tv_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_registration_page_2_til_medical_institutes" />
+
+    <TextView
+        android:id="@+id/fragment_registration_page_2_tv_back"
+        android:layout_width="@dimen/btn_auth_w"
+        android:layout_height="@dimen/btn_auth_h"
+        android:layout_marginTop="@dimen/margin_default"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/prev_caption"
+        android:textColor="#80FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_registration_page_2_bnt_next" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@mipmap/img_mdm_logo_auth" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

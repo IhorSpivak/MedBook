@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/item_visit_doctor_question_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/margin_default"
+    android:layout_marginEnd="@dimen/margin_default"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/item_visit_doctor_question_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_default"
+        android:text="Організація візіта"
+        android:textColor="#333333"
+        android:textSize="14sp" />
+
+    <RadioGroup
+        android:id="@+id/item_visit_doctor_question_rg"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="@dimen/margin_default_half"
+        android:elevation="10dp"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp">
+
+        <ua.profarma.medbook.ui.custom_views.VDRadioButton
+            android:id="@+id/item_visit_doctor_question_rb_1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/radiobutton_selector_visit_anketa"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:text="1" />
+
+        <ua.profarma.medbook.ui.custom_views.VDRadioButton
+            android:id="@+id/item_visit_doctor_question_rb_2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/radiobutton_selector_visit_anketa"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:text="2" />
+
+        <ua.profarma.medbook.ui.custom_views.VDRadioButton
+            android:id="@+id/item_visit_doctor_question_rb_3"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/radiobutton_selector_visit_anketa"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:text="3" />
+
+        <ua.profarma.medbook.ui.custom_views.VDRadioButton
+            android:id="@+id/item_visit_doctor_question_rb_4"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/radiobutton_selector_visit_anketa"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:text="4" />
+
+        <ua.profarma.medbook.ui.custom_views.VDRadioButton
+            android:id="@+id/item_visit_doctor_question_rb_5"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@drawable/radiobutton_selector_visit_anketa"
+            android:button="@android:color/transparent"
+            android:gravity="center"
+            android:text="5" />
+    </RadioGroup>
+</LinearLayout>

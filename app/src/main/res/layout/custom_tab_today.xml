@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ua.profarma.medbook.ui.today.tabs.CustomTab xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="5dp"
+    android:paddingEnd="5dp">
+
+    <TextView
+        android:id="@+id/custom_tab_today_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test"
+        android:layout_marginStart="@dimen/margin_default_double"
+        android:layout_marginEnd="@dimen/margin_default_double"
+        android:textColor="@color/color_tab_text_unselect"
+        android:textSize="14sp"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:visibility="invisible"
+        android:id="@+id/custom_tab_today_dot"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="@dimen/margin_default_fourth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/custom_tab_today_title"
+        app:srcCompat="@drawable/circle_blue" />
+</ua.profarma.medbook.ui.today.tabs.CustomTab>

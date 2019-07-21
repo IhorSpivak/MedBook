@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/fragment_login_server"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/fragment_login_spinner"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_default_half"
+        android:layout_marginEnd="@dimen/margin_default_half"
+        android:entries="@array/language_array"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_login_imglogo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/fragment_login_imglogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_default"
+        android:src="@drawable/ic_img_loginlogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <!--android:text="nechay.nastenka07@gmail.com"-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fragment_login_til_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:theme="@style/TextInputLayoutAuth"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_login_til_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_login_imglogo"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/fragment_login_tiet_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:lines="1"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!--android:text="qwe1234"-->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fragment_login_til_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_default_half"
+        android:theme="@style/TextInputLayoutAuth"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_login_btn_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_login_til_email">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/fragment_login_tiet_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:lines="1"
+            android:textColor="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/fragment_login_btn_login"
+        style="@style/ButtonAuth"
+        android:layout_width="@dimen/btn_auth_w"
+        android:layout_height="@dimen/btn_auth_h"
+        android:layout_marginTop="@dimen/margin_default"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_login_tv_registration"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_login_til_password" />
+
+    <TextView
+        android:id="@+id/fragment_login_tv_registration"
+        style="@style/TextViewAuthStyle"
+        android:layout_width="@dimen/btn_auth_w"
+        android:layout_height="@dimen/btn_auth_h"
+        android:layout_marginTop="@dimen/margin_default"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_login_tv_restore_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_login_btn_login" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_default"
+        android:layout_marginBottom="@dimen/margin_default_half"
+        android:src="@mipmap/img_mdm_logo_auth"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/fragment_login_tv_restore_password"
+        style="@style/TextViewAuthStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/btn_auth_h"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ProgressBar
+        android:indeterminateDrawable="@drawable/progressbar"
+        android:indeterminateOnly="true"
+        android:visibility="gone"
+        android:id="@+id/fragment_login_progress"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

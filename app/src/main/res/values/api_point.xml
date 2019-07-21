@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="url_api_rest">https://app.medbook.mobi/api/v1/</string>
+    <!--<string name="url_api_rest">https://mbr2.medbook.mobi/api/v1/</string>-->
+    <!--<string name="url_api_rest">https://mbr2.medbook.mobi/api/v1/</string>-->
+    <!--<string name="url_api_rest">https://mbr.medbook.mobi/api/v1/</string>-->
+    <!--<string name="url_api_rest_second">https://mb-crm.pro-pharma.com.ua:1601/listener/hs/MedbookAPI/</string>-->
+    <string name="url_api_rest_second">https://mb-crm.pro-pharma.com.ua:1601/listener/hs/MBR/</string>
+    <string name="google_maps_key">AIzaSyDSZgGhmPHpm2Q_h7uEVHGs5tlftEuiIXc</string>
+</resources>

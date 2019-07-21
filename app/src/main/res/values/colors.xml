@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FF37A3E0</color>
+    <color name="colorPrimaryDark">#2854a2</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="app_nav_bar_text">#8a949b</color>
+
+    <color name="start_color">#40B1E5</color>
+    <color name="end_color">#0050C4</color>
+
+    <color name="start_color_1">#3ca5d9</color>
+    <color name="end_color_1">#2854a2</color>
+
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="white_50">#00000000</color>
+    <color name="color_tab_unselect">#F7F8FA</color>
+    <color name="gray">#808080</color>
+    <color name="blue">#0000FF</color>
+    <color name="gainsboro">#DCDCDC</color>
+
+    <color name="color_tab_text_unselect">#ABB1BF</color>
+    <color name="color_tab_text_select">#4F83BA</color>
+
+    <color name="color_button_auth_disable">#696969</color>
+    <color name="color_button_auth_pressed">#0000CD</color>
+    <color name="color_button_auth">#FFFFFF</color>
+
+
+    <color name="color_button_type_1_disable">#696969</color>
+    <color name="color_button_type_1_pressed">#0000CD</color>
+    <color name="color_button_type_1">#0C62CA</color>
+
+
+    <color name="color_button_type_2_disable">#A9A9A9</color>
+    <color name="color_button_type_2_pressed">#40B1E5</color>
+    <color name="color_button_type_2">#0050C4</color>
+    <color name="color_button_type_text_2_disable">#F0FFF0</color>
+    <color name="color_button_type_text_2_pressed">#F5F5F5</color>
+
+
+    <color name="color_button_type_delete_cc_disable">#6BC40D4D</color>
+    <color name="color_button_type_delete_cc_pressed">#8B0A50</color>
+    <color name="color_button_type_delete_cc">#C40D4D</color>
+    <color name="color_button_type_text_delete_cc_disable">#8F8F8F</color>
+    <color name="color_button_type_text_delete_cc_pressed">#FF34B3</color>
+    <color name="color_button_type_text_delete_cc">#FFFFFF</color>
+
+
+    <color name="color_button_type_3_disable">#C0C0C0</color>
+    <color name="color_button_type_3_pressed">#778899</color>
+    <color name="color_button_type_3">#D7D7D7</color>
+
+
+    <color name="color_button_type_4">#67a1d8</color>
+    <color name="color_button_type_4_disable">#7b8691</color>
+    <color name="color_button_type_4_pressed">#5280ac</color>
+
+
+    <color name="act_toolbar_material">#80696969</color>
+    <!--<color name="ballBgColor">#F6F8F9</color>-->
+    <color name="ballBgColor">#80d4dee2</color>
+    <color name="appBgColor">#FAFAFA</color>
+    <color name="rose">#FFF41041</color>
+    <color name="todayBgColor">#f5f5f5</color>
+    <color name="softGrayTextColor">#FF8E8E93</color>
+    <color name="textLight3GrayColor">#FF9B9B9B</color>
+    <color name="separatorGray">#FFE9EBEA</color>
+    <color name="textDarkGrayColor">#FF4A4A4A</color>
+    <color name="colorPrimary2">#FF0558C6</color>
+    <color name="dialogDimColor">#61000000</color>
+    <color name="blackTextColorO">#DE000000</color>
+    <color name="dialogTextColor">#8A000000</color>
+    <color name="textDarkGrayColorOpacity40">#664a4a4a</color>
+    <color name="testWatchMaterial">#99000000</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="gray_1">#767676</color>
+
+    <color name="answer_true">#EAF3FA</color>
+    <color name="answer_false">#FBF0F3</color>
+    <color name="answer_true_you">#EBF8E4</color>
+    <color name="answer_open">#f6f8f9</color>
+    <color name="answer_text_color">#363636</color>
+
+    <color name="color_pressed">#3A2F0B</color>
+
+    <color name="notification_count_color">#A5443B</color>
+
+    <color name="history_points_blue">#00A1E0</color>
+    <color name="history_points_red">#F6544B</color>
+
+    <color name="calendar_background">#00000000</color>
+    <color name="lightGrayColor">#FFD8D8D8</color>
+
+    <color name="calendar_not_included_current_month">#5D94D9</color>
+    <color name="calendar_background_1">#3d81d5</color>
+    <color name="calendar_day">#FFFFFF</color>
+
+    <color name="color_circle_visit_canceled">#C3C3C3</color>
+    <color name="color_circle_visit_accepted">#51B840</color>
+    <color name="color_circle_visit_ended">#575757</color>
+    <color name="color_circle_visit_failed">#7EA4CC</color>
+    <color name="color_circle_visit_new">#C40D4D</color>
+    <color name="color_circle_visit_started">#1B78D2</color>
+
+    <color name="color_product_1">#DFE2E4</color>
+    <color name="color_product_2">#B8D7EA</color>
+    <color name="color_product_3">#FBA99A</color>
+
+    <color name="color_tab_today_text_unselect">#ABB1BF</color>
+    <color name="color_tab_today_text_select">#373737</color>
+
+    <!-- camera -->
+    <color name="camera_preview_overlay">#50000000</color>
+    <color name="red">#FF0000</color>
+
+</resources>

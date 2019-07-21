@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_margin="@dimen/margin_default"
+    android:gravity="center_vertical"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/margin_default"
+        android:layout_width="match_parent"
+        android:id="@+id/fragment_exchange_points_sms_input_layout"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/fragment_exchange_points_sms_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="hint" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/margin_default"
+        android:id="@+id/fragment_exchange_points_sms_send_code_again"
+        style="@style/Button_type_2"
+        android:layout_width="@dimen/btn_auth_w_2"
+        android:layout_height="@dimen/btn_auth_h"
+        android:text="Button" />
+
+    <Button
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/fragment_exchange_points_sms_send_exchange_points"
+        style="@style/Button_type_2"
+        android:layout_width="@dimen/btn_auth_w_2"
+        android:layout_height="@dimen/btn_auth_h"
+        android:text="Button" />
+</LinearLayout>

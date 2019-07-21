@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment
+        android:id="@+id/map"
+        class="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_map_details_marker"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_margin="@dimen/margin_default"
+
+        android:layout_marginBottom="8dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_default"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageButton
+            android:id="@+id/fragment_map_marker_details_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_close_marker" />
+
+        <TextView
+            android:id="@+id/fragment_map_marker_details_caption"
+            style="@style/TextView_caption_marker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text=""
+            app:layout_constraintTop_toBottomOf="@+id/fragment_map_marker_details_close" />
+
+        <TextView
+            android:id="@+id/fragment_map_marker_details_text"
+            style="@style/TextView_text_marker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text=""
+            app:layout_constraintTop_toBottomOf="@+id/fragment_map_marker_details_caption" />
+
+        <Button
+            android:id="@+id/fragment_map_marker_details_ok"
+            style="@style/Button_type_1"
+            android:layout_width="@dimen/btn_auth_w"
+            android:layout_height="@dimen/btn_auth_h"
+            android:text="@string/select_work_ok"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

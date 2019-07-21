@@ -1,0 +1,155 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">#f1f1f1</item>
+    </style>
+
+    <style name="Divider2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">2dp</item>
+        <item name="android:background">#f1f1f1</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppThemeDark" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
+
+
+    <style name="ButtonAuth" parent="Base.Widget.AppCompat.Button">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@drawable/button_auth_text</item>
+        <item name="android:background">@drawable/button_auth_rectangle</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="Button_type_1" parent="Base.Widget.AppCompat.Button">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:background">@drawable/button_type_1</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="Button_type_2" parent="Base.Widget.AppCompat.Button">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@drawable/button_type_text_2</item>
+        <item name="android:background">@drawable/button_type_2</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="Button_type_delete_cc" parent="Base.Widget.AppCompat.Button">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@drawable/button_type_text_delete_cc</item>
+        <item name="android:background">@drawable/button_type_delete_cc</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+
+    <style name="TextView_caption_marker">
+        <item name="android:lines">4</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="TextView_text_marker">
+        <item name="android:lines">3</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+
+    <style name="TextInputLayoutAuth" style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/gainsboro</item>
+        <item name="android:textSize">18sp</item>
+        <item name="colorControlNormal">@color/gainsboro</item>
+        <item name="colorControlActivated">@color/white</item>
+        <item name="android:layout_marginStart">@dimen/margin_default</item>
+        <item name="android:layout_marginEnd">@dimen/margin_default</item>
+    </style>
+
+    <style name="TextInputLayoutOnWhite" style="@style/Widget.MaterialComponents.TextInputLayout">
+        <item name="android:textColor">#CACACA</item>
+        <item name="android:textColorHint">#CACACA</item>
+        <item name="android:labelTextSize">18sp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="colorControlNormal">#CACACA</item>
+        <item name="colorControlActivated">#CACACA</item>
+    </style>
+
+    <style name="TextViewAuthStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#80FFFFFF</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+    </style>
+
+    <style name="TextViewTitleStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+    <style name="TextViewTitleStyleMultiple">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:maxLines">3</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:gravity">left</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+
+    <style name="AppThemeAuthorization" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="DialogBottomFullscreen" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowAnimationStyle">@style/DialogAnimationBottomTop</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimaryDark">@android:color/transparent</item>
+    </style>
+
+    <style name="DialogAnimationBottomTop">
+        <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
+    </style>
+
+    <style name="ScanQrTheme" parent="AppTheme">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary2</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
+    </style>
+
+
+
+</resources>

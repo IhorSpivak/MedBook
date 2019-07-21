@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipe_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#d6d8db"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/fragment_today_block_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rectangle_today_rounded_16_blue"
+                        android:minHeight="@dimen/toolbar_height_margin_first_element"
+                        android:orientation="vertical"
+                        android:paddingBottom="@dimen/padding_default_double"
+                        app:layout_constraintBottom_toTopOf="@+id/fragment_today_list_visits_block"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/fragment_today_tasks_container"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/margin_default"
+                            android:layout_marginTop="72dp"
+                            android:layout_marginEnd="@dimen/margin_default"
+                            android:elevation="5dp"
+                            app:cardCornerRadius="5dp">
+
+                            <TextView
+                                android:id="@+id/fragment_today_list_tasks_title"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/margin_default_double"
+                                android:paddingStart="@dimen/margin_default_double"
+                                android:paddingEnd="@dimen/padding_default"
+                                android:textAllCaps="true"
+                                android:textColor="#999999"
+                                android:textSize="12sp" />
+
+                            <ua.profarma.medbook.recyclerviews.tasks.TasksRecyclerView
+                                android:id="@+id/fragment_today_list_tasks"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="@dimen/margin_default_triple"
+                                android:paddingTop="@dimen/padding_default_double"
+                                android:paddingBottom="@dimen/margin_default_and_half" />
+                        </androidx.cardview.widget.CardView>
+
+                        <HorizontalScrollView
+                            android:id="@+id/hscroll"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scrollbars="none">
+
+                            <LinearLayout
+                                android:id="@+id/fragment_today_ll_notifications"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="@dimen/margin_default"
+                                android:orientation="horizontal">
+
+                                <FrameLayout
+                                    android:layout_width="157dp"
+                                    android:layout_height="157dp"
+                                    android:layout_marginStart="@dimen/margin_default"
+                                    android:layout_marginEnd="@dimen/margin_default"
+                                    android:background="@drawable/layout_notification_all_dashboard_background">
+
+                                    <ImageView
+                                        android:layout_width="80dp"
+                                        android:layout_height="80dp"
+                                        android:layout_gravity="right|center_vertical"
+                                        android:layout_marginEnd="-22dp"
+                                        android:src="@drawable/ic_bell" />
+
+                                    <TextView
+                                        android:id="@+id/fragment_today_notification_0"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="start"
+                                        android:layout_margin="@dimen/margin_default"
+                                        android:textColor="@color/black"
+                                        android:textSize="12sp" />
+                                </FrameLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/fragment_today_notification_1"
+                                    android:layout_width="147dp"
+                                    android:layout_height="157dp"
+                                    android:paddingStart="@dimen/padding_half"
+                                    android:paddingEnd="@dimen/padding_half"
+                                    android:paddingTop="@dimen/padding_default"
+                                    android:paddingBottom="@dimen/padding_default"
+                                    android:layout_marginEnd="@dimen/margin_default"
+                                    android:background="@drawable/layout_notification_dashboard_background"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/fragment_today_notification_1_title"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/margin_default_half"
+                                        android:ellipsize="end"
+                                        android:gravity="center_horizontal"
+                                        android:maxLines="2"
+                                        android:textColor="@color/white"
+                                        android:textSize="16sp" />
+
+                                    <TextView
+                                        android:id="@+id/fragment_today_notification_1_text"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/margin_default_half"
+                                        android:layout_marginTop="@dimen/margin_default_half"
+                                        android:layout_marginEnd="@dimen/margin_default_half"
+                                        android:layout_marginBottom="@dimen/margin_default_half"
+                                        android:ellipsize="end"
+                                        android:maxLines="5"
+                                        android:textColor="@color/white"
+                                        android:textSize="12sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/fragment_today_notification_2"
+                                    android:layout_width="147dp"
+                                    android:layout_height="157dp"
+                                    android:paddingStart="@dimen/padding_half"
+                                    android:paddingEnd="@dimen/padding_half"
+                                    android:paddingTop="@dimen/padding_default"
+                                    android:paddingBottom="@dimen/padding_default"
+                                    android:layout_marginEnd="@dimen/margin_default"
+                                    android:background="@drawable/layout_notification_dashboard_background"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/fragment_today_notification_2_title"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/margin_default_half"
+                                        android:ellipsize="end"
+                                        android:gravity="center_horizontal"
+                                        android:maxLines="2"
+                                        android:textColor="@color/white"
+                                        android:textSize="16sp" />
+
+                                    <TextView
+                                        android:id="@+id/fragment_today_notification_2_text"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/margin_default_half"
+                                        android:layout_marginTop="@dimen/margin_default_half"
+                                        android:layout_marginEnd="@dimen/margin_default_half"
+                                        android:layout_marginBottom="@dimen/margin_default_half"
+                                        android:ellipsize="end"
+                                        android:maxLines="5"
+                                        android:textColor="@color/white"
+                                        android:textSize="12sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/fragment_today_notification_3"
+                                    android:layout_width="147dp"
+                                    android:layout_height="157dp"
+                                    android:paddingStart="@dimen/padding_half"
+                                    android:paddingEnd="@dimen/padding_half"
+                                    android:paddingTop="@dimen/padding_default"
+                                    android:paddingBottom="@dimen/padding_default"
+                                    android:layout_marginEnd="@dimen/margin_default"
+                                    android:background="@drawable/layout_notification_dashboard_background"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/fragment_today_notification_3_title"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/margin_default_half"
+                                        android:ellipsize="end"
+                                        android:gravity="center_horizontal"
+                                        android:maxLines="2"
+                                        android:textColor="@color/white"
+                                        android:textSize="16sp" />
+
+                                    <TextView
+                                        android:id="@+id/fragment_today_notification_3_text"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/margin_default_half"
+                                        android:layout_marginTop="@dimen/margin_default_half"
+                                        android:layout_marginEnd="@dimen/margin_default_half"
+                                        android:layout_marginBottom="@dimen/margin_default_half"
+                                        android:ellipsize="end"
+                                        android:maxLines="5"
+                                        android:textColor="@color/white"
+                                        android:textSize="12sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/fragment_today_notification_4"
+                                    android:layout_width="147dp"
+                                    android:layout_height="157dp"
+                                    android:paddingStart="@dimen/padding_half"
+                                    android:paddingEnd="@dimen/padding_half"
+                                    android:paddingTop="@dimen/padding_default"
+                                    android:paddingBottom="@dimen/padding_default"
+                                    android:layout_marginEnd="@dimen/margin_default"
+                                    android:background="@drawable/layout_notification_dashboard_background"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/fragment_today_notification_4_title"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/margin_default_half"
+                                        android:ellipsize="end"
+                                        android:gravity="center_horizontal"
+                                        android:maxLines="2"
+                                        android:textColor="@color/white"
+                                        android:textSize="16sp" />
+
+                                    <TextView
+                                        android:id="@+id/fragment_today_notification_4_text"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/margin_default_half"
+                                        android:layout_marginTop="@dimen/margin_default_half"
+                                        android:layout_marginEnd="@dimen/margin_default_half"
+                                        android:layout_marginBottom="@dimen/margin_default_half"
+                                        android:ellipsize="end"
+                                        android:maxLines="5"
+                                        android:textColor="@color/white"
+                                        android:textSize="12sp" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:id="@+id/fragment_today_notification_5"
+                                    android:layout_width="147dp"
+                                    android:layout_height="157dp"
+                                    android:paddingStart="@dimen/padding_half"
+                                    android:paddingEnd="@dimen/padding_half"
+                                    android:paddingTop="@dimen/padding_default"
+                                    android:paddingBottom="@dimen/padding_default"
+                                    android:layout_marginEnd="@dimen/margin_default"
+                                    android:background="@drawable/layout_notification_dashboard_background"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/fragment_today_notification_5_title"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/margin_default_half"
+                                        android:ellipsize="end"
+                                        android:gravity="center_horizontal"
+                                        android:maxLines="2"
+                                        android:textColor="@color/white"
+                                        android:textSize="16sp" />
+
+                                    <TextView
+                                        android:id="@+id/fragment_today_notification_5_text"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/margin_default_half"
+                                        android:layout_marginTop="@dimen/margin_default_half"
+                                        android:layout_marginEnd="@dimen/margin_default_half"
+                                        android:layout_marginBottom="@dimen/margin_default_half"
+                                        android:ellipsize="end"
+                                        android:maxLines="5"
+                                        android:textColor="@color/white"
+                                        android:textSize="12sp" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </HorizontalScrollView>
+                    </LinearLayout>
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/fragment_today_list_visits_block"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/margin_default"
+                        android:background="@color/white"
+                        android:elevation="8dp"
+                        app:cardCornerRadius="10dp"
+                        app:layout_constraintBottom_toTopOf="@+id/fragment_today_points"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fragment_today_block_1">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/margin_default"
+                                android:layout_marginTop="@dimen/margin_default"
+                                android:layout_marginRight="@dimen/margin_default"
+                                android:layout_marginBottom="@dimen/margin_default_half"
+                                android:text="Календар візитів"
+                                android:textAllCaps="true"
+                                android:textColor="#999999"
+                                android:textSize="14sp" />
+
+                            <ua.profarma.medbook.recyclerviews.visits.VisitsDashboardRecyclerView
+                                android:id="@+id/fragment_today_list_visits"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:background="@color/white" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <Button
+                        android:id="@+id/fragment_today_points"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_margin="@dimen/margin_default"
+                        android:background="@drawable/btn_points_dashboard_background"
+                        android:text="28"
+                        android:textColor="@color/white"
+                        android:textSize="28sp"
+                        app:layout_constraintBottom_toTopOf="@+id/fragment_today_news_tabs"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fragment_today_list_visits_block" />
+
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/fragment_today_news_tabs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#EFF3F5"
+                        app:layout_constraintBottom_toTopOf="@+id/fragment_today_news_viewpager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fragment_today_points"
+                        app:tabIndicatorHeight="0dp"
+                        app:tabMode="scrollable" />
+
+                    <ua.profarma.medbook.ui.custom_views.NonSwipeableViewPager
+                        android:id="@+id/fragment_today_news_viewpager"
+                        android:layout_width="match_parent"
+                        android:layout_height="450dp"
+                        android:layout_weight="1"
+                        android:background="#EFF3F5"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/fragment_today_news_tabs" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_today_rounded_16"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_height"
+            android:background="@drawable/rectangle_today_rounded_16"
+            android:elevation="@dimen/toolbar_elevation">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rectangle_today_rounded_16"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/rectangle_today_rounded_16">
+
+                    <LinearLayout
+                        android:id="@+id/mdm_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/rectangle_today_rounded_16"
+                        android:orientation="horizontal"
+                        android:paddingStart="@dimen/margin_default"
+                        android:paddingTop="@dimen/margin_default"
+                        android:paddingEnd="@dimen/margin_default"
+                        android:paddingBottom="@dimen/margin_default">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:src="@mipmap/img_mdm_logo_today" />
+
+                    </LinearLayout>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/margin_default"
+                    android:layout_marginEnd="@dimen/margin_default"
+                    android:layout_weight="0">
+
+                    <TextView
+                        android:id="@+id/profile"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:layout_gravity="bottom"
+                        android:background="@drawable/circle_primary"
+                        android:gravity="center"
+                        android:textColor="@color/white" />
+
+                    <include
+                        android:id="@+id/feedback_count"
+                        layout="@layout/count_badge" />
+                </FrameLayout>
+            </LinearLayout>
+        </FrameLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

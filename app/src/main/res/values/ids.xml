@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="no_internet_connection" type="id" />
+    <item name="error_401" type="id" />
+
+    <item name="app_exit_on_back_hint" type="id" />
+
+    <item name="activity_points_tab1_title" type="id" />
+    <item name="activity_points_tab2_title" type="id" />
+
+
+    <item name="activity_points_add_card_input_card_error" type="id" />
+    <item name="activity_points_add_card_input_phone_error" type="id" />
+
+    <item name="activity_exchange_points_for_fishka_title_2" type="id" />
+    <item name="not_enough_points_to_exchange" type="id" />
+
+    <item name="card_add_success" type="id" />
+
+    <item name="calendar_local" type="id" />
+
+    <item name="calendar_january" type="id" />
+    <item name="calendar_february" type="id" />
+    <item name="calendar_march" type="id" />
+    <item name="calendar_april" type="id" />
+    <item name="calendar_may" type="id" />
+    <item name="calendar_june" type="id" />
+    <item name="calendar_july" type="id" />
+    <item name="calendar_august" type="id" />
+    <item name="calendar_september" type="id" />
+    <item name="calendar_october" type="id" />
+    <item name="calendar_november" type="id" />
+    <item name="calendar_december" type="id" />
+
+    <item name="calendar_january_s" type="id" />
+    <item name="calendar_february_s" type="id" />
+    <item name="calendar_march_s" type="id" />
+    <item name="calendar_april_s" type="id" />
+    <item name="calendar_may_s" type="id" />
+    <item name="calendar_june_s" type="id" />
+    <item name="calendar_july_s" type="id" />
+    <item name="calendar_august_s" type="id" />
+    <item name="calendar_september_s" type="id" />
+    <item name="calendar_october_s" type="id" />
+    <item name="calendar_november_s" type="id" />
+    <item name="calendar_december_s" type="id" />
+
+    <item name="calendar_monday" type="id" />
+    <item name="calendar_tuesday" type="id" />
+    <item name="calendar_wednesday" type="id" />
+    <item name="calendar_thursday" type="id" />
+    <item name="calendar_friday" type="id" />
+    <item name="calendar_saturday" type="id" />
+    <item name="calendar_sunday" type="id" />
+
+    <item name="activity_add_visit_add_doc" type="id" />
+    <item name="activity_add_visit_add_mp" type="id" />
+    <item name="activity_add_visit_date_picker_title" type="id" />
+    <item name="activity_add_visit_time_picker_title" type="id" />
+    <item name="activity_add_visit_picker_btn_ok" type="id" />
+    <item name="activity_add_visit_picker_btn_cancel" type="id" />
+    <item name="activity_add_visit_error_date_select" type="id" />
+    <item name="activity_add_visit_error_time_select" type="id" />
+    <item name="visits_create_ok" type="id" />
+    <item name="no_select_visit_title" type="id" />
+    <item name="no_select_visit_member" type="id" />
+
+    <item name="status_visits_canceled" type="id" />
+    <item name="status_visits_ended" type="id" />
+    <item name="status_visits_started" type="id" />
+    <item name="status_visits_failed" type="id" />
+    <item name="status_visits_accepted" type="id" />
+    <item name="status_visits_new" type="id" />
+    <item name="status_visits_processing" type="id" />
+
+    <item name="btn_visits_accept" type="id" />
+    <item name="btn_visits_start" type="id" />
+    <item name="btn_visits_end" type="id" />
+
+    <item name="today_tab_1" type="id" />
+    <item name="today_tab_2" type="id" />
+    <item name="today_tab_3" type="id" />
+
+    <item name="material_test" type="id" />
+    <item name="material_video" type="id" />
+    <item name="material_presentation" type="id" />
+    <item name="material_tests" type="id" />
+    <item name="material_presentations" type="id" />
+
+    <item name="activity_add_visit_title_input_default" type="id" />
+
+
+    <item name="medical_case_status_1" type="id" />
+    <item name="medical_case_status_2" type="id" />
+    <item name="medical_case_status_3" type="id" />
+    <item name="medical_case_status_4" type="id" />
+
+    <item name="general_message" type="id" />
+    <item name="general_unknown_error" type="id" />
+    <item name="calendar_fragment_no_exist_unaccepted_visits" type="id" />
+    <item name="fragment_add_phone_number_check_sms_msg_check_code" type="id" />
+
+    <item name="add_md_case_title_min_symbols" type="id" />
+    <item name="add_md_case_details_min_symbols" type="id" />
+    <item name="add_md_case_drugs_empty" type="id" />
+    <item name="add_md_case_icods_empty" type="id" />
+
+    <item name="activity_qr_code_generate_visit_btn_qr" type="id" />
+    <item name="activity_qr_code_generate_visit_btn_gk" type="id" />
+
+
+    <item name="delete_comment_dialog_title" type="id" />
+    <item name="delete_comment_dialog_text" type="id" />
+
+    <item name="dont_select_med_inst" type="id" />
+    <item name="dont_select_spes" type="id" />
+    <item name="mp_anketa_dont_downloading_anketa" type="id" />
+
+
+    <item name="need_push_reaction" type="id" />
+    <item name="general_error" type="id" />
+
+</resources>

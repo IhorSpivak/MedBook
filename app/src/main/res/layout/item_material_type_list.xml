@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_list_of_list_materials"
+    android:layout_width="match_parent"
+    android:layout_height="110dp"
+    android:layout_marginStart="@dimen/margin_default"
+    android:layout_marginTop="@dimen/margin_default_half"
+    android:layout_marginEnd="@dimen/margin_default"
+    android:layout_marginBottom="@dimen/margin_default_half"
+    android:outlineProvider="bounds"
+    android:background="@drawable/rectangle_rounded_4">
+
+
+    <TextView
+        android:id="@+id/item_materials_type_list_tv_tests"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:drawableLeft="@drawable/ic_tests"
+        android:gravity="center_vertical"
+        android:drawablePadding="4dp"
+        android:text="99"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@+id/item_materials_type_list_logo_prod"
+        app:layout_constraintStart_toEndOf="@+id/item_materials_type_list_logo_prod"
+        app:layout_constraintTop_toTopOf="@+id/item_materials_type_list_logo_prod" />
+
+    <TextView
+        android:id="@+id/item_materials_type_list_tv_videos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:drawableLeft="@drawable/ic_videos"
+        android:gravity="center_vertical"
+        android:text="99"
+        android:drawablePadding="4dp"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@+id/item_materials_type_list_logo_prod"
+        app:layout_constraintStart_toEndOf="@+id/item_materials_type_list_tv_tests"
+        app:layout_constraintTop_toTopOf="@+id/item_materials_type_list_logo_prod" />
+
+    <TextView
+        android:id="@+id/item_materials_type_list_tv_presentations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:drawableLeft="@drawable/ic_presentations"
+        android:gravity="center_vertical"
+        android:text="99"
+        android:drawablePadding="4dp"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="@+id/item_materials_type_list_logo_prod"
+        app:layout_constraintStart_toEndOf="@+id/item_materials_type_list_tv_videos"
+        app:layout_constraintTop_toTopOf="@+id/item_materials_type_list_logo_prod" />
+
+    <ImageView
+        android:id="@+id/item_materials_type_list_dot"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginStart="@dimen/margin_default"
+        app:layout_constraintBottom_toTopOf="@+id/item_materials_type_list_logo_prod"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/circle_red" />
+
+    <TextView
+        android:id="@+id/item_materials_type_list_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default"
+        android:text="Легалон"
+        android:textSize="15sp"
+        app:layout_constraintStart_toEndOf="@+id/item_materials_type_list_logo_prod"
+        app:layout_constraintTop_toTopOf="@+id/item_materials_type_list_logo_prod" />
+
+    <TextView
+        android:id="@+id/item_materials_type_list_tv_balls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_default"
+        android:layout_marginEnd="@dimen/margin_default"
+        android:background="@drawable/rectangle_rounded_gray_6"
+        android:paddingLeft="4dp"
+        android:paddingTop="2dp"
+        android:paddingRight="4dp"
+        android:paddingBottom="2dp"
+        android:text="7777"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/item_materials_type_list_imv_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_default"
+        android:layout_marginBottom="@dimen/margin_default"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_info" />
+
+    <ImageView
+        android:id="@+id/item_materials_type_list_logo_company"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_default_half"
+        app:layout_constraintBottom_toBottomOf="@+id/item_materials_type_list_logo_prod"
+        app:layout_constraintStart_toStartOf="@+id/item_materials_type_list_tv_title"
+        app:layout_constraintTop_toBottomOf="@+id/item_materials_type_list_tv_tests"
+        app:srcCompat="@drawable/img_test_2" />
+
+    <ua.profarma.medbook.utils.round_image.RoundedImageView
+        android:id="@+id/item_materials_type_list_logo_prod"
+        android:layout_width="70dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="@dimen/margin_default_half"
+        app:siRadius="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="10dp"
+        app:srcCompat="@drawable/img_test_1" />
+</androidx.constraintlayout.widget.ConstraintLayout>

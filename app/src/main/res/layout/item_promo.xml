@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/item_promo_root"
+    android:paddingBottom="@dimen/padding_default_double"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/item_promo_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="#363636"
+        android:lines="2"
+        android:ellipsize="end"
+        android:layout_marginStart="@dimen/margin_default_triple"
+        android:layout_marginTop="@dimen/margin_default"
+        android:layout_marginEnd="@dimen/margin_default_triple"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_default_double"
+        android:layout_marginTop="@dimen/margin_default_double"
+        android:layout_marginEnd="@dimen/margin_default_double"
+        android:background="@drawable/background_item_promo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_promo_title">
+
+        <TextView
+            android:id="@+id/item_promo_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="TextView"
+            android:textSize="18sp"
+            android:textColor="#363636"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/item_promo_count"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/item_promo_minus"
+            app:layout_constraintStart_toStartOf="@+id/item_promo_minus"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/item_promo_plus"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:background="@drawable/circle_promo"
+            android:padding="@dimen/padding_default"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_promo_plus" />
+
+        <ImageView
+            android:id="@+id/item_promo_minus"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:background="@drawable/circle_promo"
+            android:padding="@dimen/padding_default"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_promo_minus" />
+
+        <TextView
+            android:id="@+id/item_promo_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/TextView"
+            android:textSize="14sp"
+            android:textColor="#777777"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/item_promo_plus"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/item_promo_value"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

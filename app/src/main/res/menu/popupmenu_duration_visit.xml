@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/activity_add_visit_popup_menu_0" />
+    <item
+        android:id="@+id/activity_add_visit_popup_menu_1" />
+    <item
+        android:id="@+id/activity_add_visit_popup_menu_2" />
+    <item
+        android:id="@+id/activity_add_visit_popup_menu_3" />
+    <item
+        android:id="@+id/activity_add_visit_popup_menu_4" />
+    <item
+        android:id="@+id/activity_add_visit_popup_menu_5" />
+    <item
+        android:id="@+id/activity_add_visit_popup_menu_6" />
+    <item
+        android:id="@+id/activity_add_visit_popup_menu_7" />
+    <item
+        android:id="@+id/activity_add_visit_popup_menu_8" />
+    <item
+        android:id="@+id/activity_add_visit_popup_menu_9" />
+    <item
+        android:id="@+id/activity_add_visit_popup_menu_10" />
+    <item
+        android:id="@+id/activity_add_visit_popup_menu_11" />
+</menu>

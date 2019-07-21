@@ -1,0 +1,148 @@
+<resources>
+
+
+    <string name="likiwiki">Liki.Wiki</string>
+    <string name="count_comments">(%1$d)</string>
+    <string name="crash_toast_text">Ошибка! Отправляем отчёт</string>
+    <string name="fishka">Fishka</string>
+    <string name="internal_storage">Internal storage</string>
+
+    <string name="slash" translatable="false">%1$s / %2$s</string>
+    <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="fcm_message">FCM Message</string>
+
+    <string-array name="language_array">
+        <item>Русский</item>
+        <item>Українська</item>
+    </string-array>
+    <string-array name="language_array_iso">
+        <item>ru</item>
+        <item>ua</item>
+    </string-array>
+
+    <string-array name="tabs_materials">
+        <item>Тести</item>
+        <item>Презентації</item>
+        <item>Відео</item>
+    </string-array>
+
+    <string name="app_name">MedBookNEW</string>
+
+    <string name="message_401">Сплив термін авторізації або ви залогінились на іншому пристрої, потрібно залогіниться заново</string>
+
+
+    <string name="next_caption">Далі</string>
+    <string name="prev_caption">Назад</string>
+
+    <string name="title_end_test_btn">Завершити тест</string>
+    <string name="title_end_test_results_btn">Завершити перегляд результатів тесту</string>
+    <!-- registration pages and api-->
+    <string name="registration_page_1_tiet_first_name_caption">Ім’я</string>
+    <string name="registration_page_1_tiet_middle_name_caption">По-батькові</string>
+    <string name="registration_page_1_tiet_last_name_caption">Прізвище</string>
+    <string name="registration_page_2_tiet_spec_caption">Профільна спеціалізація</string>
+    <string name="registration_page_2_tv_med_istitutes_caption">Місце роботи</string>
+    <string name="permission_location">Вам треба надати дозвіл на пошук вашого місцеположення</string>
+    <string name="registration_page_3_tiet_email_caption">Електронна пошта</string>
+    <string name="registration_page_3_tiet_password_caption">Пароль</string>
+    <string name="registration_page_3_tiet_password_confirm_caption">Повторити пароль</string>
+    <string name="registration_page_3_btn_registration_caption">Зареєструватись</string>
+
+    <string name="min_count_lastname">Мінімальна кількість символів для прізвища 2 символа</string>
+    <string name="min_count_middlename">Мінімальна кількість символів для по-батькові 2 символа</string>
+    <string name="min_count_firstname">Мінімальна кількість символів для iм’я 2 символа</string>
+
+    <string name="min_password">Довжина паролю повинна бути не менша %1$s символів</string>
+    <string name="confirm_password">Паролі не свівпадають</string>
+    <string name="error_email">Некорректний email</string>
+    <string name="check_email_to_confirm_your_registration">Перевірте свою електронну почту для подальших інструкцій</string>
+    <string name="restore_info">Перевірте свою електронну почту для подальших інструкцій</string>
+    <string name="enter">Вхід</string>
+
+    <string name="throwable_registration">Сталося невідоме виключення при спробі реєстрації</string>
+
+    <string name="need_access_read_phone_state">Необхідно надати доступ до считування статуса смартфона, щоб визначини IMEI. Це необхідно для ідентифікації при відправці push повідомлень. Без надання цього дозволу робота додатку неможлива</string>
+    <string name="need_access_location">Необхідно надати доступ до місцязнаходження, щоб відображати ЛМУ біля вас</string>
+    <string name="need_access_read_storage">Необхідно надати доступ до считування внутрішньої пам\'яті смартфону, щоб заватажити зображення</string>
+
+    <string name="select_work">Обрати місце работи</string>
+    <string name="select_work_text">ваше місце роботи? Натисніть так якщо це так</string>
+    <string name="select_work_ok">Обрати</string>
+
+    <string name="restore">Відновити</string>
+    <string name="unknown_restore_request">Невідома помилка при сбробі відновлення паролю</string>
+    <!-- END registration pages-->
+
+
+    <string name="no_internet_connection">Немає інтернет зєднання. Будь ласка включіть Wi-Fi або мобільний інтернет</string>
+    <string name="no_materials">Немає матеріалів для показу. Їх або не існую обо щось змінилося в API</string>
+
+    <string name="btn_ok">Так</string>
+    <string name="btn_cancel">Відміна</string>
+    <string name="btn_no">Ні</string>
+
+    <string name="ah">AH</string>
+
+    <!-- profile -->
+    <string name="mail">Пошта</string>
+    <string name="phone">Телефон</string>
+    <string name="city">Місто</string>
+    <string name="specialization">Спеціалізація</string>
+    <string name="lpu">ЛПЗ</string>
+    <string name="invite_doc">Pекомендувати колегам</string>
+    <string name="feedback">Зворотній зв\'язок</string>
+    <string name="loyalty_program">Програма лояльності</string>
+    <string name="withdraw_points_fishka">Про програму Fishka</string>
+    <string name="pay_out">Акція: обміняти бали</string>
+    <string name="scan_code">Сканувати код</string>
+    <string name="exit">Вихід</string>
+    <string name="medbook_version" translatable="false">Medbook version %s.%s</string>
+    <string name="unfortunately_information_is_not_available">Дані для відображення відсутні</string>
+
+    <string name="loading">Завантаження</string>
+
+    <string name="ok_terms_and_agreements">Погоджуюся</string>
+
+    <string name="chat">Чат</string>
+    <string name="telephone">Телефон</string>
+    <string name="hotline_work_hours">Час роботи служби підтримки</string>
+    <string name="hotline_work_hours_h">Пн—Пт з 9:00 до 20:00</string>
+    <string name="invite_doc_dialog_title">Долучіть своїх колег до MedBook\nВаш код:</string>
+    <string name="share">Поділитися</string>
+    <string name="conditions">Умови</string>
+    <string name="copy">Скопіювати</string>
+    <string name="verification_phone_title_1">Редагувати номер</string>
+    <string name="verification_phone_btn_1">Зберегти</string>
+    <string name="verification_phone_edt_hint_1">Новий номер</string>
+    <string name="verification_phone_edt_old_hint_1">Старий номер</string>
+    <string name="verification_phone_title_2">Код підтвердження</string>
+    <string name="message">Повідомлення</string>
+    <string name="no_permission">На жаль, ця функція не доступна, так як Ви не активували її раніше. Будь-ласка, активуйте функцію у діалоговому вікні або у налаштуваннях додатків Вашого телефону.</string>
+    <string name="cancel">Скасувати</string>
+    <string name="accept">ОК</string>
+    <string name="close_dialog">Закрити</string>
+    <string name="loyalty_dialog_title">Програма лояльності</string>
+    <string name="loyalty_dialog_rules">Правила проведення</string>
+    <string name="loyalty_dialog_instruction">Інструкція</string>
+    <string name="enter_code">Введіть код підтвердження</string>
+    <string name="send_code_again">Надіслати код ще раз</string>
+    <string name="change_phone">Змінити номер</string>
+    <string name="share_via">Відправити код</string>
+
+    <string name="store_title">Магазин</string>
+    <string name="materials">Матеріали</string>
+    <string name="today">Сьогодні</string>
+    <string name="prescriptionz">Фармдовідка</string>
+    <string name="vistis">Календар</string>
+
+    <string name="material_description_points_view">баллів\nперегляд</string>
+    <string name="material_description_points_testing">баллів\nпроходження</string>
+
+    <string name="material_description_btn_title_testing">Пройти тест</string>
+    <string name="material_description_btn_title_testing_completed">Переглянути результати тесту</string>
+    <string name="material_description_btn_title_view_video">Переглянути відео</string>
+    <string name="material_description_btn_title_view_presentation">Переглянути презентацію</string>
+    <string name="name_clinical_casse">Додайте назву</string>
+</resources>
+

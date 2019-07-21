@@ -1,0 +1,79 @@
+<resources>
+
+    <string-array name="language_array">
+        <item>Русский</item>
+        <item>Українська</item>
+    </string-array>
+
+    <string name="app_name">MedBookNEW</string>
+
+    <string name="next_caption">Дальше</string>
+    <string name="prev_caption">Назад</string>
+
+    <!-- registration pages and api-->
+    <string name="registration_page_1_tiet_first_name_caption">Имя</string>
+    <string name="registration_page_1_tiet_middle_name_caption">Отчество</string>
+    <string name="registration_page_1_tiet_last_name_caption">Фамилия</string>
+    <string name="registration_page_2_tiet_spec_caption">Профильная специализация</string>
+    <string name="registration_page_2_tv_med_istitutes_caption">Место работи</string>
+    <string name="permission_location">Вам необходимо дать разрешение на поиск вашего местоположения</string>
+    <string name="registration_page_3_tiet_email_caption">Электронная почта</string>
+    <string name="registration_page_3_tiet_password_caption">Пароль</string>
+    <string name="registration_page_3_tiet_password_confirm_caption">Повторить пароль</string>
+    <string name="registration_page_3_btn_registration_caption">Зарегистрироваться</string>
+
+    <string name="min_count_lastname">Минимальное количество символов для фамилии 2 символа</string>
+    <string name="min_count_middlename">Минимальное количество символов для отчества 2 символа</string>
+    <string name="min_count_firstname">Минимальное количество символов для имени 2 символа</string>
+
+    <string name="min_password">Длина пароля должна быть больше 6 символов</string>
+    <string name="confirm_password">Пароли не совпадают</string>
+    <string name="error_email">Некоректный email</string>
+    <string name="check_email_to_confirm_your_registration">Проверьте свою электронную почту для дальнейших инструкций</string>
+    <string name="restore_info">Проверьте свою электронную почту для дальнейших инструкций</string>
+    <string name="enter">Вход</string>
+
+    <string name="throwable_registration">Произошло незивестная ошибка при попытке регистрации</string>
+
+    <string name="need_access_location">Надо дать доступ к мастонахождению, чтобы отображать ЛМУ возле вас</string>
+    <string name="select_work">Выбрать место работы</string>
+    <string name="select_work_text">ваше место работы? Нажмите ДА если это так</string>
+    <string name="select_work_ok">Выбрать</string>
+    <!-- END registration pages-->
+
+
+    <string name="no_internet_connection">Немає інтернет зєднання. Будь ласка включіть Wi-Fi або мобільний інтернет</string>
+
+    <string name="btn_ok">Да</string>
+    <string name="btn_cancel">Отмена</string>
+    <string name="btn_no">Нет</string>
+
+    <string name="ah">AH</string>
+
+    <!-- profile -->
+    <string name="mail">Почта</string>
+    <string name="phone">Телефон</string>
+    <string name="city">Город</string>
+    <string name="specialization">Специализация</string>
+    <string name="lpu">ЛПЗ</string>
+    <string name="invite_doc">Pекомендувать коллегам</string>
+    <string name="feedback">Обратная связь</string>
+    <string name="withdraw_points_fishka">Про программу Fishka</string>
+    <string name="pay_out">Акция: обменять бали</string>
+    <string name="scan_code">Сканировать код</string>
+    <string name="exit">Выход</string>
+    <string name="medbook_version" translatable="false">Medbook версия %s.%s</string>
+    <string name="unfortunately_information_is_not_available">Данные для отображения отсутствуют</string>
+
+    <string name="loading">Загрузка</string>
+
+    <string name="ok_terms_and_agreements">Согласен</string>
+
+    <string name="chat">Чат</string>
+    <string name="telephone">Телефон</string>
+    <string name="hotline_work_hours">Время работы службы поддержки</string>
+    <string name="hotline_work_hours_h">Пн—Пт з 9:00 до 20:00</string>
+    <string name="name_clinical_casse">Добавте зазвания</string>
+
+</resources>
+

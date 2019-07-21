@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="toolbar_height_margin_first_element">62dp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
+
+
+    <dimen name="margin_default_fourth">4dp</dimen>
+    <dimen name="margin_default_half">8dp</dimen>
+    <dimen name="margin_default_and_half">24dp</dimen>
+    <dimen name="margin_default">16dp</dimen>
+    <dimen name="margin_default_double">32dp</dimen>
+    <dimen name="margin_default_triple">48dp</dimen>
+
+    <dimen name="padding_half">4dp</dimen>
+    <dimen name="padding_default">8dp</dimen>
+    <dimen name="padding_default_triple">24dp</dimen>
+    <dimen name="padding_default_and_half">12dp</dimen>
+    <dimen name="padding_default_double">16dp</dimen>
+    <dimen name="padding_add_comment">40dp</dimen>
+
+    <dimen name="btn_auth_h">44dp</dimen>
+    <dimen name="btn_auth_w">150dp</dimen>
+    <dimen name="btn_auth_w_2">240dp</dimen>
+
+    <dimen name="app_bar_title_size">11sp</dimen>
+    <dimen name="calendar_cell_size">44dp</dimen>
+
+    <dimen name="item_visit_height">82dp</dimen>
+</resources>

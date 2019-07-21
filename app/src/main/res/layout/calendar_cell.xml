@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/calendar_background">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/text_layout"
+        android:layout_alignBottom="@+id/text_layout"
+        android:background="@color/calendar_background" />
+
+    <FrameLayout
+        android:id="@+id/back"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/text_layout"
+        android:layout_alignBottom="@+id/text_layout"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp" />
+
+    <FrameLayout
+        android:id="@+id/mini_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/text_layout"
+        android:layout_alignTop="@+id/text_layout"
+        android:layout_alignEnd="@+id/text_layout"
+        android:layout_alignBottom="@+id/text_layout"
+        android:layout_centerInParent="true" />
+
+    <LinearLayout
+        android:id="@+id/text_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:minWidth="@dimen/calendar_cell_size"
+        android:minHeight="@dimen/calendar_cell_size"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/line_top"
+            android:layout_width="16dp"
+            android:layout_height="2dp"
+            android:background="@color/textLight3GrayColor"
+            android:visibility="invisible" />
+
+        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:maxEms="2"
+            android:minEms="2"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <FrameLayout
+                android:id="@+id/line"
+                android:layout_width="16dp"
+                android:layout_height="2dp"
+                android:background="@color/textLight3GrayColor"
+                android:visibility="invisible" />
+
+            <FrameLayout
+                android:id="@+id/dot"
+                android:layout_width="4dp"
+                android:layout_height="4dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/circle_text_light3_gray_color"
+                android:visibility="invisible" />
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>
