@@ -126,7 +126,7 @@ public class NewMedicalInstitutionFragment extends Fragment implements OnMapRead
         currentLatLng = new LatLng(location.getLatitude(), location.getLongitude());
         mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, MAP_ZOOM));
 
-        Core.get().getDataForRegistrationControl().getMedicalNearestMedicalInstitutes(currentLatLng.latitude, currentLatLng.longitude, 200);
+        Core.get().getDataForRegistrationControl().getMedicalNearestMedicalInstitutes(currentLatLng.latitude, currentLatLng.longitude, 100);
     }
 
     @Nullable
@@ -273,7 +273,7 @@ public class NewMedicalInstitutionFragment extends Fragment implements OnMapRead
     @Override
     public void onCameraIdle() {
         LatLng centerLatLng = mGoogleMap.getProjection().getVisibleRegion().latLngBounds.getCenter();
-        Core.get().getDataForRegistrationControl().getMedicalNearestMedicalInstitutes(centerLatLng.latitude, centerLatLng.longitude, 200);
+        Core.get().getDataForRegistrationControl().getMedicalNearestMedicalInstitutes(centerLatLng.latitude, centerLatLng.longitude, 100);
     }
 
 
@@ -326,9 +326,15 @@ public class NewMedicalInstitutionFragment extends Fragment implements OnMapRead
                         mTextMarkerCaption.setText(listMark.get(i).translations[selectLang].name);
                         mTextMarkerText.setText(listMark.get(i).translations[selectLang].address);
                     } else {
-                        BitmapDrawable bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.med_inst_mark);
-                        Bitmap b = bitmapdraw.getBitmap();
-                        markerOptions.icon(BitmapDescriptorFactory.fromBitmap(b));
+
+
+                        int height = 80;
+                        int width = 80;
+                        BitmapDrawable bitmapdraw=(BitmapDrawable)getResources().getDrawable(R.drawable.med_inst_mark);
+                        Bitmap b =bitmapdraw.getBitmap();
+                        Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
+                        markerOptions.icon(BitmapDescriptorFactory.fromBitmap(smallMarker));
+
                     }
 
                     Marker marker = mGoogleMap.addMarker(markerOptions);

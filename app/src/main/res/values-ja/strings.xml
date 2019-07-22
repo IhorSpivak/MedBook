@@ -8,7 +8,7 @@
     <string name="app_name">MedBookNEW</string>
 
     <string name="next_caption">Дальше</string>
-    <string name="prev_caption">Назад</string>
+    <string name="prev_caption">Вернутся</string>
 
     <!-- registration pages and api-->
     <string name="registration_page_1_tiet_first_name_caption">Имя</string>
@@ -74,6 +74,7 @@
     <string name="hotline_work_hours">Время работы службы поддержки</string>
     <string name="hotline_work_hours_h">Пн—Пт з 9:00 до 20:00</string>
     <string name="name_clinical_casse">Добавте зазвания</string>
+    <string name="login">Логин</string>
 
 </resources>
 

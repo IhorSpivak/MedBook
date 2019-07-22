@@ -167,7 +167,7 @@
             android:layout_height="1dp"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:background="@color/color_tab_text_unselect"
+            android:background="@color/color_tab_unselect"
             >
 
         </View>
@@ -177,7 +177,7 @@
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:background="@color/color_tab_text_unselect"
+            android:background="@color/color_tab_unselect"
             >
 
         </View>

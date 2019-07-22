@@ -33,7 +33,7 @@
 
 
     <string name="next_caption">Далі</string>
-    <string name="prev_caption">Назад</string>
+    <string name="prev_caption">Повернутися</string>
 
     <string name="title_end_test_btn">Завершити тест</string>
     <string name="title_end_test_results_btn">Завершити перегляд результатів тесту</string>
@@ -144,5 +144,6 @@
     <string name="material_description_btn_title_view_video">Переглянути відео</string>
     <string name="material_description_btn_title_view_presentation">Переглянути презентацію</string>
     <string name="name_clinical_casse">Додайте назву</string>
+    <string name="login">Логін</string>
 </resources>
 

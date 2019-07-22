@@ -1,6 +1,7 @@
 package ua.profarma.medbook.ui.authorization;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
@@ -35,6 +37,7 @@ public class LoginFragment extends MedBookFragment implements EventListener {
     private TextView            tvRestore;
     private ProgressBar         progressBar;
     private TextInputLayout mTextInputLayoutLogin; //getString(R.string.error)
+    private ProgressBar pb; //getString(R.string.error)
 
 
     public static LoginFragment newInstance() {
@@ -46,12 +49,6 @@ public class LoginFragment extends MedBookFragment implements EventListener {
     public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_login, container, false);
 
-        progressBar = rootView.findViewById(R.id.fragment_login_progress);
-        if (BuildConfig.DEBUG) {
-            TextView tvServer = rootView.findViewById(R.id.fragment_login_server);
-            tvServer.setVisibility(View.VISIBLE);
-            tvServer.setText(getString(R.string.url_api_rest));
-        }
 
         tvRestore = rootView.findViewById(R.id.fragment_login_tv_restore_password);
         mTextInputLayoutLogin = rootView.findViewById(R.id.fragment_login_til_email);
@@ -59,6 +56,7 @@ public class LoginFragment extends MedBookFragment implements EventListener {
         passwordTIET = rootView.findViewById(R.id.fragment_login_tiet_password);
         btnLogin = rootView.findViewById(R.id.fragment_login_btn_login);
         tvRegistration = rootView.findViewById(R.id.fragment_login_tv_registration);
+        pb = rootView.findViewById(R.id.pb);
 
         onLocalizationUpdate();
 
@@ -76,7 +74,7 @@ public class LoginFragment extends MedBookFragment implements EventListener {
         tvRestore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                enableButtonsAndClearEditTexts(false);
+//                enableButtonsAndClearEditTexts(false);
                 if (getActivity() instanceof IAuthActivity) {
                     ((IAuthActivity)getActivity()).onRestore();
                 }
@@ -86,12 +84,6 @@ public class LoginFragment extends MedBookFragment implements EventListener {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressBar.setVisibility(View.VISIBLE);
-                btnLogin.setEnabled(false);
-                tvRestore.setEnabled(false);
-                tvRegistration.setEnabled(false);
-                passwordTIET.setEnabled(false);
-                emailTIET.setEnabled(false);
                 String email = null;
                 email = emailTIET.getText().toString();
                 String password = null;
@@ -99,21 +91,25 @@ public class LoginFragment extends MedBookFragment implements EventListener {
                 if (TextUtils.isValidEmail(email))
                     if (password.length() >= AuthorizationActivity.MIN_SYMBOLS_PASSWORD) {
                         Core.get().AuthorizationControl().authorize(email, password);
+                        pb.setVisibility(View.VISIBLE);
+
+
                     } else {
                         String sf = getString(R.string.min_password, AuthorizationActivity.MIN_SYMBOLS_PASSWORD);
-                        AppUtils.toastError(sf, true);
-                        enableButtonsAndClearEditTexts(true);
+                        Toast.makeText(getActivity(),sf, Toast.LENGTH_SHORT).show();
+//                        enableButtonsAndClearEditTexts(true);
                     }
                 else {
-                    AppUtils.toastError(getString(R.string.error_email), true);
-                    enableButtonsAndClearEditTexts(true);
+
+                    Toast.makeText(getActivity(), R.string.error_email, Toast.LENGTH_SHORT).show();
+//                    enableButtonsAndClearEditTexts(true);
                 }
             }
         });
         tvRegistration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                enableButtonsAndClearEditTexts(false);
+//                enableButtonsAndClearEditTexts(false);
                 if (getActivity() instanceof IAuthActivity) {
                     ((IAuthActivity)getActivity()).onRegistrationStep1();
                 }
@@ -142,27 +138,24 @@ public class LoginFragment extends MedBookFragment implements EventListener {
         super.onEvent(event);
         switch (event.getEventId()) {
             case Event.EVENT_LOGIN_FAILURE:
-                enableButtonsAndClearEditTexts(true);
+                pb.setVisibility(View.GONE);
                 break;
         }
     }
 
     @Override
     protected void onLocalizationUpdate() {
-        setHint(emailTIET, R.id.fragment_login_tiet_email);
-        setHint(passwordTIET, R.id.fragment_login_tiet_password);
         setText(btnLogin, R.id.fragment_login_btn_login);
         setText(tvRegistration, R.id.fragment_login_tv_registration);
         setText(tvRestore, R.id.fragment_login_tv_restore_password);
     }
 
-    private void enableButtonsAndClearEditTexts(boolean enable) {
-        progressBar.setVisibility(enable ? View.GONE : View.VISIBLE);
-        passwordTIET.setText("");
-        btnLogin.setEnabled(enable);
-        tvRestore.setEnabled(enable);
-        tvRegistration.setEnabled(enable);
-        emailTIET.setEnabled(enable);
-        passwordTIET.setEnabled(enable);
-    }
+//    private void enableButtonsAndClearEditTexts(boolean enable) {
+//        passwordTIET.setText("");
+//        btnLogin.setEnabled(enable);
+//        tvRestore.setEnabled(enable);
+//        tvRegistration.setEnabled(enable);
+//        emailTIET.setEnabled(enable);
+//        passwordTIET.setEnabled(enable);
+//    }
 }

@@ -93,7 +93,7 @@ public interface ApiRestModule {
 
     @GET("nearest-medical-institution")
     @Headers({"Content-Type: application/json;charset=UTF-8"})
-    Call<NearestMedicalInstitutionItems> getNearestMedicalInstitutes(@Query("lat") double lat, @Query("lon") double lon, @Query("qtu") int qtu);
+    Call<NearestMedicalInstitutionItems> getNearestMedicalInstitutes(@Query("lat") double lat, @Query("lon") double lon, @Query("qty") int qtu);
 
     @POST("register")
     @Headers({"Content-Type: application/json;charset=UTF-8"})

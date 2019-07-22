@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
@@ -55,13 +56,13 @@ public class RegistrationPage1Fragment extends Fragment {
                                 ((IAuthActivity)getActivity()).onRegistrationStep2();
                             }
                         } else {
-                            AppUtils.toastError(getString(R.string.min_count_lastname), true);
+                            Toast.makeText(getActivity(), R.string.min_count_lastname, Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        AppUtils.toastError(getString(R.string.min_count_middlename), true);
+                        Toast.makeText(getActivity(), R.string.min_count_middlename, Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    AppUtils.toastError(getString(R.string.min_count_firstname), true);
+                    Toast.makeText(getActivity(), R.string.min_count_firstname, Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -5,7 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
@@ -26,6 +28,7 @@ public class RegistrationPage3Fragment extends MedBookFragment {
     private AppCompatEditText password;
     private AppCompatEditText passwordConfirm;
     private Button registrationBtn;
+    private ProgressBar pb;
 
     public static RegistrationPage3Fragment newInstance() {
         final RegistrationPage3Fragment fragment = new RegistrationPage3Fragment();
@@ -45,6 +48,7 @@ public class RegistrationPage3Fragment extends MedBookFragment {
         registrationBtn = rootView.findViewById(R.id.fragment_registration_page_3_btn_registration);
         email = rootView.findViewById(R.id.fragment_registration_page_3_tiet_email);
         password = rootView.findViewById(R.id.fragment_registration_page_3_tiet_password);
+        pb = rootView.findViewById(R.id.pb);
         passwordConfirm = rootView.findViewById(R.id.fragment_registration_page_3_tiet_confirm_password);
         registrationBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,19 +56,19 @@ public class RegistrationPage3Fragment extends MedBookFragment {
                 if (TextUtils.isValidEmail(email.getText().toString())) {
                     if (password.getText().length() >= AuthorizationActivity.MIN_SYMBOLS_PASSWORD) {
                         if (password.getText().toString().equals(passwordConfirm.getText().toString())) {
-                            registrationBtn.setEnabled(false);
                             Core.get().AuthorizationControl().setEmail(email.getText().toString());
                             Core.get().AuthorizationControl().setPassword(password.getText().toString());
                             Core.get().AuthorizationControl().register();
+                            pb.setVisibility(View.VISIBLE);
                         } else {
-                            AppUtils.toastError(getString(R.string.confirm_password), true);
+                            Toast.makeText(getActivity(), R.string.confirm_password, Toast.LENGTH_SHORT).show();
                         }
                     } else {
                         String sf = getString(R.string.min_password, AuthorizationActivity.MIN_SYMBOLS_PASSWORD);
-                        AppUtils.toastError(sf, true);
+                        Toast.makeText(getActivity(),sf, Toast.LENGTH_SHORT).show();
                     }
                 } else {
-                    AppUtils.toastError(getString(R.string.error_email), true);
+                    Toast.makeText(getActivity(), R.string.error_email, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -76,7 +80,7 @@ public class RegistrationPage3Fragment extends MedBookFragment {
         super.onEvent(event);
         if (event.getEventId() == Event.EVENT_REGISTRATION_UNSUCCESS) {
             DialogBuilder.showInfoDialog(getActivity(), Core.get().LocalizationControl().getText(R.id.general_message), ((EventRegistrationUnSuccess) event).getMessage());
-            registrationBtn.setEnabled(true);
+            pb.setVisibility(View.GONE);
         }
     }
 

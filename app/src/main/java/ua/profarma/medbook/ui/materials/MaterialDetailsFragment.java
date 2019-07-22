@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
@@ -60,6 +62,8 @@ public class MaterialDetailsFragment extends MedBookFragment {
         viewPager.setAdapter(adapter);
 
         tabLayout = rootView.findViewById(R.id.sliding_tabs);
+
+
 
         viewTab1 = (CustomTabMaterial) LayoutInflater.from(getContext()).inflate(R.layout.custom_tab_material, null, true);
         //viewTab1.setPadding(-10, 0,-10, 0);
@@ -182,6 +186,31 @@ public class MaterialDetailsFragment extends MedBookFragment {
         @Override
         public CharSequence getPageTitle(int position) {
             return titles[position];
+        }
+    }
+
+    private void setTabBG(int tab1, int tab2){
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            ViewGroup tabStrip = (ViewGroup) tabLayout.getChildAt(0);
+            View tabView1 = tabStrip.getChildAt(0);
+            View tabView2 = tabStrip.getChildAt(3);
+            if (tabView1 != null) {
+                int paddingStart = tabView1.getPaddingStart();
+                int paddingTop = tabView1.getPaddingTop();
+                int paddingEnd = tabView1.getPaddingEnd();
+                int paddingBottom = tabView1.getPaddingBottom();
+                ViewCompat.setBackground(tabView1, AppCompatResources.getDrawable(tabView1.getContext(), tab1));
+                ViewCompat.setPaddingRelative(tabView1, paddingStart, paddingTop, paddingEnd, paddingBottom);
+            }
+
+            if (tabView2 != null) {
+                int paddingStart = tabView2.getPaddingStart();
+                int paddingTop = tabView2.getPaddingTop();
+                int paddingEnd = tabView2.getPaddingEnd();
+                int paddingBottom = tabView2.getPaddingBottom();
+                ViewCompat.setBackground(tabView2, AppCompatResources.getDrawable(tabView2.getContext(), tab2));
+                ViewCompat.setPaddingRelative(tabView2, paddingStart, paddingTop, paddingEnd, paddingBottom);
+            }
         }
     }
 }

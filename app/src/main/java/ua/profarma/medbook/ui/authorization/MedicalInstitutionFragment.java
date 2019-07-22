@@ -173,7 +173,7 @@ public class MedicalInstitutionFragment extends Fragment implements OnMapReadyCa
                                     mLatitude = location.getLatitude();
                                     mLongitude = location.getLongitude();
                                     LogUtils.logD("MedicalInstitutionFragment", "location success");
-                                    Core.get().getDataForRegistrationControl().getMedicalNearestMedicalInstitutes(mLatitude, mLongitude, 200);
+                                    Core.get().getDataForRegistrationControl().getMedicalNearestMedicalInstitutes(mLatitude, mLongitude, 100);
                                     mGoogleMap.getUiSettings().setMapToolbarEnabled(false);
                                     mGoogleMap.getUiSettings().setZoomControlsEnabled(false);
                                     mLocationManager.removeUpdates(this);
@@ -205,7 +205,7 @@ public class MedicalInstitutionFragment extends Fragment implements OnMapReadyCa
                                 mLatitude = location.getLatitude();
                                 mLongitude = location.getLongitude();
                                 LogUtils.logD("MedicalInstitutionFragment", "location success");
-                                Core.get().getDataForRegistrationControl().getMedicalNearestMedicalInstitutes(mLatitude, mLongitude, 200);
+                                Core.get().getDataForRegistrationControl().getMedicalNearestMedicalInstitutes(mLatitude, mLongitude, 100);
                                 mGoogleMap.getUiSettings().setMapToolbarEnabled(false);
                                 mGoogleMap.getUiSettings().setZoomControlsEnabled(false);
                                 mLocationManager.removeUpdates(this);
@@ -235,7 +235,7 @@ public class MedicalInstitutionFragment extends Fragment implements OnMapReadyCa
             mLongitude = location.getLongitude();
             EventRouter.register(this);
             LogUtils.logD("MedicalInstitutionFragment", "location success");
-            Core.get().getDataForRegistrationControl().getMedicalNearestMedicalInstitutes(mLatitude, mLongitude, 200);
+            Core.get().getDataForRegistrationControl().getMedicalNearestMedicalInstitutes(mLatitude, mLongitude, 100);
             mGoogleMap.setMyLocationEnabled(true);
             mGoogleMap.setOnMarkerClickListener(this);
             mGoogleMap.setOnMapClickListener(this);
@@ -249,7 +249,7 @@ public class MedicalInstitutionFragment extends Fragment implements OnMapReadyCa
                 LatLng position = mGoogleMap.getCameraPosition().target;
                 mLatitude = position.latitude;
                 mLongitude = position.longitude;
-                Core.get().getDataForRegistrationControl().getMedicalNearestMedicalInstitutes(mLatitude, mLongitude, 200);
+                Core.get().getDataForRegistrationControl().getMedicalNearestMedicalInstitutes(mLatitude, mLongitude, 100);
             }
         });
     }

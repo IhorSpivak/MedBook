@@ -44,7 +44,6 @@ public class RestoreFragment extends Fragment implements EventListener {
                     Core.get().AuthorizationControl().restore(email);
                 } else {
                     AppUtils.toastError(getString(R.string.error_email), true);
-                    emailEt.setText("");
                 }
             }
         });

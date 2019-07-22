@@ -63,17 +63,8 @@ public class AppUtils {
 
     public static void toastError(final String message, final boolean shortShow)
     {
-        Toast toast = Toast.makeText(App.getAppContext(), message, shortShow ? Toast.LENGTH_SHORT : Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        View toastView = toast.getView(); // This'll return the default View of the Toast.
-        /* And now you can get the TextView of the default View of the Toast. */
-        TextView toastMessage = toastView.findViewById(android.R.id.message);
-        toastMessage.setTextSize(18);
-        toastMessage.setTextColor(Color.WHITE);
-        toastMessage.setGravity(Gravity.CENTER);
-        toastMessage.setCompoundDrawablePadding(8);
-        toastView.setBackgroundResource(R.drawable.toast_error);
-        toast.show();
+        Toast.makeText(App.getAppContext(), message, shortShow ? Toast.LENGTH_SHORT : Toast.LENGTH_LONG).show();
+
     }
 
     public static void toastOk(final String message, final boolean shortShow)
