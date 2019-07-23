@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,14 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_default"
+        android:layout_centerInParent="true"
         android:layout_marginEnd="@dimen/margin_default"
         android:theme="@style/TextInputLayoutOnWhite"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_add_phone_number_check_sms_check_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="@dimen/margin_default"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+       >
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/fragment_add_phone_number_check_sms_input"
@@ -29,29 +25,29 @@
             android:inputType="phone" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
-        android:id="@+id/fragment_add_phone_number_check_sms_check_btn"
-        style="@style/Button_type_1"
-        android:layout_width="@dimen/btn_auth_w_2"
-        android:layout_height="@dimen/btn_auth_h"
-        android:text=""
-        android:layout_marginBottom="@dimen/margin_default"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_add_phone_number_check_sms_again_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_add_phone_number_check_sms_input_layout" />
 
     <Button
         android:id="@+id/fragment_add_phone_number_check_sms_again_btn"
-        style="@style/Button_type_1"
+        android:layout_below="@+id/fragment_add_phone_number_check_sms_input_layout"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="@dimen/btn_auth_w_2"
+        android:layout_height="@dimen/btn_auth_h"
+        android:textColor="@color/white"
+        android:background="@drawable/ripple_for_enter_btn"
+        android:text=""
+        />
+
+    <Button
+        android:id="@+id/fragment_add_phone_number_check_sms_check_btn"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/ripple_for_enter_btn"
+        android:textColor="@color/white"
+        android:layout_below="@+id/fragment_add_phone_number_check_sms_again_btn"
         android:layout_width="@dimen/btn_auth_w_2"
         android:layout_height="@dimen/btn_auth_h"
         android:text=""
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_add_phone_number_check_sms_check_btn" />
+        android:layout_marginBottom="@dimen/margin_default" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

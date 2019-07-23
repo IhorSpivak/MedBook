@@ -20,6 +20,8 @@ import com.google.zxing.integration.android.IntentResult;
 
 import ua.profarma.medbook.App;
 import ua.profarma.medbook.Core;
+import ua.profarma.medbook.ui.news_and_clinical_cases.AddClinicalCaseActivity;
+import ua.profarma.medbook.ui.news_and_clinical_cases.MyClinicalCasesActivity;
 import ua.profarma.medbook.ui.profile.IStartScanQR;
 import ua.profarma.medbook.R;
 import ua.profarma.medbook.events.EventEndQrCode;
@@ -46,6 +48,8 @@ import ua.profarma.medbook.ui.news_and_clinical_cases.NewsMoreActivity;
 import ua.profarma.medbook.ui.news_and_clinical_cases.ViewerMedicalCaseActivity;
 import ua.profarma.medbook.ui.prescriptions.PrescriptionsFragment;
 import ua.profarma.medbook.ui.profile.BottomResultDialog;
+import ua.profarma.medbook.ui.reference.ReferenceActivity;
+import ua.profarma.medbook.ui.reference.ReferenceFragment;
 import ua.profarma.medbook.ui.today.TodayFragment;
 import ua.profarma.medbook.ui.today.tabs.IOnSelectNews;
 import ua.profarma.medbook.utils.AppUtils;
@@ -64,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements EventListener, IO
     private LinearLayout llToday;
     private LinearLayout llCalendar;
     private LinearLayout llMaterials;
+    private LinearLayout llReference;
     //private LinearLayout llPrescriptions;
     private int fragmentId;
 
@@ -99,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements EventListener, IO
         llToday = findViewById(R.id.navigation_app_bar_today);
         llCalendar = findViewById(R.id.navigation_app_bar_calendar);
         llMaterials = findViewById(R.id.navigation_app_bar_materials);
+        llReference= findViewById(R.id.navigation_app_bar_reference);
         //llPrescriptions = findViewById(R.id.navigation_app_bar_prescriptions);
 
         llToday.setOnClickListener(onClickAppNavBarListener);
@@ -106,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements EventListener, IO
         fragmentId = R.id.navigation_app_bar_today;
         llCalendar.setOnClickListener(onClickAppNavBarListener);
         llMaterials.setOnClickListener(onClickAppNavBarListener);
+        llReference.setOnClickListener(onClickAppNavBarListener);
         //llPrescriptions.setOnClickListener(onClickAppNavBarListener);
 
         if (!App.ismTermAgreements() && App.accessTokenExist())
@@ -193,6 +200,12 @@ public class MainActivity extends AppCompatActivity implements EventListener, IO
                         FragmentTransaction transaction4 = getSupportFragmentManager().beginTransaction();
                         transaction4.replace(R.id.activity_main_container, PrescriptionsFragment.newInstance());
                         transaction4.commit();
+                        break;
+                        case R.id.navigation_app_bar_reference:
+                            Intent intent;
+                            intent = new Intent(MainActivity.this, ReferenceActivity.class);
+                            startActivity(intent);
+                            setColorStatusBar("materials");
                         break;
                 }
             }

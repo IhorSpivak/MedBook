@@ -9,6 +9,11 @@
 
     <string name="next_caption">Дальше</string>
     <string name="prev_caption">Вернутся</string>
+    <string name="name">Нaзвание</string>
+    <string name="add_drug">Добавить препарат</string>
+    <string name="diagnosis">Диагнозы</string>
+    <string name="patient">Паціент</string>
+    <string name="add_number">Номер телефона</string>
 
     <!-- registration pages and api-->
     <string name="registration_page_1_tiet_first_name_caption">Имя</string>
@@ -51,7 +56,7 @@
     <string name="ah">AH</string>
 
     <!-- profile -->
-    <string name="mail">Почта</string>
+    <string name="mail">Электронная почта</string>
     <string name="phone">Телефон</string>
     <string name="city">Город</string>
     <string name="specialization">Специализация</string>
@@ -75,6 +80,16 @@
     <string name="hotline_work_hours_h">Пн—Пт з 9:00 до 20:00</string>
     <string name="name_clinical_casse">Добавте зазвания</string>
     <string name="login">Логин</string>
+    <string name="add_description">Добавьте описание</string>
+    <string name="description">Описание</string>
+    <string name="save_as_pattern">Сохранить как шаблон</string>
+    <string name="send">Отправить</string>
+    <string name="check">Просмотреть</string>
+    <string name="password">Пароль</string>
+    <string name="reference">Довідка</string>
+    <string name="abort">Отмена</string>
+    <string name="add_diagnoses">Добавить болезнь</string>
+    <string name="drugs">Препараты</string>
 
 </resources>
 

@@ -24,16 +24,18 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="@dimen/margin_default"
         android:id="@+id/fragment_exchange_points_sms_send_code_again"
-        style="@style/Button_type_2"
+        android:background="@drawable/ripple_for_enter_btn"
         android:layout_width="@dimen/btn_auth_w_2"
+        android:textColor="@color/white"
         android:layout_height="@dimen/btn_auth_h"
         android:text="Button" />
 
     <Button
         android:layout_gravity="center_horizontal"
         android:id="@+id/fragment_exchange_points_sms_send_exchange_points"
-        style="@style/Button_type_2"
+        android:background="@drawable/ripple_for_enter_btn"
         android:layout_width="@dimen/btn_auth_w_2"
         android:layout_height="@dimen/btn_auth_h"
+        android:textColor="@color/white"
         android:text="Button" />
 </LinearLayout>

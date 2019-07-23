@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/materials_background"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:id="@+id/toolbar">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reference"
+            android:layout_marginLeft="21dp"
+
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:textStyle="bold"
+            android:layout_marginTop="21dp"
+            android:layout_centerHorizontal="true"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/abort"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="21dp"
+            android:textColor="@color/abort_title_reference"
+
+            android:layout_marginTop="21dp"
+            android:layout_centerHorizontal="true"
+            android:textSize="13sp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_btn_material_list_select"/>
+
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/toolbar"
+        android:background="@drawable/corner_ll"
+        android:fillViewport="true">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/corner_ll"
+
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:layout_marginLeft="20dp"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:textColor="@color/text_color_title_ed"
+                android:layout_marginTop="21dp"
+                android:textSize="12sp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/activity_add_clinical_cases_add_title_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:theme="@style/TextInputLayoutOnWhite">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/ed_name"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:hint="@string/add_name"
+                    android:paddingLeft="20dp"
+                    android:lines="1"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TextView
+                android:id="@+id/activity_add_clinical_cases_add_icod_caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:text="@string/diagnosis"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/text_color_title_ed"
+                android:textSize="12sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:descendantFocusability="blocksDescendants">
+
+                <ua.profarma.medbook.recyclerviews.icod_selected.IcodSelectedRecyclerView
+                    android:id="@+id/activity_add_clinical_cases_icod_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/activity_add_clinical_cases_add_icod_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/add_diagnoses"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/rectangle_rounded_5_e6e6e6"
+                android:drawableLeft="@drawable/ic_plus_clinical_case"
+                android:drawablePadding="@dimen/padding_half"
+                android:padding="4dp"
+                android:layout_marginRight="20dp"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                />
+
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/line_divider_new" />
+
+            <TextView
+                android:id="@+id/tv_drugs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:text="@string/drugs"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/text_color_title_ed"
+                android:textSize="12sp" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:descendantFocusability="blocksDescendants">
+
+                <ua.profarma.medbook.recyclerviews.drug_selected.DrugsSelectedRecyclerView
+                    android:id="@+id/activity_add_clinical_cases_drug_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/activity_add_clinical_cases_add_drug_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/add_drug"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/rectangle_rounded_5_e6e6e6"
+                android:drawableLeft="@drawable/ic_plus_clinical_case"
+                android:drawablePadding="@dimen/padding_half"
+                android:padding="4dp"
+                android:layout_marginRight="20dp"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:layout_marginTop="@dimen/margin_default_fourth"
+                android:layout_marginBottom="@dimen/margin_default_fourth"
+                android:background="@drawable/line_divider_new" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rl_3"
+                android:layout_below="@+id/ll_6">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/patient"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="21dp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/text_color_title_ed"
+                    android:layout_marginTop="21dp"
+                    android:textSize="12sp"/>
+
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="9dp"
+                    android:scaleType="center"
+                    android:src="@mipmap/ic_add_user"
+                    app:fabSize="mini"
+                    app:backgroundTint="@color/colorPrimary"
+                    android:id="@+id/iv_user"
+                    android:layout_alignParentRight="true"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_phone"
+                    android:layout_below="@+id/iv_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/ed_phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:hint="@string/add_number"
+                        android:paddingLeft="20dp"
+
+                        android:layout_marginTop="20dp"
+                        android:lines="1"
+                        android:textColor="@color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_mail"
+                    android:layout_below="@+id/tv_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/ed_mail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:hint="@string/mail"
+                        android:paddingLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:lines="1"
+                        android:textColor="@color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/tv_mail"
+                    android:background="@color/color_tab_unselect">
+
+                </View>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_below="@+id/rl_3"
+                android:id="@+id/ll_4"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/description"
+                    android:layout_marginLeft="21dp"
+                    android:textAllCaps="true"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_color_title_ed"
+                    android:layout_marginTop="21dp"
+                    android:textSize="12sp"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tv_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/ed_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="20dp"
+                        android:inputType="textEmailAddress"
+                        android:hint="@string/add_description"
+                        android:lines="1"
+                        android:textColor="@color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_below="@+id/ll_4"
+                android:layout_marginTop="20dp"
+                android:id="@+id/ll_5"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/save_as_pattern"
+                    android:layout_marginLeft="21dp"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"/>
+
+                <Switch
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:theme="@style/SCBSwitch"
+                    android:id="@+id/sw"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"/>
+
+
+
+            </RelativeLayout>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_send"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/ripple_for_enter_btn"
+                android:layout_marginLeft="20dp"
+                android:text="@string/send"
+                android:textColor="@color/white"
+                android:textAllCaps="true"
+                android:layout_below="@+id/ll_5"/>
+
+            <Button
+                android:layout_width="137dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/ripple_for_enter_check"
+
+                android:text="@string/check"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/color_button_type_2_pressed"
+                android:textAllCaps="true"
+                android:id="@+id/btn_check"
+                android:layout_below="@+id/btn_send"/>
+
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

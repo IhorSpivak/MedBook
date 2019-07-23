@@ -56,7 +56,7 @@
     <string name="min_password">Довжина паролю повинна бути не менша %1$s символів</string>
     <string name="confirm_password">Паролі не свівпадають</string>
     <string name="error_email">Некорректний email</string>
-    <string name="check_email_to_confirm_your_registration">Перевірте свою електронну почту для подальших інструкцій</string>
+    <string name="check_email_to_confirm_your_registration">Перевірте свою електронну пошту для подальших інструкцій</string>
     <string name="restore_info">Перевірте свою електронну почту для подальших інструкцій</string>
     <string name="enter">Вхід</string>
 
@@ -85,7 +85,7 @@
     <string name="ah">AH</string>
 
     <!-- profile -->
-    <string name="mail">Пошта</string>
+    <string name="mail">Електронна пошта</string>
     <string name="phone">Телефон</string>
     <string name="city">Місто</string>
     <string name="specialization">Спеціалізація</string>
@@ -145,5 +145,21 @@
     <string name="material_description_btn_title_view_presentation">Переглянути презентацію</string>
     <string name="name_clinical_casse">Додайте назву</string>
     <string name="login">Логін</string>
+    <string name="add_name">Додайте назву</string>
+    <string name="name">Назва</string>
+    <string name="add_drug">Додати препарат</string>
+    <string name="diagnosis">Діагнози</string>
+    <string name="patient">Паціент</string>
+    <string name="add_number">Номер телефону</string>
+    <string name="add_description">Додайте опис</string>
+    <string name="description">Опис</string>
+    <string name="save_as_pattern">Зберегти як шаблон</string>
+    <string name="send">Надіслати</string>
+    <string name="check">Переглянути</string>
+    <string name="password">Пароль</string>
+    <string name="reference">Довідка</string>
+    <string name="abort">Відміна</string>
+    <string name="add_diagnoses">Додати захворювання</string>
+    <string name="drugs">Препарати</string>
 </resources>
 

@@ -160,5 +160,41 @@
                 android:textSize="@dimen/app_bar_title_size" />
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/navigation_app_bar_reference"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:layout_marginTop="2dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_nb_prescriptions" />
+
+                <include
+                    android:id="@+id/materials_badge"
+                    layout="@layout/count_badge" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="@string/materials"
+                android:textColor="@color/app_bar_icon_colors"
+                android:textSize="@dimen/app_bar_title_size" />
+        </LinearLayout>
+
     </LinearLayout>
 </com.google.android.material.bottomnavigation.BottomNavigationView>
