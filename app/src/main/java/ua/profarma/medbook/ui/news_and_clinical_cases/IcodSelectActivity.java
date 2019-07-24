@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -30,6 +31,7 @@ public class IcodSelectActivity extends MedBookActivity {
     private TextView tvTitle;
     private ProgressBar progressBar;
     private LinearLayout root;
+    private Button btn_accept;
 
     private ArrayList<ItemIcod> itemsThree;
     private ArrayList<ItemIcod> downLevelList;
@@ -42,6 +44,7 @@ public class IcodSelectActivity extends MedBookActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_icod_select);
         progressBar = findViewById(R.id.activity_icod_select_progress);
+        btn_accept = findViewById(R.id.btn_accept);
         progressBar.setVisibility(View.VISIBLE);
         ImageView imClose = findViewById(R.id.activity_icod_select_toolbar_close);
         imClose.setOnClickListener(view -> {

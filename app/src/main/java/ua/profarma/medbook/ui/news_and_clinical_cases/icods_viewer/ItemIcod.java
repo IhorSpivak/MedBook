@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -94,43 +95,50 @@ public class ItemIcod extends LinearLayout {
         ((TextView) findViewById(R.id.item_expand_icod_title)).setText(item.translations[selectLang].title);
 
         if(level == 0){
-            ((TextView) findViewById(R.id.item_expand_icod_icod)).setTextColor(Color.rgb(41, 89, 147));
-            ((TextView) findViewById(R.id.item_expand_icod_title)).setTextColor(Color.rgb(41, 89, 147));
+            ((TextView) findViewById(R.id.item_expand_icod_icod)).setTextColor(Color.rgb(54, 54, 54));
+            ((TextView) findViewById(R.id.item_expand_icod_title)).setTextColor(Color.rgb(41, 89, 157));
         }
-        else {
+
+        if(level == 1){
+            ((TextView) findViewById(R.id.item_expand_icod_icod)).setTextColor(Color.rgb(54, 54, 54));
+            ((TextView) findViewById(R.id.item_expand_icod_title)).setTextColor(Color.rgb(54, 54, 54));
+        }
+
+        if(level > 2){
             ((TextView) findViewById(R.id.item_expand_icod_icod)).setTextColor(Color.rgb(73, 121, 167));
             ((TextView) findViewById(R.id.item_expand_icod_title)).setTextColor(Color.rgb(73, 121, 167));
         }
+
         switch (level) {
             case 1:
                 //((TextView) findViewById(R.id.item_expand_icod_icod)).setTextColor(Color.GREEN);
                 //((TextView) findViewById(R.id.item_expand_icod_title)).setTextColor(Color.GREEN);
-                setPadding(50, 30, 30, 30);
+                setPadding(50, 0, 0, 0);
                 break;
             case 2:
                 //((TextView) findViewById(R.id.item_expand_icod_icod)).setTextColor(Color.DKGRAY);
                 //((TextView) findViewById(R.id.item_expand_icod_title)).setTextColor(Color.DKGRAY);
-               setPadding(80, 30, 30, 30);
+               setPadding(80, 0, 0, 0);
                 break;
             case 3:
                 //((TextView) findViewById(R.id.item_expand_icod_icod)).setTextColor(Color.RED);
                 //((TextView) findViewById(R.id.item_expand_icod_title)).setTextColor(Color.RED);
-                setPadding(120, 30, 30, 30);
+                setPadding(120, 0, 0, 0);
                 break;
             case 4:
                 //((TextView) findViewById(R.id.item_expand_icod_icod)).setTextColor(Color.MAGENTA);
                 //((TextView) findViewById(R.id.item_expand_icod_title)).setTextColor(Color.MAGENTA);
-                setPadding(160, 30, 30, 30);
+                setPadding(160, 0, 0, 0);
                 break;
             case 5:
                 //((TextView) findViewById(R.id.item_expand_icod_icod)).setTextColor(Color.YELLOW);
                 //((TextView) findViewById(R.id.item_expand_icod_title)).setTextColor(Color.YELLOW);
-                setPadding(200, 30, 30, 30);
+                setPadding(200, 30, 0, 0);
                 break;
             case 6:
                 //((TextView) findViewById(R.id.item_expand_icod_icod)).setTextColor(Color.CYAN);
                 //((TextView) findViewById(R.id.item_expand_icod_title)).setTextColor(Color.CYAN);
-                setPadding(240, 30, 30, 30);
+                setPadding(240, 0, 0, 0);
                 break;
         }
 

@@ -68,11 +68,12 @@
 
     <Button
         android:id="@+id/fragment_verification_btn"
-        style="@style/Button_type_1"
+        android:background="@drawable/ripple_for_enter_btn"
         android:layout_width="@dimen/btn_auth_w"
         android:layout_height="@dimen/btn_auth_h"
         android:layout_marginTop="@dimen/margin_default_double"
         android:text="@string/verification_phone_btn_1"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

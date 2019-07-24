@@ -64,7 +64,7 @@
 
     <color name="act_toolbar_material">#80696969</color>
     <!--<color name="ballBgColor">#F6F8F9</color>-->
-    <color name="ballBgColor">#80d4dee2</color>
+    <color name="ballBgColor">#f6f8f9</color>
     <color name="appBgColor">#FAFAFA</color>
     <color name="rose">#FFF41041</color>
     <color name="todayBgColor">#f5f5f5</color>

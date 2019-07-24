@@ -1,33 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ua.profarma.medbook.ui.news_and_clinical_cases.icods_viewer.ItemIcod xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:padding="@dimen/padding_default">
+    android:layout_height="50dp"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:paddingTop="1dp"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minHeight="50dp">
+
+
 
     <TextView
         android:id="@+id/item_expand_icod_icod"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="3"
+        android:maxWidth="60dp"
+        android:textStyle="bold"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
         android:text="111.096"
-        android:textColor="#0000FF"
-        android:textSize="14sp" />
+        android:textColor="@color/black"
+        android:textSize="13sp" />
 
     <TextView
         android:id="@+id/item_expand_icod_title"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="40dp"
+        android:maxLines="2"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/item_expand_icod_icod"
         android:text="болезнь лайма"
-        android:textColor="#0000BB"
+        android:textColor="#29599d"
         android:textSize="14sp" />
 
     <ImageView
         android:visibility="invisible"
-        android:layout_gravity="center_vertical"
         android:id="@+id/item_expand_icod_icon_check"
+        android:layout_gravity="center|right"
+        android:layout_centerVertical="true"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
         android:src="@drawable/ic_icod_checked" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#e7e9ec"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="20dp">
+
+        </View>
+    </RelativeLayout>
+
+
+
 </ua.profarma.medbook.ui.news_and_clinical_cases.icods_viewer.ItemIcod>

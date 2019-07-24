@@ -327,6 +327,6 @@ public class UkrainianLang {
     }
 
     public final static class TestsActivity{
-        public static String NEED_PUSH_REACTION = "Вам потрібно відреагувати ще на %1s пуш повідомлень";
+        public static String NEED_PUSH_REACTION = "Для проходження тесту Вам потрібно відреагувати ще на %1s повідомлень";
     }
 }

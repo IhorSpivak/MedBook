@@ -1,6 +1,8 @@
 package ua.profarma.medbook.ui.reference;
 
 import android.Manifest;
+import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -8,7 +10,10 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Contacts;
+import android.provider.ContactsContract;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -23,8 +28,12 @@ import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.app.ActivityCompat;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.io.File;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import ua.profarma.medbook.App;
@@ -58,28 +67,11 @@ import ua.profarma.medbook.utils.FileUtils;
 import ua.profarma.medbook.utils.LogUtils;
 
 
-//"items": [
-//        {
-//        "id": 1,
-//        "alias": "New"
-//        },
-//        {
-//        "id": 2,
-//        "alias": "Review"
-//        },
-//        {
-//        "id": 3,
-//        "alias": "Remarks"
-//        },
-//        {
-//        "id": 4,
-//        "alias": "Publish"
-//        }
-//        ]
 
 public class ReferenceActivity extends MedBookActivity implements ReferenceInterface {
 
     public static final String KEY_ID_CC = "KEY_ID_CC";
+    private static final int RESULT_PICK_CONTACT1= 1;
 
     public String commentImage = null;
     private MedicalCaseItem medicalCaseItem = null;
@@ -97,10 +89,14 @@ public class ReferenceActivity extends MedBookActivity implements ReferenceInter
     private RecyclerItems itemsImages;
     private Button btnSend;
     private Button btnSave;
+    private FloatingActionButton iv_user;
 
     private TextView tvDetailsTitle;
+    private TextView btn_abort;
     private AppCompatEditText edDetails;
     private AppCompatEditText edTitle;
+    private AppCompatEditText ed_phone;
+    private AppCompatEditText ed_mail;
 
     private ProgressBar pbAddImageLoad;
 
@@ -124,16 +120,21 @@ public class ReferenceActivity extends MedBookActivity implements ReferenceInter
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reference);
+        ButterKnife.bind(this);
         aSwitch = findViewById(R.id.sw);
         edTitle = findViewById(R.id.activity_add_clinical_cases_add_title_input);
         edDetails = findViewById(R.id.activity_add_clinical_cases_add_details_input);
         tvDetailsTitle = findViewById(R.id.activity_add_clinical_cases_add_details_caption);
         btnSend = findViewById(R.id.btn_send);
         btnSave = findViewById(R.id.btn_check);
+        btn_abort = findViewById(R.id.btn_back);
         listIcod = findViewById(R.id.activity_add_clinical_cases_icod_list);
+        ed_mail = findViewById(R.id.ed_mail);
+        iv_user = findViewById(R.id.iv_user);
         listIcod.init();
         itemsIcod = new RecyclerItems();
         listDrug = findViewById(R.id.activity_add_clinical_cases_drug_list);
+        ed_phone = findViewById(R.id.ed_phone);
         listDrug.init();
         itemsDrug = new RecyclerItems();
         tvAddIcodBtn = findViewById(R.id.activity_add_clinical_cases_add_icod_btn);
@@ -142,7 +143,9 @@ public class ReferenceActivity extends MedBookActivity implements ReferenceInter
         tvAddImageBtn = findViewById(R.id.activity_add_clinical_cases_add_image_btn);
 
         tvAddIcodBtn.setOnClickListener(view -> startActivityForResult(new Intent(this, IcodSelectActivity.class), REQUEST_SELECT_ICOD));
+        btn_abort.setOnClickListener(view -> onBackPressed());
         tvAddDrugBtn.setOnClickListener(view -> startActivityForResult(new Intent(this, DrugSelectActivity.class), REQUEST_SELECT_DRUG));
+        iv_user.setOnClickListener(view -> startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI), RESULT_PICK_CONTACT1));
         btnSend.setOnClickListener(view -> {
             RequestMedicalCaseBody requestMedicalCaseBody = new RequestMedicalCaseBody();
             requestMedicalCaseBody.description = edDetails.getText().toString();
@@ -208,6 +211,8 @@ public class ReferenceActivity extends MedBookActivity implements ReferenceInter
             finish();
         });
 
+
+
         if (getIntent() != null) {
             int idCC = getIntent().getIntExtra(KEY_ID_CC, -1);
             if (idCC != -1) {
@@ -261,14 +266,34 @@ public class ReferenceActivity extends MedBookActivity implements ReferenceInter
         aSwitch.setChecked(medicalCaseItem.author_id == 1);
     }
 
+
+
+    private void contactPicked1 (Intent data){
+        Cursor cursor = null;
+        try {
+            String phoneNo = null;
+            String mail = null;
+            Uri uri = data.getData();
+            cursor = getContentResolver().query(uri, null, null, null, null);
+            cursor.moveToFirst();
+            int phoneIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
+            int mailIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Email.DATA);
+            mail = cursor.getString(mailIndex);
+            phoneNo = cursor.getString(phoneIndex);
+            ed_phone.setText(phoneNo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     protected void onLocalizationUpdate() {
 
         tvAddIcodBtn.setText(Core.get().LocalizationControl().getText(R.id.activity_add_clinical_cases_add_icod_btn));
         tvAddDrugBtn.setText(Core.get().LocalizationControl().getText(R.id.activity_add_clinical_cases_add_drug_btn));
-        btnSend.setText(Core.get().LocalizationControl().getText(R.id.btn_send));
+//        btnSend.setText(Core.get().LocalizationControl().getText(R.id.btn_send));
 //        tvDetailsTitle.setText(Core.get().LocalizationControl().getText(R.id.activity_add_clinical_cases_add_details_caption));
-        btnSave.setText(Core.get().LocalizationControl().getText(R.id.btn_check));
+//        btnSave.setText(Core.get().LocalizationControl().getText(R.id.btn_check));
 //        aSwitch.setText(Core.get().LocalizationControl().getText(R.id.activity_add_clinical_cases_as_author));
     }
 
@@ -299,21 +324,25 @@ public class ReferenceActivity extends MedBookActivity implements ReferenceInter
                     listDrug.itemsAdd(itemsDrug);
                     break;
 
-                case GALLERY_REQUEST_CODE:
-                    //data.getData returns the content URI for the selected Image
-                    selectedImage = data.getData();
-                    LogUtils.logD("htfhyghh", "selectedImage = " + getPathFromURI(selectedImage));
+//                case GALLERY_REQUEST_CODE:
+//                    //data.getData returns the content URI for the selected Image
+//                    selectedImage = data.getData();
+//                    LogUtils.logD("htfhyghh", "selectedImage = " + getPathFromURI(selectedImage));
+//
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//                        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) !=
+//                                PackageManager.PERMISSION_GRANTED) {
+//                            showMessageForNeedPermission();
+//                        } else preStartUploadImage();
+//                    } else preStartUploadImage();
+//                    break;
+//                case ADD_COMMENT_TO_PRE_UPLOAD_IMAGE:
+//                    commentImage = data.getStringExtra("comment");
+//                    startUploadImage();
+//                    break;
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) !=
-                                PackageManager.PERMISSION_GRANTED) {
-                            showMessageForNeedPermission();
-                        } else preStartUploadImage();
-                    } else preStartUploadImage();
-                    break;
-                case ADD_COMMENT_TO_PRE_UPLOAD_IMAGE:
-                    commentImage = data.getStringExtra("comment");
-                    startUploadImage();
+                case RESULT_PICK_CONTACT1:
+                    contactPicked1(data);
                     break;
             }
         if (resultCode == RESULT_CANCELED){
@@ -356,35 +385,35 @@ public class ReferenceActivity extends MedBookActivity implements ReferenceInter
         }
     };
 
-    private void preStartUploadImage(){
-        Intent intent = new Intent(this, AddCommentToLoadImageActivity.class);
-        intent.setData(selectedImage);
-        startActivityForResult(intent, ADD_COMMENT_TO_PRE_UPLOAD_IMAGE);
-    }
-    private void startUploadImage() {
-        pbAddImageLoad.setVisibility(View.VISIBLE);
-        File file = FileUtils.getFile(this, selectedImage);
-
-        // create RequestBody instance from file
-        RequestBody requestFile =
-                RequestBody.create(
-                        MediaType.parse(getContentResolver().getType(selectedImage)),
-                        file
-                );
-        Core.get().NewsControl().uploadImage(file.getName(), requestFile);
-    }
-
-    private String getPathFromURI(Uri contentUri) {
-        String res = null;
-        String[] proj = {MediaStore.Images.Media.DATA};
-        Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
-        if (cursor.moveToFirst()) {
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            res = cursor.getString(column_index);
-        }
-        cursor.close();
-        return res;
-    }
+//    private void preStartUploadImage(){
+//        Intent intent = new Intent(this, AddCommentToLoadImageActivity.class);
+//        intent.setData(selectedImage);
+//        startActivityForResult(intent, ADD_COMMENT_TO_PRE_UPLOAD_IMAGE);
+//    }
+//    private void startUploadImage() {
+//        pbAddImageLoad.setVisibility(View.VISIBLE);
+//        File file = FileUtils.getFile(this, selectedImage);
+//
+//        // create RequestBody instance from file
+//        RequestBody requestFile =
+//                RequestBody.create(
+//                        MediaType.parse(getContentResolver().getType(selectedImage)),
+//                        file
+//                );
+//        Core.get().NewsControl().uploadImage(file.getName(), requestFile);
+//    }
+//
+//    private String getPathFromURI(Uri contentUri) {
+//        String res = null;
+//        String[] proj = {MediaStore.Images.Media.DATA};
+//        Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
+//        if (cursor.moveToFirst()) {
+//            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+//            res = cursor.getString(column_index);
+//        }
+//        cursor.close();
+//        return res;
+//    }
 
     private boolean checkIcodItemExist(int id) {
         for (RecyclerItem item : itemsIcod) {
@@ -437,19 +466,23 @@ public class ReferenceActivity extends MedBookActivity implements ReferenceInter
         }
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE:
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    preStartUploadImage();
-                } else pbAddImageLoad.setVisibility(View.INVISIBLE);
-                break;
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        switch (requestCode) {
+//            case PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE:
+//                if (grantResults.length > 0
+//                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                    preStartUploadImage();
+//                } else pbAddImageLoad.setVisibility(View.INVISIBLE);
+//                break;
+//
+//        }
+//    }
 
-        }
-    }
+
+
+
 
 
 }

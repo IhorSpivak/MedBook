@@ -90,6 +90,8 @@
     <string name="abort">Отмена</string>
     <string name="add_diagnoses">Добавить болезнь</string>
     <string name="drugs">Препараты</string>
+    <string name="accept1">Підтвердити</string>
+    <string name="reference_list">Фармсправки</string>
 
 </resources>
 

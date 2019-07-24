@@ -3,35 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/activity_term_and_points_agreements_ok"
-        style="@style/Button_type_1"
-        android:layout_width="@dimen/btn_auth_w"
-        android:layout_height="@dimen/btn_auth_h"
-        android:layout_marginEnd="@dimen/margin_default_half"
-        android:layout_marginBottom="@dimen/margin_default_half"
-        android:text="@string/ok_terms_and_agreements"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/activity_term_and_points_agreements_cancel"
-        style="@style/Button_type_1"
-        android:layout_width="@dimen/btn_auth_w"
-        android:layout_height="@dimen/btn_auth_h"
-        android:layout_marginStart="@dimen/margin_default_half"
-        android:layout_marginBottom="@dimen/margin_default_half"
-        android:text="@string/btn_cancel"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginBottom="@dimen/margin_default"
-        app:layout_constraintBottom_toTopOf="@+id/activity_term_and_points_agreements_ok"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +33,40 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/padding_default" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/activity_term_and_points_agreements_cancel"
+                    android:background="@drawable/ripple_for_enter_check"
+                    android:layout_width="@dimen/btn_auth_w"
+                    android:textColor="@color/color_button_type_1"
+                    android:layout_height="@dimen/btn_auth_h"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginBottom="@dimen/margin_default_half"
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/btn_cancel"
+                   />
+
+                <Button
+                    android:id="@+id/activity_term_and_points_agreements_ok"
+                    android:background="@drawable/ripple_for_enter_btn"
+                    android:layout_width="@dimen/btn_auth_w"
+                    android:layout_height="@dimen/btn_auth_h"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="@dimen/margin_default_half"
+                    android:textColor="@color/white"
+                    android:text="@string/ok_terms_and_agreements"
+                    android:layout_alignParentRight="true" />
+
+
+            </RelativeLayout>
         </LinearLayout>
+
+
     </ScrollView>
 
     <ProgressBar
@@ -64,7 +76,6 @@
         android:indeterminateDrawable="@drawable/progressbar"
         android:indeterminateOnly="true"
         android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/activity_term_and_points_agreements_ok"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

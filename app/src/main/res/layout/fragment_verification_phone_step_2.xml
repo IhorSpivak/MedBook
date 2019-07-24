@@ -78,10 +78,11 @@
 
     <Button
         android:id="@+id/fragment_verification_phone_step_2_btn_again"
-        style="@style/Button_type_1"
+        android:background="@drawable/ripple_for_enter_btn"
         android:layout_width="@dimen/btn_auth_w_2"
         android:layout_height="@dimen/btn_auth_h"
         android:layout_marginStart="@dimen/margin_default"
+        android:textColor="@color/white"
         android:layout_marginTop="@dimen/margin_default_double"
         android:layout_marginEnd="@dimen/margin_default"
         android:text="@string/send_code_again"
@@ -93,7 +94,8 @@
 
     <Button
         android:id="@+id/fragment_verification_phone_step_2_btn_save"
-        style="@style/Button_type_1"
+        android:background="@drawable/ripple_for_enter_btn"
+        android:textColor="@color/white"
         android:layout_width="@dimen/btn_auth_w_2"
         android:layout_height="@dimen/btn_auth_h"
         android:layout_marginStart="@dimen/margin_default"

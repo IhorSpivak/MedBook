@@ -161,5 +161,7 @@
     <string name="abort">Відміна</string>
     <string name="add_diagnoses">Додати захворювання</string>
     <string name="drugs">Препарати</string>
+    <string name="accept1">Підтвердити</string>
+    <string name="reference_list">Фармдовідки</string>
 </resources>
 
