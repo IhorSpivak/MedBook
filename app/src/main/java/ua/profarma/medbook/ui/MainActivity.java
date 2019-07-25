@@ -2,29 +2,19 @@ package ua.profarma.medbook.ui;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
-
 import ua.profarma.medbook.App;
 import ua.profarma.medbook.Core;
-import ua.profarma.medbook.ui.news_and_clinical_cases.AddClinicalCaseActivity;
-import ua.profarma.medbook.ui.news_and_clinical_cases.MyClinicalCasesActivity;
-import ua.profarma.medbook.ui.profile.IStartScanQR;
 import ua.profarma.medbook.R;
-import ua.profarma.medbook.events.EventEndQrCode;
 import ua.profarma.medbook.events.EventGetDeviceError;
 import ua.profarma.medbook.events.core.Event;
 import ua.profarma.medbook.events.core.EventListener;
@@ -47,9 +37,7 @@ import ua.profarma.medbook.ui.materials.MaterialsFragment;
 import ua.profarma.medbook.ui.news_and_clinical_cases.NewsMoreActivity;
 import ua.profarma.medbook.ui.news_and_clinical_cases.ViewerMedicalCaseActivity;
 import ua.profarma.medbook.ui.prescriptions.PrescriptionsFragment;
-import ua.profarma.medbook.ui.profile.BottomResultDialog;
-import ua.profarma.medbook.ui.reference.ReferenceActivity;
-import ua.profarma.medbook.ui.reference.ReferenceFragment;
+import ua.profarma.medbook.ui.reference.ReferenceListMainFragment;
 import ua.profarma.medbook.ui.today.TodayFragment;
 import ua.profarma.medbook.ui.today.tabs.IOnSelectNews;
 import ua.profarma.medbook.utils.AppUtils;
@@ -202,10 +190,13 @@ public class MainActivity extends AppCompatActivity implements EventListener, IO
                         transaction4.commit();
                         break;
                         case R.id.navigation_app_bar_reference:
-                            Intent intent;
-                            intent = new Intent(MainActivity.this, ReferenceActivity.class);
-                            startActivity(intent);
+//                            Intent intent;
+//                            intent = new Intent(MainActivity.this, ReferenceActivity.class);
+//                            startActivity(intent);
                             setColorStatusBar("materials");
+                            FragmentTransaction transaction5 = getSupportFragmentManager().beginTransaction();
+                            transaction5.replace(R.id.activity_main_container, ReferenceListMainFragment.newInstance());
+                            transaction5.commit();
                         break;
                 }
             }

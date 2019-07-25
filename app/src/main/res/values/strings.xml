@@ -163,5 +163,6 @@
     <string name="drugs">Препарати</string>
     <string name="accept1">Підтвердити</string>
     <string name="reference_list">Фармдовідки</string>
+    <string name="patterns">Шаблони</string>
 </resources>
 
