@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,6 +30,7 @@ import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.app.ActivityCompat;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.gson.Gson;
 
 import java.io.File;
 
@@ -41,6 +43,7 @@ import ua.profarma.medbook.Core;
 import ua.profarma.medbook.R;
 import ua.profarma.medbook.events.core.Event;
 import ua.profarma.medbook.events.news.EventImageLoadClinicCase;
+import ua.profarma.medbook.models.response.ReferenceItem;
 import ua.profarma.medbook.recyclerviews.base.RecyclerItem;
 import ua.profarma.medbook.recyclerviews.base.RecyclerItems;
 import ua.profarma.medbook.recyclerviews.drug_selected.DrugSelectedRecyclerItem;
@@ -68,7 +71,7 @@ import ua.profarma.medbook.utils.LogUtils;
 
 
 
-public class ReferenceActivity extends MedBookActivity implements ReferenceInterface {
+public class ReferenceActivity extends MedBookActivity implements IOnDeleteAddCC {
 
     public static final String KEY_ID_CC = "KEY_ID_CC";
     private static final int RESULT_PICK_CONTACT1= 1;
@@ -92,7 +95,7 @@ public class ReferenceActivity extends MedBookActivity implements ReferenceInter
     private FloatingActionButton iv_user;
 
     private TextView tvDetailsTitle;
-    private TextView btn_abort;
+    private ImageView close;
     private AppCompatEditText edDetails;
     private AppCompatEditText edTitle;
     private AppCompatEditText ed_phone;
@@ -122,12 +125,12 @@ public class ReferenceActivity extends MedBookActivity implements ReferenceInter
         setContentView(R.layout.activity_reference);
         ButterKnife.bind(this);
         aSwitch = findViewById(R.id.sw);
-        edTitle = findViewById(R.id.activity_add_clinical_cases_add_title_input);
-        edDetails = findViewById(R.id.activity_add_clinical_cases_add_details_input);
+        edTitle = findViewById(R.id.ed_name);
+        edDetails = findViewById(R.id.ed_description);
         tvDetailsTitle = findViewById(R.id.activity_add_clinical_cases_add_details_caption);
         btnSend = findViewById(R.id.btn_send);
         btnSave = findViewById(R.id.btn_check);
-        btn_abort = findViewById(R.id.btn_back);
+        close = findViewById(R.id.close);
         listIcod = findViewById(R.id.activity_add_clinical_cases_icod_list);
         ed_mail = findViewById(R.id.ed_mail);
         iv_user = findViewById(R.id.iv_user);
@@ -142,44 +145,14 @@ public class ReferenceActivity extends MedBookActivity implements ReferenceInter
         tvAddDrugBtn = findViewById(R.id.activity_add_clinical_cases_add_drug_btn);
         tvAddImageBtn = findViewById(R.id.activity_add_clinical_cases_add_image_btn);
 
+
         tvAddIcodBtn.setOnClickListener(view -> startActivityForResult(new Intent(this, IcodSelectActivity.class), REQUEST_SELECT_ICOD));
-        btn_abort.setOnClickListener(view -> onBackPressed());
+        close.setOnClickListener(view -> onBackPressed());
         tvAddDrugBtn.setOnClickListener(view -> startActivityForResult(new Intent(this, DrugSelectActivity.class), REQUEST_SELECT_DRUG));
         iv_user.setOnClickListener(view -> startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI), RESULT_PICK_CONTACT1));
         btnSend.setOnClickListener(view -> {
-            RequestMedicalCaseBody requestMedicalCaseBody = new RequestMedicalCaseBody();
-            requestMedicalCaseBody.description = edDetails.getText().toString();
-            requestMedicalCaseBody.title = edTitle.getText().toString();
-            requestMedicalCaseBody.news_clinical_case_status_id = 2;//REVIEW
-            if (itemsImages.size() > 0) {
-                requestMedicalCaseBody.news_clinical_case_image = new CCImage[itemsImages.size()];
-                for (int i = 0; i < requestMedicalCaseBody.news_clinical_case_image.length; i++)
-                    requestMedicalCaseBody.news_clinical_case_image[i] = new CCImage(((ImageCCSelectedRecyclerItem) itemsImages.get(i)).getCcImage().image,
-                            ((ImageCCSelectedRecyclerItem) itemsImages.get(i)).getCcImage().comment, false);
-            }
-            if (itemsDrug.size() > 0) {
-                requestMedicalCaseBody.news_clinical_case_drug_id = new IdCCDrug[itemsDrug.size()];
-                for (int i = 0; i < requestMedicalCaseBody.news_clinical_case_drug_id.length; i++)
-                    requestMedicalCaseBody.news_clinical_case_drug_id[i] = new IdCCDrug(((DrugSelectedRecyclerItem) itemsDrug.get(i)).getDrug().id);
-            }
-            if (itemsIcod.size() > 0) {
-                requestMedicalCaseBody.news_clinical_case_icod_id = new IdCCIcod[itemsIcod.size()];
-                for (int i = 0; i < requestMedicalCaseBody.news_clinical_case_icod_id.length; i++)
-                    requestMedicalCaseBody.news_clinical_case_icod_id[i] = new IdCCIcod(((IcodSelectedRecyclerItem) itemsIcod.get(i)).getIcodSelected().id);
-            }
-            requestMedicalCaseBody.show_author = aSwitch.isChecked() ? 1 : 0;
-            if (requestMedicalCaseBody.title == null || requestMedicalCaseBody.title.isEmpty() || requestMedicalCaseBody.title.length() < 3) {
-                DialogBuilder.showInfoDialog(ReferenceActivity.this, Core.get().LocalizationControl().getText(R.id.general_message), Core.get().LocalizationControl().getText(R.id.add_md_case_title_min_symbols));
-            } else if (requestMedicalCaseBody.description == null || requestMedicalCaseBody.description.isEmpty() || requestMedicalCaseBody.description.length() < 3) {
-                DialogBuilder.showInfoDialog(ReferenceActivity.this, Core.get().LocalizationControl().getText(R.id.general_message), Core.get().LocalizationControl().getText(R.id.add_md_case_details_min_symbols));
-            } else if (requestMedicalCaseBody.news_clinical_case_icod_id == null || requestMedicalCaseBody.news_clinical_case_icod_id.length == 0) {
-                DialogBuilder.showInfoDialog(ReferenceActivity.this, Core.get().LocalizationControl().getText(R.id.general_message), Core.get().LocalizationControl().getText(R.id.add_md_case_icods_empty));
-            } else if (requestMedicalCaseBody.news_clinical_case_drug_id == null || requestMedicalCaseBody.news_clinical_case_drug_id.length == 0) {
-                DialogBuilder.showInfoDialog(ReferenceActivity.this, Core.get().LocalizationControl().getText(R.id.general_message), Core.get().LocalizationControl().getText(R.id.add_md_case_drugs_empty));
-            } else {
-                Core.get().NewsControl().createMedicalCase(requestMedicalCaseBody);
-                finish();
-            }
+
+            sendReference();
 
         });
         btnSave.setOnClickListener(view -> {
@@ -226,8 +199,58 @@ public class ReferenceActivity extends MedBookActivity implements ReferenceInter
                 setDataCC();
             }
         }
+        Gson gson = new Gson();
+        ReferenceItem itemReference = gson.fromJson(getIntent().getStringExtra("myjson"), ReferenceItem.class);
+        if(itemReference != null){
+            setDataReference(itemReference);
+        } else {
+            btnSave.setVisibility(View.GONE);
+        }
         onLocalizationUpdate();
     }
+
+    private void sendReference() {
+        if(itemsIcod.size() == 0){
+            Toast.makeText(this, R.string.must_chose_icod, Toast.LENGTH_LONG).show();
+        } else if(itemsDrug.size() == 0){
+            Toast.makeText(this, R.string.must_chose_drugs, Toast.LENGTH_LONG).show();
+        } else if(itemsDrug.size() > 0 && itemsIcod.size() > 0) {
+//            RequestMedicalCaseBody requestMedicalCaseBody = new RequestMedicalCaseBody();
+//            requestMedicalCaseBody.description = edDetails.getText().toString();
+//            requestMedicalCaseBody.title = edTitle.getText().toString();
+//            requestMedicalCaseBody.news_clinical_case_status_id = 2;//REVIEW
+//            if (itemsImages.size() > 0) {
+//                requestMedicalCaseBody.news_clinical_case_image = new CCImage[itemsImages.size()];
+//                for (int i = 0; i < requestMedicalCaseBody.news_clinical_case_image.length; i++)
+//                    requestMedicalCaseBody.news_clinical_case_image[i] = new CCImage(((ImageCCSelectedRecyclerItem) itemsImages.get(i)).getCcImage().image,
+//                            ((ImageCCSelectedRecyclerItem) itemsImages.get(i)).getCcImage().comment, false);
+//            }
+//            if (itemsDrug.size() > 0) {
+//                requestMedicalCaseBody.news_clinical_case_drug_id = new IdCCDrug[itemsDrug.size()];
+//                for (int i = 0; i < requestMedicalCaseBody.news_clinical_case_drug_id.length; i++)
+//                    requestMedicalCaseBody.news_clinical_case_drug_id[i] = new IdCCDrug(((DrugSelectedRecyclerItem) itemsDrug.get(i)).getDrug().id);
+//            }
+//            if (itemsIcod.size() > 0) {
+//                requestMedicalCaseBody.news_clinical_case_icod_id = new IdCCIcod[itemsIcod.size()];
+//                for (int i = 0; i < requestMedicalCaseBody.news_clinical_case_icod_id.length; i++)
+//                    requestMedicalCaseBody.news_clinical_case_icod_id[i] = new IdCCIcod(((IcodSelectedRecyclerItem) itemsIcod.get(i)).getIcodSelected().id);
+//            }
+//            requestMedicalCaseBody.show_author = aSwitch.isChecked() ? 1 : 0;
+//            if (requestMedicalCaseBody.title == null || requestMedicalCaseBody.title.isEmpty() || requestMedicalCaseBody.title.length() < 3) {
+//                DialogBuilder.showInfoDialog(ReferenceActivity.this, Core.get().LocalizationControl().getText(R.id.general_message), Core.get().LocalizationControl().getText(R.id.add_md_case_title_min_symbols));
+//            } else if (requestMedicalCaseBody.description == null || requestMedicalCaseBody.description.isEmpty() || requestMedicalCaseBody.description.length() < 3) {
+//                DialogBuilder.showInfoDialog(ReferenceActivity.this, Core.get().LocalizationControl().getText(R.id.general_message), Core.get().LocalizationControl().getText(R.id.add_md_case_details_min_symbols));
+//            } else if (requestMedicalCaseBody.news_clinical_case_icod_id == null || requestMedicalCaseBody.news_clinical_case_icod_id.length == 0) {
+//                DialogBuilder.showInfoDialog(ReferenceActivity.this, Core.get().LocalizationControl().getText(R.id.general_message), Core.get().LocalizationControl().getText(R.id.add_md_case_icods_empty));
+//            } else if (requestMedicalCaseBody.news_clinical_case_drug_id == null || requestMedicalCaseBody.news_clinical_case_drug_id.length == 0) {
+//                DialogBuilder.showInfoDialog(ReferenceActivity.this, Core.get().LocalizationControl().getText(R.id.general_message), Core.get().LocalizationControl().getText(R.id.add_md_case_drugs_empty));
+//            } else {
+//                Core.get().NewsControl().createMedicalCase(requestMedicalCaseBody);
+//                finish();
+//            }
+        }
+    }
+
 
     private void setDataCC() {
         edTitle.setText(medicalCaseItem.title);
@@ -265,6 +288,44 @@ public class ReferenceActivity extends MedBookActivity implements ReferenceInter
 
         aSwitch.setChecked(medicalCaseItem.author_id == 1);
     }
+
+    private void setDataReference(ReferenceItem item) {
+        edTitle.setText(item.getTitle());
+        edDetails.setText(item.getDescription());
+        if (item.getDrugs() != null && item.getDrugs().size() > 0) {
+            listDrug.init();
+            itemsDrug = new RecyclerItems();
+            for (int i = 0; i < item.getDrugs().size() ; i++)
+                itemsDrug.add(new DrugSelectedRecyclerItem(new DrugSelected(item.getDrugs().get(i).getId(), item.getDrugs().get(i).getDrug().getTitle(), false)));
+            listDrug.itemsAdd(itemsDrug);
+        }
+        if (item.getIcods() != null && item.getIcods().size() > 0) {
+            listIcod.init();
+            itemsIcod = new RecyclerItems();
+            for (int i = 0; i < item.getIcods().size(); i++) {
+                int selectLang = -1;
+                for (int j = 0; j < item.getIcods().get(i).getIcod().getTranslations().size(); j++) {
+                    if ( item.getIcods().get(i).getIcod().getTranslations().get(j).getLanguage().substring(0, 2).equals(App.getLanguage())) {
+                        selectLang = j;
+                    }
+                }
+                if (selectLang == -1) {
+                    for (int j = 0; j < item.getIcods().get(i).getIcod().getTranslations().size(); j++) {
+                        if (item.getIcods().get(i).getIcod().getTranslations().get(j).getLanguage().substring(0, 2).equals("uk")) {
+                            selectLang = j;
+                        }
+                    }
+                }
+                itemsIcod.add(new IcodSelectedRecyclerItem(new IcodSelected(item.getIcods().get(i).getId(),
+                       item.getIcods().get(i).getIcod().getId().toString(),
+                      item.getIcods().get(i).getIcod().getTranslations().get(selectLang).getTitle(), false)));
+            }
+            listIcod.itemsAdd(itemsIcod);
+        }
+
+        aSwitch.setChecked(item.getTemplate().equals(0));
+    }
+
 
 
 
@@ -324,23 +385,6 @@ public class ReferenceActivity extends MedBookActivity implements ReferenceInter
                     listDrug.itemsAdd(itemsDrug);
                     break;
 
-//                case GALLERY_REQUEST_CODE:
-//                    //data.getData returns the content URI for the selected Image
-//                    selectedImage = data.getData();
-//                    LogUtils.logD("htfhyghh", "selectedImage = " + getPathFromURI(selectedImage));
-//
-//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//                        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) !=
-//                                PackageManager.PERMISSION_GRANTED) {
-//                            showMessageForNeedPermission();
-//                        } else preStartUploadImage();
-//                    } else preStartUploadImage();
-//                    break;
-//                case ADD_COMMENT_TO_PRE_UPLOAD_IMAGE:
-//                    commentImage = data.getStringExtra("comment");
-//                    startUploadImage();
-//                    break;
-
                 case RESULT_PICK_CONTACT1:
                     contactPicked1(data);
                     break;
@@ -385,35 +429,6 @@ public class ReferenceActivity extends MedBookActivity implements ReferenceInter
         }
     };
 
-//    private void preStartUploadImage(){
-//        Intent intent = new Intent(this, AddCommentToLoadImageActivity.class);
-//        intent.setData(selectedImage);
-//        startActivityForResult(intent, ADD_COMMENT_TO_PRE_UPLOAD_IMAGE);
-//    }
-//    private void startUploadImage() {
-//        pbAddImageLoad.setVisibility(View.VISIBLE);
-//        File file = FileUtils.getFile(this, selectedImage);
-//
-//        // create RequestBody instance from file
-//        RequestBody requestFile =
-//                RequestBody.create(
-//                        MediaType.parse(getContentResolver().getType(selectedImage)),
-//                        file
-//                );
-//        Core.get().NewsControl().uploadImage(file.getName(), requestFile);
-//    }
-//
-//    private String getPathFromURI(Uri contentUri) {
-//        String res = null;
-//        String[] proj = {MediaStore.Images.Media.DATA};
-//        Cursor cursor = getContentResolver().query(contentUri, proj, null, null, null);
-//        if (cursor.moveToFirst()) {
-//            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-//            res = cursor.getString(column_index);
-//        }
-//        cursor.close();
-//        return res;
-//    }
 
     private boolean checkIcodItemExist(int id) {
         for (RecyclerItem item : itemsIcod) {
@@ -456,6 +471,11 @@ public class ReferenceActivity extends MedBookActivity implements ReferenceInter
     }
 
     @Override
+    public void onDeleteImage(CCImage ccImage) {
+
+    }
+
+    @Override
     public void onEvent(Event event) {
         super.onEvent(event);
         switch (event.getEventId()) {
@@ -465,24 +485,6 @@ public class ReferenceActivity extends MedBookActivity implements ReferenceInter
 
         }
     }
-
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//        switch (requestCode) {
-//            case PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE:
-//                if (grantResults.length > 0
-//                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                    preStartUploadImage();
-//                } else pbAddImageLoad.setVisibility(View.INVISIBLE);
-//                break;
-//
-//        }
-//    }
-
-
-
-
 
 
 }

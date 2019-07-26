@@ -17,8 +17,6 @@
 
 
 
-
-
             <TextView
                 android:id="@+id/fragment_material_description_title"
                 android:textColor="@color/white"
@@ -47,15 +45,16 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_bar"
+            style="@style/MyCustomTabLayout"
             app:layout_scrollFlags="scroll"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             app:tabTextAppearance="@style/MineCustomTabText"
-            app:tabBackground="@drawable/ripple_for_tab"
+
             app:tabTextColor="#abb1bf"
             app:tabSelectedTextColor="#4f83ba"
-            app:tabIndicatorColor="#4f83ba"/>
+            app:tabIndicatorHeight="0dp" />
 
 
 
@@ -79,5 +78,12 @@
         app:backgroundTint="#40b1e5"
         android:layout_marginRight="40dp"
         android:layout_alignParentRight="true"/>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:id="@+id/pb"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/colorPrimaryDark"
+        android:layout_centerInParent="true"/>
 
 </RelativeLayout>

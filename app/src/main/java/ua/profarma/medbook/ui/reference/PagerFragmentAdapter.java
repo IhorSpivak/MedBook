@@ -33,6 +33,11 @@ public class PagerFragmentAdapter extends FragmentStatePagerAdapter {
         notifyDataSetChanged();
     }
 
+    public void clearFragments() {
+        mFragmentList.clear();
+        notifyDataSetChanged();
+    }
+
     @Override
     public CharSequence getPageTitle(int position) {
         return mFragmentTitleList.get(position);

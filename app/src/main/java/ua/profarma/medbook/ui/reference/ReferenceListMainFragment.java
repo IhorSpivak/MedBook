@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -22,6 +23,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import ua.profarma.medbook.R;
 import ua.profarma.medbook.models.response.ReferenceItem;
+import ua.profarma.medbook.singltones.SingletoneForListReference;
+import ua.profarma.medbook.singltones.SingltonForPatterns;
 
 
 public class ReferenceListMainFragment extends Fragment implements ReferenceContract.View  {
@@ -33,6 +36,9 @@ public class ReferenceListMainFragment extends Fragment implements ReferenceCont
 
     @BindView(R.id.fab)
     FloatingActionButton fab;
+
+    @BindView(R.id.pb)
+    ProgressBar pb;
 
     private ReferenceContract.Presenter presenter;
 
@@ -58,10 +64,6 @@ public class ReferenceListMainFragment extends Fragment implements ReferenceCont
     }
 
 
-
-
-
-
     @OnClick(R.id.fab)
     void onStartReferenceActivity() {
         Intent intent;
@@ -71,14 +73,13 @@ public class ReferenceListMainFragment extends Fragment implements ReferenceCont
 
     @Override
     public void onReferenceListLoaded(List<ReferenceItem> list) {
-        List<String> titles = new ArrayList<>();
-        List<Fragment> fragments = new ArrayList<>();
-        List<ReferenceItem> listItemsPatterns = new ArrayList<>();
-        List<ReferenceItem> listItemsReferences = new ArrayList<>();
+        ArrayList<String> titles = new ArrayList<>();
+        ArrayList<Fragment> fragments = new ArrayList<>();
+        ArrayList<ReferenceItem> listItemsPatterns = new ArrayList<>();
+        ArrayList<ReferenceItem> listItemsReferences = new ArrayList<>();
 
 
-        titles.add(getString(R.string.reference_list));
-        titles.add(getString(R.string.patterns));
+
 
 
         for(int i = 0; i < list.size(); i++) {
@@ -89,26 +90,28 @@ public class ReferenceListMainFragment extends Fragment implements ReferenceCont
             }
         }
 
-        WrapperReference wrapperReferencePatterns = new WrapperReference();
-        wrapperReferencePatterns.setList(listItemsPatterns);
-
-        WrapperReference wrapperReferenceList = new WrapperReference();
-        wrapperReferenceList.setList(listItemsReferences);
 
 
+        SingltonForPatterns.getInstance().setList(listItemsPatterns);
+        SingletoneForListReference.getInstance().setList(listItemsReferences);
 
-        fragments.add(PatternListReferenceFragment.newInstance(wrapperReferencePatterns));
-        fragments.add(ReferenceListFragment.newInstance(wrapperReferenceList));
+        titles.add(getString(R.string.reference_list));
+        titles.add(getString(R.string.patterns));
+
+
+        fragments.add(ReferenceListFragment.newInstance());
+        fragments.add(PatternListReferenceFragment.newInstance());
 
 
 
 
-        PagerFragmentAdapter adapter = new PagerFragmentAdapter(getFragmentManager());
+        PagerFragmentAdapter adapter = new PagerFragmentAdapter(getChildFragmentManager());
         adapter.setFragments(fragments, titles);
         viewpager.setAdapter(adapter);
 
         tab_bar.setupWithViewPager(viewpager);
         TabLayout.Tab tab = tab_bar.getTabAt(1);
         tab.select();
+        pb.setVisibility(View.GONE);
     }
 }

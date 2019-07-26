@@ -47,35 +47,9 @@ public class IcodSelectActivity extends MedBookActivity {
         btn_accept = findViewById(R.id.btn_accept);
         progressBar.setVisibility(View.VISIBLE);
         ImageView imClose = findViewById(R.id.activity_icod_select_toolbar_close);
-        imClose.setOnClickListener(view -> {
-            Intent resultIntent = new Intent();
-            int id[] = new int[selected.size()];
-            String code[] = new String[selected.size()];
-            String title[] = new String[selected.size()];
-            for(int i = 0; i < selected.size(); i++){
-                id[i] = selected.get(i).id;
-                code[i] = selected.get(i).code_icod;
-                int selectLang = -1;
-                for (int j = 0; j < selected.get(i).translations.length; j++) {
-                    if (selected.get(i).translations[j].language.substring(0, 2).equals(App.getLanguage())) {
-                        selectLang = j;
-                    }
-                }
-                if (selectLang == -1) {
-                    for (int j = 0; j < selected.get(i).translations.length; j++) {
-                        if (selected.get(i).translations[j].language.substring(0, 2).equals("uk")) {
-                            selectLang = j;
-                        }
-                    }
-                }
-                title[i] = selected.get(i).translations[selectLang].title;
-            }
-            resultIntent.putExtra(AddClinicalCaseActivity.SELECT_ICOD_ID, id);
-            resultIntent.putExtra(AddClinicalCaseActivity.SELECT_ICOD_CODE, code);
-            resultIntent.putExtra(AddClinicalCaseActivity.SELECT_ICOD_TITLE, title);
-            setResult(RESULT_OK, resultIntent);
-            finish();
-        });
+        imClose.setOnClickListener(view ->  onAcceptChose());
+        btn_accept.setOnClickListener(view ->  onAcceptChose());
+
         tvTitle = findViewById(R.id.activity_icod_select_toolbar_title);
 
         root = findViewById(R.id.activity_icod_select_list);
@@ -88,6 +62,36 @@ public class IcodSelectActivity extends MedBookActivity {
         Core.get().NewsControl().getIcodLevelRoot();
 
         onLocalizationUpdate();
+    }
+
+    public void onAcceptChose(){
+        Intent resultIntent = new Intent();
+        int id[] = new int[selected.size()];
+        String code[] = new String[selected.size()];
+        String title[] = new String[selected.size()];
+        for(int i = 0; i < selected.size(); i++){
+            id[i] = selected.get(i).id;
+            code[i] = selected.get(i).code_icod;
+            int selectLang = -1;
+            for (int j = 0; j < selected.get(i).translations.length; j++) {
+                if (selected.get(i).translations[j].language.substring(0, 2).equals(App.getLanguage())) {
+                    selectLang = j;
+                }
+            }
+            if (selectLang == -1) {
+                for (int j = 0; j < selected.get(i).translations.length; j++) {
+                    if (selected.get(i).translations[j].language.substring(0, 2).equals("uk")) {
+                        selectLang = j;
+                    }
+                }
+            }
+            title[i] = selected.get(i).translations[selectLang].title;
+        }
+        resultIntent.putExtra(AddClinicalCaseActivity.SELECT_ICOD_ID, id);
+        resultIntent.putExtra(AddClinicalCaseActivity.SELECT_ICOD_CODE, code);
+        resultIntent.putExtra(AddClinicalCaseActivity.SELECT_ICOD_TITLE, title);
+        setResult(RESULT_OK, resultIntent);
+        finish();
     }
 
 

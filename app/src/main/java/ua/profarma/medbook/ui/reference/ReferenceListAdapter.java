@@ -4,13 +4,10 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,14 +15,13 @@ import java.util.List;
 import ua.profarma.medbook.R;
 import ua.profarma.medbook.models.response.ReferenceItem;
 
-public class PatternReferenceListAdapter extends RecyclerView.Adapter<PatternReferenceListAdapter.RecyclerViewHolder> {
+public class ReferenceListAdapter extends RecyclerView.Adapter<ReferenceListAdapter.RecyclerViewHolder> {
     private ArrayList<ReferenceItem> listItem = new ArrayList<>();
-    private OnItemClickListener itemClickListener;
+    private ReferenceListAdapter.OnItemClickListener itemClickListener;
     private Context context;
 
 
-
-    public void setItemClickListener(OnItemClickListener itemClickListener) {
+    public void setItemClickListener(ReferenceListAdapter.OnItemClickListener itemClickListener) {
         this.itemClickListener = itemClickListener;
     }
 
@@ -36,14 +32,14 @@ public class PatternReferenceListAdapter extends RecyclerView.Adapter<PatternRef
     }
 
     @Override
-    public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ReferenceListAdapter.RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         context = parent.getContext();
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_reference_list, parent, false);
-        return new RecyclerViewHolder(view);
+        return new ReferenceListAdapter.RecyclerViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(RecyclerViewHolder holder, int position) {
+    public void onBindViewHolder(ReferenceListAdapter.RecyclerViewHolder holder, int position) {
         holder.bind(listItem.get(position), context);
     }
 
@@ -73,7 +69,6 @@ public class PatternReferenceListAdapter extends RecyclerView.Adapter<PatternRef
             tvTime.setText(item.getDate());
             tvId.setText(Integer.toString(item.getId()));
             root.setOnClickListener(view -> itemClickListener.onItemClick(item));
-
 
         }
 

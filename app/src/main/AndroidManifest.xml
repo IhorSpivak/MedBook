@@ -70,6 +70,12 @@
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="landscape"
             android:theme="@style/AppThemeDark" />
+
+        <activity
+            android:name=".ui.reference.ReferenceWebViewActivity"
+            android:configChanges="layoutDirection|locale"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeDark" />
         <activity
             android:name=".ui.materials.PresentationActivity"
             android:configChanges="layoutDirection|locale"
@@ -89,6 +95,12 @@
 
         <activity
             android:name=".ui.materials.ViewCompletedTestActivity"
+            android:configChanges="layoutDirection|locale"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeDark" />
+
+        <activity
+            android:name=".ui.reference.ReferenceReviewActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
