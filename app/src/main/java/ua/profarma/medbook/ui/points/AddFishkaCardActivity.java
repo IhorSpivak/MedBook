@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
@@ -27,6 +29,7 @@ public class AddFishkaCardActivity extends MedBookActivity {
     private AppCompatEditText mInputPhone;
     private TextInputLayout mInputLayoutPhone;
     private Button mBtnSave;
+    private ProgressBar pb;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,8 +42,10 @@ public class AddFishkaCardActivity extends MedBookActivity {
         mInputLayoutPhone = findViewById(R.id.activity_fishka_card_add_input_layout_phone);
         mBtnSave = findViewById(R.id.activity_fishka_card_add_btn_save);
         ImageView imClose = findViewById(R.id.activity_fishka_card_add_toolbar_close);
+        pb = findViewById(R.id.pb);
         imClose.setOnClickListener((View v) -> finish());
         mBtnSave.setOnClickListener((View v) -> {
+            pb.setVisibility(View.VISIBLE);
                     mBtnSave.setEnabled(false);
                     if (mInputCard.getText() == null || mInputCard.getText().toString().isEmpty()) {
                         AppUtils.toastError(Core.get().LocalizationControl().getText(R.id.activity_points_add_card_input_card_error), true);
@@ -71,18 +76,20 @@ public class AddFishkaCardActivity extends MedBookActivity {
         super.onEvent(event);
         switch (event.getEventId()) {
             case Event.EVENT_LOGOUT:
+                pb.setVisibility(View.GONE);
                 finish();
                 break;
             case Event.EVENT_ADD_FISHKA_CARD:
                 mBtnSave.setEnabled(true);
+                pb.setVisibility(View.GONE);
                 EventAddCardFishka eventAddCardFishka = (EventAddCardFishka)event;
                 if(eventAddCardFishka.isState()){
                     Core.get().PointControl().getUserFishkaCrads();
                     finish();
-                    AppUtils.toastOk(Core.get().LocalizationControl().getText(R.id.card_add_success), true);
+                    Toast.makeText(this, R.string.card_add_success, Toast.LENGTH_LONG).show();
                 }
                 else if(eventAddCardFishka.getMessage() != null && !eventAddCardFishka.getMessage().isEmpty()){
-                    AppUtils.toastError(eventAddCardFishka.getMessage(), false);
+                    Toast.makeText(this, eventAddCardFishka.getMessage(), Toast.LENGTH_LONG).show();
                 }
                 break;
         }

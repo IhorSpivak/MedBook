@@ -20,7 +20,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="214dp"
-                android:background="@color/colorPrimary"
+                android:background="@drawable/materials_background"
                 android:focusable="false"
                 app:layout_collapseMode="parallax">
 
@@ -29,7 +29,7 @@
                     android:layout_width="72dp"
                     android:layout_height="72dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="46dp"
+                    android:layout_marginTop="50dp"
                     android:background="@drawable/circle"
                     android:gravity="center"
                     android:scaleType="center"
@@ -64,23 +64,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/fragment_profile_layout_ok"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:padding="@dimen/padding_default_double"
-                        android:text="Готово"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/fragment_profile_layout_exit"
+                    <ImageView
+                        android:id="@+id/close"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_alignParentEnd="true"
-                        android:padding="@dimen/padding_default_double"
-                        android:text="Вийти"
-                        android:textSize="18sp" />
+                        android:layout_gravity="center"
+                        android:paddingEnd="@dimen/padding_default_double"
+                        android:paddingStart="@dimen/padding_default_double"
+                        android:scaleType="centerInside"
+                        app:srcCompat="@drawable/ic_arrow_back_white"  />
+
                 </RelativeLayout>
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -99,6 +92,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:focusable="false">
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -143,7 +138,7 @@
                             android:textColor="@color/textLight3GrayColor"
                             android:textSize="14sp" />
 
-                        <LinearLayout
+                        <RelativeLayout
                             android:id="@+id/fragment_profile_layout_ll_phone"
                             android:orientation="vertical"
                             android:layout_width="match_parent"
@@ -162,10 +157,19 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="2dp"
+                                android:layout_below="@+id/phone"
                                 android:text="@string/phone"
                                 android:textColor="@color/textLight3GrayColor"
                                 android:textSize="14sp" />
-                        </LinearLayout>
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_marginTop="25dp"
+                                android:layout_height="wrap_content"
+
+                                android:layout_alignParentRight="true"
+                                android:src="@mipmap/edit" />
+                        </RelativeLayout>
 
                         <TextView
                             android:id="@+id/city"
@@ -569,6 +573,15 @@
                 android:visibility="gone"
 
                 />
+
+            <Button
+                android:id="@+id/fragment_profile_layout_exit"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:textColor="@color/rose"
+                android:background="@drawable/ripple_for_exit"
+                android:layout_alignParentBottom="true"
+                android:text="@string/exit" />
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 

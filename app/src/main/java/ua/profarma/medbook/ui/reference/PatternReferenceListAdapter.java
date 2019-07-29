@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -56,19 +57,23 @@ public class PatternReferenceListAdapter extends RecyclerView.Adapter<PatternRef
         private TextView tvTittle;
         private TextView tvTime;
         private TextView tvId;
+        private RelativeLayout root;
 
         RecyclerViewHolder(View itemView) {
             super(itemView);
             tvTittle = (TextView) itemView.findViewById(R.id.tv_name);
             tvTime = (TextView) itemView.findViewById(R.id.tv_date);
             tvId = (TextView) itemView.findViewById(R.id.tv_id);
+            root = (RelativeLayout) itemView.findViewById(R.id.root);
 
         }
 
         public void bind(ReferenceItem item, Context context) {
             tvTittle.setText(item.getTitle());
             tvTime.setText(item.getDate());
-            tvId.setText(item.getId());
+            tvId.setText(Integer.toString(item.getId()));
+            root.setOnClickListener(view -> itemClickListener.onItemClick(item));
+
 
         }
 

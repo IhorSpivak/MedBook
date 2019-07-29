@@ -35,8 +35,9 @@ public class ApiRest {
 
             OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
-            httpClient.connectTimeout(120, TimeUnit.SECONDS);
-            httpClient.readTimeout(120,TimeUnit.SECONDS);
+            httpClient.connectTimeout(5, TimeUnit.MINUTES)
+                    .writeTimeout(5, TimeUnit.MINUTES)
+                    .readTimeout(5,TimeUnit.MINUTES);
 
 
 

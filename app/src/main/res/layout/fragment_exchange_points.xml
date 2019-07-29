@@ -58,9 +58,11 @@
             android:id="@+id/fragment_exchange_points_minus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:clickable="true"
+            android:background="@drawable/ripple_for_enter_check"
             android:padding="@dimen/padding_default"
             app:layout_constraintBottom_toBottomOf="@+id/fragment_exchange_points_text_4"
             app:layout_constraintStart_toStartOf="parent"
@@ -73,8 +75,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="@dimen/margin_default"
+            android:layout_marginEnd="20dp"
             android:layout_marginBottom="8dp"
+            android:clickable="true"
+            android:background="@drawable/ripple_for_enter_check"
             android:padding="@dimen/padding_default"
             app:layout_constraintBottom_toBottomOf="@+id/fragment_exchange_points_text_4"
             app:layout_constraintEnd_toEndOf="parent"
@@ -98,28 +102,49 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_default"
             android:paddingBottom="@dimen/padding_default_double"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
             android:text="TextView"
             android:textSize="26sp"
             app:layout_constraintEnd_toStartOf="@+id/fragment_exchange_points_add"
             app:layout_constraintStart_toEndOf="@+id/fragment_exchange_points_minus"
             app:layout_constraintTop_toBottomOf="@+id/fragment_exchange_points_text_3" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <ProgressBar
+        android:id="@+id/pb"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_marginTop="16dp"
+        android:indeterminateTint="@color/colorPrimary"
+        android:indeterminateTintMode="src_in"
+        android:layout_below="@+id/fragment_login_imglogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+       app:layout_constraintBottom_toTopOf="@+id/fragment_exchange_points_btn_add_number_caption"
+        android:layout_height="wrap_content" />
+
     <Button
-        style="@style/Button_type_2"
+        android:background="@drawable/ripple_for_enter_btn"
         android:id="@+id/fragment_exchange_points_btn_get_code"
         android:layout_width="@dimen/btn_auth_w_2"
         android:layout_height="@dimen/btn_auth_h"
+        android:layout_marginBottom="20dp"
         android:text="Button"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/fragment_exchange_points_btn_add_number"
-        style="@style/Button_type_2"
+        android:background="@drawable/ripple_for_enter_btn"
         android:layout_width="@dimen/btn_auth_w_2"
         android:layout_height="@dimen/btn_auth_h"
+        android:textColor="@color/white"
         android:text="Button"
         android:layout_marginBottom="@dimen/margin_default"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -140,5 +165,7 @@
         app:layout_constraintBottom_toTopOf="@+id/fragment_exchange_points_btn_add_number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

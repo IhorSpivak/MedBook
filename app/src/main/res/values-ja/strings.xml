@@ -39,6 +39,7 @@
     <string name="enter">Вход</string>
 
     <string name="throwable_registration">Произошло незивестная ошибка при попытке регистрации</string>
+    <string name="card_add_success">Карта добавлена успешно</string>
 
     <string name="need_access_location">Надо дать доступ к мастонахождению, чтобы отображать ЛМУ возле вас</string>
     <string name="select_work">Выбрать место работы</string>
@@ -93,6 +94,12 @@
     <string name="accept1">Підтвердити</string>
     <string name="reference_list">Фармсправки</string>
     <string name="patterns">Шаблоны</string>
+    <string name="name_is_not_seted">Название не указано</string>
+    <string name="phone_not_seted">Телефон не вказано</string>
+    <string name="mail_not_seted">Електронна пошта не вказана</string>
+    <string name="description_not_seted">Опис не вказанно</string>
+    <string name="must_chose_icod">Выберите диагнозы</string>
+    <string name="must_chose_drugs">Выберите лекарства</string>
 
 </resources>
 

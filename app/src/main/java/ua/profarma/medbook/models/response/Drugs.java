@@ -106,7 +106,7 @@ public class Drugs {
     }
 
     @Parcel
-    private class Drug {
+    public class Drug {
         @SerializedName("id")
         private Integer id;
 

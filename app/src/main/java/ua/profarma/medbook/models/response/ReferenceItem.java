@@ -9,7 +9,8 @@ import java.io.Serializable;
 import java.util.List;
 
 @Parcel
-public class ReferenceItem {
+@SuppressWarnings("serial")
+public class ReferenceItem implements Serializable {
     @SerializedName("id")
     private Integer id;
 
@@ -29,6 +30,18 @@ public class ReferenceItem {
     @SerializedName("drugs")
     @Expose
     private List<Drugs> drugs = null;
+
+    @SerializedName("icods")
+    @Expose
+    private List<Icods> icods = null;
+
+    public List<Icods> getIcods() {
+        return icods;
+    }
+
+    public void setIcods(List<Icods> icods) {
+        this.icods = icods;
+    }
 
     public Integer getId() {
         return id;

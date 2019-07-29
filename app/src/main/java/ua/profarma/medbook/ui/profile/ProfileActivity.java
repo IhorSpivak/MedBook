@@ -2,6 +2,9 @@ package ua.profarma.medbook.ui.profile;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -11,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+import butterknife.BindView;
 import ua.profarma.medbook.Core;
 import ua.profarma.medbook.R;
 import ua.profarma.medbook.events.EventEndQrCode;
@@ -29,10 +33,17 @@ public class ProfileActivity extends MedBookActivity implements EventListener, I
     private final static String VERIFICATION_PHONE_FRAGMENT_STEP_1 = "ProfileActivity.fragment.verification_step_1";
     private final static String VERIFICATION_PHONE_FRAGMENT_STEP_2 = "ProfileActivity.fragment.verification_step_2";
 
+
+    private ProgressBar pb;
+
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        pb = findViewById(R.id.pb);
 
         FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
         transaction2.replace(R.id.activity_profile_container, ProfileFragment.newInstance(), PROFILE_FRAGMENT);
@@ -61,9 +72,6 @@ public class ProfileActivity extends MedBookActivity implements EventListener, I
                 FragmentTransaction transaction4 = getSupportFragmentManager().beginTransaction();
                 transaction4.addToBackStack(VERIFICATION_PHONE_FRAGMENT_STEP_1);
                 transaction4.replace(R.id.activity_profile_container, VerificationPhoneStep1Frgament.newInstance(), VERIFICATION_PHONE_FRAGMENT_STEP_1);
-                //fucking hack for close Fragment from other Activity with EventBus
-                //call super.onActivityResult first before your logic and the issue will get fixed as FragmentActivity's
-                // onActivityResult calls mFragments.noteStateNotSaved();
                 super.onActivityResult(-1, -1, null);
                 transaction4.commit();
                 break;
@@ -89,7 +97,7 @@ public class ProfileActivity extends MedBookActivity implements EventListener, I
                         //onBackPressed();
                     }
                 });
-                //showProgress(false);
+                pb.setVisibility(View.GONE);
                 break;
         }
     }
@@ -109,6 +117,7 @@ public class ProfileActivity extends MedBookActivity implements EventListener, I
             } else {
                 //if qr contains data
                 checkCode(result.getContents());
+
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
@@ -117,13 +126,14 @@ public class ProfileActivity extends MedBookActivity implements EventListener, I
 
     private void checkCode(String code) {
 
-        //showProgress(true);
+        pb.setVisibility(View.VISIBLE);
 
         Core.get().Api2Control().checkQr(code);
     }
 
     @Override
     public void startScanQR() {
+
         IntentIntegrator qrScan = new IntentIntegrator(this);
         qrScan.setPrompt("Відскануйте Qr код");
         qrScan.initiateScan();

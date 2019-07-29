@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,6 +26,7 @@ import ua.profarma.medbook.ui.custom_views.MedBookActivity;
 public class DrugSelectActivity extends MedBookActivity implements IOnSelectDrug {
 
     private TextView tvTitle;
+    private Button btn_accept;
     private DrugsRecyclerView list;
     private RecyclerItems items;
     private AppCompatEditText edSearch;

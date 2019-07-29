@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -47,26 +47,19 @@
         android:layout_marginStart="@dimen/margin_default"
         android:layout_marginEnd="@dimen/margin_default"
         android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/fragment_verification_phone_step_2_code_lay"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/fragment_verification_phone_step_2_code_lay"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/fragment_verification_phone_step_2_code_lay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+
+        android:layout_centerInParent="true"
         android:theme="@style/TextInputLayoutOnWhite"
-        android:layout_marginStart="@dimen/margin_default"
-        android:layout_marginTop="@dimen/margin_default"
-        android:layout_marginEnd="@dimen/margin_default"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_verification_phone_step_2_btn_again"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_verification_phone_step_2_phone">
+      >
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/fragment_verification_phone_step_2_code_et"
@@ -77,32 +70,30 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:id="@+id/fragment_verification_phone_step_2_btn_save"
+        android:background="@drawable/ripple_for_enter_btn"
+        android:textColor="@color/white"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/fragment_verification_phone_step_2_code_lay"
+        android:layout_width="@dimen/btn_auth_w_2"
+        android:layout_height="@dimen/btn_auth_h"
+        android:layout_centerInParent="true"
+        android:text="@string/change_phone"
+         />
+
+    <Button
         android:id="@+id/fragment_verification_phone_step_2_btn_again"
         android:background="@drawable/ripple_for_enter_btn"
         android:layout_width="@dimen/btn_auth_w_2"
         android:layout_height="@dimen/btn_auth_h"
+        android:layout_below="@+id/fragment_verification_phone_step_2_btn_save"
+        android:layout_centerInParent="true"
         android:layout_marginStart="@dimen/margin_default"
         android:textColor="@color/white"
-        android:layout_marginTop="@dimen/margin_default_double"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="@dimen/margin_default"
         android:text="@string/send_code_again"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_verification_phone_step_2_code_lay" />
+        />
 
-    <Button
-        android:id="@+id/fragment_verification_phone_step_2_btn_save"
-        android:background="@drawable/ripple_for_enter_btn"
-        android:textColor="@color/white"
-        android:layout_width="@dimen/btn_auth_w_2"
-        android:layout_height="@dimen/btn_auth_h"
-        android:layout_marginStart="@dimen/margin_default"
-        android:layout_marginTop="@dimen/margin_default_double"
-        android:layout_marginEnd="@dimen/margin_default"
-        android:text="@string/change_phone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_verification_phone_step_2_btn_again" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

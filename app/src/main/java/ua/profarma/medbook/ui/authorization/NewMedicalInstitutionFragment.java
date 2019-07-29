@@ -320,6 +320,7 @@ public class NewMedicalInstitutionFragment extends Fragment implements OnMapRead
                     if (mSelectedMarkerId != -1 && mSelectedMarkerId == listMark.get(i).id) {
                         BitmapDrawable bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.mipmap.ic_med_inst_select_mark);
                         Bitmap b = bitmapdraw.getBitmap();
+
                         markerOptions.icon(BitmapDescriptorFactory.fromBitmap(b));
 
                         resizeConstraintLayout(mViewMarker, mViewMarkerWidth, mViewMarkerHeight);
@@ -328,9 +329,9 @@ public class NewMedicalInstitutionFragment extends Fragment implements OnMapRead
                     } else {
 
 
-                        int height = 80;
-                        int width = 80;
-                        BitmapDrawable bitmapdraw=(BitmapDrawable)getResources().getDrawable(R.drawable.med_inst_mark);
+                        int height = 60;
+                        int width = 60;
+                        BitmapDrawable bitmapdraw=(BitmapDrawable)getResources().getDrawable(R.mipmap.ic_mapmark0);
                         Bitmap b =bitmapdraw.getBitmap();
                         Bitmap smallMarker = Bitmap.createScaledBitmap(b, width, height, false);
                         markerOptions.icon(BitmapDescriptorFactory.fromBitmap(smallMarker));
@@ -350,7 +351,11 @@ public class NewMedicalInstitutionFragment extends Fragment implements OnMapRead
     public void onMapClick(LatLng latLng) {
         if (mSelectedMarkerId != -1)
             if (mHashMapMarkers.get(mSelectedMarkerId) != null) {
-                mHashMapMarkers.get(mSelectedMarkerId).setIcon(BitmapDescriptorFactory.fromResource(R.drawable.med_inst_mark));
+                BitmapDrawable bitmapdraw=(BitmapDrawable)getResources().getDrawable(R.mipmap.ic_mapmark0);
+                Bitmap b =bitmapdraw.getBitmap();
+                Bitmap smallMarker = Bitmap.createScaledBitmap(b, 60, 60, false);
+
+                mHashMapMarkers.get(mSelectedMarkerId).setIcon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_mapmark0));
                 resizeConstraintLayout(mViewMarker, 0, 0);
                 mSelectedMarkerId = -1;
             }
@@ -371,11 +376,11 @@ public class NewMedicalInstitutionFragment extends Fragment implements OnMapRead
     public boolean onMarkerClick(final Marker marker) {
         int markerSelectIdOld = mSelectedMarkerId;
         if (markerSelectIdOld == isNewSelectedMarker(marker)) {
-            marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.med_inst_mark));
+            marker.setIcon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_mapmark0));
             resizeConstraintLayout(mViewMarker, 0, 0);
         } else {
             if (mHashMapMarkers.get(markerSelectIdOld) != null)
-                mHashMapMarkers.get(markerSelectIdOld).setIcon(BitmapDescriptorFactory.fromResource(R.drawable.med_inst_mark));
+                mHashMapMarkers.get(markerSelectIdOld).setIcon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_mapmark0));
             mSelectedMarkerId = isNewSelectedMarker(marker);
             marker.setIcon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_med_inst_select_mark));
             resizeConstraintLayout(mViewMarker, mViewMarkerWidth, mViewMarkerHeight);

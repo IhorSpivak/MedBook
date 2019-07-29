@@ -261,6 +261,8 @@ public class App extends Application {
         super.onCreate();
         Fabric.with(this, new Crashlytics());
 
+
+
         mUpdateLastTimeUserNews = 0;
         mUpdateLastTimeMaterials = 0;
         mUpdateLastTimeNotifications = 0;

@@ -52,6 +52,7 @@ public class AuthorizationActivity extends MedBookActivity implements EventListe
         LogUtils.logD("AuthorizationControl", "AuthorizationActivity onCreate");
         setContentView(R.layout.activity_authorization);
 
+
         if (savedInstanceState == null) {
             showFragment(LoginFragment.newInstance(), TAG_AUTHORIZATION_OPTIONS, false);
         }

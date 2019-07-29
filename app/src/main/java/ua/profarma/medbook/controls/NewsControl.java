@@ -142,7 +142,7 @@ public class NewsControl {
         if (Core.get().AuthorizationControl().updateAccessToken()) {
             if (AppUtils.isNetworkAvailable(App.getAppContext())) {
 
-                ApiRest.PointAccess().getDrugs(text, 150, 1).enqueue(new MCall<DrugsResponse>() {
+                ApiRest.PointAccess().getDrugs(text, 150, 0).enqueue(new MCall<DrugsResponse>() {
                     @Override
                     public void onSuccess(Response<DrugsResponse> response) {
                         if (response != null && response.body() != null)

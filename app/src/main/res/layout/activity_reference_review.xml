@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/materials_background"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:id="@+id/toolbar">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/reference"
+            android:layout_marginLeft="20dp"
+
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:textSize="18sp"/>
+
+        <ImageView
+            android:id="@+id/close"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:paddingStart="@dimen/padding_default_double"
+            android:paddingEnd="@dimen/padding_default_double"
+            android:scaleType="centerInside"
+            android:tint="@drawable/background_pressed_vector_drawable"
+            app:srcCompat="@drawable/ic_arrow_back" />
+
+
+
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_below="@+id/toolbar"
+        android:background="@drawable/corner_ll"
+        android:fillViewport="true">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/corner_ll"
+
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:layout_marginLeft="20dp"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:textColor="@color/text_color_title_ed"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="12sp"/>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:textColor="@color/black"
+               android:text="@string/name_is_not_seted"
+               android:layout_marginLeft="19dp"
+               android:id="@+id/tv_name"/>
+
+
+            <TextView
+                android:id="@+id/activity_add_clinical_cases_add_icod_caption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:text="@string/diagnosis"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/text_color_title_ed"
+                android:textSize="12sp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:descendantFocusability="blocksDescendants">
+
+                <ua.profarma.medbook.ui.reference.IcodSelectedRecyclerViewed
+                    android:id="@+id/activity_add_clinical_cases_icod_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/line_divider_new" />
+
+            <TextView
+                android:id="@+id/tv_drugs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:text="@string/drugs"
+                android:layout_marginLeft="20dp"
+                android:textColor="@color/text_color_title_ed"
+                android:textSize="12sp" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:descendantFocusability="blocksDescendants">
+
+                <ua.profarma.medbook.ui.reference.DrugsSelectedRecyclerViewed
+                    android:id="@+id/activity_add_clinical_cases_drug_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </RelativeLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1.5dp"
+                android:layout_marginTop="20dp"
+
+                android:background="@drawable/line_divider_new" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rl_3"
+                android:layout_below="@+id/ll_6">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/patient"
+                    android:textStyle="bold"
+                    android:id="@+id/tv_patient_title"
+                    android:layout_marginLeft="20dp"
+                    android:textAllCaps="true"
+                    android:textColor="@color/text_color_title_ed"
+                    android:layout_marginTop="20dp"
+                    android:textSize="12sp"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="@string/phone_not_seted"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/tv_patient_title"
+                    android:layout_marginLeft="19dp"
+                    android:id="@+id/tv_phone"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="@string/mail_not_seted"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/tv_phone"
+                    android:layout_marginLeft="19dp"
+                    android:id="@+id/tv_mail"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/tv_mail"
+                    android:background="@color/color_tab_unselect">
+
+                </View>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_below="@+id/rl_3"
+                android:id="@+id/ll_4"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/description"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:textAllCaps="true"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_color_title_ed"
+                    android:layout_marginTop="20dp"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="@string/description_not_seted"
+
+                    android:layout_marginTop="20dp"
+                    android:layout_below="@+id/tv_patient_title"
+                    android:layout_marginLeft="19dp"
+                    android:id="@+id/tv_description"/>
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_below="@+id/ll_4"
+                android:layout_marginTop="20dp"
+                android:id="@+id/ll_5"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/saved_as_pattern"
+                    android:layout_marginLeft="20dp"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/black"
+                    android:textSize="13sp"/>
+
+                <Switch
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:theme="@style/SCBSwitch"
+                    android:checked="true"
+                    android:editable="false"
+                    android:id="@+id/sw"
+                    android:layout_marginBottom="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"/>
+
+
+
+            </RelativeLayout>
+
+            <Button
+                android:layout_width="137dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ripple_for_enter_check"
+
+                android:text="@string/check"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/color_button_type_2_pressed"
+                android:textAllCaps="true"
+                android:id="@+id/btn_check"
+                android:layout_below="@+id/btn_send"/>
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

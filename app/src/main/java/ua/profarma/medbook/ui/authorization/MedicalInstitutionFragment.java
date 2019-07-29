@@ -127,7 +127,7 @@ public class MedicalInstitutionFragment extends Fragment implements OnMapReadyCa
             @Override
             public void onClick(View v) {
                 if (mHashMapMarkers.get(mSelectedMarkerId) != null) {
-                    mHashMapMarkers.get(mSelectedMarkerId).setIcon(BitmapDescriptorFactory.fromResource(R.drawable.med_inst_mark));
+                    mHashMapMarkers.get(mSelectedMarkerId).setIcon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_mapmark0));
                     resizeConstraintLayout(mViewMarker, 0, 0);
                     mSelectedMarkerId = -1;
                 }
@@ -303,7 +303,7 @@ public class MedicalInstitutionFragment extends Fragment implements OnMapReadyCa
                         mTextMarkerCaption.setText(listMark.get(i).translations[selectLang].name);
                         mTextMarkerText.setText(listMark.get(i).translations[selectLang].address);
                     } else {
-                        BitmapDrawable bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.drawable.med_inst_mark);
+                        BitmapDrawable bitmapdraw = (BitmapDrawable) getResources().getDrawable(R.mipmap.ic_mapmark0);
                         Bitmap b = bitmapdraw.getBitmap();
                         markerOptions.icon(BitmapDescriptorFactory.fromBitmap(b));
                     }
@@ -321,7 +321,7 @@ public class MedicalInstitutionFragment extends Fragment implements OnMapReadyCa
     public void onMapClick(LatLng latLng) {
         if(mSelectedMarkerId != -1)
         if (mHashMapMarkers.get(mSelectedMarkerId) != null) {
-            mHashMapMarkers.get(mSelectedMarkerId).setIcon(BitmapDescriptorFactory.fromResource(R.drawable.med_inst_mark));
+            mHashMapMarkers.get(mSelectedMarkerId).setIcon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_mapmark0));
             resizeConstraintLayout(mViewMarker, 0, 0);
             mSelectedMarkerId = -1;
         }
@@ -343,11 +343,11 @@ public class MedicalInstitutionFragment extends Fragment implements OnMapReadyCa
         LogUtils.logD("ghjt78tgjhjg56", "onMarkerClick");
         int markerSelectIdOld = mSelectedMarkerId;
         if (markerSelectIdOld == isNewSelectedMarker(marker)) {
-            marker.setIcon(BitmapDescriptorFactory.fromResource(R.drawable.med_inst_mark));
+            marker.setIcon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_mapmark0));
             resizeConstraintLayout(mViewMarker, 0, 0);
         } else {
             if (mHashMapMarkers.get(markerSelectIdOld) != null)
-                mHashMapMarkers.get(markerSelectIdOld).setIcon(BitmapDescriptorFactory.fromResource(R.drawable.med_inst_mark));
+                mHashMapMarkers.get(markerSelectIdOld).setIcon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_mapmark0));
             mSelectedMarkerId = isNewSelectedMarker(marker);
             marker.setIcon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_med_inst_select_mark));
             resizeConstraintLayout(mViewMarker, mViewMarkerWidth, mViewMarkerHeight);

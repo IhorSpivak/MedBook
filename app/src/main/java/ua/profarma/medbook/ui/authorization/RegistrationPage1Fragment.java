@@ -13,7 +13,6 @@ import androidx.appcompat.widget.AppCompatEditText;
 import androidx.fragment.app.Fragment;
 import ua.profarma.medbook.Core;
 import ua.profarma.medbook.R;
-import ua.profarma.medbook.utils.AppUtils;
 
 //	        "username": "volodymyr.mokhonko",
 //            "email": "volodymyr.mokhonko@gmail.com",
@@ -43,6 +42,8 @@ public class RegistrationPage1Fragment extends Fragment {
         Button btnNext = rootView.findViewById(R.id.fragment_registration_page_1_bnt_next);
         TextView tvPrev = rootView.findViewById(R.id.fragment_registration_page_1_tv_back);
 
+
+
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,6 +53,7 @@ public class RegistrationPage1Fragment extends Fragment {
                             Core.get().AuthorizationControl().setFirstName(firstNameEditText.getText().toString());
                             Core.get().AuthorizationControl().setMiddleName(middleNameEditText.getText().toString());
                             Core.get().AuthorizationControl().setLastName(lastNameEditText.getText().toString());
+
                             if(getActivity() instanceof IAuthActivity){
                                 ((IAuthActivity)getActivity()).onRegistrationStep2();
                             }
@@ -74,6 +76,7 @@ public class RegistrationPage1Fragment extends Fragment {
         });
         return rootView;
     }
+
 
 
 }

@@ -44,25 +44,25 @@ public class FishkaCardsRecyclerView extends BaseRecyclerView {
         return new RecyclerItems();
     }
 
-    @Override
-    public void init() {
-        super.init();
-
-        SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(getContext()) {
-            @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-
-                final int position = viewHolder.getAdapterPosition();
-                if (getActivity(getContext()) instanceof IOnDeleteFishkaCard)
-                    getActivity(getContext()).onDeleteFishkaCardRecyclerView(position);
-
-            }
-        };
-        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeToDeleteCallback);
-        itemTouchhelper.attachToRecyclerView(this);
-
-        addItemDecoration(new SimpleDividerItemDecoration(getContext()));
-    }
+//    @Override
+//    public void init() {
+//        super.init();
+//
+//        SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(getContext()) {
+//            @Override
+//            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
+//
+//                final int position = viewHolder.getAdapterPosition();
+//                if (getActivity(getContext()) instanceof IOnDeleteFishkaCard)
+//                    getActivity(getContext()).onDeleteFishkaCardRecyclerView(position);
+//
+//            }
+//        };
+//        ItemTouchHelper itemTouchhelper = new ItemTouchHelper(swipeToDeleteCallback);
+//        itemTouchhelper.attachToRecyclerView(this);
+//
+//        addItemDecoration(new SimpleDividerItemDecoration(getContext()));
+//    }
 
     @Override
     public BaseViewHolder create(ViewGroup parent, int viewType) {

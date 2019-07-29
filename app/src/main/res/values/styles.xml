@@ -168,5 +168,9 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabBackground">@drawable/tab_bg</item>
+    </style>
+
 
 </resources>

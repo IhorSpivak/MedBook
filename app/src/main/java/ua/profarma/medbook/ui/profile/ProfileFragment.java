@@ -1,11 +1,16 @@
 package ua.profarma.medbook.ui.profile;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,8 +55,8 @@ public class ProfileFragment extends Fragment implements EventListener {
     public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_profile_layout, container, false);
 
-        TextView btnOk = rootView.findViewById(R.id.fragment_profile_layout_ok);
-        TextView btnExit = rootView.findViewById(R.id.fragment_profile_layout_exit);
+        ImageView btnOk = rootView.findViewById(R.id.close);
+        Button btnExit = rootView.findViewById(R.id.fragment_profile_layout_exit);
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,10 +66,8 @@ public class ProfileFragment extends Fragment implements EventListener {
         btnExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                App.logout();
-                LogUtils.logD("AppMedbook", "btnExit EventLogout");
-                EventRouter.send(new EventLogout());
-            }
+              onExitDialog();
+;            }
         });
 
         nameTv = rootView.findViewById(R.id.name);
@@ -81,7 +84,7 @@ public class ProfileFragment extends Fragment implements EventListener {
         }
 
 
-        LinearLayout llPhone = rootView.findViewById(R.id.fragment_profile_layout_ll_phone);
+        RelativeLayout llPhone = rootView.findViewById(R.id.fragment_profile_layout_ll_phone);
         llPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,9 +116,6 @@ public class ProfileFragment extends Fragment implements EventListener {
         scanQR.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(getActivity(), ScanQrActivity.class);
-                //getActivity().startActivity(intent);
-
                 if(getActivity() instanceof IStartScanQR) ((IStartScanQR)getActivity()).startScanQR();
             }
         });
@@ -131,6 +131,31 @@ public class ProfileFragment extends Fragment implements EventListener {
 
         updateCaptions();
         return rootView;
+    }
+
+    private void onExitDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle(getString(R.string.exit_title))
+                .setNegativeButton(getString(R.string.cancel),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        })
+                .setPositiveButton(R.string.exit, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                       onExit();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    private void onExit() {
+        App.logout();
+        LogUtils.logD("AppMedbook", "btnExit EventLogout");
+        EventRouter.send(new EventLogout());
     }
 
     private void updateCaptions() {
@@ -191,4 +216,5 @@ public class ProfileFragment extends Fragment implements EventListener {
 
         Core.get().Api2Control().checkQr(code);
     }
+
 }

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -34,6 +35,7 @@ public class ExchangePointsFragment extends MedBookFragment {
     private ImageView imvAdd;
     private ImageView imvMinus;
     private Button btnGetCode;
+    private ProgressBar pb;
 
     private Button btnAddNumber;
     private TextView tvAddNumber;
@@ -51,6 +53,7 @@ public class ExchangePointsFragment extends MedBookFragment {
         tvReceiveValue = rootView.findViewById(R.id.fragment_exchange_points_text_2);
         tvSendTitle = rootView.findViewById(R.id.fragment_exchange_points_text_3);
         tvSendValue = rootView.findViewById(R.id.fragment_exchange_points_text_4);
+        pb = rootView.findViewById(R.id.pb);
 
         tvAddNumber = rootView.findViewById(R.id.fragment_exchange_points_btn_add_number_caption);
         btnAddNumber = rootView.findViewById(R.id.fragment_exchange_points_btn_add_number);
@@ -86,6 +89,7 @@ public class ExchangePointsFragment extends MedBookFragment {
 
         btnGetCode = rootView.findViewById(R.id.fragment_exchange_points_btn_get_code);
         btnGetCode.setOnClickListener(view -> {
+            pb.setVisibility(View.VISIBLE);
 
             //App.updateUserPhone("");
             if (App.getUser().phone == null || App.getUser().phone.isEmpty()) {
@@ -106,6 +110,7 @@ public class ExchangePointsFragment extends MedBookFragment {
         switch (event.getEventId()) {
             case Event.EVENT_GET_SMS_EXCHANGE_POINTS:
                 btnGetCode.setEnabled(true);
+                pb.setVisibility(View.GONE);
         }
     }
 

@@ -24,19 +24,16 @@
             android:layout_centerHorizontal="true"
             android:textSize="18sp"/>
 
-        <TextView
+        <ImageView
+            android:id="@+id/close"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/abort"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="20dp"
-            android:id="@+id/btn_back"
-            android:textColor="@color/abort_title_reference"
-
-            android:layout_marginTop="20dp"
-            android:layout_centerHorizontal="true"
-            android:textSize="13sp"/>
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:paddingStart="@dimen/padding_default_double"
+            android:paddingEnd="@dimen/padding_default_double"
+            android:scaleType="centerInside"
+            android:tint="@drawable/background_pressed_vector_drawable"
+            app:srcCompat="@drawable/ic_arrow_back" />
 
 
 
@@ -77,6 +74,8 @@
                 android:id="@+id/activity_add_clinical_cases_add_title_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="19dp"
 
                 android:theme="@style/TextInputLayoutOnWhite">
 
@@ -87,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
                     android:hint="@string/add_name"
-                    android:paddingLeft="20dp"
+
                     android:lines="1"
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -224,7 +223,7 @@
                     android:layout_below="@+id/iv_user"
                     android:layout_width="match_parent"
                     android:layout_marginRight="20dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="19dp"
                     android:layout_height="wrap_content"
                     >
                     <androidx.appcompat.widget.AppCompatEditText
@@ -243,7 +242,7 @@
                     android:layout_below="@+id/tv_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="19dp"
                     android:layout_marginRight="20dp"
                     >
                     <androidx.appcompat.widget.AppCompatEditText
@@ -291,15 +290,16 @@
                     android:id="@+id/tv_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="19dp"
                     >
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/ed_description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="20dp"
                         android:inputType="textEmailAddress"
                         android:hint="@string/add_description"
-                        android:lines="1"
+                        android:maxLines="5"
                         android:textColor="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -346,13 +346,13 @@
                 android:layout_marginLeft="20dp"
                 android:text="@string/send"
                 android:textColor="@color/white"
+                android:layout_marginBottom="20dp"
                 android:textAllCaps="true"
                 android:layout_below="@+id/ll_5"/>
 
             <Button
                 android:layout_width="137dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:background="@drawable/ripple_for_enter_check"
 
                 android:text="@string/check"

@@ -164,5 +164,15 @@
     <string name="accept1">Підтвердити</string>
     <string name="reference_list">Фармдовідки</string>
     <string name="patterns">Шаблони</string>
+    <string name="saved_as_pattern">Збереженно як шаблон</string>
+    <string name="name_is_not_seted">Назва не вказана</string>
+    <string name="phone_not_seted">Телефон не вказано</string>
+    <string name="mail_not_seted">Електронна пошта не вказана</string>
+    <string name="description_not_seted">Опис не вказанно</string>
+    <string name="must_chose_icod">Оберіть диагнози</string>
+    <string name="must_chose_drugs">Оберіть ліки</string>
+    <string name="exit_title">Ви дiйсно хочете вийти?</string>
+    <string name="card_add_success">Карта додана успішно</string>
+    <string name="delete">Видалити</string>
 </resources>
 
