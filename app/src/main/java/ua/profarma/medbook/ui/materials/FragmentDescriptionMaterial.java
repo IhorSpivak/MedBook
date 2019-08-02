@@ -10,16 +10,19 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
+import ua.profarma.medbook.App;
 import ua.profarma.medbook.Core;
 import ua.profarma.medbook.R;
 import ua.profarma.medbook.events.core.Event;
@@ -107,6 +110,7 @@ public class FragmentDescriptionMaterial extends MedBookFragment {
         Video[] videos = new Video[0];
         Presentation[] presentations = new Presentation[0];
         Test[] tests = new Test[0];
+
         if (Core.get().UserContentControl().getSelectedMaterial().videos != null)
             videos = Core.get().UserContentControl().getSelectedMaterial().videos;
         if (Core.get().UserContentControl().getSelectedMaterial().presentations != null)
@@ -119,7 +123,7 @@ public class FragmentDescriptionMaterial extends MedBookFragment {
         switch (materialsEnum) {
             case PRESENTATION:
                 mSelectPresentation = getTitlePresentation(idType, presentations);
-                updateContent(Core.get().LocalizationControl().getText(R.id.material_presentation), mSelectPresentation.presentation.translations[0].title,
+                updateContent(Core.get().LocalizationControl().getText(R.id.material_presentation), mSelectPresentation.presentation.translations[1].title,
                         mSelectPresentation.time_from,
                         mSelectPresentation.presentation.translations[0].description,
                         mSelectPresentation.presentation.translations[0].logo,
@@ -165,9 +169,13 @@ public class FragmentDescriptionMaterial extends MedBookFragment {
                                 && mSelectTest.test.questions.length > 0) {
                             if (mSelectTest.test.results.length == 0) {
                                 LogUtils.logD(TAG, "start TestsActivity");
-                                Intent intentTests = new Intent(getContext(), TestsActivity.class);
-                                intentTests.putExtra(TestsActivity.KEY_ID_TEST, mSelectTest.id);
-                                getContext().startActivity(intentTests);
+                                if (isOnline()) {
+                                    Intent intentTests = new Intent(getContext(), TestsActivity.class);
+                                    intentTests.putExtra(TestsActivity.KEY_ID_TEST, mSelectTest.id);
+                                    getContext().startActivity(intentTests);
+                                } else {
+                                    Toast.makeText(App.getAppContext(), "Для проходження тесту потрібне интернет зєднання", Toast.LENGTH_LONG).show();
+                                }
                             } else {
                                 LogUtils.logD(TAG, "start ViewCompletedTestActivity");
                                 Intent intentTests = new Intent(getContext(), ViewCompletedTestActivity.class);
@@ -186,6 +194,19 @@ public class FragmentDescriptionMaterial extends MedBookFragment {
             }
         });
         return rootView;
+    }
+
+    public boolean isOnline() {
+        Runtime runtime = Runtime.getRuntime();
+        try {
+            Process ipProcess = runtime.exec("/system/bin/ping -c 1 8.8.8.8");
+            int     exitValue = ipProcess.waitFor();
+            return (exitValue == 0);
+        }
+        catch (IOException e)          { e.printStackTrace(); }
+        catch (InterruptedException e) { e.printStackTrace(); }
+
+        return false;
     }
 
     private Video getTitleVideo(int id, Video[] videos) {

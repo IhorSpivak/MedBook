@@ -15,6 +15,8 @@ import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import ua.profarma.medbook.models.NewReferenceResponse;
+import ua.profarma.medbook.models.NewRequestReference;
 import ua.profarma.medbook.types.MedicalInstitutionTranslate;
 import ua.profarma.medbook.types.NearestMedicalInstitutionItems;
 import ua.profarma.medbook.types.RegistrationInfo;
@@ -276,7 +278,7 @@ public interface ApiRestModule {
     Call<IcodResponse>getIcod();
 
     @GET("drugs")
-    Call<DrugsResponse>getDrugs(@Query("title")  String search, @Query("per-page")  int per_page,  @Query("own")  int own);
+    Call<DrugsResponse>getDrugs(@Query("title")  String search, @Query("per-page")  int per_page,  @Query("our")  int our);
 
 
     @Multipart
@@ -288,6 +290,9 @@ public interface ApiRestModule {
 
     @POST("news-clinical-case")
     Call<MedicalCaseBodyResponse> createMedicalCase(@Body RequestMedicalCaseBody requestMedicalCaseBody);
+
+    @POST("pharm-advice")
+    Call<NewReferenceResponse> createReferenseCase(@Body NewRequestReference requestMedicalCaseBody);
 
     @PATCH("news-clinical-case/{id}")
     Call<MedicalCaseBodyResponse> editMedicalCase(@Path(value = "id", encoded = true) int id, @Body RequestMedicalCaseBody requestMedicalCaseBody);

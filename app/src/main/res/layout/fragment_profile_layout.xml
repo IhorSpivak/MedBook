@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:focusable="false"
             app:contentScrim="@color/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            app:layout_scrollFlags="scroll">
 
             <RelativeLayout
                 android:layout_width="match_parent"

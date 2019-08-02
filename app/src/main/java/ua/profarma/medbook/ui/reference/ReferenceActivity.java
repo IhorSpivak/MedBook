@@ -14,6 +14,7 @@ import android.provider.Contacts;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -38,11 +39,20 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
+import retrofit2.Response;
 import ua.profarma.medbook.App;
 import ua.profarma.medbook.Core;
 import ua.profarma.medbook.R;
+import ua.profarma.medbook.api.ApiRest;
+import ua.profarma.medbook.api.MCall;
+import ua.profarma.medbook.events.EventLogout;
 import ua.profarma.medbook.events.core.Event;
+import ua.profarma.medbook.events.core.EventRouter;
 import ua.profarma.medbook.events.news.EventImageLoadClinicCase;
+import ua.profarma.medbook.models.IdCCDrug1;
+import ua.profarma.medbook.models.NewReferenceResponse;
+import ua.profarma.medbook.models.NewRequestReference;
+import ua.profarma.medbook.models.UserDetails;
 import ua.profarma.medbook.models.response.ReferenceItem;
 import ua.profarma.medbook.recyclerviews.base.RecyclerItem;
 import ua.profarma.medbook.recyclerviews.base.RecyclerItems;
@@ -52,6 +62,7 @@ import ua.profarma.medbook.recyclerviews.icod_selected.IcodSelectedRecyclerItem;
 import ua.profarma.medbook.recyclerviews.icod_selected.IcodSelectedRecyclerView;
 import ua.profarma.medbook.recyclerviews.image_cc_selected.ImageCCSelectedRecyclerItem;
 import ua.profarma.medbook.recyclerviews.image_cc_selected.ImageCCSelectedRecyclerView;
+import ua.profarma.medbook.types.User;
 import ua.profarma.medbook.types.news.DrugSelected;
 import ua.profarma.medbook.types.news.IcodSelected;
 import ua.profarma.medbook.types.news.IdCCDrug;
@@ -59,12 +70,14 @@ import ua.profarma.medbook.types.news.IdCCIcod;
 import ua.profarma.medbook.types.news.CCImage;
 import ua.profarma.medbook.types.news.MedicalCaseItem;
 import ua.profarma.medbook.types.requests.RequestMedicalCaseBody;
+import ua.profarma.medbook.types.responses.MedicalCaseBodyResponse;
 import ua.profarma.medbook.ui.custom_views.MedBookActivity;
 import ua.profarma.medbook.ui.news_and_clinical_cases.AddClinicalCaseActivity;
 import ua.profarma.medbook.ui.news_and_clinical_cases.AddCommentToLoadImageActivity;
 import ua.profarma.medbook.ui.news_and_clinical_cases.DrugSelectActivity;
 import ua.profarma.medbook.ui.news_and_clinical_cases.IOnDeleteAddCC;
 import ua.profarma.medbook.ui.news_and_clinical_cases.IcodSelectActivity;
+import ua.profarma.medbook.utils.AppUtils;
 import ua.profarma.medbook.utils.DialogBuilder;
 import ua.profarma.medbook.utils.FileUtils;
 import ua.profarma.medbook.utils.LogUtils;
@@ -93,6 +106,7 @@ public class ReferenceActivity extends MedBookActivity implements IOnDeleteAddCC
     private Button btnSend;
     private Button btnSave;
     private FloatingActionButton iv_user;
+    private ProgressBar pb;
 
     private TextView tvDetailsTitle;
     private ImageView close;
@@ -128,8 +142,9 @@ public class ReferenceActivity extends MedBookActivity implements IOnDeleteAddCC
         edTitle = findViewById(R.id.ed_name);
         edDetails = findViewById(R.id.ed_description);
         tvDetailsTitle = findViewById(R.id.activity_add_clinical_cases_add_details_caption);
-        btnSend = findViewById(R.id.btn_send);
-        btnSave = findViewById(R.id.btn_check);
+        pb = findViewById(R.id.pb);
+
+        btnSave = findViewById(R.id.btn_send);
         close = findViewById(R.id.close);
         listIcod = findViewById(R.id.activity_add_clinical_cases_icod_list);
         ed_mail = findViewById(R.id.ed_mail);
@@ -150,38 +165,22 @@ public class ReferenceActivity extends MedBookActivity implements IOnDeleteAddCC
         close.setOnClickListener(view -> onBackPressed());
         tvAddDrugBtn.setOnClickListener(view -> startActivityForResult(new Intent(this, DrugSelectActivity.class), REQUEST_SELECT_DRUG));
         iv_user.setOnClickListener(view -> startActivityForResult(new Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI), RESULT_PICK_CONTACT1));
-        btnSend.setOnClickListener(view -> {
+        btnSave.setOnClickListener(view ->  sendReference());
 
-            sendReference();
 
-        });
-        btnSave.setOnClickListener(view -> {
-//            RequestMedicalCaseBody requestMedicalCaseBody = new RequestMedicalCaseBody();
-//            requestMedicalCaseBody.description = edDetails.getText().toString();
-//            requestMedicalCaseBody.title = edTitle.getText().toString();
-//            requestMedicalCaseBody.news_clinical_case_status_id = 1;//NEW
-//            if (itemsImages.size() > 0) {
-//                requestMedicalCaseBody.news_clinical_case_image = new CCImage[itemsImages.size()];
-//                for (int i = 0; i < requestMedicalCaseBody.news_clinical_case_image.length; i++)
-//                    requestMedicalCaseBody.news_clinical_case_image[i] = new CCImage(((ImageCCSelectedRecyclerItem) itemsImages.get(i)).getCcImage().image,
-//                            ((ImageCCSelectedRecyclerItem) itemsImages.get(i)).getCcImage().comment, false);
-//            }
-//            if (itemsDrug.size() > 0) {
-//                requestMedicalCaseBody.news_clinical_case_drug_id = new IdCCDrug[itemsDrug.size()];
-//                for (int i = 0; i < requestMedicalCaseBody.news_clinical_case_drug_id.length; i++)
-//                    requestMedicalCaseBody.news_clinical_case_drug_id[i] = new IdCCDrug(((DrugSelectedRecyclerItem) itemsDrug.get(i)).getDrug().id);
-//            }
-//            if (itemsIcod.size() > 0) {
-//                requestMedicalCaseBody.news_clinical_case_icod_id = new IdCCIcod[itemsIcod.size()];
-//                for (int i = 0; i < requestMedicalCaseBody.news_clinical_case_icod_id.length; i++)
-//                    requestMedicalCaseBody.news_clinical_case_icod_id[i] = new IdCCIcod(((IcodSelectedRecyclerItem) itemsIcod.get(i)).getIcodSelected().id);
-//            }
-//            requestMedicalCaseBody.show_author = aSwitch.isChecked() ? 1 : 0;
-//            if (medicalCaseItem == null)
-//                Core.get().NewsControl().createMedicalCase(requestMedicalCaseBody);
-//            else
-//                Core.get().NewsControl().editMedicalCase(medicalCaseItem.id, requestMedicalCaseBody);
-//            finish();
+        edDetails.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (v.getId() == R.id.ed_description) {
+                    v.getParent().requestDisallowInterceptTouchEvent(true);
+                    switch (event.getAction() & MotionEvent.ACTION_MASK) {
+                        case MotionEvent.ACTION_UP:
+                            v.getParent().requestDisallowInterceptTouchEvent(false);
+                            break;
+                    }
+                }
+                return false;
+            }
         });
 
 
@@ -203,8 +202,6 @@ public class ReferenceActivity extends MedBookActivity implements IOnDeleteAddCC
         ReferenceItem itemReference = gson.fromJson(getIntent().getStringExtra("myjson"), ReferenceItem.class);
         if(itemReference != null){
             setDataReference(itemReference);
-        } else {
-            btnSave.setVisibility(View.GONE);
         }
         onLocalizationUpdate();
     }
@@ -215,36 +212,48 @@ public class ReferenceActivity extends MedBookActivity implements IOnDeleteAddCC
         } else if(itemsDrug.size() == 0){
             Toast.makeText(this, R.string.must_chose_drugs, Toast.LENGTH_LONG).show();
         } else if(itemsDrug.size() > 0 && itemsIcod.size() > 0) {
-            RequestMedicalCaseBody requestMedicalCaseBody = new RequestMedicalCaseBody();
-            requestMedicalCaseBody.description = edDetails.getText().toString();
-            requestMedicalCaseBody.title = edTitle.getText().toString();
-            requestMedicalCaseBody.news_clinical_case_status_id = 2;//REVIEW
 
-//            if (itemsDrug.size() > 0) {
-//                requestMedicalCaseBody.news_clinical_case_drug_id = new IdCCDrug[itemsDrug.size()];
-//                for (int i = 0; i < requestMedicalCaseBody.news_clinical_case_drug_id.length; i++)
-//                    requestMedicalCaseBody.news_clinical_case_drug_id[i] = new IdCCDrug(((DrugSelectedRecyclerItem) itemsDrug.get(i)).getDrug().id);
-//            }
-//            if (itemsIcod.size() > 0) {
-//                requestMedicalCaseBody.news_clinical_case_icod_id = new IdCCIcod[itemsIcod.size()];
-//                for (int i = 0; i < requestMedicalCaseBody.news_clinical_case_icod_id.length; i++)
-//                    requestMedicalCaseBody.news_clinical_case_icod_id[i] = new IdCCIcod(((IcodSelectedRecyclerItem) itemsIcod.get(i)).getIcodSelected().id);
-//            }
-//            requestMedicalCaseBody.show_author = aSwitch.isChecked() ? 1 : 0;
-//            if (requestMedicalCaseBody.title == null || requestMedicalCaseBody.title.isEmpty() || requestMedicalCaseBody.title.length() < 3) {
-//                DialogBuilder.showInfoDialog(ReferenceActivity.this, Core.get().LocalizationControl().getText(R.id.general_message), Core.get().LocalizationControl().getText(R.id.add_md_case_title_min_symbols));
-//            } else if (requestMedicalCaseBody.description == null || requestMedicalCaseBody.description.isEmpty() || requestMedicalCaseBody.description.length() < 3) {
-//                DialogBuilder.showInfoDialog(ReferenceActivity.this, Core.get().LocalizationControl().getText(R.id.general_message), Core.get().LocalizationControl().getText(R.id.add_md_case_details_min_symbols));
-//            } else if (requestMedicalCaseBody.news_clinical_case_icod_id == null || requestMedicalCaseBody.news_clinical_case_icod_id.length == 0) {
-//                DialogBuilder.showInfoDialog(ReferenceActivity.this, Core.get().LocalizationControl().getText(R.id.general_message), Core.get().LocalizationControl().getText(R.id.add_md_case_icods_empty));
-//            } else if (requestMedicalCaseBody.news_clinical_case_drug_id == null || requestMedicalCaseBody.news_clinical_case_drug_id.length == 0) {
-//                DialogBuilder.showInfoDialog(ReferenceActivity.this, Core.get().LocalizationControl().getText(R.id.general_message), Core.get().LocalizationControl().getText(R.id.add_md_case_drugs_empty));
-//            } else {
-//                Core.get().NewsControl().createMedicalCase(requestMedicalCaseBody);
-//                finish();
-//            }
+            NewRequestReference requestReference = new NewRequestReference();
+            requestReference.description = edDetails.getText().toString();
+            requestReference.title = edTitle.getText().toString();
+            UserDetails user = new UserDetails(ed_phone.getText().toString(), ed_mail.getText().toString());
+            requestReference.pharm_advice_patient = new UserDetails[1];
+            requestReference.pharm_advice_patient[0] = user;
+            requestReference.template = aSwitch.isChecked() ? 1 : 0;
+
+
+
+            if (itemsDrug.size() > 0) {
+                requestReference.pharm_advice_drug_id = new IdCCDrug1[itemsDrug.size()];
+                for (int i = 0; i < requestReference.pharm_advice_drug_id.length; i++)
+                    requestReference.pharm_advice_drug_id[i] = new IdCCDrug1(((DrugSelectedRecyclerItem) itemsDrug.get(i)).getDrug().id,((DrugSelectedRecyclerItem) itemsDrug.get(i)).getDrug().qty);
+            }
+            if (itemsIcod.size() > 0) {
+                requestReference.pharm_advice_icod_id = new IdCCIcod[itemsIcod.size()];
+                for (int i = 0; i < requestReference.pharm_advice_icod_id.length; i++)
+                    requestReference.pharm_advice_icod_id[i] = new IdCCIcod(((IcodSelectedRecyclerItem) itemsIcod.get(i)).getIcodSelected().id);
+            }
+            createReferenseCase(requestReference);
         }
     }
+
+    public void createReferenseCase(NewRequestReference requestReference) {
+        pb.setVisibility(View.VISIBLE);
+        if (Core.get().AuthorizationControl().updateAccessToken()) {
+            if (AppUtils.isNetworkAvailable(App.getAppContext())) {
+                ApiRest.PointAccess().createReferenseCase(requestReference).enqueue(new MCall<NewReferenceResponse>() {
+                    @Override
+                    public void onSuccess(Response<NewReferenceResponse> response) {
+                        onBackPressed();
+                    }
+                });
+            } else {
+                AppUtils.showNoInternetConnect();
+            }
+        } else
+            EventRouter.send(new EventLogout());
+    }
+
 
 
     private void setDataCC() {
@@ -287,6 +296,7 @@ public class ReferenceActivity extends MedBookActivity implements IOnDeleteAddCC
     private void setDataReference(ReferenceItem item) {
         edTitle.setText(item.getTitle());
         edDetails.setText(item.getDescription());
+
         if (item.getDrugs() != null && item.getDrugs().size() > 0) {
             listDrug.init();
             itemsDrug = new RecyclerItems();
@@ -311,8 +321,8 @@ public class ReferenceActivity extends MedBookActivity implements IOnDeleteAddCC
                         }
                     }
                 }
-                itemsIcod.add(new IcodSelectedRecyclerItem(new IcodSelected(item.getIcods().get(i).getId(),
-                       item.getIcods().get(i).getIcod().getId().toString(),
+                itemsIcod.add(new IcodSelectedRecyclerItem(new IcodSelected(item.getIcods().get(i).getIcod_id(),
+                       item.getIcods().get(i).getIcod().getCode_icod(),
                       item.getIcods().get(i).getIcod().getTranslations().get(selectLang).getTitle(), false)));
             }
             listIcod.itemsAdd(itemsIcod);
@@ -336,7 +346,12 @@ public class ReferenceActivity extends MedBookActivity implements IOnDeleteAddCC
             int mailIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Email.DATA);
             mail = cursor.getString(mailIndex);
             phoneNo = cursor.getString(phoneIndex);
-            ed_phone.setText(phoneNo);
+            if(phoneNo.length() < 13 ||phoneNo.length() < 12 || phoneNo.length() < 11|| phoneNo.length() < 10) {
+                ed_phone.setText("+38" + phoneNo);
+            } else {
+                ed_phone.setText(phoneNo);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,6 +27,7 @@ public class ExchangePointsLikiWikiSuccessFragment extends MedBookFragment {
     private TextView tvWrittenOffPoints;
     private TextView tvMessage;
     private Button btnClose;
+
 
     public static ExchangePointsLikiWikiSuccessFragment newInstance(ExecuteTransactionData data, String message) {
         ExchangePointsLikiWikiSuccessFragment fragment = new ExchangePointsLikiWikiSuccessFragment();

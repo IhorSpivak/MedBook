@@ -148,7 +148,7 @@
     <string name="add_name">Додайте назву</string>
     <string name="name">Назва</string>
     <string name="add_drug">Додати препарат</string>
-    <string name="diagnosis">Діагнози</string>
+    <string name="diagnosis">Захворювання за МКХ</string>
     <string name="patient">Паціент</string>
     <string name="add_number">Номер телефону</string>
     <string name="add_description">Додайте опис</string>
@@ -169,10 +169,12 @@
     <string name="phone_not_seted">Телефон не вказано</string>
     <string name="mail_not_seted">Електронна пошта не вказана</string>
     <string name="description_not_seted">Опис не вказанно</string>
-    <string name="must_chose_icod">Оберіть диагнози</string>
-    <string name="must_chose_drugs">Оберіть ліки</string>
+    <string name="must_chose_icod">Додайте захворювання</string>
+    <string name="must_chose_drugs">Додайте препарат</string>
     <string name="exit_title">Ви дiйсно хочете вийти?</string>
     <string name="card_add_success">Карта додана успішно</string>
     <string name="delete">Видалити</string>
+    <string name="delete_card_is_succes">Карта була видалена</string>
+    <string name="defoult_title_reference">Фармдовідка за приначенням</string>
 </resources>
 

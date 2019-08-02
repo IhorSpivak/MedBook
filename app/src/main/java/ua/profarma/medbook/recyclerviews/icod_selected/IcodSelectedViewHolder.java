@@ -28,13 +28,13 @@ public class IcodSelectedViewHolder extends BaseViewHolder {
         rootView = itemView.findViewById(R.id.item_icod_selected_root);
         tvCode = itemView.findViewById(R.id.item_icod_selected_code);
         tvTitle = itemView.findViewById(R.id.item_icod_selected_title);
-        imvDelete = itemView.findViewById(R.id.item_icod_selected_delete);
+
     }
 
     public void init(IcodSelectedRecyclerItem owner, IcodSelected icodSelected) {
-        tvCode.setText("["+icodSelected.code+"]");
+        tvCode.setText(icodSelected.code);
         tvTitle.setText(icodSelected.title);
-        if(icodSelected.viewing) imvDelete.setVisibility(View.GONE);
-        imvDelete.setOnClickListener(owner);
+
+        rootView.setOnLongClickListener(owner);
     }
 }

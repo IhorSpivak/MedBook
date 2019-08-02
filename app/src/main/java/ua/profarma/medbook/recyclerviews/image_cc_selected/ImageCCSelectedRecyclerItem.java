@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.view.View;
 
+import com.bumptech.glide.RequestManager;
+
 import ua.profarma.medbook.R;
 import ua.profarma.medbook.recyclerviews.base.BaseViewHolder;
 import ua.profarma.medbook.recyclerviews.base.RecyclerItem;
@@ -14,6 +16,7 @@ import ua.profarma.medbook.ui.news_and_clinical_cases.IOnSelectImageCC;
 public class ImageCCSelectedRecyclerItem extends RecyclerItem implements View.OnClickListener {
 
     private CCImage ccImage;
+    private RequestManager rb;
 
     public ImageCCSelectedRecyclerItem(CCImage ccImage) {
         this.ccImage = ccImage;

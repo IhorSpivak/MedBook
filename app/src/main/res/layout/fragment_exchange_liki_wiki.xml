@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F2F2F2"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -22,8 +22,10 @@
             android:id="@+id/fragment_exchange_likiwiki_minus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_default"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="8dp"
+            android:background="@drawable/ripple_for_enter_check"
+            android:clickable="true"
             android:layout_marginBottom="8dp"
             android:padding="@dimen/padding_default"
             app:layout_constraintBottom_toBottomOf="@+id/fragment_exchange_likiwiki_points"
@@ -37,8 +39,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="@dimen/margin_default"
+            android:layout_marginEnd="20dp"
             android:layout_marginBottom="8dp"
+            android:background="@drawable/ripple_for_enter_check"
+            android:clickable="true"
             android:padding="@dimen/padding_default"
             app:layout_constraintBottom_toBottomOf="@+id/fragment_exchange_likiwiki_points"
             app:layout_constraintEnd_toEndOf="parent"
@@ -64,11 +68,28 @@
             android:paddingBottom="@dimen/padding_default_double"
             android:text="TextView"
             android:textSize="26sp"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@+id/fragment_exchange_likiwiki_add"
             app:layout_constraintStart_toEndOf="@+id/fragment_exchange_likiwiki_minus"
             app:layout_constraintTop_toBottomOf="@+id/fragment_exchange_likiwiki_changed" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        android:id="@+id/pb"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_marginTop="16dp"
+        android:indeterminateTint="@color/colorPrimary"
+        android:indeterminateTintMode="src_in"
+        android:layout_marginBottom="20dp"
+        android:layout_centerInParent="true"
+        app:layout_constraintBottom_toTopOf="@+id/fragment_exchange_likiwiki_goto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_above="@+id/root"
+        android:layout_height="wrap_content" />
 
 
     <TextView
@@ -91,8 +112,9 @@
 
     <Button
         android:id="@+id/fragment_exchange_likiwiki_btn_get_code"
-        style="@style/Button_type_2"
+        android:background="@drawable/ripple_for_enter_btn"
         android:layout_width="@dimen/btn_auth_w_2"
+        android:textColor="@color/white"
         android:layout_height="@dimen/btn_auth_h"
         android:text="Button"
         android:layout_marginBottom="@dimen/margin_default"
@@ -102,8 +124,9 @@
 
     <Button
         android:id="@+id/fragment_exchange_likiwiki_btn_add_number"
-        style="@style/Button_type_2"
+        android:background="@drawable/ripple_for_enter_btn"
         android:layout_width="@dimen/btn_auth_w_2"
+        android:textColor="@color/white"
         android:layout_height="@dimen/btn_auth_h"
         android:text="Button"
         android:layout_marginBottom="@dimen/margin_default"

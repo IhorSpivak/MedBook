@@ -49,7 +49,7 @@ public class MaterialViewHolder extends BaseViewHolder {
         }
 
         if (tvtitle != null) {
-            tvtitle.setText(material.translations[0].name);
+            tvtitle.setText(material.translations[1].name);
         }
         if (tvTests != null) {
             if (material.tests.length > 0) {

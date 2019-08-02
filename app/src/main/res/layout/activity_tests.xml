@@ -65,11 +65,21 @@
                 android:gravity="center_horizontal"
                 android:textColor="@color/gray_1"
                 android:textSize="14sp"
-                android:layout_margin="@dimen/margin_default"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:textColor="@color/gray_1"
+                android:textSize="14sp"
+                android:layout_margin="20dp"
                 android:id="@+id/activity_tests_progress_title"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextView" />
+                android:layout_height="wrap_content" />
 
             <ProgressBar
                 android:id="@+id/activity_tests_progressbar"
@@ -89,9 +99,8 @@
             android:layout_marginStart="@dimen/margin_default_half"
             android:layout_marginEnd="@dimen/margin_default"
             android:layout_marginBottom="@dimen/margin_default"
-            android:background="@drawable/button_type_2"
+            android:background="@drawable/ripple_for_enter_btn"
             android:elevation="6dp"
-            android:text="Button"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -105,10 +114,9 @@
             android:layout_marginStart="@dimen/margin_default"
             android:layout_marginEnd="@dimen/margin_default_half"
             android:layout_marginBottom="@dimen/margin_default"
-            android:background="@drawable/button_type_3"
+            android:background="@drawable/ripple_for_enter_check"
             android:elevation="6dp"
-            android:text="Button"
-            android:textColor="#363636"
+            android:textColor="@color/color_button_type_2_pressed"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/activity_tests_next"
             app:layout_constraintHorizontal_bias="0.5"

@@ -1,5 +1,6 @@
 package ua.profarma.medbook.types;
 
+import ua.profarma.medbook.types.materials.Material;
 import ua.profarma.medbook.ui.materials.MaterialsEnum;
 
 public class TaskMaterial implements Comparable<TaskMaterial> {
@@ -8,8 +9,10 @@ public class TaskMaterial implements Comparable<TaskMaterial> {
     public String title;
     public MaterialsEnum type;
     public Long timeCreate;
+    public Material item;
 
-    public TaskMaterial(int idMaterial, int id, String title, MaterialsEnum type, long timeCreate) {
+    public TaskMaterial(Material item, int idMaterial, int id, String title, MaterialsEnum type, long timeCreate) {
+        this.item = item;
         this.idMaterial = idMaterial;
         this.id = id;
         this.title = title;

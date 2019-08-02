@@ -82,9 +82,9 @@ public class MaterialsFragment extends Fragment implements EventListener {
 
         if (items != null && !items.isEmpty()) {
             {
-//                for (Material item : items) {
-//                    listMaterials.itemAdd(new MaterialListRecyclerItem(item));
-//                }
+                for (Material item : items) {
+                    listMaterials.itemAdd(new MaterialListRecyclerItem(item));
+                }
 
                 switch (stateList) {
                     case STATE_LIST:

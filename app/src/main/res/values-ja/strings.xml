@@ -39,6 +39,7 @@
     <string name="enter">Вход</string>
 
     <string name="throwable_registration">Произошло незивестная ошибка при попытке регистрации</string>
+    <string name="delete_card_is_succes">Карта была удалена</string>
     <string name="card_add_success">Карта добавлена успешно</string>
 
     <string name="need_access_location">Надо дать доступ к мастонахождению, чтобы отображать ЛМУ возле вас</string>
@@ -55,6 +56,7 @@
     <string name="btn_no">Нет</string>
 
     <string name="ah">AH</string>
+    <string name="defoult_title_reference">Фармcправка по назначению</string>
 
     <!-- profile -->
     <string name="mail">Электронная почта</string>
@@ -98,8 +100,8 @@
     <string name="phone_not_seted">Телефон не вказано</string>
     <string name="mail_not_seted">Електронна пошта не вказана</string>
     <string name="description_not_seted">Опис не вказанно</string>
-    <string name="must_chose_icod">Выберите диагнозы</string>
-    <string name="must_chose_drugs">Выберите лекарства</string>
+    <string name="must_chose_icod">Выберите заболевания</string>
+    <string name="must_chose_drugs">Добавьте препарат</string>
 
 </resources>
 

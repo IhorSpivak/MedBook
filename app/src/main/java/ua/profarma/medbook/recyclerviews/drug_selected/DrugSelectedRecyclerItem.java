@@ -9,7 +9,7 @@ import ua.profarma.medbook.recyclerviews.base.RecyclerItem;
 import ua.profarma.medbook.types.news.DrugSelected;
 import ua.profarma.medbook.ui.news_and_clinical_cases.IOnDeleteAddCC;
 
-public class DrugSelectedRecyclerItem extends RecyclerItem implements View.OnClickListener {
+public class DrugSelectedRecyclerItem extends RecyclerItem implements View.OnClickListener, View.OnLongClickListener {
 
     private DrugSelected drugSelected;
 
@@ -34,9 +34,10 @@ public class DrugSelectedRecyclerItem extends RecyclerItem implements View.OnCli
 
     @Override
     public void onClick(View view) {
-        if (getActivity(view.getContext()) != null)
-            getActivity(view.getContext()).onDeleteDrug(drugSelected);
+
     }
+
+
 
     private IOnDeleteAddCC getActivity(Context context) {
         while (context instanceof ContextWrapper) {
@@ -50,5 +51,12 @@ public class DrugSelectedRecyclerItem extends RecyclerItem implements View.OnCli
 
     public DrugSelected getDrug() {
         return drugSelected;
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        if (getActivity(v.getContext()) != null)
+            getActivity(v.getContext()).onDeleteDrug(drugSelected);
+        return false;
     }
 }

@@ -74,7 +74,6 @@ public class PresentationActivity extends AppCompatActivity implements View.OnCl
                                 ((TextView) findViewById(R.id.activity_presentation_toolbar_title)).setText(item.presentation.translations[0].title);
                             }
                         }
-
             if (presentation.presentation.translations[0].images.length <= 1)
                 tvIndicator.setVisibility(View.INVISIBLE);
             else {

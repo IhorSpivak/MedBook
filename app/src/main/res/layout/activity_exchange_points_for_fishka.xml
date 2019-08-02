@@ -8,8 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/toolbar_height"
-        android:elevation="@dimen/toolbar_elevation">
+        android:layout_height="@dimen/toolbar_height">
 
 
         <ImageView

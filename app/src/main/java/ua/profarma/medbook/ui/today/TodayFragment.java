@@ -486,7 +486,7 @@ public class TodayFragment extends MedBookFragment {
                                     }
                                 }
                             }
-                            taskMaterials.add(new TaskMaterial(item.id, item.videos[i].id, item.videos[i].video.translations[selectLang].title, MaterialsEnum.VIDEO, item.videos[i].time_from));
+                            taskMaterials.add(new TaskMaterial(item, item.id, item.videos[i].id, item.videos[i].video.translations[selectLang].title, MaterialsEnum.VIDEO, item.videos[i].time_from));
                         }
                 }
                 if (item.presentations.length > 0) {
@@ -506,7 +506,7 @@ public class TodayFragment extends MedBookFragment {
                                     }
                                 }
                             }
-                            taskMaterials.add(new TaskMaterial(item.id, item.presentations[i].id,
+                            taskMaterials.add(new TaskMaterial(item, item.id, item.presentations[i].id,
                                     item.presentations[i].presentation.translations[selectLang].title, MaterialsEnum.PRESENTATION, item.presentations[i].time_from));
                         }
                 }
@@ -528,19 +528,12 @@ public class TodayFragment extends MedBookFragment {
                                 }
                             }
 
-                            taskMaterials.add(new TaskMaterial(item.id, item.tests[i].id, item.tests[i].test.translations[selectLang].title, MaterialsEnum.TEST, item.tests[i].time_from));
+                            taskMaterials.add(new TaskMaterial(item,item.id, item.tests[i].id, item.tests[i].test.translations[selectLang].title, MaterialsEnum.TEST, item.tests[i].time_from));
                         }
                 }
             }
 
-//        for (TaskMaterial item : taskMaterials) {
-//            LogUtils.logD("njhgmjhmhjbm", "time_from = " + item.timeCreate + ", type = " + item.type + ", id = " + item.id + ", title = " + item.title);
-//        }
-//        Collections.sort(taskMaterials);
-//        LogUtils.logD("njhgmjhmhjbm", "===============================================================");
-//        for (TaskMaterial item : taskMaterials) {
-//            LogUtils.logD("njhgmjhmhjbm", "time_from = " + item.timeCreate + ", type = " + item.type + ", id = " + item.id + ", title = " + item.title);
-//        }
+
         tasksRecyclerView.init();
         if (taskMaterials.size() >= 5)
             for (int i = 0; i < 5; i++) {

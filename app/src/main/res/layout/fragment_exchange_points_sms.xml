@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_margin="@dimen/margin_default"
     android:gravity="center_vertical"
@@ -10,6 +10,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="@dimen/margin_default"
         android:layout_width="match_parent"
+        android:layout_centerInParent="true"
         android:id="@+id/fragment_exchange_points_sms_input_layout"
         android:layout_height="wrap_content">
 
@@ -21,7 +22,8 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:layout_gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/fragment_exchange_points_sms_input_layout"
         android:id="@+id/fragment_exchange_points_sms_send_exchange_points"
         android:background="@drawable/ripple_for_enter_btn"
         android:layout_width="@dimen/btn_auth_w_2"
@@ -31,7 +33,8 @@
         android:text="Button" />
 
     <Button
-        android:layout_gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/fragment_exchange_points_sms_send_exchange_points"
         android:id="@+id/fragment_exchange_points_sms_send_code_again"
         android:background="@drawable/ripple_for_enter_btn"
         android:layout_width="@dimen/btn_auth_w_2"
@@ -39,4 +42,16 @@
         android:layout_height="@dimen/btn_auth_h"
         android:text="Button" />
 
-</LinearLayout>
+    <ProgressBar
+        android:id="@+id/pb"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_marginTop="16dp"
+        android:indeterminateTint="@color/colorPrimary"
+        android:indeterminateTintMode="src_in"
+        android:layout_marginBottom="20dp"
+        android:layout_centerInParent="true"
+        android:layout_above="@+id/fragment_exchange_points_sms_input_layout"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

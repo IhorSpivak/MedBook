@@ -10,6 +10,14 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
+import com.squareup.picasso.Picasso;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import ua.profarma.medbook.App;
 import ua.profarma.medbook.Core;
 import ua.profarma.medbook.R;
@@ -40,11 +48,16 @@ public class ViewerMedicalCaseActivity extends MedBookActivity implements IOnSel
     private boolean myClinicalCase;
     private MedicalCaseItem medicalCaseItem;
 
+    private RequestManager rb;
+
     private TextView tvTitle;
     private TextView tvTitleIcods;
     private TextView tvTitleDrugs;
     private TextView tvDetails;
     private TextView tvTitleDetails;
+    private TextView tv_date;
+    private TextView tv_title;
+    private View view1;
     private IcodSelectedRecyclerView icodList;
     private DrugsSelectedRecyclerView drugList;
     private ImageCCSelectedRecyclerView listImages;
@@ -57,6 +70,7 @@ public class ViewerMedicalCaseActivity extends MedBookActivity implements IOnSel
     private ImageView imvLike;
     private TextView tvCountLike;
     private ImageView imvComments;
+    private ImageView iv_main;
     private TextView tvCountComments;
     private boolean stateLike = false;
     private int countLike = 0;
@@ -72,6 +86,12 @@ public class ViewerMedicalCaseActivity extends MedBookActivity implements IOnSel
         tvCountLike = findViewById(R.id.activity_clinical_case_viewer_like_count);
         imvComments = findViewById(R.id.activity_clinical_case_viewer_comments_comments);
         tvCountComments = findViewById(R.id.activity_clinical_case_viewer_comments_count);
+        iv_main = findViewById(R.id.iv_main);
+        tv_date = findViewById(R.id.tv_date);
+        tv_title = findViewById(R.id.tv_title);
+        view1 = findViewById(R.id.view1);
+
+
 
 
         tvTitle = findViewById(R.id.activity_clinical_case_viewer_toolbar_title);
@@ -132,6 +152,15 @@ public class ViewerMedicalCaseActivity extends MedBookActivity implements IOnSel
     }
 
     private void setDataCC() {
+
+        Date date = new Date(medicalCaseItem.created_at * 1000L);
+        //DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+        DateFormat format = new SimpleDateFormat("dd MMM yyyy");
+        String formatted = format.format(date);
+        tv_date.setText(formatted);
+        tv_title.setText(medicalCaseItem.title);
+
+
         if (medicalCaseItem.news_clinical_case_status_id == 4 && medicalCaseItem.newsArticles != null &&
                 medicalCaseItem.newsArticles.length > 0) {
             rlBlockLikeComments.setVisibility(View.VISIBLE);
@@ -162,7 +191,7 @@ public class ViewerMedicalCaseActivity extends MedBookActivity implements IOnSel
             drugList.init();
             itemsDrug = new RecyclerItems();
             for (int i = 0; i < medicalCaseItem.newsClinicalCaseDrugs.length; i++)
-                itemsDrug.add(new DrugSelectedRecyclerItem(new DrugSelected(medicalCaseItem.newsClinicalCaseDrugs[i].drug_id, medicalCaseItem.newsClinicalCaseDrugs[i].drug.title, true)));
+                itemsDrug.add(new DrugSelectedRecyclerItem(new DrugSelected(1, medicalCaseItem.newsClinicalCaseDrugs[i].drug.title, true)));
             drugList.itemsAdd(itemsDrug);
         }
         if (medicalCaseItem.newsClinicalCaseIcods != null && medicalCaseItem.newsClinicalCaseIcods.length > 0) {
@@ -189,6 +218,9 @@ public class ViewerMedicalCaseActivity extends MedBookActivity implements IOnSel
             icodList.itemsAdd(itemsIcod);
         }
         if (medicalCaseItem.newsClinicalCaseImages != null && medicalCaseItem.newsClinicalCaseImages.length > 0) {
+            rb = Glide.with(this);
+            rb.load(medicalCaseItem.newsClinicalCaseImages[0].image).into(iv_main);
+
             listImages.init();
             itemsImages = new RecyclerItems();
             for (int i = 0; i < medicalCaseItem.newsClinicalCaseImages.length; i++)
@@ -198,6 +230,8 @@ public class ViewerMedicalCaseActivity extends MedBookActivity implements IOnSel
         else {
             RelativeLayout layoutImages = findViewById(R.id.activity_clinical_case_viewer_image_list_layout);
             layoutImages.setVisibility(View.GONE);
+            view1.setVisibility(View.GONE);
+            iv_main.setVisibility(View.GONE);
         }
     }
 

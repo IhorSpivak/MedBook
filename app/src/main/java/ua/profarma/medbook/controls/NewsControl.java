@@ -142,7 +142,7 @@ public class NewsControl {
         if (Core.get().AuthorizationControl().updateAccessToken()) {
             if (AppUtils.isNetworkAvailable(App.getAppContext())) {
 
-                ApiRest.PointAccess().getDrugs(text, 150, 0).enqueue(new MCall<DrugsResponse>() {
+                ApiRest.PointAccess().getDrugs(text, 150, 1).enqueue(new MCall<DrugsResponse>() {
                     @Override
                     public void onSuccess(Response<DrugsResponse> response) {
                         if (response != null && response.body() != null)
@@ -252,9 +252,6 @@ public class NewsControl {
 
                             for (int i = 0; i < response.body().items.length; i++)
                                 clinicalCaseList.add(response.body().items[i]);
-//                             LogUtils.logD("hghgfh45xfdg", "title = " + response.body().items[i].title);
-//                             LogUtils.logD("hghgfh45xfdg", "description = " + response.body().items[i].description);
-//                             LogUtils.logD("hghgfh45xfdg", "author_id = " + response.body().items[i].author_id);
                             EventRouter.send(new EventMyClinicalCasesLoad(response.body().items));
                         }
                     }

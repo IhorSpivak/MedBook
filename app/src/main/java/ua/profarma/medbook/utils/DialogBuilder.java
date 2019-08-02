@@ -239,8 +239,12 @@ public class DialogBuilder {
 
         dialogAcceptButton.setOnClickListener(view -> {
             dialogAcceptButton.setEnabled(false);
-            getActivityIterface(context).onOkDialog();
+//            getActivityIterface(context).onOkDialog()
+
+
+
             dialog.dismiss();
+
         });
 
         return dialog;

@@ -3,6 +3,7 @@ package ua.profarma.medbook.ui.news_and_clinical_cases;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,6 +12,10 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import com.squareup.picasso.Picasso;
+
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import ua.profarma.medbook.App;
 import ua.profarma.medbook.Core;
@@ -30,6 +35,7 @@ public class NewsMoreActivity extends MedBookActivity {
     private UserNews userNews = null;
     private ImageView imvLike;
     private TextView tvCountLike;
+    private TextView tv_date;
     private ImageView imvComments;
     private TextView tvCountComments;
     private boolean stateLike = false;
@@ -103,16 +109,18 @@ public class NewsMoreActivity extends MedBookActivity {
             intent.putExtra(CommentsActivity.KEY_TITLE, userNews.newsArticle.translations[selectLang].title);
             startActivity(intent);
         });
-        tvCountComments.setText(String.valueOf(userNews.newsArticle.comments_count));
+        tvCountComments.setText(String.valueOf(userNews.newsArticle.comments_count) + " коментарів");
 
 
         tvTitle.setText(userNews.newsArticle.translations[selectLang].title);
-        if (userNews.newsArticle.translations[selectLang].description != null && !userNews.newsArticle.translations[selectLang].description.isEmpty())
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                tvDescription.setText(fromHtml(userNews.newsArticle.translations[selectLang].description, FROM_HTML_MODE_COMPACT));
+                tvDescription.setText(Html.fromHtml(userNews.newsArticle.translations[selectLang].description,Html.FROM_HTML_MODE_LEGACY));
             } else {
-                tvDescription.setText(fromHtml(userNews.newsArticle.translations[selectLang].description));
+                tvDescription.setText(Html.fromHtml(userNews.newsArticle.translations[selectLang].description));
             }
+
+        String date = convertTime(userNews.created_at);
+
 
         tvDescription.setMovementMethod(LinkMovementMethod.getInstance());
 
@@ -141,5 +149,11 @@ public class NewsMoreActivity extends MedBookActivity {
 
     @Override
     protected void onLocalizationUpdate() {
+    }
+
+    public String convertTime(long time){
+        Date date = new Date(time);
+        Format format = new SimpleDateFormat("yyyy MM dd HH:mm:ss");
+        return format.format(date);
     }
 }

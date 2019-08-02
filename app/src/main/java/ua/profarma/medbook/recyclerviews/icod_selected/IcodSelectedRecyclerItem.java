@@ -9,7 +9,7 @@ import ua.profarma.medbook.recyclerviews.base.RecyclerItem;
 import ua.profarma.medbook.types.news.IcodSelected;
 import ua.profarma.medbook.ui.news_and_clinical_cases.IOnDeleteAddCC;
 
-public class IcodSelectedRecyclerItem extends RecyclerItem implements View.OnClickListener {
+public class IcodSelectedRecyclerItem extends RecyclerItem implements View.OnClickListener,View.OnLongClickListener {
 
     private IcodSelected icodSelected;
 
@@ -46,5 +46,12 @@ public class IcodSelectedRecyclerItem extends RecyclerItem implements View.OnCli
             context = ((ContextWrapper) context).getBaseContext();
         }
         return null;
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        if (getActivity(v.getContext()) != null)
+            getActivity(v.getContext()).onDeleteIcod(icodSelected);
+        return false;
     }
 }

@@ -4,6 +4,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 import com.squareup.picasso.Picasso;
 
 import ua.profarma.medbook.R;
@@ -16,9 +18,12 @@ public class ImageCCSelectedViewHolder extends BaseViewHolder {
     private View rootView;
     private ImageView imvImage;
     private ImageView deleteImage;
+    private View view;
+    private RequestManager rb;
 
     public ImageCCSelectedViewHolder(View itemView) {
         super(itemView);
+        view = itemView;
         deleteImage = itemView.findViewById(R.id.item_image_cc_selected_delete);
         imvImage = itemView.findViewById(R.id.item_image_cc_selected_image);
         rootView = itemView.findViewById(R.id.item_image_cc_selected_root);
@@ -26,7 +31,8 @@ public class ImageCCSelectedViewHolder extends BaseViewHolder {
     }
 
     public void init(ImageCCSelectedRecyclerItem owner, CCImage ccImage) {
-        Picasso.get().load(ccImage.image).into(imvImage);
+        rb = Glide.with(view);
+        rb.load(ccImage.image).into(imvImage);
         if (ccImage.viewing) {
             deleteImage.setVisibility(View.GONE);
             rootView.setOnClickListener(owner);

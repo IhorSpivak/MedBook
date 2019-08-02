@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbar_height"
         android:elevation="@dimen/toolbar_elevation"
-        android:background="@color/act_toolbar_material"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">

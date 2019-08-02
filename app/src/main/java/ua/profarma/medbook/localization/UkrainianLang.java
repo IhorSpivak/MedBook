@@ -239,7 +239,7 @@ public class UkrainianLang {
         public static String BTN_DELETE = "Видалити";
         public static String TITLE = "Новий кліничний випадок";
         public static String ADD_SUBTITLE = "Назва клінічного випадку";
-        public static String MKB_SUBTITLE = "Захворювання за МХК";
+        public static String MKB_SUBTITLE = "Захворювання за МКХ";
         public static String ADD_MKB_SUBTITLE = "Додати захворювання";
         public static String DRUG_SUBTITLE = "Препарати";
         public static String ADD_DRUG_SUBTITLE = "Додати препарат";

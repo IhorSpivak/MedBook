@@ -1,14 +1,24 @@
 package ua.profarma.medbook.recyclerviews.tasks;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.view.View;
+import android.widget.Toast;
 
+import java.io.IOException;
+
+import ua.profarma.medbook.App;
 import ua.profarma.medbook.Core;
+import ua.profarma.medbook.events.core.EventRouter;
+import ua.profarma.medbook.events.materials.EventMaterialDescriptionStart;
 import ua.profarma.medbook.recyclerviews.base.BaseViewHolder;
 import ua.profarma.medbook.recyclerviews.base.RecyclerItem;
 import ua.profarma.medbook.types.TaskMaterial;
 import ua.profarma.medbook.types.materials.Material;
 import ua.profarma.medbook.types.materials.Video;
+import ua.profarma.medbook.ui.materials.MaterialsEnum;
 import ua.profarma.medbook.ui.materials.PresentationActivity;
 import ua.profarma.medbook.ui.materials.TestsActivity;
 import ua.profarma.medbook.ui.materials.VideoActivity;
@@ -18,6 +28,7 @@ import ua.profarma.medbook.utils.LogUtils;
 public class TaskRecyclerItem extends RecyclerItem implements View.OnClickListener {
 
     private TaskMaterial taskMaterial;
+    Intent intentPresentation;
 
     public TaskRecyclerItem(TaskMaterial taskMaterial) {
         this.taskMaterial = taskMaterial;
@@ -43,10 +54,16 @@ public class TaskRecyclerItem extends RecyclerItem implements View.OnClickListen
 
         switch (taskMaterial.type) {
             case TEST:
-                Intent intentTests = new Intent(view.getContext(), TestsActivity.class);
-                intentTests.putExtra(TestsActivity.KEY_ID_TEST, taskMaterial.id);
-                intentTests.putExtra(TestsActivity.KEY_ID_MATERIAL_TEST, taskMaterial.idMaterial);
-                view.getContext().startActivity(intentTests);
+                if (isOnline()) {
+//                    Intent intentTests = new Intent(view.getContext(), TestsActivity.class);
+//                    intentTests.putExtra(TestsActivity.KEY_ID_TEST, taskMaterial.id);
+//                    intentTests.putExtra(TestsActivity.KEY_ID_MATERIAL_TEST, taskMaterial.idMaterial);
+//                    view.getContext().startActivity(intentTests);
+                    Core.get().UserContentControl().setSelectedMaterial(taskMaterial.item);
+                    EventRouter.send(new EventMaterialDescriptionStart(MaterialsEnum.TEST, taskMaterial.id));
+                } else {
+                    Toast.makeText(App.getAppContext(), "Для проходження тесту потрібне интернет зєднання", Toast.LENGTH_LONG).show();
+                }
                 break;
             case VIDEO:
                 for (Material materialItem : Core.get().UserContentControl().getListMaterial()) {
@@ -66,11 +83,23 @@ public class TaskRecyclerItem extends RecyclerItem implements View.OnClickListen
                 }
                 break;
             case PRESENTATION:
-                Intent intentPresentation = new Intent(view.getContext(), PresentationActivity.class);
+                 intentPresentation = new Intent(view.getContext(), PresentationActivity.class);
                 intentPresentation.putExtra(PresentationActivity.KEY_ID_PRESENTATION, taskMaterial.id);
                 intentPresentation.putExtra(PresentationActivity.KEY_ID_MATERIAL_PRESENTATION, taskMaterial.idMaterial);
                 view.getContext().startActivity(intentPresentation);
                 break;
         }
+    }
+    public boolean isOnline() {
+        Runtime runtime = Runtime.getRuntime();
+        try {
+            Process ipProcess = runtime.exec("/system/bin/ping -c 1 8.8.8.8");
+            int     exitValue = ipProcess.waitFor();
+            return (exitValue == 0);
+        }
+        catch (IOException e)          { e.printStackTrace(); }
+        catch (InterruptedException e) { e.printStackTrace(); }
+
+        return false;
     }
 }

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,6 +28,7 @@ public class ExchangeLikiWikiFragment extends MedBookFragment {
     private Button btnGetCode;
     private Button btnAddNumber;
     private TextView tvAddNumber;
+    private ProgressBar pb;
 
     private int valuePoints = 100;
     private Double points;
@@ -46,6 +48,7 @@ public class ExchangeLikiWikiFragment extends MedBookFragment {
         points = Double.parseDouble(App.getUser().points);
 
         tvChanged = rootView.findViewById(R.id.fragment_exchange_likiwiki_changed);
+        pb = rootView.findViewById(R.id.pb);
         tvPoints = rootView.findViewById(R.id.fragment_exchange_likiwiki_points);
         tvGoToLikiWiki = rootView.findViewById(R.id.fragment_exchange_likiwiki_goto);
         btnGetCode = rootView.findViewById(R.id.fragment_exchange_likiwiki_btn_get_code);
@@ -64,6 +67,7 @@ public class ExchangeLikiWikiFragment extends MedBookFragment {
             }
         });
         btnGetCode.setOnClickListener(view ->{
+            pb.setVisibility(View.VISIBLE);
             //App.updateUserPhone("");
             if(App.getUser().phone == null || App.getUser().phone.isEmpty()){
                 btnGetCode.setVisibility(View.GONE);

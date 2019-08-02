@@ -35,6 +35,10 @@ public class ReferenceItem implements Serializable {
     @Expose
     private List<Icods> icods = null;
 
+    @SerializedName("patients")
+    @Expose
+    private List<Patient> patients = null;
+
     public List<Icods> getIcods() {
         return icods;
     }
@@ -89,5 +93,13 @@ public class ReferenceItem implements Serializable {
 
     public void setDrugs(List<Drugs> drugs) {
         this.drugs = drugs;
+    }
+
+    public List<Patient> getPatients() {
+        return patients;
+    }
+
+    public void setPatients(List<Patient> patients) {
+        this.patients = patients;
     }
 }

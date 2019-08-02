@@ -57,6 +57,7 @@ public class TestsActivity extends MedBookActivity implements OnUpdateResultTest
     private Button btnNext;
     private Button btnPrev;
     private String mTitle;
+    private TextView tv_title;
 
     private String TAG = "AppMedbook/TestsActivity";
 
@@ -76,6 +77,7 @@ public class TestsActivity extends MedBookActivity implements OnUpdateResultTest
         setContentView(R.layout.activity_tests);
 
         EventRouter.register(this);
+        tv_title = findViewById(R.id.tv_title);
 
         ImageView imClose = findViewById(R.id.activity_tests_toolbar_close);
         imClose.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +102,7 @@ public class TestsActivity extends MedBookActivity implements OnUpdateResultTest
                         TextView tvTitle = findViewById(R.id.activity_tests_toolbar_title);
                         tvTitle.setText(item.test.translations[0].title);
                         mTitle = item.test.translations[0].title;
+                        tv_title.setText(item.test.translations[0].title);
                         materialId = Core.get().UserContentControl().getSelectedMaterial().id;
                     }
                 }
@@ -115,6 +118,7 @@ public class TestsActivity extends MedBookActivity implements OnUpdateResultTest
                                 TextView tvTitle = findViewById(R.id.activity_tests_toolbar_title);
                                 tvTitle.setText(itemTest.test.translations[0].title);
                                 mTitle = itemTest.test.translations[0].title;
+                                tv_title.setText(itemTest.test.translations[0].title);
                             }
                         }
                 }
@@ -341,7 +345,7 @@ public class TestsActivity extends MedBookActivity implements OnUpdateResultTest
 
     @Override
     public void onOkDialog() {
-        finish();
+        onBackPressed();
     }
 
     private class TestFragmentPagerAdapter extends FragmentStatePagerAdapter {

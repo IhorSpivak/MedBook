@@ -40,7 +40,7 @@ public class ClinicalCaseViewHolder extends BaseViewHolder {
         if(tvTime != null){
             Date date = new Date(medicalCaseItem.created_at * 1000L);
             //DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
-            DateFormat format = new SimpleDateFormat("hh:mm dd MMM yyyy");
+            DateFormat format = new SimpleDateFormat("dd MMM yyyy");
             //format.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
             String formatted = format.format(date);
             tvTime.setText(formatted);
@@ -54,6 +54,9 @@ public class ClinicalCaseViewHolder extends BaseViewHolder {
             if (medicalCaseItem.newsClinicalCaseImages != null && medicalCaseItem.newsClinicalCaseImages.length > 0 &&
                     medicalCaseItem.newsClinicalCaseImages[0].image != null && !medicalCaseItem.newsClinicalCaseImages[0].image.isEmpty())
                 Picasso.get().load(medicalCaseItem.newsClinicalCaseImages[0].image).into(imv);
+            else {
+                imv.setBackgroundResource(R.drawable.empty_photo);
+            }
         }
         switch (medicalCaseItem.news_clinical_case_status_id){
             case 1:

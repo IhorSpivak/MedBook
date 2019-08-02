@@ -14,6 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
 import com.google.android.material.textfield.TextInputLayout;
 import com.squareup.picasso.Picasso;
 
@@ -28,6 +30,9 @@ public class ImageViewerCCActivity extends MedBookActivity {
     private TextView tvTitle;
     public static final String KEY_URL = "KEY_URL";
     public static final String KEY_COMMENT = "KEY_COMMENT";
+    private RequestManager rb;
+    ImageView imImage;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,11 +46,14 @@ public class ImageViewerCCActivity extends MedBookActivity {
         String url = getIntent().getStringExtra(KEY_URL);
         String comment = getIntent().getStringExtra(KEY_COMMENT);
 
-        ImageView imImage = findViewById(R.id.activity_viewer_image_cc_image);
-        Picasso.get().load(url).into(imImage);
+        imImage = findViewById(R.id.activity_viewer_image_cc_image);
+
 
         TextView tvComment = findViewById(R.id.activity_viewer_image_cc_comment);
         tvComment.setText(comment);
+
+        rb = Glide.with(this);
+        rb.load(url).into(imImage);
 
 
         onLocalizationUpdate();

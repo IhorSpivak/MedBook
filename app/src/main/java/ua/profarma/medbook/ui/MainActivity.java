@@ -190,13 +190,12 @@ public class MainActivity extends AppCompatActivity implements EventListener, IO
                         transaction4.commit();
                         break;
                         case R.id.navigation_app_bar_reference:
-//                            Intent intent;
-//                            intent = new Intent(MainActivity.this, ReferenceActivity.class);
-//                            startActivity(intent);
+                            fragmentId = R.id.navigation_app_bar_reference;
                             setColorStatusBar("materials");
                             FragmentTransaction transaction5 = getSupportFragmentManager().beginTransaction();
                             transaction5.replace(R.id.activity_main_container, ReferenceListMainFragment.newInstance());
                             transaction5.commit();
+                            setColorStatusBar("materials");
                         break;
                 }
             }

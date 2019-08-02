@@ -25,9 +25,10 @@ import ua.profarma.medbook.R;
 import ua.profarma.medbook.models.response.ReferenceItem;
 import ua.profarma.medbook.singltones.SingletoneForListReference;
 import ua.profarma.medbook.singltones.SingltonForPatterns;
+import ua.profarma.medbook.ui.custom_views.MedBookFragment;
 
 
-public class ReferenceListMainFragment extends Fragment implements ReferenceContract.View  {
+public class ReferenceListMainFragment extends MedBookFragment implements ReferenceContract.View  {
 
     @BindView(R.id.tab_bar)
     TabLayout tab_bar;
@@ -49,16 +50,17 @@ public class ReferenceListMainFragment extends Fragment implements ReferenceCont
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        presenter = new ReferencePresenter(this, getContext());
+        presenter.loadLitReference();
+    }
+
+    @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_reference, container, false);
 
         ButterKnife.bind(this, rootView);
-
-
-        presenter = new ReferencePresenter(this, getContext());
-        presenter.loadLitReference();
-
-
 
         return rootView;
     }
@@ -79,9 +81,6 @@ public class ReferenceListMainFragment extends Fragment implements ReferenceCont
         ArrayList<ReferenceItem> listItemsReferences = new ArrayList<>();
 
 
-
-
-
         for(int i = 0; i < list.size(); i++) {
             if(list.get(i).getTemplate().equals(0)){
                 listItemsPatterns.add(list.get(i));
@@ -90,20 +89,14 @@ public class ReferenceListMainFragment extends Fragment implements ReferenceCont
             }
         }
 
-
-
         SingltonForPatterns.getInstance().setList(listItemsPatterns);
         SingletoneForListReference.getInstance().setList(listItemsReferences);
 
         titles.add(getString(R.string.reference_list));
         titles.add(getString(R.string.patterns));
 
-
         fragments.add(ReferenceListFragment.newInstance());
         fragments.add(PatternListReferenceFragment.newInstance());
-
-
-
 
         PagerFragmentAdapter adapter = new PagerFragmentAdapter(getChildFragmentManager());
         adapter.setFragments(fragments, titles);
@@ -113,5 +106,10 @@ public class ReferenceListMainFragment extends Fragment implements ReferenceCont
         TabLayout.Tab tab = tab_bar.getTabAt(1);
         tab.select();
         pb.setVisibility(View.GONE);
+    }
+
+    @Override
+    protected void onLocalizationUpdate() {
+
     }
 }

@@ -49,7 +49,7 @@ import ua.profarma.medbook.ui.news_and_clinical_cases.IcodSelectActivity;
 import ua.profarma.medbook.utils.DialogBuilder;
 import ua.profarma.medbook.utils.LogUtils;
 
-public class ReferenceReviewActivity extends AppCompatActivity {
+public class ReferenceReviewActivity extends MedBookActivity {
 
 
     private IcodSelectedRecyclerViewed listIcod;
@@ -107,6 +107,11 @@ public class ReferenceReviewActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onLocalizationUpdate() {
+
+    }
+
     private void showWebView() {
         ReferenceWebViewActivity.startActivity(this, itemReference.getId());
     }
@@ -119,7 +124,7 @@ public class ReferenceReviewActivity extends AppCompatActivity {
             listDrug.init();
             itemsDrug = new RecyclerItems();
             for (int i = 0; i < item.getDrugs().size() ; i++)
-                itemsDrug.add(new DrugSelectedRecyclerItem(new DrugSelected(item.getDrugs().get(i).getId(), item.getDrugs().get(i).getDrug().getTitle(), false)));
+                itemsDrug.add(new DrugSelectedRecyclerItem(new DrugSelected(item.getDrugs().get(i).getAuthor_id(), item.getDrugs().get(i).getDrug().getTitle(), true)));
             listDrug.itemsAdd(itemsDrug);
         }
         if (item.getIcods() != null && item.getIcods().size() > 0) {
@@ -140,8 +145,8 @@ public class ReferenceReviewActivity extends AppCompatActivity {
                     }
                 }
                 itemsIcod.add(new IcodSelectedRecyclerItem(new IcodSelected(item.getIcods().get(i).getId(),
-                        item.getIcods().get(i).getIcod().getId().toString(),
-                        item.getIcods().get(i).getIcod().getTranslations().get(selectLang).getTitle(), false)));
+                        item.getIcods().get(i).getIcod().getCode_icod().toString(),
+                        item.getIcods().get(i).getIcod().getTranslations().get(selectLang).getTitle(), true)));
             }
             listIcod.itemsAdd(itemsIcod);
         }

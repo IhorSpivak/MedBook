@@ -55,7 +55,7 @@
             <ImageView
                 android:id="@+id/activity_viewer_image_cc_image"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="300dp"
                 android:adjustViewBounds="true"
                 android:scaleType="centerInside" />
 

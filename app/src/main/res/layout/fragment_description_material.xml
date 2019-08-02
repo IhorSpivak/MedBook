@@ -185,9 +185,10 @@
 
                     <Button
                         android:id="@+id/fragment_material_description_start"
-                        style="@style/Button_type_2"
+                        android:background="@drawable/ripple_for_enter_btn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/white"
                         android:layout_marginStart="@dimen/margin_default"
                         android:layout_marginEnd="@dimen/margin_default"
                         app:layout_constraintEnd_toEndOf="parent"

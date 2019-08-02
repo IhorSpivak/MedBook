@@ -53,7 +53,7 @@ public class PresentationViewHolder extends BaseViewHolder {
         }
 
         if (tvtitle != null) {
-            tvtitle.setText(presentation.presentation.translations[0].title);
+            tvtitle.setText(presentation.presentation.translations[1].title);
         }
         if (tvBalls != null) {
             if(presentation.presentation_points > 0) {

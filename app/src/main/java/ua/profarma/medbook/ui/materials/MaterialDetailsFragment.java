@@ -172,7 +172,6 @@ public class MaterialDetailsFragment extends MedBookFragment {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-
                     return PageTestsFragment.newInstance(titles[0]);
                 case 1:
                     return PagePresentationsFragment.newInstance(titles[1]);

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -136,8 +137,7 @@ public class FishkaCardsActivity extends MedBookActivity {
 
 
     public void onDeleteFishkaCardRecyclerView(int pos) {
-        Core.get().PointControl().deleteUserFishkaCard(((FishkaCardRecyclerItem) items.get(pos)).getId());
-//        items.remove(pos);
-//        list.itemRemove(pos);
+        Core.get().PointControl().deleteUserFishkaCard(pos);
+        Toast.makeText(this, R.string.delete_card_is_succes, Toast.LENGTH_LONG).show();
     }
 }

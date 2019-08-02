@@ -118,6 +118,6 @@
 
     <!-- camera -->
     <color name="camera_preview_overlay">#50000000</color>
-    <color name="red">#FF0000</color>
+    <color name="red">#F34242</color>
 
 </resources>

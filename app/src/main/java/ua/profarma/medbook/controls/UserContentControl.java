@@ -40,8 +40,8 @@ import ua.profarma.medbook.utils.LogUtils;
 public class UserContentControl {
 
     private String TAG = "AppMedbook/UserContentControl";
-    private ArrayList<Material> materials;
-    private Material selectedMaterial;
+    private ArrayList<Material> materials = new ArrayList<>();
+    private Material selectedMaterial = new Material();
 
     public ArrayList<Material> getListMaterial() {
         return materials;
@@ -341,6 +341,9 @@ public class UserContentControl {
                     public void onSuccess(Response<UserNotificationReactionResponse> response) {
                         if (response != null && response.body() != null && response.body().items != null && response.body().items.length > 0)
                             EventRouter.send(new EventUserNotificationReaction(response.body().items[0].reactions));
+                        else {
+
+                        }
                     }
                 });
             } else {
