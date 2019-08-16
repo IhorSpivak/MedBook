@@ -34,13 +34,13 @@
             android:visibility="gone" />
     </LinearLayout>
 
-    <ua.profarma.medbook.recyclerviews.tests_choice.tests_single_choice.TestAnswerSingleChoiceRecyclerView
+    <mobi.medbook.android.recyclerviews.tests_choice.tests_single_choice.TestAnswerSingleChoiceRecyclerView
         android:id="@+id/fragment_test_list_single_choice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone" />
 
-    <ua.profarma.medbook.recyclerviews.tests_choice.tests_multiple_choice.TestAnswerMultipleChoiceRecyclerView
+    <mobi.medbook.android.recyclerviews.tests_choice.tests_multiple_choice.TestAnswerMultipleChoiceRecyclerView
         android:id="@+id/fragment_test_list_multiple_choice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -81,7 +81,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <ua.profarma.medbook.recyclerviews.drugs.DrugsRecyclerView
+        <mobi.medbook.android.recyclerviews.drugs.DrugsRecyclerView
             android:id="@+id/activity_drug_select_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"

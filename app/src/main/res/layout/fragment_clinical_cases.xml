@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ua.profarma.medbook.recyclerviews.news.NewsRecyclerView
+    <mobi.medbook.android.recyclerviews.news.NewsRecyclerView
         android:id="@+id/fragment_clinical_cases_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"  />

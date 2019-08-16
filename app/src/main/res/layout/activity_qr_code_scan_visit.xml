@@ -58,7 +58,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed">
 
-            <ua.profarma.medbook.ui.custom_views.graphic_key.EnterCodeView
+            <mobi.medbook.android.ui.custom_views.graphic_key.EnterCodeView
                 android:id="@+id/activity_qr_visit_enter_code"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
@@ -74,12 +74,13 @@
 
         <Button
             android:id="@+id/activity_qr_visit_btn_qr"
-            style="@style/Button_type_2"
-            android:layout_width="@dimen/btn_auth_w_2"
+            android:background="@drawable/ripple_for_enter_btn"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/btn_auth_h"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="@dimen/margin_default"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="20dp"
             android:text="Button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

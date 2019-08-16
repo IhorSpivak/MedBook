@@ -57,7 +57,7 @@
         app:tabMode="fixed"
         app:tabIndicatorHeight="0dp" />
 
-    <ua.profarma.medbook.ui.custom_views.NonSwipeableViewPager
+    <mobi.medbook.android.ui.custom_views.NonSwipeableViewPager
         android:id="@+id/activity_points_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

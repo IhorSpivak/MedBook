@@ -83,7 +83,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        style="@style/Button_type_2"
+        android:background="@drawable/ripple_for_enter_btn"
         android:id="@+id/fragment_exchange_points_success_close"
         android:layout_height="@dimen/btn_auth_h"
         android:layout_width="@dimen/btn_auth_w_2"
@@ -91,6 +91,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:text="Button"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

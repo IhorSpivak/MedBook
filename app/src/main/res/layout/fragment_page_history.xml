@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ua.profarma.medbook.recyclerviews.history.HistoryExchangeRecyclerView
+    <mobi.medbook.android.recyclerviews.history.HistoryExchangeRecyclerView
         android:id="@+id/fragment_page_history_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

@@ -103,7 +103,7 @@
                 android:layout_height="match_parent"
                 android:descendantFocusability="blocksDescendants">
 
-                <ua.profarma.medbook.recyclerviews.icod_selected.IcodSelectedRecyclerView
+                <mobi.medbook.android.recyclerviews.icod_selected.IcodSelectedRecyclerView
                     android:id="@+id/activity_add_clinical_cases_icod_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
@@ -149,7 +149,7 @@
                 android:layout_height="match_parent"
                 android:descendantFocusability="blocksDescendants">
 
-                <ua.profarma.medbook.recyclerviews.drug_selected.DrugsSelectedRecyclerView
+                <mobi.medbook.android.recyclerviews.drug_selected.DrugsSelectedRecyclerView
                     android:id="@+id/activity_add_clinical_cases_drug_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
@@ -245,7 +245,7 @@
                 android:layout_height="match_parent"
                 android:descendantFocusability="blocksDescendants">
 
-                <ua.profarma.medbook.recyclerviews.image_cc_selected.ImageCCSelectedRecyclerView
+                <mobi.medbook.android.recyclerviews.image_cc_selected.ImageCCSelectedRecyclerView
                     android:id="@+id/activity_add_clinical_cases_image_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />

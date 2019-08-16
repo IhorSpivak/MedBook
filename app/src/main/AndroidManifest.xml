@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="ua.profarma.medbook">
+    package="mobi.medbook.android">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -22,7 +22,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
-        android:name=".App"
+        android:name="mobi.medbook.android.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -30,7 +30,7 @@
         android:largeHeap="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.MainActivity"
+            android:name="mobi.medbook.android.ui.MainActivity"
             android:configChanges="layoutDirection|locale"
             android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait">
@@ -47,7 +47,7 @@
             android:stateNotNeeded="true"/>
 
         <activity
-            android:name=".ui.authorization.AuthorizationActivity"
+            android:name="mobi.medbook.android.ui.authorization.AuthorizationActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeAuthorization"></activity>
@@ -61,244 +61,261 @@
 
 
         <activity
-            android:name=".ui.profile.ProfileActivity"
+            android:name="mobi.medbook.android.ui.profile.ProfileActivity"
+            android:configChanges="layoutDirection|locale"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeDark" />
+
+        <activity
+            android:name="mobi.medbook.android.ui.UpdateActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
         <activity
-            android:name=".ui.materials.VideoActivity"
+            android:name="mobi.medbook.android.ui.materials.VideoActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="landscape"
             android:theme="@style/AppThemeDark" />
 
         <activity
-            android:name=".ui.reference.ReferenceWebViewActivity"
+            android:name="mobi.medbook.android.ui.reference.ReferenceWebViewActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
         <activity
-            android:name=".ui.materials.PresentationActivity"
+            android:name="mobi.medbook.android.ui.materials.PresentationActivity"
             android:configChanges="layoutDirection|locale"
             android:theme="@style/AppThemeDark" />
 
         <activity
-            android:name=".ui.reference.ReferenceActivity"
+            android:name="mobi.medbook.android.ui.reference.ReferenceActivity"
             android:configChanges="layoutDirection|locale"
             android:theme="@style/AppThemeDark" />
 
         <activity
-            android:name=".ui.materials.TestsActivity"
+            android:name="mobi.medbook.android.ui.materials.TestsActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark"
             android:windowSoftInputMode="adjustPan" />
 
         <activity
-            android:name=".ui.materials.ViewCompletedTestActivity"
+            android:name="mobi.medbook.android.ui.materials.ViewCompletedTestActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
 
         <activity
-            android:name=".ui.reference.ReferenceReviewActivity"
+            android:name="mobi.medbook.android.ui.reference.ReferenceReviewActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
         <activity
-            android:name=".ui.materials.TestResultActivity"
+            android:name="mobi.medbook.android.ui.materials.TestResultActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
         <activity
-            android:name=".ui.today.MainDepartmentsActivity"
-            android:configChanges="layoutDirection|locale"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeDark" />
-
-        <activity
-            android:name=".ui.NotificationsActivity"
+            android:name="mobi.medbook.android.ui.today.MainDepartmentsActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
 
         <activity
-            android:name=".ui.points.PointsActivity"
+            android:name="mobi.medbook.android.ui.NotificationsActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
 
         <activity
-            android:name=".ui.points.FishkaCardsActivity"
+            android:name="mobi.medbook.android.ui.points.PointsActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
 
         <activity
-            android:name=".ui.points.FishkaRulesActivity"
+            android:name="mobi.medbook.android.ui.points.FishkaCardsActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
 
         <activity
-            android:name=".ui.points.AddFishkaCardActivity"
-            android:configChanges="layoutDirection|locale"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeDark" />
-        <activity
-            android:name=".ui.points.ExchangePointsForFishkaActivity"
+            android:name="mobi.medbook.android.ui.points.FishkaRulesActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
 
         <activity
-            android:name=".ui.calendar.AddVisitActivity"
+            android:name="mobi.medbook.android.ui.points.AddFishkaCardActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
         <activity
-            android:name=".ui.calendar.SelectSecondMemberActivity"
-            android:configChanges="layoutDirection|locale"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeDark" />
-
-        <activity
-            android:name=".ui.calendar.VisitViewerActivity"
+            android:name="mobi.medbook.android.ui.points.ExchangePointsForFishkaActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
 
         <activity
-            android:name=".ui.calendar.QrCodeGenerateVisitActivity"
+            android:name="mobi.medbook.android.ui.calendar.AddVisitActivity"
+            android:configChanges="layoutDirection|locale"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeDark" />
+        <activity
+            android:name="mobi.medbook.android.ui.calendar.SelectSecondMemberActivity"
+            android:configChanges="layoutDirection|locale"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeDark">
+
+
+        <meta-data
+            android:name="android.app.searchable"
+            android:resource="@xml/searchable" />
+
+        <intent-filter>
+            <action android:name="android.intent.action.SEARCH" />
+        </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name="mobi.medbook.android.ui.calendar.VisitViewerActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
 
         <activity
-            android:name=".ui.calendar.ScanQrVisitActivity"
+            android:name="mobi.medbook.android.ui.calendar.QrCodeGenerateVisitActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
 
         <activity
-            android:name=".ui.calendar.MPAncetaActivity"
-            android:configChanges="layoutDirection|locale"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeDark" />
-
-
-        <activity
-            android:name=".ui.calendar.DoctorAncetaActivity"
+            android:name="mobi.medbook.android.ui.calendar.ScanQrVisitActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
 
         <activity
-            android:name=".ui.calendar.ProductActivity"
-            android:configChanges="layoutDirection|locale"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeDark" />
-
-        <activity
-            android:name=".ui.calendar.EditNumberFieldActivity"
-            android:configChanges="layoutDirection|locale"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeDark" />
-
-        <activity
-            android:name=".ui.calendar.EditSwitchActivity"
-            android:configChanges="layoutDirection|locale"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeDark" />
-
-        <activity
-            android:name=".ui.calendar.PromoActivity"
-            android:configChanges="layoutDirection|locale"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeDark" />
-
-        <activity
-            android:name=".ui.calendar.ChangeDateVisitActivity"
+            android:name="mobi.medbook.android.ui.calendar.MPAncetaActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
 
 
         <activity
-            android:name=".ui.news_and_clinical_cases.NewsMoreActivity"
+            android:name="mobi.medbook.android.ui.calendar.DoctorAncetaActivity"
+            android:configChanges="layoutDirection|locale"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeDark" />
+
+        <activity
+            android:name="mobi.medbook.android.ui.calendar.ProductActivity"
+            android:configChanges="layoutDirection|locale"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeDark" />
+
+        <activity
+            android:name="mobi.medbook.android.ui.calendar.EditNumberFieldActivity"
+            android:configChanges="layoutDirection|locale"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeDark" />
+
+        <activity
+            android:name="mobi.medbook.android.ui.calendar.EditSwitchActivity"
+            android:configChanges="layoutDirection|locale"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeDark" />
+
+        <activity
+            android:name="mobi.medbook.android.ui.calendar.PromoActivity"
+            android:configChanges="layoutDirection|locale"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeDark" />
+
+        <activity
+            android:name="mobi.medbook.android.ui.calendar.ChangeDateVisitActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
 
 
         <activity
-            android:name=".ui.TermAndPointAgreementsActivity"
+            android:name="mobi.medbook.android.ui.news_and_clinical_cases.NewsMoreActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
 
 
         <activity
-            android:name=".ui.news_and_clinical_cases.AllNewsActivity"
+            android:name="mobi.medbook.android.ui.TermAndPointAgreementsActivity"
+            android:configChanges="layoutDirection|locale"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeDark" />
+
+
+        <activity
+            android:name="mobi.medbook.android.ui.news_and_clinical_cases.AllNewsActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
 
         <activity
-            android:name=".ui.news_and_clinical_cases.MyClinicalCasesActivity"
+            android:name="mobi.medbook.android.ui.news_and_clinical_cases.MyClinicalCasesActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
 
         <activity
-            android:name=".ui.news_and_clinical_cases.AllClinicalCasesActivity"
+            android:name="mobi.medbook.android.ui.news_and_clinical_cases.AllClinicalCasesActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
         <activity
-            android:name=".ui.news_and_clinical_cases.AddClinicalCaseActivity"
-            android:configChanges="layoutDirection|locale"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeDark" />
-
-        <activity
-            android:name=".ui.news_and_clinical_cases.IcodSelectActivity"
+            android:name="mobi.medbook.android.ui.news_and_clinical_cases.AddClinicalCaseActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
 
         <activity
-            android:name=".ui.news_and_clinical_cases.DrugSelectActivity"
+            android:name="mobi.medbook.android.ui.news_and_clinical_cases.IcodSelectActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
 
         <activity
-            android:name=".ui.news_and_clinical_cases.ViewerMedicalCaseActivity"
+            android:name="mobi.medbook.android.ui.news_and_clinical_cases.DrugSelectActivity"
+            android:configChanges="layoutDirection|locale"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeDark" />
+
+        <activity
+            android:name="mobi.medbook.android.ui.news_and_clinical_cases.ViewerMedicalCaseActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
         <activity
-            android:name=".ui.news_and_clinical_cases.CommentsActivity"
+            android:name="mobi.medbook.android.ui.news_and_clinical_cases.CommentsActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
         <activity
-            android:name=".ui.calendar.IncomingVisits"
+            android:name="mobi.medbook.android.ui.calendar.IncomingVisits"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
         <activity
-            android:name=".ui.points.Likiwiki.ExchangeLikiWikiActivity"
+            android:name="mobi.medbook.android.ui.points.Likiwiki.ExchangeLikiWikiActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
         <activity
-            android:name=".ui.news_and_clinical_cases.AddCommentToLoadImageActivity"
+            android:name="mobi.medbook.android.ui.news_and_clinical_cases.AddCommentToLoadImageActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
         <activity
-            android:name=".ui.news_and_clinical_cases.ImageViewerCCActivity"
+            android:name="mobi.medbook.android.ui.news_and_clinical_cases.ImageViewerCCActivity"
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
@@ -310,7 +327,7 @@
             <!--android:theme="@style/AppThemeDark" />-->
 
         <service
-            android:name=".MaterialsFirebaseMessagingService"
+            android:name="mobi.medbook.android.MaterialsFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

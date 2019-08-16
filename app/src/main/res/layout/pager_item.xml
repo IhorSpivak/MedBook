@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <ua.profarma.medbook.utils.TouchImageView
+    <mobi.medbook.android.utils.TouchImageView
         android:id="@+id/imageView"
         android:adjustViewBounds="true"
         app:zoom_enabled="true"

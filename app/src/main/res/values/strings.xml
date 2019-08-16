@@ -27,7 +27,7 @@
         <item>Відео</item>
     </string-array>
 
-    <string name="app_name">MedBookNEW</string>
+    <string name="app_name">MedBook</string>
 
     <string name="message_401">Сплив термін авторізації або ви залогінились на іншому пристрої, потрібно залогіниться заново</string>
 
@@ -119,7 +119,7 @@
     <string name="verification_phone_title_2">Код підтвердження</string>
     <string name="message">Повідомлення</string>
     <string name="no_permission">На жаль, ця функція не доступна, так як Ви не активували її раніше. Будь-ласка, активуйте функцію у діалоговому вікні або у налаштуваннях додатків Вашого телефону.</string>
-    <string name="cancel">Скасувати</string>
+    <string name="cancel">Відхилити</string>
     <string name="accept">ОК</string>
     <string name="close_dialog">Закрити</string>
     <string name="loyalty_dialog_title">Програма лояльності</string>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/auth_background"
+    android:orientation="vertical">
+
+
+
+
+    <ImageView
+        android:id="@+id/fragment_login_imglogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:src="@drawable/ic_img_loginlogo"
+        android:layout_centerHorizontal="true"/>
+
+    <ProgressBar
+        android:id="@+id/pb"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:indeterminateTint="@color/white"
+        android:indeterminateTintMode="src_in"
+        android:layout_below="@+id/fragment_login_imglogo"
+        android:layout_height="wrap_content" />
+
+
+
+
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_default"
+        android:layout_marginBottom="16dp"
+        android:src="@mipmap/img_mdm_logo_auth"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/fragment_login_tv_restore_password"
+        style="@style/TextViewAuthStyle"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_height="@dimen/btn_auth_h"
+        android:layout_above="@+id/imageView2"/>
+
+    <TextView
+        android:id="@+id/tv_title"
+
+        style="@style/TextViewAuthStyle"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:text="Версія вашого додатку не актуальна"
+        android:layout_height="@dimen/btn_auth_h"
+        android:layout_above="@+id/btn_update"/>
+
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_centerInParent="true"
+        android:layout_width="@dimen/btn_auth_w"
+        android:background="@drawable/ripple_for_enter_check"
+        android:textColor="@color/colorPrimary"
+        android:text="Оновити"
+
+        android:layout_height="@dimen/btn_auth_h"
+        android:layout_marginTop="@dimen/margin_default" />
+
+
+
+
+</RelativeLayout>

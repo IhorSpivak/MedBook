@@ -50,7 +50,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/rectangle_rounded_10">
 
-        <ua.profarma.medbook.recyclerviews.clinical_case.ClinicalCasesRecyclerView
+        <mobi.medbook.android.recyclerviews.clinical_case.ClinicalCasesRecyclerView
             android:id="@+id/activity_my_clinical_cases_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

@@ -63,7 +63,7 @@
                                 android:textColor="#999999"
                                 android:textSize="12sp" />
 
-                            <ua.profarma.medbook.recyclerviews.tasks.TasksRecyclerView
+                            <mobi.medbook.android.recyclerviews.tasks.TasksRecyclerView
                                 android:id="@+id/fragment_today_list_tasks"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
@@ -377,7 +377,7 @@
                                 android:textColor="#999999"
                                 android:textSize="14sp" />
 
-                            <ua.profarma.medbook.recyclerviews.visits.VisitsDashboardRecyclerView
+                            <mobi.medbook.android.recyclerviews.visits.VisitsDashboardRecyclerView
                                 android:id="@+id/fragment_today_list_visits"
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
@@ -411,7 +411,7 @@
                         app:tabIndicatorHeight="0dp"
                         app:tabMode="scrollable" />
 
-                    <ua.profarma.medbook.ui.custom_views.NonSwipeableViewPager
+                    <mobi.medbook.android.ui.custom_views.NonSwipeableViewPager
                         android:id="@+id/fragment_today_news_viewpager"
                         android:layout_width="match_parent"
                         android:layout_height="450dp"

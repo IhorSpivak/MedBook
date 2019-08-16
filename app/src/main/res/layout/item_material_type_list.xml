@@ -23,6 +23,7 @@
         android:drawablePadding="4dp"
         android:text="99"
         android:textSize="13sp"
+        android:layout_marginTop="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/item_materials_type_list_logo_prod"
         app:layout_constraintStart_toEndOf="@+id/item_materials_type_list_logo_prod"
         app:layout_constraintTop_toTopOf="@+id/item_materials_type_list_logo_prod" />
@@ -35,6 +36,7 @@
         android:drawableLeft="@drawable/ic_videos"
         android:gravity="center_vertical"
         android:text="99"
+        android:layout_marginTop="5dp"
         android:drawablePadding="4dp"
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="@+id/item_materials_type_list_logo_prod"
@@ -49,6 +51,7 @@
         android:drawableLeft="@drawable/ic_presentations"
         android:gravity="center_vertical"
         android:text="99"
+        android:layout_marginTop="5dp"
         android:drawablePadding="4dp"
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="@+id/item_materials_type_list_logo_prod"
@@ -71,7 +74,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_default"
         android:text="Легалон"
-        android:textSize="15sp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@+id/item_materials_type_list_logo_prod"
         app:layout_constraintTop_toTopOf="@+id/item_materials_type_list_logo_prod" />
 
@@ -111,12 +116,13 @@
         app:layout_constraintTop_toBottomOf="@+id/item_materials_type_list_tv_tests"
         app:srcCompat="@drawable/img_test_2" />
 
-    <ua.profarma.medbook.utils.round_image.RoundedImageView
+    <ImageView
         android:id="@+id/item_materials_type_list_logo_prod"
         android:layout_width="70dp"
         android:layout_height="75dp"
+        android:maxWidth="93dp"
+        android:layout_marginLeft="13dp"
         android:layout_marginStart="@dimen/margin_default_half"
-        app:siRadius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

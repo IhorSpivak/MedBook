@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,6 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbar_height"
+        android:id="@+id/toolbar"
         android:elevation="@dimen/toolbar_elevation">
 
 
@@ -38,13 +39,25 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="@dimen/margin_default"
+        android:layout_below="@+id/toolbar"
         android:layout_marginEnd="@dimen/margin_default"
         android:background="@drawable/rectangle_rounded_4">
 
-        <ua.profarma.medbook.recyclerviews.visits.VisitsRecyclerView
+        <mobi.medbook.android.recyclerviews.visits.VisitsRecyclerView
             android:id="@+id/activity_incoming_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </FrameLayout>
+    
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:id="@+id/tv_empty"
+        android:visibility="gone"
+        android:textColor="@color/colorPrimary"
+        android:text="Актуальні зустрічі відсутні"/>
 
-</LinearLayout>
+</RelativeLayout>

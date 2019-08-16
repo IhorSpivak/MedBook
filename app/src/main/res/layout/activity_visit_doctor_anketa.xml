@@ -127,6 +127,7 @@
                 app:layout_constraintStart_toEndOf="@+id/imageView7"
                 app:layout_constraintTop_toBottomOf="@+id/activity_visit_doctor_anceta_description_of_visit" />
 
+
             <ImageView
                 android:id="@+id/imageView8"
                 android:layout_width="wrap_content"
@@ -146,7 +147,7 @@
                 app:layout_constraintStart_toStartOf="@+id/activity_visit_doctor_anceta_time"
                 app:layout_constraintTop_toTopOf="@+id/imageView8" />
 
-            <ua.profarma.medbook.recyclerviews.visit_doctor_question.VisitDoctorQuestionsRecyclerView
+            <mobi.medbook.android.recyclerviews.visit_doctor_question.VisitDoctorQuestionsRecyclerView
                 android:id="@+id/activity_visit_doctor_list"
                 android:layout_marginTop="@dimen/margin_default_half"
                 android:layout_width="match_parent"
@@ -158,7 +159,8 @@
 
             <Button
                 android:id="@+id/activity_visit_doctor_anceta_btn_send"
-                style="@style/Button_type_2"
+                android:background="@drawable/ripple_for_enter_btn"
+                android:textColor="@color/white"
                 android:layout_width="@dimen/btn_auth_w_2"
                 android:layout_height="@dimen/btn_auth_h"
                 android:layout_marginTop="@dimen/margin_default"

@@ -38,60 +38,60 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/margin_default"
-        android:layout_marginEnd="@dimen/margin_default"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/rectangle_rounded_4">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingBottom="@dimen/padding_default_double">
+            android:layout_marginBottom="20dp"
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/activity_visit_mp_anceta_dot"
                 android:layout_width="11dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
                 android:layout_height="11dp"
-                android:layout_marginStart="11dp"
-                android:layout_marginTop="11dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/circle_visit_new" />
+
+               />
 
             <TextView
                 android:id="@+id/activity_visit_mp_anceta_status"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_default_double"
                 android:ellipsize="end"
-                android:gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="18dp"
                 android:maxLines="1"
-                android:paddingTop="@dimen/padding_default"
+                android:layout_toRightOf="@+id/activity_visit_mp_anceta_dot"
                 android:textAllCaps="true"
                 android:textColor="#333333"
                 android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@+id/activity_visit_mp_anceta_dot"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/activity_visit_mp_anceta_dot" />
+            />
 
 
             <TextView
                 android:id="@+id/activity_visit_mp_anceta_title_of_visit"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
+                android:layout_below="@+id/activity_visit_mp_anceta_status"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_default"
-                android:layout_marginTop="@dimen/margin_default"
-                android:layout_marginEnd="@dimen/margin_default"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="20dp"
                 android:ellipsize="end"
                 android:maxLines="3"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_visit_mp_anceta_status" />
+             />
 
             <TextView
                 android:id="@+id/activity_visit_mp_anceta_description_of_visit"
                 android:layout_width="0dp"
+                android:layout_below="@+id/activity_visit_mp_anceta_title_of_visit"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_default"
                 android:layout_marginTop="@dimen/margin_default"
@@ -100,175 +100,192 @@
                 android:maxLines="7"
                 android:textColor="#363636"
                 android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_visit_mp_anceta_title_of_visit" />
+              />
 
             <View
                 android:id="@+id/view"
                 style="@style/Divider2"
-                android:layout_marginTop="@dimen/margin_default_half"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_visit_mp_anceta_description_of_visit" />
+                android:layout_below="@+id/activity_visit_mp_anceta_description_of_visit"
+               />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/rl1"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@+id/activity_visit_mp_anceta_description_of_visit"
+                android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/imageView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/activity_visit_mp_anceta_time"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/activity_visit_mp_anceta_time"
+                android:layout_centerVertical="true"
+
+                android:layout_marginLeft="20dp"
                 app:srcCompat="@drawable/ic_time" />
 
             <TextView
                 android:id="@+id/activity_visit_mp_anceta_time"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
+                android:layout_centerVertical="true"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_default"
-                android:layout_marginTop="@dimen/margin_default"
-                android:layout_marginEnd="@dimen/margin_default"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/imageView7"
                 android:maxLines="2"
+                android:textColor="@color/black"
                 android:text="TextView"
                 android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageView7"
-                app:layout_constraintTop_toBottomOf="@+id/view" />
+             />
 
+        </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/rl2"
+                android:layout_marginBottom="20dp"
+                android:layout_below="@+id/rl1"
+                android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/imageView8"
+                android:layout_centerVertical="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/imageView7"
-                app:layout_constraintStart_toStartOf="@+id/imageView7"
-                app:layout_constraintTop_toBottomOf="@+id/imageView7"
+                android:layout_marginLeft="22dp"
                 app:srcCompat="@drawable/ic_member" />
 
             <TextView
                 android:id="@+id/activity_visit_mp_anceta_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:textColor="@color/black"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/imageView8"
                 android:text="TextView"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView8"
-                app:layout_constraintStart_toStartOf="@+id/activity_visit_mp_anceta_time"
-                app:layout_constraintTop_toTopOf="@+id/imageView8" />
+             />
+
+        </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:id="@+id/rl3"
+
+                android:layout_below="@+id/rl2"
+                android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/activity_visit_mp_anceta_promo_im"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_default"
-                app:layout_constraintEnd_toEndOf="@+id/imageView8"
-                app:layout_constraintStart_toStartOf="@+id/imageView8"
-                app:layout_constraintTop_toBottomOf="@+id/activity_visit_mp_anceta_name"
-                app:srcCompat="@drawable/ic_visits_mp_promo" />
+                android:visibility="gone"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                app:srcCompat="@drawable/ic_visits_mp_promo"
+             />
 
             <TextView
                 android:id="@+id/activity_visit_mp_anceta_promo_text"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/padding_default"
-                android:paddingBottom="@dimen/padding_default"
+                android:visibility="gone"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/black"
+                android:layout_toRightOf="@+id/activity_visit_mp_anceta_promo_im"
                 android:text="Промо"
-                app:layout_constraintBottom_toBottomOf="@+id/activity_visit_mp_anceta_promo_im"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/activity_visit_mp_anceta_name"
-                app:layout_constraintTop_toTopOf="@+id/activity_visit_mp_anceta_promo_im" />
+               />
+
+        </RelativeLayout>
 
 
             <View
                 android:id="@+id/view1"
                 style="@style/Divider2"
-                android:layout_marginTop="@dimen/margin_default"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_visit_mp_anceta_promo_text" />
+                android:layout_marginTop="20dp"
+
+                android:layout_below="@+id/rl3"
+                />
 
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <RelativeLayout
                 android:id="@+id/activity_visit_mp_anceta_block_patient_flow"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_default"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/view1">
+                android:layout_below="@+id/view1"
+
+             >
 
                 <TextView
                     android:id="@+id/textView43"
-                    android:layout_width="0dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_default"
+                    android:layout_marginStart="20dp"
                     android:layout_marginEnd="8dp"
                     android:layout_weight="5"
                     android:maxLines="4"
+                    android:textStyle="bold"
                     android:text="Загальна кількість паціентів"
                     android:textAllCaps="true"
                     android:textColor="#777777"
                     android:textSize="12sp"
-                    app:layout_constraintEnd_toStartOf="@+id/activity_visit_mp_anceta_patient_flow_value"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                  />
 
                 <TextView
                     android:id="@+id/textView44"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_default"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_weight="5"
+                    android:layout_below="@+id/textView43"
+                    android:layout_marginLeft="20dp"
                     android:maxLines="4"
+                    android:layout_marginTop="8dp"
                     android:text="На місяць без урахування нозологій"
                     android:textColor="#777777"
                     android:textSize="10sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/activity_visit_mp_anceta_patient_flow_value"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView43" />
+                   />
 
-                <TextView
+                <EditText
                     android:id="@+id/activity_visit_mp_anceta_patient_flow_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/margin_default"
-                    android:layout_weight="1"
+                    android:layout_marginLeft="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
+                    android:maxWidth="100dp"
                     android:text="0"
+                    android:inputType="number"
                     android:textColor="#333333"
-                    android:textSize="26sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:textSize="26sp" />
+            </RelativeLayout>
 
 
-            <ua.profarma.medbook.recyclerviews.products.ProductsRecyclerView
+            <mobi.medbook.android.recyclerviews.products.ProductsRecyclerView
                 android:id="@+id/activity_visit_mp_anceta_list_product"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_default"
-                app:layout_constraintTop_toBottomOf="@+id/activity_visit_mp_anceta_block_patient_flow" />
+                android:layout_below="@+id/activity_visit_mp_anceta_block_patient_flow"
+                />
 
             <View
                 android:id="@+id/view2"
                 style="@style/Divider2"
-                android:layout_marginTop="@dimen/margin_default"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_visit_mp_anceta_list_product" />
+                android:layout_marginBottom="20dp"
+                android:layout_below="@+id/activity_visit_mp_anceta_list_product"
+                android:layout_marginTop="@dimen/margin_default" />
 
 
             <TextView
                 android:id="@+id/activity_visit_mp_anceta_timer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_default"
+                android:layout_below="@+id/view2"
                 android:gravity="center_horizontal"
                 android:textColor="@color/black"
-                android:textSize="28sp"
-                app:layout_constraintTop_toBottomOf="@+id/view2" />
+                android:textSize="28sp" />
 
             <TextView
                 android:id="@+id/activity_visit_mp_anceta_timer_title"
@@ -276,37 +293,37 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_default"
                 android:gravity="center_horizontal"
+                android:layout_below="@+id/activity_visit_mp_anceta_timer"
                 android:text="Завершити зустріч"
                 android:textColor="#777777"
-                android:textSize="12sp"
-                app:layout_constraintTop_toBottomOf="@+id/activity_visit_mp_anceta_timer" />
+                android:textSize="12sp" />
 
 
             <Button
                 android:id="@+id/activity_visit_mp_anceta_btn_send"
-                style="@style/Button_type_2"
+                android:background="@drawable/ripple_for_enter_btn"
                 android:layout_width="@dimen/btn_auth_w_2"
+                android:layout_below="@+id/activity_visit_mp_anceta_timer_title"
+                android:layout_centerHorizontal="true"
                 android:layout_height="@dimen/btn_auth_h"
                 android:layout_marginTop="@dimen/margin_default_and_half"
                 android:text="Button"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_visit_mp_anceta_timer_title"
-
-                />
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/activity_visit_mp_anceta_btn_cancel"
-                style="@style/Button_type_1"
+                android:background="@drawable/ripple_for_enter_check"
+                android:layout_below="@+id/activity_visit_mp_anceta_btn_send"
+                android:layout_centerHorizontal="true"
                 android:layout_width="@dimen/btn_auth_w"
                 android:layout_height="@dimen/btn_auth_h"
                 android:layout_marginTop="@dimen/margin_default"
                 android:text="Button"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_visit_mp_anceta_btn_send" />
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/colorPrimary"
+                />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
     </ScrollView>
 
 

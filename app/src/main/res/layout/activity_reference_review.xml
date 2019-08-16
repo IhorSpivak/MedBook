@@ -96,7 +96,7 @@
                 android:layout_height="wrap_content"
                 android:descendantFocusability="blocksDescendants">
 
-                <ua.profarma.medbook.ui.reference.IcodSelectedRecyclerViewed
+                <mobi.medbook.android.ui.reference.IcodSelectedRecyclerViewed
                     android:id="@+id/activity_add_clinical_cases_icod_list"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
@@ -127,7 +127,7 @@
                 android:layout_height="match_parent"
                 android:descendantFocusability="blocksDescendants">
 
-                <ua.profarma.medbook.ui.reference.DrugsSelectedRecyclerViewed
+                <mobi.medbook.android.ui.reference.DrugsSelectedRecyclerViewed
                     android:id="@+id/activity_add_clinical_cases_drug_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />

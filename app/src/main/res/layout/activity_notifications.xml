@@ -35,7 +35,7 @@
         </LinearLayout>
     </FrameLayout>
 
-    <ua.profarma.medbook.recyclerviews.notifications.NotificationsRecyclerView
+    <mobi.medbook.android.recyclerviews.notifications.NotificationsRecyclerView
         android:id="@+id/activity_notifications_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

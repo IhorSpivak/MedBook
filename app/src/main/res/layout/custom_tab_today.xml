@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ua.profarma.medbook.ui.today.tabs.CustomTab xmlns:android="http://schemas.android.com/apk/res/android"
+<mobi.medbook.android.ui.today.tabs.CustomTab xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -32,4 +32,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/custom_tab_today_title"
         app:srcCompat="@drawable/circle_blue" />
-</ua.profarma.medbook.ui.today.tabs.CustomTab>
+</mobi.medbook.android.ui.today.tabs.CustomTab>

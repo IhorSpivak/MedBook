@@ -49,7 +49,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ua.profarma.medbook.recyclerviews.materials.MaterialsRecyclerView
+    <mobi.medbook.android.recyclerviews.materials.MaterialsRecyclerView
         android:id="@+id/fragment_materials_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

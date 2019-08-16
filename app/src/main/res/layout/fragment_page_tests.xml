@@ -6,7 +6,7 @@
     <!--android:text="TESTS"-->
     <!--/>-->
 <!--<?xml version="1.0" encoding="utf-8"?>-->
-<ua.profarma.medbook.recyclerviews.tests.TestsRecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+<mobi.medbook.android.recyclerviews.tests.TestsRecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/fragment_page_tests_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />

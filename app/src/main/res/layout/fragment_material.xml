@@ -47,16 +47,14 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/sliding_tabs"
             android:layout_width="match_parent"
+            style="@style/MyCustomTabLayout"
             android:layout_height="wrap_content"
-            app:tabBackground="@drawable/tab_color_selector"
-            app:tabIndicatorHeight="0dp"
-            app:tabMaxWidth="0dp"
-            app:tabGravity="fill"
-            app:tabMode="fixed"
-            app:tabPaddingEnd="-5dp"
-            app:tabPaddingStart="-5dp" />
+            app:tabTextAppearance="@style/MineCustomTabText"
+            app:tabTextColor="#abb1bf"
+            app:tabSelectedTextColor="#4f83ba"
+            app:tabIndicatorHeight="0dp" />
 
-        <ua.profarma.medbook.ui.custom_views.NonSwipeableViewPager
+        <mobi.medbook.android.ui.custom_views.NonSwipeableViewPager
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

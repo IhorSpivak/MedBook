@@ -5,7 +5,7 @@
     android:background="@drawable/materials_background"
     android:orientation="vertical">
 
-    <ua.profarma.medbook.ui.custom_views.MainVisitCalendarView
+    <mobi.medbook.android.ui.custom_views.MainVisitCalendarView
         android:id="@+id/fragment_calendar_calendar_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/rectangle_rounded_top_4">
 
-        <ua.profarma.medbook.recyclerviews.visits.VisitsRecyclerView
+        <mobi.medbook.android.recyclerviews.visits.VisitsRecyclerView
             android:id="@+id/fragment_calendar_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

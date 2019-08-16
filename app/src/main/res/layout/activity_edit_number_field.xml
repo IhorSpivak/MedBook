@@ -62,9 +62,10 @@
 
         <Button
             android:id="@+id/activity_edit_number_field_save"
-            style="@style/Button_type_2"
+            android:background="@drawable/ripple_for_enter_btn"
             android:layout_width="@dimen/btn_auth_w_2"
             android:layout_height="@dimen/btn_auth_h"
+            android:textColor="@color/white"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/margin_default"
             android:layout_marginBottom="@dimen/margin_default"

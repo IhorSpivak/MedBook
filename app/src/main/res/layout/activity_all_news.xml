@@ -38,7 +38,7 @@
         android:layout_height="match_parent"
         android:background="@drawable/rectangle_rounded_10">
 
-        <ua.profarma.medbook.recyclerviews.news.NewsRecyclerView
+        <mobi.medbook.android.recyclerviews.news.NewsRecyclerView
             android:id="@+id/activity_all_news_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
