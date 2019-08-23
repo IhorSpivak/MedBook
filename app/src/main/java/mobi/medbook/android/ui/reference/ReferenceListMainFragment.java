@@ -1,6 +1,9 @@
 package mobi.medbook.android.ui.reference;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,7 +67,24 @@ public class ReferenceListMainFragment extends MedBookFragment implements Refere
 
         ButterKnife.bind(this, rootView);
 
+        if(isOnline()){
+
+        } else {
+            pb.setVisibility(View.GONE);
+        }
+
         return rootView;
+    }
+
+
+    public boolean isOnline() {
+        boolean a = false ;
+        ConnectivityManager connectivityManager = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            a = true;
+        }
+        return a;
     }
 
 

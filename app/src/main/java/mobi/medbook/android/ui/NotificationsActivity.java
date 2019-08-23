@@ -31,7 +31,11 @@ public class NotificationsActivity extends MedBookActivity implements IOnReactio
         setContentView(R.layout.activity_notifications);
         ImageView imvClose = findViewById(R.id.activity_notifications_close);
         tvTitle = findViewById(R.id.activity_notifications_title);
-        imvClose.setOnClickListener(view -> finish());
+        imvClose.setOnClickListener(view -> {
+            Intent intentDoc = new Intent(this, MainActivity.class);
+        intentDoc.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intentDoc);}
+        );
         list = findViewById(R.id.activity_notifications_list);
         list.init();
         list.setItemAnimator(null);

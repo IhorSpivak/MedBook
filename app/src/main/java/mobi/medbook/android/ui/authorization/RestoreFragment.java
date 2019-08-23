@@ -5,7 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
@@ -22,6 +24,10 @@ import mobi.medbook.android.utils.TextUtils;
 
 
 public class RestoreFragment extends Fragment implements EventListener {
+
+    private ProgressBar pb;
+
+
     public static RestoreFragment newInstance() {
         final RestoreFragment fragment = new RestoreFragment();
         return fragment;
@@ -35,6 +41,7 @@ public class RestoreFragment extends Fragment implements EventListener {
 
         final AppCompatEditText emailEt = rootView.findViewById(R.id.fragment_restore_tiet_email);
         btnEnter = rootView.findViewById(R.id.fragment_restore_btn_send);
+        pb = rootView.findViewById(R.id.pb);
         btnEnter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,6 +49,7 @@ public class RestoreFragment extends Fragment implements EventListener {
                 email = emailEt.getText().toString();
                 if (TextUtils.isValidEmail(email)) {
                     btnEnter.setEnabled(false);
+                    pb.setVisibility(View.VISIBLE);
                     Core.get().AuthorizationControl().restore(email);
                 } else {
                     AppUtils.toastError(getString(R.string.error_email), true);
@@ -69,8 +77,10 @@ public class RestoreFragment extends Fragment implements EventListener {
     public void onEvent(Event event) {
         switch (event.getEventId()) {
             case Event.EVENT_RESTORE:
+                pb.setVisibility(View.GONE);
                 EventRestore eventRestore = (EventRestore) event;
                 if (eventRestore.isSuccess()) {
+                    Toast.makeText(getActivity(), "Перевірте вашу електронну адресу", Toast.LENGTH_LONG).show();
                 } else {
                     AppUtils.toastError(eventRestore.getMesssage() != null && !eventRestore.getMesssage().isEmpty() ? eventRestore.getMesssage() : getString(R.string.unknown_restore_request), false);
 

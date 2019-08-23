@@ -16,6 +16,8 @@ public class Comment implements Comparable<Comment>{
     public Integer created_at;
     public String owner_firstname;
     public String owner_middlename;
+    public Integer position;
+    public Integer childSize = 0;
 
     @Override
     public int compareTo(Comment o) {

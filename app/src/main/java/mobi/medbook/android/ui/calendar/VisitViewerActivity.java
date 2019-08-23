@@ -1,7 +1,10 @@
 package mobi.medbook.android.ui.calendar;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -78,11 +81,15 @@ public class VisitViewerActivity extends MedBookActivity {
         imPush = findViewById(R.id.activity_visit_viewer_push);
         if (isMedPred()) {
             llBell.setOnClickListener(view -> {
-                Core.get().VisitsControl().pushNotificationBeforeStartVisit(userVisit.id);
-                Toast.makeText(this, "Повідомлення було відправлене лікарю", Toast.LENGTH_LONG).show();
-                llBell.setEnabled(false);
-                h = new Handler(hc);
-                h.sendEmptyMessageDelayed(1, 16000);
+                if(isOnline()) {
+                    Core.get().VisitsControl().pushNotificationBeforeStartVisit(userVisit.id);
+                    Toast.makeText(this, "Повідомлення було відправлене лікарю", Toast.LENGTH_LONG).show();
+                    llBell.setEnabled(false);
+                    h = new Handler(hc);
+                    h.sendEmptyMessageDelayed(1, 16000);
+                } else {
+                    Toast.makeText(this, "Схоже, що нема інтернет-з'єднання", Toast.LENGTH_LONG).show();
+                }
 
             });
         }
@@ -146,6 +153,8 @@ public class VisitViewerActivity extends MedBookActivity {
         btnMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
                 v.setEnabled(false);
 
                 new Handler().postDelayed(new Runnable() {
@@ -155,16 +164,20 @@ public class VisitViewerActivity extends MedBookActivity {
                     }
                 }, 2000);
 
-                switch (status) {
-                    case ACCEPTED:
-                        Core.get().VisitsControl().startVisit(userVisit.id, false);
-                        break;
-                    case NEW:
-                        Core.get().VisitsControl().visitAccept(userVisit.id);
-                        break;
-                    case STARTED:
-                        //Core.get().VisitsControl().visitEnd(userVisit.id);
-                        break;
+                if(isOnline()) {
+                    switch (status) {
+                        case ACCEPTED:
+                            Core.get().VisitsControl().startVisit(userVisit.id, false);
+                            break;
+                        case NEW:
+                            Core.get().VisitsControl().visitAccept(userVisit.id);
+                            break;
+                        case STARTED:
+                            //Core.get().VisitsControl().visitEnd(userVisit.id);
+                            break;
+                    }
+                } else {
+                    Toast.makeText(VisitViewerActivity.this, "Схоже, що нема інтернет-з'єднання", Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -172,11 +185,26 @@ public class VisitViewerActivity extends MedBookActivity {
 
 
         btnCancel.setOnClickListener(view -> {
-            Core.get().VisitsControl().visitDecline(userVisit.id);
-            finish();
+            if(isOnline()) {
+                Core.get().VisitsControl().visitDecline(userVisit.id);
+                finish();
+            } else {
+                Toast.makeText(this, "Схоже, що нема інтернет-з'єднання", Toast.LENGTH_LONG).show();
+            }
         });
         onLocalizationUpdate();
 
+    }
+
+
+    public boolean isOnline() {
+        boolean a = false ;
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            a = true;
+        }
+        return a;
     }
 
     private void updateStatus() {

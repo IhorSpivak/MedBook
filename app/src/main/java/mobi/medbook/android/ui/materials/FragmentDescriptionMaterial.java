@@ -1,6 +1,9 @@
 package mobi.medbook.android.ui.materials;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -70,6 +74,7 @@ public class FragmentDescriptionMaterial extends MedBookFragment {
     private LinearLayout llSecondaryPoints;
     private int idType;
     private int minRecationNotification;
+    boolean connected = false;
 
 
     public static FragmentDescriptionMaterial newInstance(MaterialsEnum type, int idType) {
@@ -171,47 +176,52 @@ public class FragmentDescriptionMaterial extends MedBookFragment {
                     } else AppUtils.toastError("Вибачте але відео не перегляду немає", true);
                     break;
                 case TEST:
-                    if (mSelectTest.minimum_notification_reactions <= minRecationNotification) {
-                        if (mSelectTest.test.translations.length > 0
-                                && mSelectTest.test.questions.length > 0) {
-                            if (mSelectTest.test.results.length == 0) {
-                                LogUtils.logD(TAG, "start TestsActivity");
-                                Intent intentTests = new Intent(getContext(), TestsActivity.class);
-                                intentTests.putExtra(TestsActivity.KEY_ID_TEST, mSelectTest.id);
-                                getContext().startActivity(intentTests);
-                            } else {
-                                LogUtils.logD(TAG, "start ViewCompletedTestActivity");
-                                Intent intentTests = new Intent(getContext(), ViewCompletedTestActivity.class);
-                                LogUtils.logD(TAG, "testId = " + mSelectTest.test_id);
-                                intentTests.putExtra(ViewCompletedTestActivity.KEY_TEST_USER_CONTENT_ID, mSelectTest.id);
-                                getContext().startActivity(intentTests);
-                            }
-                        } else
-                            AppUtils.toastError("Вибачте але тести не були завантажені", true);
+                    if(isOnline()) {
+                        if (mSelectTest.minimum_notification_reactions <= minRecationNotification) {
+                            if (mSelectTest.test.translations.length > 0
+                                    && mSelectTest.test.questions.length > 0) {
+                                if (mSelectTest.test.results.length == 0) {
+                                    LogUtils.logD(TAG, "start TestsActivity");
+                                    Intent intentTests = new Intent(getContext(), TestsActivity.class);
+                                    intentTests.putExtra(TestsActivity.KEY_ID_TEST, mSelectTest.id);
+                                    getContext().startActivity(intentTests);
+                                } else {
+                                    LogUtils.logD(TAG, "start ViewCompletedTestActivity");
+                                    Intent intentTests = new Intent(getContext(), ViewCompletedTestActivity.class);
+                                    LogUtils.logD(TAG, "testId = " + mSelectTest.test_id);
+                                    intentTests.putExtra(ViewCompletedTestActivity.KEY_TEST_USER_CONTENT_ID, mSelectTest.id);
+                                    getContext().startActivity(intentTests);
+                                }
+                            } else
+                                AppUtils.toastError("Вибачте але тести не були завантажені", true);
+                        } else {
+                            DialogBuilder.showInfoDialogInterface(getActivity(),
+                                    Core.get().LocalizationControl().getText(R.id.general_error),
+                                    String.format(Core.get().LocalizationControl().getText(R.id.need_push_reaction),
+                                            String.valueOf(mSelectTest.minimum_notification_reactions - minRecationNotification))); // todo
+                        }
                     } else {
-                        DialogBuilder.showInfoDialogInterface(getActivity(),
-                                Core.get().LocalizationControl().getText(R.id.general_error),
-                                String.format(Core.get().LocalizationControl().getText(R.id.need_push_reaction),
-                                        String.valueOf(mSelectTest.minimum_notification_reactions - minRecationNotification))); // todo
+                        Toast.makeText(getActivity(), "Схоже, що нема інтернет-з'єднання", Toast.LENGTH_LONG).show();
                     }
-                        break;
+                    break;
+
             }
         });
+
         return rootView;
     }
 
     public boolean isOnline() {
-        Runtime runtime = Runtime.getRuntime();
-        try {
-            Process ipProcess = runtime.exec("/system/bin/ping -c 1 8.8.8.8");
-            int     exitValue = ipProcess.waitFor();
-            return (exitValue == 0);
+        boolean a = false ;
+        ConnectivityManager connectivityManager = (ConnectivityManager) getContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            a = true;
         }
-        catch (IOException e)          { e.printStackTrace(); }
-        catch (InterruptedException e) { e.printStackTrace(); }
-
-        return false;
+        return a;
     }
+
+
 
     private Video getTitleVideo(int id, Video[] videos) {
         Video result = null;

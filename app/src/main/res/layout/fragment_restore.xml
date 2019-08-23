@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,28 +10,16 @@
         android:id="@+id/fragment_restore_logo_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_default"
-        android:layout_marginBottom="@dimen/margin_default"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
+        android:layout_marginTop="96dp"
+        android:layout_centerHorizontal="true"
         app:srcCompat="@drawable/ic_img_loginlogo" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/fragment_restore_til_email"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_default"
         android:theme="@style/TextInputLayoutAuth"
-        android:layout_marginBottom="@dimen/margin_default"
-        app:layout_constraintBottom_toTopOf="@+id/fragment_restore_btn_send"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_restore_logo_top"
-        app:layout_constraintVertical_chainStyle="packed">
+        android:layout_centerInParent="true">
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/fragment_restore_tiet_email"
@@ -50,6 +38,8 @@
         android:layout_marginBottom="@dimen/margin_default"
         style="@style/ButtonAuth"
         android:text="@string/restore"
+        android:layout_below="@+id/fragment_restore_til_email"
+        android:layout_centerHorizontal="true"
         app:layout_constraintBottom_toTopOf="@+id/fragment_restore_btn_back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -62,6 +52,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/prev_caption"
+        android:layout_below="@+id/fragment_restore_btn_send"
+        android:layout_centerHorizontal="true"
         app:layout_constraintBottom_toTopOf="@+id/fragment_restore_logo_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -74,10 +66,22 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_default"
         android:layout_marginBottom="@dimen/margin_default"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         app:srcCompat="@mipmap/img_mdm_logo_auth" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ProgressBar
+        android:id="@+id/pb"
+        android:visibility="gone"
+        android:layout_above="@+id/fragment_restore_til_email"
+        android:layout_marginBottom="20dp"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:indeterminateTint="@color/white"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content" />
+
+
+
+</RelativeLayout>

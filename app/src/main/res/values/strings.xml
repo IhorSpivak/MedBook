@@ -75,7 +75,7 @@
     <!-- END registration pages-->
 
 
-    <string name="no_internet_connection">Немає інтернет зєднання. Будь ласка включіть Wi-Fi або мобільний інтернет</string>
+    <string name="no_internet_connection">Схоже, що нема інтернет-зєднання</string>
     <string name="no_materials">Немає матеріалів для показу. Їх або не існую обо щось змінилося в API</string>
 
     <string name="btn_ok">Так</string>

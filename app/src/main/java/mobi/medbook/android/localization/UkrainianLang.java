@@ -50,7 +50,7 @@ public class UkrainianLang {
     }
 
     public final static class General {
-        public static String NO_INTERNET_CONNECTION = "Немає інтернет зєднання. Будь ласка включіть Wi-Fi або мобільний інтернет";
+        public static String NO_INTERNET_CONNECTION = "Схоже, що нема інтернет-з'єднання";
         public static String ERROR_401 = "Сплив термін авторізації або ви залогінились на іншому пристрої, потрібно залогіниться знову";
         public static String MESSAGE = "Повідомлення";
         public static String ERROR = "Помилка";
@@ -265,7 +265,7 @@ public class UkrainianLang {
     public final static class CommentsActivity{
         public static String TITLE = "Коментарі";
         public static String BTN_REPLY = "Відповісти";
-        public static String DELETE_COMMENT_DIALOG_TITLE = "Видалити коментарій";
+        public static String DELETE_COMMENT_DIALOG_TITLE = "Видалити коментар";
         public static String DELETE_COMMENT_DIALOG_TEXT = "Ви справді бажаєте видалити коментарій?";
     }
 

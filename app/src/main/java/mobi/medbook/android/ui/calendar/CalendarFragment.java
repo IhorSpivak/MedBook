@@ -145,11 +145,13 @@ public class CalendarFragment extends MedBookFragment implements MainVisitCalend
         cal.set(year, month, day, 0, 0, 0);
         selectDay = cal.getTimeInMillis() / 1000;
         list.clear();
-        for (int i = 0; i < Core.get().VisitsControl().getUserVisitItems().length; i++) {
-            UserVisit item = Core.get().VisitsControl().getUserVisitItems()[i];
-            LogUtils.logD(TAG, "filterChanged id = " + item.id + ", time_from = " + item.time_from + ", selectDay = " + selectDay + ", title = " + item.visit.title);
-            if (item.time_from >= selectDay && item.time_from < (selectDay + 86399) && item.partner != null)
-                list.itemAdd(new VisitRecyclerItem(item, today));
+        if(Core.get().VisitsControl().getUserVisitItems() != null) {
+            for (int i = 0; i < Core.get().VisitsControl().getUserVisitItems().length; i++) {
+                UserVisit item = Core.get().VisitsControl().getUserVisitItems()[i];
+                LogUtils.logD(TAG, "filterChanged id = " + item.id + ", time_from = " + item.time_from + ", selectDay = " + selectDay + ", title = " + item.visit.title);
+                if (item.time_from >= selectDay && item.time_from < (selectDay + 86399) && item.partner != null)
+                    list.itemAdd(new VisitRecyclerItem(item, today));
+            }
         }
     }
 }

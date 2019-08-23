@@ -46,12 +46,12 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_bar"
             style="@style/MyCustomTabLayout"
-            app:layout_scrollFlags="scroll"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            app:tabGravity="fill"
+            app:tabMode="fixed"
             app:tabTextAppearance="@style/MineCustomTabText"
-
             app:tabTextColor="#abb1bf"
             app:tabSelectedTextColor="#4f83ba"
             app:tabIndicatorHeight="0dp" />

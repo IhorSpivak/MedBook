@@ -227,7 +227,7 @@
                     android:layout_weight="5"
                     android:maxLines="4"
                     android:textStyle="bold"
-                    android:text="Загальна кількість паціентів"
+                    android:text="Загальна кількість пацієнтів"
                     android:textAllCaps="true"
                     android:textColor="#777777"
                     android:textSize="12sp"

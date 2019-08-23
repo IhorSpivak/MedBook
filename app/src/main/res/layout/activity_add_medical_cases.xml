@@ -263,16 +263,18 @@
 
             <Button
                 android:id="@+id/activity_add_clinical_cases_btn_send"
-                style="@style/Button_type_2"
+                android:background="@drawable/ripple_for_enter_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:layout_margin="@dimen/margin_default" />
             <Button
                 android:id="@+id/activity_add_clinical_cases_btn_save"
-                style="@style/Button_type_1"
+                android:background="@drawable/ripple_for_enter_check"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="@dimen/btn_auth_w_2"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
                 android:layout_margin="@dimen/margin_default" />
 
         </LinearLayout>

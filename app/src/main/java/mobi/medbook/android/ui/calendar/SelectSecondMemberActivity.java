@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -38,11 +39,15 @@ public class SelectSecondMemberActivity extends MedBookActivity implements IOnSe
         list = findViewById(R.id.activity_select_second_member_list);
         list.init();
         items = new RecyclerItems();
-        for (int i = 0; i < Core.get().VisitsControl().getMemberVisitItems().length; i++) {
-            if (Core.get().VisitsControl().getMemberVisitItems()[i].userOne.id != App.getUser().id)
-                items.add(new SecondMemberVisitRecyclerItem(Core.get().VisitsControl().getMemberVisitItems()[i].userOne));
-            else if (Core.get().VisitsControl().getMemberVisitItems()[i].userTwo.id != App.getUser().id)
-                items.add(new SecondMemberVisitRecyclerItem(Core.get().VisitsControl().getMemberVisitItems()[i].userTwo));
+        if(Core.get().VisitsControl().getMemberVisitItems() != null) {
+            for (int i = 0; i < Core.get().VisitsControl().getMemberVisitItems().length; i++) {
+                if (Core.get().VisitsControl().getMemberVisitItems()[i].userOne.id != App.getUser().id)
+                    items.add(new SecondMemberVisitRecyclerItem(Core.get().VisitsControl().getMemberVisitItems()[i].userOne));
+                else if (Core.get().VisitsControl().getMemberVisitItems()[i].userTwo.id != App.getUser().id)
+                    items.add(new SecondMemberVisitRecyclerItem(Core.get().VisitsControl().getMemberVisitItems()[i].userTwo));
+            }
+        } else {
+            Toast.makeText(this, "Схоже, що нема інтернет-з'єднання", Toast.LENGTH_SHORT).show();
         }
         Collections.sort(items, (o1, o2) -> ((SecondMemberVisitRecyclerItem) o1).getUserRelation().middle_name.compareTo((((SecondMemberVisitRecyclerItem) o2).getUserRelation().middle_name)));
         Collections.sort(items, (o1, o2) -> ((SecondMemberVisitRecyclerItem) o1).getUserRelation().first_name.compareTo((((SecondMemberVisitRecyclerItem) o2).getUserRelation().first_name)));

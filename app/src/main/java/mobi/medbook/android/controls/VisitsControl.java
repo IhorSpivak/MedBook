@@ -314,10 +314,14 @@ public class VisitsControl {
             for (CacheMpAncet item : mpAncets) {
                 if (item.idVisit == id) {
                     flagResponse = false;
-                    userVisitQuestionnaireMP = item.userVisitQuestionnaire;
-                    resultIdUserVisitQuestionnaireMP = item.userVisitQuestionnaire.result_id;
-                    mpAncets.remove(item);
-                    EventRouter.send(new EventUserVisitQuestionnaireMPLoad(userVisitQuestionnaireMP));
+                    if( item.userVisitQuestionnaire != null && item.userVisitQuestionnaire.result_id != null) {
+                        userVisitQuestionnaireMP = item.userVisitQuestionnaire;
+                        resultIdUserVisitQuestionnaireMP = item.userVisitQuestionnaire.result_id;
+                        mpAncets.remove(item);
+                        EventRouter.send(new EventUserVisitQuestionnaireMPLoad(userVisitQuestionnaireMP));
+                    } else {
+                        getUserVisitQuestionnaireMPFromServer(id);
+                    }
 
                 }
             }

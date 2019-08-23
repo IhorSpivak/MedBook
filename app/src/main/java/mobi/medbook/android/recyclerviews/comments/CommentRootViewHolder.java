@@ -37,7 +37,7 @@ public class CommentRootViewHolder extends BaseViewHolder {
 
     public void init(CommentsRecyclerItem owner, Comment comment) {
         tvReply.setOnClickListener(owner);
-        //rootView.setOnLongClickListener(owner);
+        rootView.setOnLongClickListener(owner);
 
         if (comment.owner_firstname != null && comment.owner_firstname.length() > 0 &&
                 comment.owner_middlename != null && comment.owner_middlename.length() > 0) {

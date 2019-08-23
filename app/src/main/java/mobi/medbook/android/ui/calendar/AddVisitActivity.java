@@ -3,7 +3,10 @@ package mobi.medbook.android.ui.calendar;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
@@ -208,31 +211,46 @@ public class AddVisitActivity extends MedBookActivity /*implements TimePickerDia
 
         btnCreate.setOnClickListener(view -> {
 
-            if (mSelectUserVisitId != -1) {
-                if (inputVisit.getText() != null && !inputVisit.getText().toString().isEmpty()) {
-                    btnCreate.setEnabled(false);
-                    CreateUserVisitRequest createUserVisitRequest = new CreateUserVisitRequest();
-                    createUserVisitRequest.description = inputNote.getText().toString();
-                    createUserVisitRequest.title = inputVisit.getText().toString();
-                    createUserVisitRequest.invited_user_id = mSelectUserVisitId;
-                    createUserVisitRequest.user_id = App.getUser().id;
-                    createUserVisitRequest.appointed_time_from = mSelectTimeVisit;
-                    createUserVisitRequest.appointed_time_to = mSelectTimeVisit + mSelectTimeDuration;
-                    Core.get().VisitsControl().createUserVisit(createUserVisitRequest);
-                    Toast.makeText(this, (Core.get().LocalizationControl().getText(R.id.visits_create_ok)), Toast.LENGTH_LONG).show();
-                    finish();
+            if (isOnline()) {
+
+                if (mSelectUserVisitId != -1) {
+                    if (inputVisit.getText() != null && !inputVisit.getText().toString().isEmpty()) {
+                        btnCreate.setEnabled(false);
+                        CreateUserVisitRequest createUserVisitRequest = new CreateUserVisitRequest();
+                        createUserVisitRequest.description = inputNote.getText().toString();
+                        createUserVisitRequest.title = inputVisit.getText().toString();
+                        createUserVisitRequest.invited_user_id = mSelectUserVisitId;
+                        createUserVisitRequest.user_id = App.getUser().id;
+                        createUserVisitRequest.appointed_time_from = mSelectTimeVisit;
+                        createUserVisitRequest.appointed_time_to = mSelectTimeVisit + mSelectTimeDuration;
+                        Core.get().VisitsControl().createUserVisit(createUserVisitRequest);
+                        Toast.makeText(this, (Core.get().LocalizationControl().getText(R.id.visits_create_ok)), Toast.LENGTH_LONG).show();
+                        finish();
+                    } else {
+                        Toast.makeText(this, Core.get().LocalizationControl().getText(R.id.no_select_visit_title), Toast.LENGTH_LONG).show();
+                        btnCreate.setEnabled(true);
+                    }
                 } else {
-                    Toast.makeText(this, Core.get().LocalizationControl().getText(R.id.no_select_visit_title), Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, Core.get().LocalizationControl().getText(R.id.no_select_visit_member), Toast.LENGTH_LONG).show();
                     btnCreate.setEnabled(true);
                 }
             } else {
-                Toast.makeText(this, Core.get().LocalizationControl().getText(R.id.no_select_visit_member), Toast.LENGTH_LONG).show();
-                btnCreate.setEnabled(true);
+                Toast.makeText(this, "Схоже, що нема інтернет-з'єднання", Toast.LENGTH_LONG).show();
             }
         });
 
         Core.get().VisitsControl().getUsersRelationForVisits();
         onLocalizationUpdate();
+    }
+
+    public boolean isOnline() {
+        boolean a = false ;
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            a = true;
+        }
+        return a;
     }
 
 

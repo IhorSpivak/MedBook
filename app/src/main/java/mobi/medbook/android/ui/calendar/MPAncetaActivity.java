@@ -2,8 +2,11 @@ package mobi.medbook.android.ui.calendar;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -169,19 +172,39 @@ public class MPAncetaActivity extends MedBookActivity implements IOnSelectProduc
 
         btnSend.setOnClickListener(view -> {
             mpData.data.patientFlow = Integer.parseInt(tvPatientFlow.getText().toString());
-            onFinishMeetingSuccess();
+
+            if(isOnline()) {
+                onFinishMeetingSuccess();
+            } else {
+                Toast.makeText(this, "Схоже, що нема інтернет-з'єднання", Toast.LENGTH_LONG).show();
+            }
 
 
         });
 
         btnCancel.setOnClickListener(view -> {
             mpData.data.patientFlow = Integer.parseInt(tvPatientFlow.getText().toString());
-          onFinishMeeting();
+            if(isOnline()){
+                onFinishMeeting();
+            } else {
+                Toast.makeText(this, "Схоже, що нема інтернет-з'єднання", Toast.LENGTH_LONG).show();
+            }
+
         });
 //        h = new Handler(hc);
 //        h.sendEmptyMessageDelayed(1, 1000);
         onLocalizationUpdate();
 
+    }
+
+    public boolean isOnline() {
+        boolean a = false ;
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            a = true;
+        }
+        return a;
     }
 
     private void onFinishMeetingSuccess() {

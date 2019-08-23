@@ -31,6 +31,8 @@ import mobi.medbook.android.events.authorization.EventSelectedMedicalInstitution
 import mobi.medbook.android.events.core.Event;
 import mobi.medbook.android.events.core.EventListener;
 import mobi.medbook.android.events.core.EventRouter;
+import mobi.medbook.android.singltones.SingltonForPatterns;
+import mobi.medbook.android.singltones.SingltonRegistrationData;
 import mobi.medbook.android.types.SpecializationTranslate;
 import mobi.medbook.android.utils.DialogBuilder;
 import mobi.medbook.android.utils.LogUtils;
@@ -87,14 +89,29 @@ public class RegistrationPage2Fragment extends Fragment implements EventListener
             }
         });
 
+
         mEditTextSpecialization = rootView.findViewById(R.id.fragment_registration_page_2_tiet_spes);
+
+        mIdSpec = SingltonRegistrationData.getInstance().getIdProf();
+        mIdMecInst = SingltonRegistrationData.getInstance().getIdInstit();
+        mEditTextSpecialization.setText(SingltonRegistrationData.getInstance().getProf());
+        mEditTextMedicalInstitute.setText(SingltonRegistrationData.getInstance().getIntst());
+
         mEditTextSpecialization.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long rowId) {
                 SpecializationTranslate selection = (SpecializationTranslate) parent.getItemAtPosition(position);
                 mIdSpec = selection.specialization_id;
-                LogUtils.logD(TAG, "hide keyboard");
                 InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Activity.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(mEditTextSpecialization.getWindowToken(), 0);
+                SingltonRegistrationData.getInstance().setIdProf(mIdSpec);
+                SingltonRegistrationData.getInstance().setProf(mEditTextSpecialization.getText().toString());
+            }
+        });
+
+        mEditTextSpecialization.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mEditTextSpecialization.setText("");
             }
         });
 
@@ -140,6 +157,9 @@ public class RegistrationPage2Fragment extends Fragment implements EventListener
             mEditTextMedicalInstitute.setText(mMedInstName);
             mEditTextMedicalInstitute.setTextColor(getContext().getResources().getColor(R.color.white));
         }
+
+
+
         return rootView;
     }
 
@@ -218,6 +238,8 @@ public class RegistrationPage2Fragment extends Fragment implements EventListener
                 EventSelectedMedicalInstitution eventSelectedMedicalInstitution = (EventSelectedMedicalInstitution) event;
                 mMedInstName = eventSelectedMedicalInstitution.getmTitle();
                 mIdMecInst = eventSelectedMedicalInstitution.getmId();
+                SingltonRegistrationData.getInstance().setIdInstit(eventSelectedMedicalInstitution.getmId());
+                SingltonRegistrationData.getInstance().setIntst(eventSelectedMedicalInstitution.getmTitle());
 
                 break;
         }

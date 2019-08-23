@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -44,6 +45,8 @@ public class CommentsActivity extends MedBookActivity implements IOnClicksCommen
     private LinearLayout llReply;
     private TextView tvReplyName;
     private ImageView ivRelpyClear;
+    private Integer position = 1;
+
 
 
     @Override
@@ -102,6 +105,7 @@ public class CommentsActivity extends MedBookActivity implements IOnClicksCommen
             llReply.setVisibility(View.GONE);
             int valueInPixelsOther = (int) getResources().getDimension(R.dimen.padding_default);
             edInputComment.setPadding(valueInPixelsOther, valueInPixelsOther, valueInPixelsOther, valueInPixelsOther);
+
             //Core.get().CommentsControl().getComments(idNews);
         });
 
@@ -151,6 +155,7 @@ public class CommentsActivity extends MedBookActivity implements IOnClicksCommen
                         itemsSort.add((items[i]));
                     if (items[i].level == 2) {
                         itemsSortChild.add((items[i]));
+
                     }
                 }
 
@@ -160,6 +165,7 @@ public class CommentsActivity extends MedBookActivity implements IOnClicksCommen
                         if (itemsSort.get(i).id.intValue() == itemsSortChild.get(j).parentId.intValue()) {
                             temp.add(itemsSortChild.get(j));
                         }
+                        itemsSort.get(i).childSize = temp.size();
                     }
                     if (temp.size() > 0) {
                         hashChild.put(itemsSort.get(i).id, temp);
@@ -178,8 +184,12 @@ public class CommentsActivity extends MedBookActivity implements IOnClicksCommen
 
 
                 for (int i = 0; i < itemsSort.size(); i++) {
+                    itemsSort.get(i).position = i;
                     list.itemAdd(new CommentsRecyclerItem(itemsSort.get(i)));
                 }
+
+                list.smoothScrollToPosition(position);
+                position = 0;
 
 
 
@@ -188,26 +198,32 @@ public class CommentsActivity extends MedBookActivity implements IOnClicksCommen
     }
 
     @Override
-    public void onSelectReplyComment(Integer selectReply, String name) {
+    public void onSelectReplyComment(Integer selectReply, Integer pos, String name) {
         llReply.setVisibility(View.VISIBLE);
         tvReplyName.setText(" " + name);
         selectParentId  = selectReply;
         int valueInPixelsTop = (int) getResources().getDimension(R.dimen.padding_add_comment);
         int valueInPixelsOther = (int) getResources().getDimension(R.dimen.padding_default);
+        position = pos;
         edInputComment.setPadding(valueInPixelsOther, valueInPixelsTop, valueInPixelsOther, valueInPixelsOther);
+        edInputComment.requestFocus();
+        InputMethodManager imm=(InputMethodManager)getSystemService(this.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+
     }
 
     @Override
-    public void onDeleteComment(Integer id) {
+    public void onDeleteComment(Integer id, Integer position) {
         //Core.get().CommentsControl().deleteComments(id, idNews);
-        DialogBuilder.showCommentDeleteDialog(this, id,
+        DialogBuilder.showCommentDeleteDialog(this, id, position,
                 Core.get().LocalizationControl().getText(R.id.delete_comment_dialog_title),
                 Core.get().LocalizationControl().getText(R.id.delete_comment_dialog_text));
     }
 
     @Override
-    public void onOkCommentDialogDialog(int id) {
+    public void onOkCommentDialogDialog(int id, int pos) {
         Core.get().CommentsControl().deleteComments(id, idNews);
+        position = pos;
     }
 
     @Override

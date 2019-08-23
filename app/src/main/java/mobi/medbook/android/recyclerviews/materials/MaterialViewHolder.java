@@ -79,10 +79,12 @@ public class MaterialViewHolder extends BaseViewHolder {
             } else
                 tvBalls.setVisibility(View.GONE);
         }
+        if(material.translations != null)
         if(!material.translations[0].logo.isEmpty()){
             Picasso.get().load(material.translations[0].logo).into(imvLogoProd);
         }
-        if(!material.manufacturer.translations[0].logo.isEmpty()){
+        if(material.manufacturer != null)
+        if(!material.manufacturer.translations[0].logo.isEmpty() && material.manufacturer.translations[0].logo != null){
             Picasso.get().load(material.manufacturer.translations[0].logo).into(imvLogoCompany);
         }
 

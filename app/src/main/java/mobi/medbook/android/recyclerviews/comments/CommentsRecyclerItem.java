@@ -38,9 +38,9 @@ public class CommentsRecyclerItem extends RecyclerItem implements View.OnClickLi
     public void onClick(View view) {
         if (getActivity(view.getContext()) != null) {
             if (getViewType() == 1)
-                getActivity(view.getContext()).onSelectReplyComment(comment.id, comment.owner_firstname + " " + comment.owner_middlename);
+                getActivity(view.getContext()).onSelectReplyComment(comment.id, comment.position + comment.childSize, comment.owner_firstname + " " + comment.owner_middlename);
             else if (getViewType() == 2)
-                getActivity(view.getContext()).onSelectReplyComment(comment.parentId, comment.owner_firstname + " " + comment.owner_middlename);
+                getActivity(view.getContext()).onSelectReplyComment(comment.parentId,comment.position, comment.owner_firstname + " " + comment.owner_middlename);
         }
     }
 
@@ -58,7 +58,7 @@ public class CommentsRecyclerItem extends RecyclerItem implements View.OnClickLi
     @Override
     public boolean onLongClick(View view) {
         if (comment.created_by == App.getUser().id)
-            getActivity(view.getContext()).onDeleteComment(comment.id);
+            getActivity(view.getContext()).onDeleteComment(comment.id, comment.position);
         return true;
     }
 }

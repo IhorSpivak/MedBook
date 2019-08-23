@@ -195,7 +195,7 @@ public class DialogBuilder {
         return dialog;
     }
 
-    public static Dialog buildDialogDeleteComment(final @NonNull Context context, int id, String title, String description) {
+    public static Dialog buildDialogDeleteComment(final @NonNull Context context, int id, int position, String title, String description) {
         final Dialog dialog = buildDialog(context, title, description);
 
         TextView dialogTitle = dialog.findViewById(R.id.dialog_title);
@@ -216,7 +216,7 @@ public class DialogBuilder {
         });
         dialogAcceptButton.setOnClickListener(view -> {
             dialogAcceptButton.setEnabled(false);
-            getActivity(context).onOkCommentDialogDialog(id);
+            getActivity(context).onOkCommentDialogDialog(id, position);
             dialog.dismiss();
         });
 
@@ -262,8 +262,8 @@ public class DialogBuilder {
     }
 
 
-    public static Dialog showCommentDeleteDialog(final @NonNull Context context, int id, String title, String description) {
-        Dialog dialog = buildDialogDeleteComment(context, id, title, description);
+    public static Dialog showCommentDeleteDialog(final @NonNull Context context, int id, Integer position, String title, String description) {
+        Dialog dialog = buildDialogDeleteComment(context, id, position, title, description);
         if (dialog == null) {
             return null;
         }

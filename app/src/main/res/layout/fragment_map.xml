@@ -20,7 +20,6 @@
         android:layout_marginBottom="8dp"
         android:background="@color/white"
         android:orientation="vertical"
-        android:padding="@dimen/padding_default"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageButton
@@ -51,12 +50,14 @@
 
         <Button
             android:id="@+id/fragment_map_marker_details_ok"
-            style="@style/Button_type_1"
+            android:background="@drawable/ripple_for_enter_check"
             android:layout_width="@dimen/btn_auth_w"
             android:layout_height="@dimen/btn_auth_h"
             android:text="@string/select_work_ok"
+            android:textColor="@color/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="20dp"
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,10 +1,14 @@
 package mobi.medbook.android.ui;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -46,7 +50,12 @@ public class TermAndPointAgreementsActivity extends MedBookActivity {
             EventRouter.send(new EventLogout());
             finish();
         } else {
-            Core.get().UserControl().getAgreements(type);
+            if(isOnline()) {
+                Core.get().UserControl().getAgreements(type);
+            } else {
+                finish();
+                Toast.makeText(this, "Схоже, що нема інтернет-з'єднання", Toast.LENGTH_LONG).show();
+            }
         }
         btnCancel = findViewById(R.id.activity_term_and_points_agreements_cancel);
         btnOk = findViewById(R.id.activity_term_and_points_agreements_ok);
@@ -84,6 +93,16 @@ public class TermAndPointAgreementsActivity extends MedBookActivity {
 
     @Override
     public void onBackPressed() {
+    }
+
+    public boolean isOnline() {
+        boolean a = false ;
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
+                connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
+            a = true;
+        }
+        return a;
     }
 
     @Override
