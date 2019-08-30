@@ -193,7 +193,23 @@ public class AddVisitActivity extends MedBookActivity /*implements TimePickerDia
 
 
 
-        llDuration.setOnClickListener(view -> showPopupMenuDuration(view));
+        llDuration.setOnClickListener(view ->{
+            llDuration.setEnabled(false);
+
+                    new Handler().postDelayed(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            llDuration.setEnabled(true);
+                        }
+                    }, 2000);
+
+
+
+
+                showPopupMenuDuration(view);
+                });
+
 
         llSecondMember.setOnClickListener(view ->{
                 llSecondMember.setEnabled(false);

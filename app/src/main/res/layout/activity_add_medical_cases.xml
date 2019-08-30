@@ -64,8 +64,6 @@
                 android:id="@+id/activity_add_clinical_cases_add_title_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_default"
-                android:layout_marginEnd="@dimen/margin_default"
                 android:theme="@style/TextInputLayoutOnWhite"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -77,15 +75,10 @@
                     android:hint="@string/name_clinical_casse"
                     android:layout_height="wrap_content"
                     android:textColor="#333333"
+                    android:paddingLeft="16dp"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1.5dp"
-                android:layout_marginTop="@dimen/margin_default_fourth"
-                android:layout_marginBottom="@dimen/margin_default_fourth"
-                android:background="@drawable/line_divider_new" />
 
             <TextView
                 android:id="@+id/activity_add_clinical_cases_add_icod_caption"
@@ -127,7 +120,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1.5dp"
+                android:layout_height="1dp"
                 android:layout_marginTop="@dimen/margin_default_fourth"
                 android:layout_marginBottom="@dimen/margin_default_fourth"
                 android:background="@drawable/line_divider_new" />
@@ -173,7 +166,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="1.5dp"
+                android:layout_height="1dp"
                 android:layout_marginTop="@dimen/margin_default_fourth"
                 android:layout_marginBottom="@dimen/margin_default_fourth"
                 android:background="@drawable/line_divider_new" />
@@ -193,8 +186,6 @@
                 android:id="@+id/activity_add_clinical_cases_add_details_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="@dimen/margin_default"
-                android:layout_marginEnd="@dimen/margin_default"
                 android:theme="@style/TextInputLayoutOnWhite">
 
                 <androidx.appcompat.widget.AppCompatEditText
@@ -202,17 +193,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint=""
+                    android:paddingLeft="16dp"
                     android:imeOptions="actionDone"
                     android:inputType="textMultiLine"
                     android:maxLines="20"
                     android:textSize="16sp" />
             </com.google.android.material.textfield.TextInputLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1.5dp"
-                android:layout_marginTop="@dimen/margin_default_fourth"
-                android:layout_marginBottom="@dimen/margin_default_fourth"
-                android:background="@drawable/line_divider_new" />
+
 
             <LinearLayout android:layout_width="match_parent"
                 android:layout_height="wrap_content"  android:layout_marginStart="@dimen/margin_default"

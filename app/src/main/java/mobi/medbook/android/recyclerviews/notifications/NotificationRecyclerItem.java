@@ -2,6 +2,7 @@ package mobi.medbook.android.recyclerviews.notifications;
 
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.os.Handler;
 import android.util.Patterns;
 import android.view.View;
 
@@ -44,10 +45,6 @@ public class NotificationRecyclerItem extends RecyclerItem implements View.OnCli
     @Override
     public void onClick(View view) {
 
-//            "id": 1, "alias": "all"
-//            "id": 2, "alias": "left"
-//            "id": 3, "alias": "right"
-//            "id": 4, "alias": "body"
         if (view.getId() == R.id.item_notification_left_btn && Patterns.WEB_URL.matcher(notificationItem.notification.left_button_link).matches()) {
             getActivity(view.getContext()).onStartLinkView(notificationItem.notification.left_button_link);
         }
@@ -59,7 +56,12 @@ public class NotificationRecyclerItem extends RecyclerItem implements View.OnCli
                 LogUtils.logD("jvhjhj6tuyjgyh", "case 1");
                 if (getActivity(view.getContext()) != null) {
                     LogUtils.logD("jvhjhj6tuyjgyh", "case 1.0");
-                    getActivity(view.getContext()).onReactionNotification(notificationItem.id);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            getActivity(view.getContext()).onReactionNotification(notificationItem.id);
+                        }
+                    }, 1000);
                     Core.get().NotificationControl().reactionNotification(notificationItem.id);
                 }
                 break;

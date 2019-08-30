@@ -25,6 +25,7 @@ import androidx.annotation.Nullable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.TimeZone;
 
 import mobi.medbook.android.Core;
@@ -283,7 +284,9 @@ public class MPAncetaActivity extends MedBookActivity implements IOnSelectProduc
     };
 
     private void setDate() {
-        Calendar calFrom = Calendar.getInstance();
+
+        Locale local = new Locale("ua", "UA");
+        Calendar calFrom = Calendar.getInstance(local);
         calFrom.setTimeInMillis(userVisit.time_from * 1000);
         Calendar calTo = Calendar.getInstance();
         calTo.setTimeInMillis(userVisit.time_to * 1000);

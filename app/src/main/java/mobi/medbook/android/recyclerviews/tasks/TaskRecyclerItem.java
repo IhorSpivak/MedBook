@@ -20,6 +20,7 @@ import mobi.medbook.android.ui.materials.VideoActivity;
 import mobi.medbook.android.utils.AppUtils;
 import mobi.medbook.android.utils.LogUtils;
 
+import static mobi.medbook.android.ui.materials.MaterialsEnum.PRESENTATION;
 import static mobi.medbook.android.ui.materials.MaterialsEnum.TEST;
 
 
@@ -79,10 +80,14 @@ public class TaskRecyclerItem extends RecyclerItem implements View.OnClickListen
                 }
                 break;
             case PRESENTATION:
-                 intentPresentation = new Intent(view.getContext(), PresentationActivity.class);
-                intentPresentation.putExtra(PresentationActivity.KEY_ID_PRESENTATION, taskMaterial.id);
-                intentPresentation.putExtra(PresentationActivity.KEY_ID_MATERIAL_PRESENTATION, taskMaterial.idMaterial);
-                view.getContext().startActivity(intentPresentation);
+
+                Core.get().UserContentControl().setSelectedMaterial(taskMaterial.item);
+                EventRouter.send(new EventMaterialDescriptionStart(PRESENTATION, taskMaterial.id));
+
+//                intentPresentation = new Intent(view.getContext(), PresentationActivity.class);
+//                intentPresentation.putExtra(PresentationActivity.KEY_ID_PRESENTATION, taskMaterial.id);
+//                intentPresentation.putExtra(PresentationActivity.KEY_ID_MATERIAL_PRESENTATION, taskMaterial.idMaterial);
+//                view.getContext().startActivity(intentPresentation);
                 break;
         }
     }

@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -94,7 +95,11 @@ public class RegistrationPage2Fragment extends Fragment implements EventListener
 
         mIdSpec = SingltonRegistrationData.getInstance().getIdProf();
         mIdMecInst = SingltonRegistrationData.getInstance().getIdInstit();
-        mEditTextSpecialization.setText(SingltonRegistrationData.getInstance().getProf());
+        if(SingltonRegistrationData.getInstance().getProf().equals("Профільна спеціалізація")){
+            mEditTextSpecialization.setHint(SingltonRegistrationData.getInstance().getProf());
+        } else {
+            mEditTextSpecialization.setText(SingltonRegistrationData.getInstance().getProf());
+        }
         mEditTextMedicalInstitute.setText(SingltonRegistrationData.getInstance().getIntst());
 
         mEditTextSpecialization.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -107,6 +112,9 @@ public class RegistrationPage2Fragment extends Fragment implements EventListener
                 SingltonRegistrationData.getInstance().setProf(mEditTextSpecialization.getText().toString());
             }
         });
+
+
+
 
         mEditTextSpecialization.setOnClickListener(new View.OnClickListener() {
             @Override

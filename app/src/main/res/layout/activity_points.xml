@@ -44,12 +44,15 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/activity_points_sliding_tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/rectangle_rounded_top_4"
         app:tabBackground="@drawable/tab_color_selector"
+        style="@style/MyCustomTabLayout"
         android:layout_marginStart="@dimen/margin_default"
         android:layout_marginEnd="@dimen/margin_default"
         app:tabMaxWidth="0dp"

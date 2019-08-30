@@ -54,6 +54,8 @@ public class AddCommentToLoadImageActivity extends MedBookActivity {
             }
         }
 
+
+
         btnAddComment = findViewById(R.id.activity_add_comment_to_load_image_comment_btn_create);
         btnAddComment.setVisibility(View.INVISIBLE);
         AppCompatEditText edtCommment = findViewById(R.id.activity_add_comment_to_load_image_comment_input);
@@ -78,6 +80,7 @@ public class AddCommentToLoadImageActivity extends MedBookActivity {
             setResult(RESULT_OK, resultIntent);
             finish();
         });
+        edtLayout.requestFocus();
         onLocalizationUpdate();
     }
 

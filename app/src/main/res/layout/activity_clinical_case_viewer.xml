@@ -36,7 +36,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_marginTop="20dp"
+
+        android:layout_marginBottom="20dp"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar"
         android:background="@drawable/rectangle_rounded_4"
@@ -280,9 +281,10 @@
 
             <Button
                 android:id="@+id/activity_clinical_case_viewer_btn_delete"
-                style="@style/Button_type_delete_cc"
+                android:background="@drawable/ripple_for_enter_check"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/red"
                 android:layout_margin="@dimen/margin_default"
                 android:visibility="gone" />
 

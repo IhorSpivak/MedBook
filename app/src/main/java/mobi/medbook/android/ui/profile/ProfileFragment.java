@@ -80,7 +80,7 @@ public class ProfileFragment extends Fragment implements EventListener {
             String versionCode = String.valueOf(BuildConfig.VERSION_CODE);
             String versionName = BuildConfig.VERSION_NAME;
 
-            versionTv.setText(getString(R.string.medbook_version, versionName, versionCode));
+            versionTv.setText(getString(R.string.medbook_version) + " " +  versionName);
 
         }
 

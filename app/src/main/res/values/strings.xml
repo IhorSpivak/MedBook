@@ -97,7 +97,7 @@
     <string name="pay_out">Акція: обміняти бали</string>
     <string name="scan_code">Сканувати код</string>
     <string name="exit">Вихід</string>
-    <string name="medbook_version" translatable="false">Medbook version %s.%s</string>
+    <string name="medbook_version" translatable="false">Medbook version</string>
     <string name="unfortunately_information_is_not_available">Дані для відображення відсутні</string>
 
     <string name="loading">Завантаження</string>

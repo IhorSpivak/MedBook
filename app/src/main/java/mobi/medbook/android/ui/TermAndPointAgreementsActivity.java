@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import mobi.medbook.android.App;
 import mobi.medbook.android.Core;
 import mobi.medbook.android.R;
 import mobi.medbook.android.events.EventLogout;
@@ -75,6 +76,7 @@ public class TermAndPointAgreementsActivity extends MedBookActivity {
             if (type == 1) {
                 Core.get().UserControl().updateStatusTermsAndAgreements(1);
                 EventRouter.send(new EventTermsAndAgreementsOk());
+                App.setTermAgreements();
                 finish();
             }
             if (type == 2) {

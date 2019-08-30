@@ -104,8 +104,9 @@ public class MainActivity extends AppCompatActivity implements EventListener, IO
         llReference.setOnClickListener(onClickAppNavBarListener);
         //llPrescriptions.setOnClickListener(onClickAppNavBarListener);
 
-        if (!App.ismTermAgreements() && App.accessTokenExist())
+        if (!App.ismTermAgreements() && App.accessTokenExist()) {
             initTermAgreements();
+        }
 
         EventRouter.register(this);
 

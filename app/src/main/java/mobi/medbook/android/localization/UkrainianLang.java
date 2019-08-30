@@ -43,7 +43,7 @@ public class UkrainianLang {
         public static String MONDAY = "Понеділок";
         public static String TUESDAY = "Вівторок";
         public static String WEDNESDAY = "Середа";
-        public static String THURSDAY = "Четверг";
+        public static String THURSDAY = "Четвер";
         public static String FRIDAY = "П'ятниця";
         public static String SATURDAY = "Субота";
         public static String SUNDAY = "Неділя";

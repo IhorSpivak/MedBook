@@ -93,6 +93,7 @@ public class NotificationsActivity extends MedBookActivity implements IOnReactio
     public void onReactionNotification(int id) {
         if (items.delete(id) != -1) {
             list.itemRemove(items.delete(id));
+
             items.remove(items.delete(id));
         }
     }

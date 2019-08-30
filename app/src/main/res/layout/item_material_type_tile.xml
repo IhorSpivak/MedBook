@@ -122,8 +122,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintStart_toEndOf="@+id/item_materials_type_list_dot"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/img_test_2" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/item_materials_type_list_logo_prod"

@@ -114,7 +114,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/item_materials_type_list_logo_prod"
         app:layout_constraintStart_toStartOf="@+id/item_materials_type_list_tv_title"
         app:layout_constraintTop_toBottomOf="@+id/item_materials_type_list_tv_tests"
-        app:srcCompat="@drawable/img_test_2" />
+        />
 
     <ImageView
         android:id="@+id/item_materials_type_list_logo_prod"

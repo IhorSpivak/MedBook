@@ -113,6 +113,7 @@ public class TodayFragment extends MedBookFragment {
         list.init();
         itemsVisits = new RecyclerItems();
 
+        updateUI();
 
 
 
@@ -120,18 +121,7 @@ public class TodayFragment extends MedBookFragment {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                Core.get().UserControl().getUser();
-                long time = System.currentTimeMillis() / 1000;
-                App.clearUpdateLastTimeNotifications();
-                App.clearUpdateLastTimeMaterials();
-                App.clearUpdateLastTimeUserNews();
-                Core.get().NotificationControl().getNotifications(time, time + 86400, 1000);
-                LogUtils.logD("GETMATERIAL", "onCreate MainActivity");
-                Core.get().UserContentControl().getMaterials();
-                Core.get().NewsControl().getUserNews();
-                Core.get().NotificationControl().getNotifications(time - 2, time + 2, 5);
-                Core.get().VisitsControl().getDashboardVisits();
-                Core.get().VisitsControl().getUserVisits();
+                updateUI();
             }
         });
 
@@ -284,6 +274,23 @@ public class TodayFragment extends MedBookFragment {
         onLocalizationUpdate();
         return rootView;
     }
+
+    public void updateUI(){
+        Core.get().UserControl().getUser();
+        long time = System.currentTimeMillis() / 1000;
+        App.clearUpdateLastTimeNotifications();
+        App.clearUpdateLastTimeMaterials();
+        App.clearUpdateLastTimeUserNews();
+        Core.get().NotificationControl().getNotifications(time, time + 86400, 1000);
+        LogUtils.logD("GETMATERIAL", "onCreate MainActivity");
+        Core.get().UserContentControl().getMaterials();
+        Core.get().NewsControl().getUserNews();
+        Core.get().NotificationControl().getNotifications(time - 2, time + 2, 5);
+        Core.get().VisitsControl().getDashboardVisits();
+        Core.get().VisitsControl().getUserVisits();
+
+    }
+
 
     @Override
     protected void onLocalizationUpdate() {
@@ -445,33 +452,21 @@ public class TodayFragment extends MedBookFragment {
                         checkVisivilityNotification(eventLoad_5_nofications.getItems()[3], selectLang, mNotification_4, mNotification_4_title, mNotification_4_description);
                         checkVisivilityNotification(eventLoad_5_nofications.getItems()[4], selectLang, mNotification_5, mNotification_5_title, mNotification_5_description);
                     }
-
-//                    int points = 0;
-//                    for (int i = 0; i < eventLoad_5_nofications.getItems().length; i++) {
-//                        points = points + eventLoad_5_nofications.getItems()[i].notification_points;
-//                    }
                 }
                 break;
         }
     }
 
     private void checkVisivilityNotification(Notification item, int selectLang, LinearLayout ll, TextView tvTitle, TextView tvDesription) {
-        LogUtils.logD("checkVisivilityNotification", "id                  = " + item.id);
-        LogUtils.logD("checkVisivilityNotification", "time_from           = " + item.time_from);
-        LogUtils.logD("checkVisivilityNotification", "currentTimeMillis   = " + (System.currentTimeMillis() / 1000));
-        LogUtils.logD("checkVisivilityNotification", "time_to             = " + item.time_to);
         if (item.time_from < (System.currentTimeMillis() / 1000) &&
                 item.time_to >= (System.currentTimeMillis() / 1000)) {
             ll.setVisibility(View.VISIBLE);
             mNotificationsLL.setVisibility(View.VISIBLE);
             tvTitle.setText(item.notification.translations[selectLang].title);
             tvDesription.setText(item.notification.translations[selectLang].description);
-            LogUtils.logD("checkVisivilityNotification", "VISIBLE");
         } else {
             ll.setVisibility(View.GONE);
-            LogUtils.logD("checkVisivilityNotification", "GONE");
         }
-        LogUtils.logD("checkVisivilityNotification", "=====================================");
     }
 
     private void createTaskMaterial() {
