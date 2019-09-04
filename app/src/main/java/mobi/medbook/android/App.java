@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import androidx.annotation.NonNull;
+import androidx.multidex.MultiDex;
 
 import com.crashlytics.android.Crashlytics;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -115,6 +116,12 @@ public class App extends Application {
         LogUtils.logD(TAG, "isUpdateMaterials = " + (System.currentTimeMillis() - mUpdateLastTimeMaterials  > INTERVALE_UPDATE_MATERIALS));
         return System.currentTimeMillis() - mUpdateLastTimeMaterials  > INTERVALE_UPDATE_MATERIALS;
     }
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
+
 
     public static void setUpdateUserNews(){
         mUpdateLastTimeUserNews = System.currentTimeMillis();

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ripple xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:color="@color/red"
-    tools:targetApi="lollipop"> <!-- ripple effect color -->
-    <item android:id="@android:id/background">
-
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
         <shape android:shape="rectangle">
-            <corners android:radius="10dp"/>
-            <solid android:color="@color/white" /> <!-- background color -->
+            <solid android:color="@android:color/transparent" />
         </shape>
-        <corners android:radius="10dp"/>
     </item>
-</ripple>
+    <item android:state_focused="true">
+        <shape android:shape="rectangle">
+            <stroke android:color="@android:color/transparent" />
+        </shape>
+    </item>
+    <item android:drawable="@android:color/transparent" />
+</selector>

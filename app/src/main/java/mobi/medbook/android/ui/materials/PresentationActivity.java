@@ -8,6 +8,7 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -42,7 +43,7 @@ public class PresentationActivity extends AppCompatActivity implements View.OnCl
 
         tvIndicator = findViewById(R.id.activity_presentation_pager_indicator);
 
-        ConstraintLayout rootView = findViewById(R.id.activity_presentation_root);
+        RelativeLayout rootView = findViewById(R.id.activity_presentation_root);
 
         ImageView imBack = findViewById(R.id.activity_presentation_toolbar_close);
         imBack.setOnClickListener(new View.OnClickListener() {

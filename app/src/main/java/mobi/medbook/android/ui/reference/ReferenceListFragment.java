@@ -31,8 +31,6 @@ public class ReferenceListFragment  extends Fragment {
     RecyclerView rv;
 
 
-
-
     private PatternReferenceListAdapter patternReferenceListAdapter;
     private GridLayoutManager mGridLayoutManager;
 

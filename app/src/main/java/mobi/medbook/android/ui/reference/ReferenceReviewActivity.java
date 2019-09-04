@@ -92,13 +92,14 @@ public class ReferenceReviewActivity extends MedBookActivity {
 
 
     private void setDataReference(ReferenceItem item) {
+        ed_phone.setText(item.getPatients().get(0).getPhone());
         edTitle.setText(item.getTitle());
         edDetails.setText(item.getDescription());
         if (item.getDrugs() != null && item.getDrugs().size() > 0) {
             listDrug.init();
             itemsDrug = new RecyclerItems();
             for (int i = 0; i < item.getDrugs().size() ; i++)
-                itemsDrug.add(new DrugSelectedRecyclerItem(new DrugSelected(item.getDrugs().get(i).getAuthor_id(), item.getDrugs().get(i).getDrug().getTitle(), true)));
+                itemsDrug.add(new DrugSelectedRecyclerItem(new DrugSelected(item.getDrugs().get(i).getAuthor_id(), item.getDrugs().get(i).getDrug().getTitle(), true,item.getDrugs().get(i).getQty())));
             listDrug.itemsAdd(itemsDrug);
         }
         if (item.getIcods() != null && item.getIcods().size() > 0) {

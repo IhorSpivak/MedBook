@@ -116,20 +116,34 @@ public class MainActivity extends AppCompatActivity implements EventListener, IO
         Window window = getWindow();
         if(flag.equals("today")){
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.WHITE);
+
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
+                window.setStatusBarColor(Color.WHITE);
+            } else{
+
+            }
+
             window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
         if(flag.equals("materials")){
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
+                window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
+            } else{
+
+            }
             getWindow().getDecorView().setSystemUiVisibility(0);
         }
         if(flag.equals("calendar")){
 
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
+                window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
+            } else{
+
+            }
             getWindow().getDecorView().setSystemUiVisibility(0);
 
 

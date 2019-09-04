@@ -8,6 +8,14 @@ public class DrugSelected {
     public boolean viewing;
 
 
+    public DrugSelected(int id, String title, boolean viewing, int qty) {
+        this.id = id;
+        this.title = title;
+        this.viewing = viewing;
+        this.qty = qty;
+    }
+
+
     public DrugSelected(int id, String title, boolean viewing) {
         this.id = id;
         this.title = title;

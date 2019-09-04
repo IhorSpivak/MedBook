@@ -4,10 +4,12 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -24,6 +26,9 @@ import mobi.medbook.android.events.profile.EventPointsAgreementsOk;
 import mobi.medbook.android.ui.custom_views.MedBookActivity;
 import mobi.medbook.android.utils.LogUtils;
 
+import static android.text.Html.FROM_HTML_MODE_COMPACT;
+import static android.text.Html.fromHtml;
+
 
 public class TermAndPointAgreementsActivity extends MedBookActivity {
 
@@ -33,15 +38,15 @@ public class TermAndPointAgreementsActivity extends MedBookActivity {
     private Button btnOk;
     private int type = -1;
     private ProgressBar progressBar;
-    private WebView tvTitle;
-    private WebView tvText;
+    private TextView tv_title;
+    private TextView tv_description;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_term_and_points_agreements);
-        tvTitle = findViewById(R.id.activity_term_and_points_agreements_title);
-        tvText = findViewById(R.id.activity_term_and_points_agreements_text);
+        tv_title = findViewById(R.id.tv_title);
+        tv_description = findViewById(R.id.tv_description);
 
         progressBar = findViewById(R.id.activity_term_and_points_agreements_progress);
         progressBar.setVisibility(View.VISIBLE);
@@ -116,8 +121,15 @@ public class TermAndPointAgreementsActivity extends MedBookActivity {
                 btnCancel.setEnabled(true);
                 btnOk.setEnabled(true);
                 progressBar.setVisibility(View.GONE);
-                tvTitle.loadData(((EventAgreementsLoad)event).getTitle(), "text/html", "UTF-8");//.setText(Html.fromHtml(((EventAgreementsLoad)event).getTitle()));
-                tvText.loadData(((EventAgreementsLoad)event).getDescription(), "text/html", "UTF-8");// .setText(Html.fromHtml(((EventAgreementsLoad)event).getDescription()));
+                String title = (((EventAgreementsLoad)event).getTitle());
+                String htmlTextStr1 = Html.fromHtml(title).toString();
+
+                String description = (((EventAgreementsLoad)event).getDescription());
+                String htmlTextStr2 = Html.fromHtml(description).toString();
+
+                tv_title.setText(htmlTextStr1);
+                tv_description.setText(htmlTextStr2);
+
                 break;
 
             case Event.EVENT_POINTS_AGREEMENTS_OK:

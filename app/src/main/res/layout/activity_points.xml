@@ -16,7 +16,6 @@
             android:id="@+id/activity_points_close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:tint="@drawable/background_pressed_vector_drawable"
             app:srcCompat="@drawable/ic_arrow_back"
             android:padding="@dimen/padding_default_double"
             app:layout_constraintBottom_toBottomOf="parent"

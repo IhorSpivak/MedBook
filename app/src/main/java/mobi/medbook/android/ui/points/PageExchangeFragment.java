@@ -53,11 +53,8 @@ public class PageExchangeFragment extends MedBookFragment {
                 AppUtils.openLink(LinkGenerator.newUrlPayout());
             } else {
                 if (App.getUser().likiwiki_auth_token != null && !App.getUser().likiwiki_auth_token.isEmpty()) {
-                    if(Double.valueOf(App.getUser().points)  >= 100){
                         getActivity().startActivity(new Intent(getActivity(), ExchangeLikiWikiActivity.class));
-                    } else {
-                        DialogBuilder.showInfoDialog(getActivity(), Core.get().LocalizationControl().getText(R.id.general_message), Core.get().LocalizationControl().getText(R.id.not_enough_points_to_exchange));
-                    }
+
                 } else {
                     CheckUserLikiWikiRequest checkUserLikiWikiRequest = new CheckUserLikiWikiRequest();
                     checkUserLikiWikiRequest.email = App.getUser().email;

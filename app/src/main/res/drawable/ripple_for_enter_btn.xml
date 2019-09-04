@@ -10,5 +10,5 @@
             <stroke android:color="@android:color/white" />
         </shape>
     </item>
-    <item android:drawable="@color/white" />
+    <item android:drawable="@color/colorPrimary" />
 </selector>

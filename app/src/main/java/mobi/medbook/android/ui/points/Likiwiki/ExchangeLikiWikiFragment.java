@@ -31,7 +31,7 @@ public class ExchangeLikiWikiFragment extends MedBookFragment {
     private TextView tvAddNumber;
     private ProgressBar pb;
 
-    private int valuePoints = 100;
+    private int valuePoints = 0;
     private Double points;
     private ImageView imvAdd;
     private ImageView imvMinus;
@@ -88,10 +88,9 @@ public class ExchangeLikiWikiFragment extends MedBookFragment {
             }
         });
         imvMinus.setOnClickListener(view -> {
-            if (valuePoints > 100) {
+
                 valuePoints = valuePoints - 100;
                 tvPoints.setText(String.valueOf(valuePoints));
-            }
         });
 
         tvGoToLikiWiki.setOnClickListener(view -> {

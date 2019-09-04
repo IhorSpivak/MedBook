@@ -305,8 +305,10 @@ public class NewMedicalInstitutionFragment extends Fragment implements OnMapRead
                     int selectLang = -1;
 
                     for (int j = 0; j < listMark.get(i).translations.length; j++) {
-                        if (listMark.get(i).translations[j].language.substring(0, 2).equals(Locale.getDefault().toLanguageTag().substring(0, 2))) {
-                            selectLang = j;
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                            if (listMark.get(i).translations[j].language.substring(0, 2).equals(Locale.getDefault().toLanguageTag().substring(0, 2))) {
+                                selectLang = j;
+                            }
                         }
                     }
                     if (selectLang == -1) {

@@ -23,17 +23,21 @@
             android:layout_marginRight="20dp"
             android:orientation="vertical">
 
-            <WebView
-                android:id="@+id/activity_term_and_points_agreements_title"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding_default" />
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:id="@+id/tv_title"/>
 
-            <WebView
-                android:id="@+id/activity_term_and_points_agreements_text"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/padding_default" />
+                android:id="@+id/tv_description"/>
+
 
         <RelativeLayout
             android:layout_width="match_parent"

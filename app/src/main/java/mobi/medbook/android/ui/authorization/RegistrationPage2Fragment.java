@@ -222,8 +222,10 @@ public class RegistrationPage2Fragment extends Fragment implements EventListener
                 for (int i = 0; i < Core.get().getDataForRegistrationControl().getmListOfSpecialization().items.size(); i++) {
                     for(int j = 0; j < Core.get().getDataForRegistrationControl().getmListOfSpecialization().items.get(i).translations.length; j++){
                         //Log.d("ghgjghjghjhgj", Core.get().getDataForRegistrationControl().getmListOfSpecialization().items.get(i).translations[j].language +", " + Locale.getDefault().toLanguageTag());
-                        if(Core.get().getDataForRegistrationControl().getmListOfSpecialization().items.get(i).translations[j].language.substring(0, 2).equals(Locale.getDefault().toLanguageTag().substring(0, 2) )){
-                            selectLang = j;
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                            if(Core.get().getDataForRegistrationControl().getmListOfSpecialization().items.get(i).translations[j].language.substring(0, 2).equals(Locale.getDefault().toLanguageTag().substring(0, 2) )){
+                                selectLang = j;
+                            }
                         }
                     }
                     if (selectLang == -1){

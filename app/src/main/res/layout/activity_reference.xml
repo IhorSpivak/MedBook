@@ -32,7 +32,6 @@
             android:paddingStart="@dimen/padding_default_double"
             android:paddingEnd="@dimen/padding_default_double"
             android:scaleType="centerInside"
-            android:tint="@drawable/background_pressed_vector_drawable"
             app:srcCompat="@drawable/ic_arrow_back" />
 
 

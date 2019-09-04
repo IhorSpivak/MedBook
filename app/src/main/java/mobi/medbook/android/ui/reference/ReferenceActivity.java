@@ -278,7 +278,7 @@ public class ReferenceActivity extends MedBookActivity implements IOnDeleteAddCC
             listDrug.init();
             itemsDrug = new RecyclerItems();
             for (int i = 0; i < item.getDrugs().size() ; i++)
-                itemsDrug.add(new DrugSelectedRecyclerItem(new DrugSelected(item.getDrugs().get(i).getId(), item.getDrugs().get(i).getDrug().getTitle(), false)));
+                itemsDrug.add(new DrugSelectedRecyclerItem(new DrugSelected(item.getDrugs().get(i).getDrug_id(), item.getDrugs().get(i).getDrug().getTitle(), false,  item.getDrugs().get(i).getQty())));
             listDrug.itemsAdd(itemsDrug);
         }
         if (item.getIcods() != null && item.getIcods().size() > 0) {
