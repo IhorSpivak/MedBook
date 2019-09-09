@@ -36,7 +36,7 @@
     <string name="prev_caption">Повернутися</string>
 
     <string name="title_end_test_btn">Завершити тест</string>
-    <string name="title_end_test_results_btn">Завершити перегляд результатів тесту</string>
+    <string name="title_end_test_results_btn">Завершити перегляд</string>
     <!-- registration pages and api-->
     <string name="registration_page_1_tiet_first_name_caption">Ім’я</string>
     <string name="registration_page_1_tiet_middle_name_caption">По-батькові</string>

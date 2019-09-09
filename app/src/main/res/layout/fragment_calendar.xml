@@ -15,7 +15,7 @@
         android:id="@+id/fragment_calendar_frame_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/rectangle_rounded_top_4">
+        android:background="@drawable/corners_top">
 
         <mobi.medbook.android.recyclerviews.visits.VisitsRecyclerView
             android:id="@+id/fragment_calendar_list"

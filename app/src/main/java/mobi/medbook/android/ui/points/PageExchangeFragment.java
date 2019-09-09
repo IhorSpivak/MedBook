@@ -49,9 +49,7 @@ public class PageExchangeFragment extends MedBookFragment {
 
         LinearLayout llLikiWiki = rootView.findViewById(R.id.fragment_page_exchange_likiwiki);
         llLikiWiki.setOnClickListener(view -> {
-            if (App.getUser().allowed_exchange_points == 0) {
-                AppUtils.openLink(LinkGenerator.newUrlPayout());
-            } else {
+
                 if (App.getUser().likiwiki_auth_token != null && !App.getUser().likiwiki_auth_token.isEmpty()) {
                         getActivity().startActivity(new Intent(getActivity(), ExchangeLikiWikiActivity.class));
 
@@ -62,7 +60,6 @@ public class PageExchangeFragment extends MedBookFragment {
                     checkUserLikiWikiRequest.name = App.getUser().last_name + " " + App.getUser().last_name + " " + App.getUser().last_name;
                     Core.get().Api2Control().checkUserLikiWiki(checkUserLikiWikiRequest);
                 }
-            }
         });
         return rootView;
     }

@@ -143,7 +143,7 @@ public class TestsActivity extends MedBookActivity implements OnUpdateResultTest
         } else if (questions.length > 1) {
             String msg = "1 / " + questions.length;
             Spannable spannableText = new SpannableString(msg);
-            spannableText.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.color_button_type_2)),
+            spannableText.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorPrimary)),
                     0, msg.indexOf(" "), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             spannableText.setSpan(new RelativeSizeSpan(1.5f), 0, msg.indexOf(" "), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             tvProgress.setText(spannableText);
@@ -162,7 +162,7 @@ public class TestsActivity extends MedBookActivity implements OnUpdateResultTest
 
                 String msg = getString(R.string.slash, String.valueOf(position + 1), String.valueOf(questions.length));
                 Spannable spannableText = new SpannableString(msg);
-                spannableText.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.color_button_type_2)),
+                spannableText.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.colorPrimary)),
                         0, msg.indexOf(" "), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 spannableText.setSpan(new RelativeSizeSpan(1.5f), 0, msg.indexOf(" "), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                 tvProgress.setText(spannableText);

@@ -80,6 +80,7 @@ public class LoginFragment extends MedBookFragment implements EventListener {
                 if (TextUtils.isValidEmail(email))
                     if (password.length() >= AuthorizationActivity.MIN_SYMBOLS_PASSWORD) {
                         Core.get().AuthorizationControl().authorize(email, password);
+                        Toast.makeText(getActivity(), "Процесс логина 1", Toast.LENGTH_SHORT).show();
                         pb.setVisibility(View.VISIBLE);
 
 

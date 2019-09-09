@@ -439,15 +439,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <FrameLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/toolbar_height"
             android:background="@drawable/rectangle_today_rounded_16"
-            android:elevation="@dimen/toolbar_elevation">
+            app:elevation="@dimen/toolbar_elevation"
+            android:elevation="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:elevation="8dp"
+                app:elevation="@dimen/toolbar_elevation"
                 android:background="@drawable/rectangle_today_rounded_16"
                 android:orientation="horizontal">
 
@@ -500,7 +503,7 @@
                         layout="@layout/count_badge" />
                 </FrameLayout>
             </LinearLayout>
-        </FrameLayout>
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

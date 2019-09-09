@@ -3,6 +3,7 @@ package mobi.medbook.android.controls;
 
 import android.os.AsyncTask;
 import android.provider.Settings;
+import android.widget.Toast;
 
 import org.json.JSONObject;
 
@@ -123,6 +124,7 @@ public class AuthorizationControl {
 
     public void authorize(String username, String password) {
         if (AppUtils.isNetworkAvailable(App.getAppContext())) {
+            AppUtils.toastError("Интернет включен", false);
             String android_id = Settings.Secure.getString(App.getAppContext().getContentResolver(),
                     Settings.Secure.ANDROID_ID);
             ApiRestRefreshToken.PointAccess().authorize(new AuthorizeRequest(username, password, android_id)).enqueue(new Callback<AuthorizeInfo>() {

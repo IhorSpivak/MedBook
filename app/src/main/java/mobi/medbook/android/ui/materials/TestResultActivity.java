@@ -28,6 +28,13 @@ public class TestResultActivity extends AppCompatActivity {
     public static final String KEY_TITLE           = "KEY_TITLE";
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        EventRouter.send(new EventTestActivityClose());
+        finish();
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_result);
@@ -39,6 +46,8 @@ public class TestResultActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+
 
         if (getIntent() != null) {
 
@@ -81,16 +90,8 @@ public class TestResultActivity extends AppCompatActivity {
                 }
             });
 
-//            int testId = getIntent().getIntExtra(KEY_ID_TEST, 0);
-//            for (Test item : Core.get().UserContentControl().getSelectedMaterial().tests) {
-//                if (item.test_id == testId) {
-//                    tvQuestion.setText(item.test.translations[0].title);
-//                    tvQuestionsCount.setText(String.valueOf(item.test.translations[0].questions.length));
-//                }
-//            }
         }
 
-//        TextView tvPointGeneral = findViewById(R.id.activity_test_result_points_general);
-//        tvPointGeneral.setText(App.getUser().points);
+
     }
 }

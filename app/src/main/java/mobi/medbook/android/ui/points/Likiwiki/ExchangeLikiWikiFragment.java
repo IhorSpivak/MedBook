@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -68,15 +69,19 @@ public class ExchangeLikiWikiFragment extends MedBookFragment {
             }
         });
         btnGetCode.setOnClickListener(view ->{
-            pb.setVisibility(View.VISIBLE);
-            //App.updateUserPhone("");
-            if(App.getUser().phone == null || App.getUser().phone.isEmpty()){
-                btnGetCode.setVisibility(View.GONE);
-                btnAddNumber.setVisibility(View.VISIBLE);
-                tvAddNumber.setVisibility(View.VISIBLE);
+            if(valuePoints > 0) {
+                pb.setVisibility(View.VISIBLE);
+                //App.updateUserPhone("");
+                if (App.getUser().phone == null || App.getUser().phone.isEmpty()) {
+                    btnGetCode.setVisibility(View.GONE);
+                    btnAddNumber.setVisibility(View.VISIBLE);
+                    tvAddNumber.setVisibility(View.VISIBLE);
+                } else {
+                    //startChange;
+                    Core.get().Api2Control().getSMSForExchangePoints(valuePoints, "likiwiki");
+                }
             } else {
-                //startChange;
-                Core.get().Api2Control().getSMSForExchangePoints(valuePoints, "likiwiki");
+                Toast.makeText(getActivity(), "Недостатня кількість баллів для обміну", Toast.LENGTH_SHORT).show();
             }
         });
         tvPoints.setText(String.valueOf(valuePoints));
@@ -88,9 +93,10 @@ public class ExchangeLikiWikiFragment extends MedBookFragment {
             }
         });
         imvMinus.setOnClickListener(view -> {
-
+            if (valuePoints > 0) {
                 valuePoints = valuePoints - 100;
                 tvPoints.setText(String.valueOf(valuePoints));
+            }
         });
 
         tvGoToLikiWiki.setOnClickListener(view -> {
