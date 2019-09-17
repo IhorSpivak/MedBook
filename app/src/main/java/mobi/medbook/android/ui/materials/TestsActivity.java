@@ -156,7 +156,6 @@ public class TestsActivity extends MedBookActivity implements OnUpdateResultTest
 
             @Override
             public void onPageSelected(int position) {
-                LogUtils.logD("jyt78tjgh", "position/questions.length * 100 = " + (position * 100 / questions.length));
                 progressBar.setProgress(Math.round(position * 100 / questions.length));
                 //tvProgress.setText((position + 1) + "/" + questions.length);
 
@@ -236,8 +235,6 @@ public class TestsActivity extends MedBookActivity implements OnUpdateResultTest
                 public void onClick(View v) {
                     if (testResults != null && testResults.size() >= questions.length) {
                         Core.get().UserContentControl().sendTestResult(testResults);
-                        //finish();
-                        //dialogResult();
                     } else
                         AppUtils.toastError("Не усі відповіді заповнені.", true);
                 }
@@ -249,8 +246,6 @@ public class TestsActivity extends MedBookActivity implements OnUpdateResultTest
 
     @Override
     public void addResult(int questionTypeId, int test_question_id, int test_question_answer_id, String open_answer_text) {
-        LogUtils.logD("hfyj65utyjghm65ry", "userTestContentId = " + userTestContentId);
-        LogUtils.logD("hfyj65utyjghm65ry", "questionTypeId = " + questionTypeId + ", question_id = " + test_question_id + ", answer_id = " + test_question_answer_id);
         RequestTest requestTest = new RequestTest();
         requestTest.user_test_content_id = userTestContentId;
         requestTest.test_question_id = test_question_id;
@@ -260,13 +255,11 @@ public class TestsActivity extends MedBookActivity implements OnUpdateResultTest
             requestTest.test_question_answer_id = test_question_answer_id;
         requestTest.product_id = productId;
         requestTest.open_answer_text = open_answer_text;
-        LogUtils.logD("hfyj65utyjghm65ry", "ADD " + "questionTypeId = " + questionTypeId + ", question_id = " + test_question_id + ", answer_id = " + test_question_answer_id);
         switch (questionTypeId) {
             case 1:
                 for (int i = 0; i < testResults.size(); i++) {
                     RequestTest item = testResults.get(i);
                     if (item.test_question_id == test_question_id && item.test_question_answer_id != test_question_answer_id) {
-                        LogUtils.logD("hfyj65utyjghm65ry", "REMOVE " + " question_id = " + test_question_id + ", answer_id = " + test_question_answer_id);
                         testResults.remove(item);
                     }
                 }
@@ -275,7 +268,6 @@ public class TestsActivity extends MedBookActivity implements OnUpdateResultTest
                 for (int i = 0; i < testResults.size(); i++) {
                     RequestTest item = testResults.get(i);
                     if (item.test_question_id == test_question_id && item.test_question_answer_id == test_question_answer_id) {
-                        LogUtils.logD("hfyj65utyjghm65ry", "REMOVE " + " question_id = " + test_question_id + ", answer_id = " + test_question_answer_id);
                         testResults.remove(item);
                     }
                 }
@@ -284,7 +276,6 @@ public class TestsActivity extends MedBookActivity implements OnUpdateResultTest
                 for (int i = 0; i < testResults.size(); i++) {
                     RequestTest item = testResults.get(i);
                     if (item.test_question_id == test_question_id) {
-                        LogUtils.logD("hfyj65utyjghm65ry", "REMOVE " + " question_id = " + test_question_id + ", answer_id = " + test_question_answer_id);
                         testResults.remove(item);
                     }
                 }
@@ -298,7 +289,6 @@ public class TestsActivity extends MedBookActivity implements OnUpdateResultTest
         for (int i = 0; i < testResults.size(); i++) {
             RequestTest item = testResults.get(i);
             if (item.test_question_id == test_translation_question_id && item.test_question_answer_id == test_translation_question_answer_id) {
-                LogUtils.logD("hfyj65utyjghm65ry", "REMOVE " + " question_id = " + test_translation_question_id + ", answer_id = " + test_translation_question_answer_id);
 
                 testResults.remove(item);
             }
@@ -369,7 +359,6 @@ public class TestsActivity extends MedBookActivity implements OnUpdateResultTest
             String text = null;
 
             if (questions[position].question_type_id == 3) {
-                LogUtils.logD("hjhgfyh64ghjghjghj", "* question_type_id 3 ");
                 for (int i = 0; i < testResults.size(); i++) {
                     if (testResults.get(i).test_question_id == questions[position].id)
                         text = testResults.get(i).open_answer_text;
@@ -377,8 +366,6 @@ public class TestsActivity extends MedBookActivity implements OnUpdateResultTest
             } else {
                 LogUtils.logD("hjhgfyh64ghjghjghj", "* question_type_id != 3 ");
                 for (int i = 0; i < testResults.size(); i++) {
-                    LogUtils.logD("hjhgfyh64ghjghjghj", "!  testResults.get(i).test_translation_question_id =  " + testResults.get(i).test_question_id);
-                    LogUtils.logD("hjhgfyh64ghjghjghj", "!  questions[position].id =  " + questions[position].id);
 
                     if (testResults.get(i).test_question_id == questions[position].id)
                         selected.add(testResults.get(i).test_question_answer_id);
@@ -389,7 +376,6 @@ public class TestsActivity extends MedBookActivity implements OnUpdateResultTest
             for (int i = 0; i < selectedResult.length; i++)
                 selectedResult[i] = selected.get(i);
 
-            LogUtils.logD("hjhgfyh64ghjghjghj", " ============================== TestFragment newInstance ============================");
             return TestFragment.newInstance(materialId, testId, position, selectedResult, text);
         }
 

@@ -68,31 +68,6 @@ public class TestFragment extends MedBookFragment {
         return fragment;
     }
 
-    /*есть три типа вопросов
-     * 1 один ответ правильный
-     * 2 несколько ответов правильные
-     * 3 свой ответ
-     * ответы отправляются все сразу
-     * POST {{host}}/api/v1/test-result/batch-save
-     * [
-     * {
-     *   "user_test_content_id": 1,
-     *   "test_translation_question_id": 1,
-     *	"test_translation_question_answer_id": 1,
-     *	"product_id": 1,
-     *	"open_answer_text": null
-     * },
-     * {
-     *	"user_test_content_id": 1,
-     *	"test_translation_question_id": 2,
-     *	"test_translation_question_answer_id": 2,
-     *	"product_id": 1,
-     *	"open_answer_text": null
-     * } .....
-     * ]
-     * если тип вопроса 2 , создается несколько одинаковых лементов массива JSON
-     * с разными test_translation_question_answer_id
-     * */
 
     @Nullable
     @Override
@@ -115,8 +90,6 @@ public class TestFragment extends MedBookFragment {
         TextView tvTitle = rootView.findViewById(R.id.fragment_test_tv_title);
 
 
-        LogUtils.logD("hjghjghjghj", "materialId = " + materialId);
-        LogUtils.logD("hjghjghjghj", "testId = " + testId);
         for (Material itemMaterial : Core.get().UserContentControl().getListMaterial()) {
             if (itemMaterial.id == materialId)
                 for (Test itemTest : itemMaterial.tests) {
@@ -126,9 +99,6 @@ public class TestFragment extends MedBookFragment {
                     }
                 }
         }
-        LogUtils.logD("hjghjghjghj", "question_type_id = " + questions[position].question_type_id);
-        LogUtils.logD("hjghjghjghj", questions[position].translations[0].title);
-
         for (int i = 0; i < selected.length; i++) {
             LogUtils.logD("hjhgfyh64ghjghjghj", "* * * selected = " + selected[i]);
         }
@@ -137,7 +107,6 @@ public class TestFragment extends MedBookFragment {
                 tilQuestion_type_3.setVisibility(View.GONE);
                 listSingleChoice.setVisibility(View.VISIBLE);
                 listMultipleChoice.setVisibility(View.GONE);
-                //listSingleChoice.clear();
                 singleChoiceRecyclerItems.clear();
                 listSingleChoice.init();
                 for (int j = 0; j < questions[position].answers.length; j++) {
@@ -150,11 +119,6 @@ public class TestFragment extends MedBookFragment {
                         }
                     singleChoiceRecyclerItems.add(item);
 
-                    LogUtils.logD("hjhgfyh64ghjghjghj", questions[position].answers[j].translations[0].title);
-                    LogUtils.logD("hjhgfyh64ghjghjghj", "id = " + questions[position].answers[j].id);
-                    LogUtils.logD("hjhgfyh64ghjghjghj", "is_true = " + questions[position].answers[j].is_true);
-                    LogUtils.logD("hjhgfyh64ghjghjghj", "test_id = " + questions[position].test_id);
-                    LogUtils.logD("hjhgfyh64ghjghjghj", "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
                 }
                 listSingleChoice.itemsAdd(singleChoiceRecyclerItems);
                 break;
@@ -172,14 +136,8 @@ public class TestFragment extends MedBookFragment {
                                 item.setSelected(true);
                             }
                         }
-
                     listMultipleChoice.itemAdd(item);
 
-                    LogUtils.logD("hjhgfyh64ghjghjghj", questions[position].answers[j].translations[0].title);
-                    LogUtils.logD("hjhgfyh64ghjghjghj", "id = " + questions[position].answers[j].id);
-                    LogUtils.logD("hjhgfyh64ghjghjghj", "is_true = " + questions[position].answers[j].is_true);
-                    LogUtils.logD("hjhgfyh64ghjghjghj", "test_id = " + questions[position].test_id);
-                    LogUtils.logD("hjhgfyh64ghjghjghj", "===================================================");
                 }
                 break;
             case 3:

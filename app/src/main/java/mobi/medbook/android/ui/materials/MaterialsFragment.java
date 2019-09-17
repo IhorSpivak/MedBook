@@ -160,7 +160,6 @@ public class MaterialsFragment extends Fragment implements EventListener {
                         stateList = STATE_TILE;
                         imvList.setImageResource(R.drawable.ic_btn_material_list_unselect);
                         imvTile.setImageResource(R.drawable.ic_btn_material_tile_select);
-
                         SharedPreferences.Editor prefsEditor = settings.edit();
                         prefsEditor.putInt(MATERIALS_FRAGMENT_PREFERENCE_TYPE_LIST, stateList);
                         prefsEditor.apply();
@@ -194,14 +193,11 @@ public class MaterialsFragment extends Fragment implements EventListener {
                 EventMaterialsLoad eventMaterialsLoad = (EventMaterialsLoad) event;
                 if (eventMaterialsLoad.isSuccess()) {
                     LogUtils.logD(TAG, "onEvent EVENT_MATERIALS_LOAD isSuccess");
-//                    if (items != null)
-//                        items.clear();
                     if (listMaterials != null)
                         listMaterials.clear();
-                    LogUtils.logD(TAG, "Core.get().UserContentControl().getListMaterial().size() = " + Core.get().UserContentControl().getListMaterial().size());
                     items = Core.get().UserContentControl().getListMaterial();
-                    LogUtils.logD(TAG, "items.size() = " + items.size());
                     for (Material item : items) {
+
                         listMaterials.itemAdd(new MaterialListRecyclerItem(item));
                         LogUtils.logD(TAG, "id = " + item.id);
                     }

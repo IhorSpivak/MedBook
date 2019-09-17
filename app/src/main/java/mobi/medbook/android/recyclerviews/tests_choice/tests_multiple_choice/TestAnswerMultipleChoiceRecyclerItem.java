@@ -42,7 +42,6 @@ public class TestAnswerMultipleChoiceRecyclerItem extends RecyclerItem implement
 
     @Override
     public void onClick(View view) {
-        //EventRouter.send(new EventMaterialDescriptionStart(MaterialsEnum.TEST, answer.test_id));
         answerChecked.selected = !answerChecked.selected;
         if(view.getContext() instanceof OnUpdateResultTest) {
             if (answerChecked.selected) {

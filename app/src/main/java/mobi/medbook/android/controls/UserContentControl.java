@@ -269,7 +269,6 @@ public class UserContentControl {
     public void sendTestResult(ConcurrentArrayList<RequestTest>/*RequestTest[]*/ itemsList) {
         if (Core.get().AuthorizationControl().updateAccessToken()) {
             if (AppUtils.isNetworkAvailable(App.getAppContext())) {
-
                 RequestTest[] items = new RequestTest[itemsList.size()];
                 for (int i = 0; i < itemsList.size(); i++) {
                     items[i] = new RequestTest();
@@ -278,12 +277,6 @@ public class UserContentControl {
                     items[i].test_question_id = itemsList.get(i).test_question_id;
                     items[i].product_id = itemsList.get(i).product_id;
                     items[i].open_answer_text = itemsList.get(i).open_answer_text;
-                    LogUtils.logD("jhvjyt7gkkjh", "user_test_content_id = " + items[i].user_test_content_id);
-                    LogUtils.logD("jhvjyt7gkkjh", "test_question_answer_id = " + items[i].test_question_answer_id);
-                    LogUtils.logD("jhvjyt7gkkjh", "test_question_id = " + items[i].test_question_id);
-                    LogUtils.logD("jhvjyt7gkkjh", "product_id = " + items[i].product_id);
-                    LogUtils.logD("jhvjyt7gkkjh", "open_answer_text = " + items[i].open_answer_text);
-                    LogUtils.logD("jhvjyt7gkkjh", "===============================================");
                 }
                 ApiRest.PointAccess().sendTestResult(items).enqueue(new Callback<TestResultsResponse>() {
                     @Override

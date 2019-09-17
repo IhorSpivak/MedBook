@@ -21,6 +21,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import mobi.medbook.android.App;
 import mobi.medbook.android.Core;
@@ -60,6 +62,7 @@ public class TodayFragment extends MedBookFragment {
     private String TAG = "AppMedbook/TodayFragment";
 
     private ArrayList<TaskMaterial> taskMaterials;
+    private ArrayList<TaskMaterial> sortingTaskMaterials;
 
     private CardView taskContainer;
     private LinearLayout mNotificationsLL;
@@ -117,6 +120,7 @@ public class TodayFragment extends MedBookFragment {
 
 
 
+        long testSize = System.currentTimeMillis()/1000;
         swipeRefreshLayout = rootView.findViewById(R.id.swipe_refresh);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -540,8 +544,17 @@ public class TodayFragment extends MedBookFragment {
 
 
         tasksRecyclerView.init();
+        Collections.sort(taskMaterials, new Comparator<TaskMaterial>() {
+            @Override
+            public int compare(TaskMaterial lhs, TaskMaterial rhs) {
+                // -1 - less than, 1 - greater than, 0 - equal, all inversed for descending
+                return lhs.timeCreate > rhs.timeCreate ? -1 : (lhs.timeCreate < rhs.timeCreate) ? 1 : 0;
+            }
+        });
+
         if (taskMaterials.size() >= 5)
             for (int i = 0; i < 5; i++) {
+
                 tasksRecyclerView.itemAdd(new TaskRecyclerItem(taskMaterials.get(i)));
             }
         else {
@@ -549,7 +562,7 @@ public class TodayFragment extends MedBookFragment {
                 tasksRecyclerView.itemAdd(new TaskRecyclerItem(taskMaterials.get(i)));
             }
         }
-        LogUtils.logD("jhjghjbkjhb", "visible = " + (taskMaterials.size() == 0));
+
         titleTasksList.setVisibility(taskMaterials.size() == 0 ? View.GONE : View.VISIBLE);
         taskContainer.setVisibility(taskMaterials.size() == 0 ? View.GONE : View.VISIBLE);
         tasksRecyclerView.setVisibility(taskMaterials.size() == 0 ? View.GONE : View.VISIBLE);

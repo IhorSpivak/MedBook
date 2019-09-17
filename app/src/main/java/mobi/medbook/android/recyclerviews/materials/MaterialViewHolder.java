@@ -9,6 +9,7 @@ import com.squareup.picasso.Picasso;
 import mobi.medbook.android.R;
 import mobi.medbook.android.recyclerviews.base.BaseViewHolder;
 import mobi.medbook.android.types.materials.Material;
+import mobi.medbook.android.types.materials.Test;
 
 public class MaterialViewHolder extends BaseViewHolder {
 
@@ -44,6 +45,40 @@ public class MaterialViewHolder extends BaseViewHolder {
 
     public void init(MaterialListRecyclerItem owner, Material material) {
 
+        int testSize = material.tests.length;
+        int presentationSize = material.presentations.length;
+        int videoSize = material.videos.length;
+
+            if (material.tests.length > 0) {
+                for (int i = 0; i < material.tests.length; i++) {
+                    if (material.tests[i].time_from > System.currentTimeMillis() / 1000 || material.tests[i].time_to < System.currentTimeMillis() ) {
+                        testSize = testSize - 1;
+                    }
+                }
+            }
+
+
+         if (material.presentations.length > 0 ) {
+             for (int i = 0; i < material.presentations.length; i++) {
+                 if (material.presentations[i].time_from > System.currentTimeMillis() / 1000 || material.presentations[i].time_to < System.currentTimeMillis()) {
+                     presentationSize = presentationSize - 1;
+                 }
+             }
+         }
+
+
+
+        if (material.videos.length > 0) {
+
+            for (int i = 0; i < material.videos.length; i++) {
+                if (material.tests[i].time_from > System.currentTimeMillis() / 1000 || material.videos[i].time_to < System.currentTimeMillis()) {
+                    videoSize = videoSize - 1;
+                }
+            }
+        }
+
+
+
         if (material.count.total == 0) {
             imvDot.setVisibility(View.INVISIBLE);
         }
@@ -52,23 +87,23 @@ public class MaterialViewHolder extends BaseViewHolder {
             tvtitle.setText(material.translations[1].name);
         }
         if (tvTests != null) {
-            if (material.tests.length > 0) {
+            if (testSize > 0) {
                 tvTests.setVisibility(View.VISIBLE);
-                tvTests.setText(String.valueOf(material.tests.length));
+                tvTests.setText(String.valueOf(testSize));
             } else
                 tvTests.setVisibility(View.GONE);
         }
         if (tvPresentations != null) {
-            if (material.presentations.length > 0) {
+            if (presentationSize > 0) {
                 tvPresentations.setVisibility(View.VISIBLE);
-                tvPresentations.setText(String.valueOf(material.presentations.length));
+                tvPresentations.setText(String.valueOf(presentationSize));
             } else
                 tvPresentations.setVisibility(View.GONE);
         }
         if (tvVideo != null) {
-            if (material.videos.length > 0) {
+            if (videoSize > 0) {
                 tvVideo.setVisibility(View.VISIBLE);
-                tvVideo.setText(String.valueOf(material.videos.length));
+                tvVideo.setText(String.valueOf(videoSize));
             } else
                 tvVideo.setVisibility(View.GONE);
         }

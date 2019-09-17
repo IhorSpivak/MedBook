@@ -3,7 +3,6 @@ package mobi.medbook.android.controls;
 
 import android.os.AsyncTask;
 import android.provider.Settings;
-import android.widget.Toast;
 
 import org.json.JSONObject;
 
@@ -124,7 +123,6 @@ public class AuthorizationControl {
 
     public void authorize(String username, String password) {
         if (AppUtils.isNetworkAvailable(App.getAppContext())) {
-            AppUtils.toastError("Интернет включен", false);
             String android_id = Settings.Secure.getString(App.getAppContext().getContentResolver(),
                     Settings.Secure.ANDROID_ID);
             ApiRestRefreshToken.PointAccess().authorize(new AuthorizeRequest(username, password, android_id)).enqueue(new Callback<AuthorizeInfo>() {
@@ -252,19 +250,13 @@ public class AuthorizationControl {
     public synchronized boolean updateAccessToken() {
         boolean result = true;
         if (AppUtils.isNetworkAvailable(App.getAppContext())) {
-            LogUtils.logD("D/OkHttp:", "-------------------------------------point 1");
-            LogUtils.logD("D/OkHttp:", "-------------------------------------App.getmAccessTokenExpires() = " + App.getmAccessTokenExpires());
-            LogUtils.logD("D/OkHttp:", "-------------------------------------currentTime                  = " + System.currentTimeMillis() / 1000);
             if (App.getmAccessTokenExpires() <= (System.currentTimeMillis() / 1000)) {
                 LogUtils.logD("D/OkHttp:", "-------------------------------------point 2");
                 if (App.getRefreshToken() != null && !App.getRefreshToken().isEmpty()) {
                     LogUtils.logD("D/OkHttp:", "-------------------------------------point 3");
-
-//                    retrofit2.Response<AccessTokenInfo> accessTokenInfo =
-//                            ApiRestRefreshToken.PointAccess().refreshAccessToken(new RefreshAccessTokenRequest(App.getRefreshToken())).execute();
                     MyAsyncTask task = new MyAsyncTask();
                     task.execute();
-                    LogUtils.logD("D/OkHttp:", "-------------------------------------point 5");
+
                     try {
                         retrofit2.Response<AccessTokenInfo> accessTokenInfo = task.get();
                         if (accessTokenInfo != null && accessTokenInfo.isSuccessful() && accessTokenInfo.body() != null && accessTokenInfo.body().success) {
@@ -299,7 +291,6 @@ public class AuthorizationControl {
         @Override
         protected retrofit2.Response<AccessTokenInfo> doInBackground(Void... voids) {
             try {
-                LogUtils.logD("D/OkHttp:", "-------------------------------------point 4");
                 return ApiRestRefreshToken.PointAccess().refreshAccessToken(new RefreshAccessTokenRequest(App.getRefreshToken())).execute();
             } catch (IOException e) {
                 LogUtils.logD("D/OkHttp:", e.getLocalizedMessage());

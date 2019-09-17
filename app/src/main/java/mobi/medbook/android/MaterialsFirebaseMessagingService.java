@@ -22,6 +22,7 @@ import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
 import mobi.medbook.android.ui.MainActivity;
+import mobi.medbook.android.ui.points.PointsActivity;
 import mobi.medbook.android.utils.LogUtils;
 
 public class MaterialsFirebaseMessagingService extends FirebaseMessagingService {
@@ -70,6 +71,12 @@ public class MaterialsFirebaseMessagingService extends FirebaseMessagingService 
 //            PendingIntent resultPendingIntent = PendingIntent.getActivity(this, 0, resultIntent,
 //                    PendingIntent.FLAG_UPDATE_CURRENT);
 
+
+
+        Intent resultIntent = new Intent(this, PointsActivity.class);
+        PendingIntent resultPendingIntent = PendingIntent.getActivity(this, 0, resultIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID, name, importance);
             mChannel.setShowBadge(true);
@@ -82,7 +89,7 @@ public class MaterialsFirebaseMessagingService extends FirebaseMessagingService 
             notificationCompatBuilder.setContentText(body);
             notificationCompatBuilder.setSmallIcon(R.mipmap.ic_nb_today1);
             notificationCompatBuilder.setChannelId(CHANNEL_ID);
-            notificationCompatBuilder.setContentIntent(PendingIntent.getActivity(this, 0, new Intent(), 0));
+            notificationCompatBuilder.setContentIntent(resultPendingIntent);
             notificationCompatBuilder.setAutoCancel(true);
             notificationCompatBuilder.build();
         } else {
@@ -92,7 +99,7 @@ public class MaterialsFirebaseMessagingService extends FirebaseMessagingService 
                      notificationCompatBuilder.setContentText(body);
                      notificationCompatBuilder.setSmallIcon(R.mipmap.ic_nb_today1);
                      notificationCompatBuilder.setPriority(Notification.PRIORITY_MAX);
-                     notificationCompatBuilder.setContentIntent(PendingIntent.getActivity(this, 0, new Intent(), 0));
+                     notificationCompatBuilder.setContentIntent(resultPendingIntent);
                      notificationCompatBuilder.setAutoCancel(true);
                      notificationCompatBuilder.build();
         }

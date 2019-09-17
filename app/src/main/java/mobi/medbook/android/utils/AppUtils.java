@@ -26,7 +26,6 @@ public class AppUtils {
     public static boolean isNetworkAvailable(final Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            Toast.makeText(context,"Проверка версии приложения", Toast.LENGTH_SHORT).show();
             Network network = connectivityManager.getActiveNetwork();
             NetworkCapabilities capabilities = connectivityManager.getNetworkCapabilities(network);
             return capabilities != null && (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR));
@@ -34,17 +33,14 @@ public class AppUtils {
         else {
             NetworkInfo wifiInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
             if (wifiInfo != null && wifiInfo.isConnected()) {
-                Toast.makeText(context,"Отработка WiFi", Toast.LENGTH_SHORT).show();
                 return true;
             }
             wifiInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
             if (wifiInfo != null && wifiInfo.isConnected()) {
-                Toast.makeText(context,"Отработка мобильного интернета", Toast.LENGTH_SHORT).show();
                 return true;
             }
             wifiInfo = connectivityManager.getActiveNetworkInfo();
             if (wifiInfo != null && wifiInfo.isConnected()) {
-                Toast.makeText(context,"Доступен", Toast.LENGTH_SHORT).show();
                 return true;
             }
         }

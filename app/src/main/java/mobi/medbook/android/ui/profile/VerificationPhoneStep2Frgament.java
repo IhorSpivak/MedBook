@@ -1,6 +1,7 @@
 package mobi.medbook.android.ui.profile;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,9 +61,20 @@ public class VerificationPhoneStep2Frgament extends Fragment implements EventLis
         Button btnSaveCode = rootView.findViewById(R.id.fragment_verification_phone_step_2_btn_save);
 
         tvPhone.setText(phone);
+
+
         btnAgainSendCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                v.setEnabled(false);
+
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        v.setEnabled(true);
+                    }
+                }, 2000);
                 Core.get().Api2Control().verificationPhone(phone, false);
                 edCode.setText("");
             }

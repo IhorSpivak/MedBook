@@ -57,15 +57,15 @@ public class TestAnswerSingleChoiceRecyclerItem extends RecyclerItem implements 
         {
             ((TestAnswerSingleChoiceRecyclerView)parent).itemUpdate(this);
         } else
-        while(!(parent instanceof TestAnswerSingleChoiceRecyclerView))
-        {
-            LogUtils.logD("TestAnswerSingleChoiceRecyclerItem", "while ::: parent = " + parent.getClass().getName());
-            parent = parent.getParent();
-            if(parent instanceof TestAnswerSingleChoiceRecyclerView)
+            while(!(parent instanceof TestAnswerSingleChoiceRecyclerView))
             {
-                ((TestAnswerSingleChoiceRecyclerView)parent).itemUpdate(this);
-                break;
+                LogUtils.logD("TestAnswerSingleChoiceRecyclerItem", "while ::: parent = " + parent.getClass().getName());
+                parent = parent.getParent();
+                if(parent instanceof TestAnswerSingleChoiceRecyclerView)
+                {
+                    ((TestAnswerSingleChoiceRecyclerView)parent).itemUpdate(this);
+                    break;
+                }
             }
-        }
     }
 }

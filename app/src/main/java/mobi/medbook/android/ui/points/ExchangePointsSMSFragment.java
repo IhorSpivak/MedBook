@@ -1,5 +1,6 @@
 package mobi.medbook.android.ui.points;
 
+import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -14,9 +15,14 @@ import androidx.appcompat.widget.AppCompatEditText;
 
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import mobi.medbook.android.Core;
 import mobi.medbook.android.R;
+import mobi.medbook.android.ui.calendar.AddVisitActivity;
 import mobi.medbook.android.ui.custom_views.MedBookFragment;
+import mobi.medbook.android.utils.DateHelper;
 import mobi.medbook.android.utils.DialogBuilder;
 
 
@@ -70,11 +76,22 @@ public class ExchangePointsSMSFragment extends MedBookFragment {
         String payments_details = getArguments().getString(KEY_BUNDLE_PAYMENTS_DETAILS);
 
 
-        btnSendCodeAgain.setOnClickListener(view -> {
-//                    pb.setVisibility(View.VISIBLE);
-            Core.get().Api2Control().getSMSForExchangePoints(value, verification_type);
-                }
-        );
+
+        btnSendCodeAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.setEnabled(false);
+
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        v.setEnabled(true);
+                    }
+                }, 2000);
+                Core.get().Api2Control().getSMSForExchangePoints(value, verification_type);
+            }
+        });
 
         btnExchangePoints.setOnClickListener(view -> {
 //            pb.setVisibility(View.VISIBLE);

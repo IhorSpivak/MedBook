@@ -1,6 +1,7 @@
 package mobi.medbook.android.ui.news_and_clinical_cases;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -91,22 +92,33 @@ public class CommentsActivity extends MedBookActivity implements IOnClicksCommen
         });
         ibAddComment = findViewById(R.id.activity_comments_add);
         ibAddComment.setEnabled(false);
-        ibAddComment.setOnClickListener(view -> {
-            ibAddComment.setEnabled(false);
-            ibAddComment.setImageResource(R.drawable.ic_add_comment_inactive);
-            NewCommentRequest newCommentRequest = new NewCommentRequest();
-            newCommentRequest.content = edInputComment.getText().toString();
-            newCommentRequest.entityId = idNews;
-            newCommentRequest.parentId = selectParentId;
-            Core.get().CommentsControl().newComment(newCommentRequest);
-            edInputComment.setText("");
-            selectParentId = null;
-            tvReplyName.setText("");
-            llReply.setVisibility(View.GONE);
-            int valueInPixelsOther = (int) getResources().getDimension(R.dimen.padding_default);
-            edInputComment.setPadding(valueInPixelsOther, valueInPixelsOther, valueInPixelsOther, valueInPixelsOther);
 
-            //Core.get().CommentsControl().getComments(idNews);
+        ibAddComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                v.setEnabled(false);
+
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        v.setEnabled(true);
+                    }
+                }, 2000);
+                ibAddComment.setEnabled(false);
+                ibAddComment.setImageResource(R.drawable.ic_add_comment_inactive);
+                NewCommentRequest newCommentRequest = new NewCommentRequest();
+                newCommentRequest.content = edInputComment.getText().toString();
+                newCommentRequest.entityId = idNews;
+                newCommentRequest.parentId = selectParentId;
+                Core.get().CommentsControl().newComment(newCommentRequest);
+                edInputComment.setText("");
+                selectParentId = null;
+                tvReplyName.setText("");
+                llReply.setVisibility(View.GONE);
+                int valueInPixelsOther = (int) getResources().getDimension(R.dimen.padding_default);
+                edInputComment.setPadding(valueInPixelsOther, valueInPixelsOther, valueInPixelsOther, valueInPixelsOther);
+            }
         });
 
         tvSubTitle = findViewById(R.id.activity_comments_toolbar_subtitle);
