@@ -120,7 +120,6 @@ public class TodayFragment extends MedBookFragment {
 
 
 
-        long testSize = System.currentTimeMillis()/1000;
         swipeRefreshLayout = rootView.findViewById(R.id.swipe_refresh);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

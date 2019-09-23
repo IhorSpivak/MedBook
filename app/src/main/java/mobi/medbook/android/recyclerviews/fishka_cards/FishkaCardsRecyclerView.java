@@ -8,11 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import mobi.medbook.android.R;
+import mobi.medbook.android.recyclerviews.base.BaseRecyclerView;
 import mobi.medbook.android.recyclerviews.base.BaseViewHolder;
 import mobi.medbook.android.recyclerviews.base.RecyclerItems;
 
 import mobi.medbook.android.ui.points.IOnDeleteFishkaCard;
-import ua.profarma.medbook.recyclerviews.base.BaseRecyclerView;
+
 
 
 public class FishkaCardsRecyclerView extends BaseRecyclerView {

@@ -8,10 +8,11 @@ import android.view.ViewGroup;
 
 
 import mobi.medbook.android.R;
+import mobi.medbook.android.recyclerviews.base.BaseRecyclerView;
 import mobi.medbook.android.recyclerviews.base.BaseViewHolder;
 import mobi.medbook.android.recyclerviews.base.RecyclerItems;
 import mobi.medbook.android.recyclerviews.icod_selected.IcodSelectedViewHolder;
-import ua.profarma.medbook.recyclerviews.base.BaseRecyclerView;
+
 
 
 public class IcodSelectedRecyclerViewed extends BaseRecyclerView {

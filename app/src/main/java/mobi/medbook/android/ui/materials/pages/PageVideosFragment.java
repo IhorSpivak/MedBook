@@ -35,6 +35,8 @@ public class PageVideosFragment extends ViewPagerFragment implements EventListen
         list.addItemDecoration(new SimpleDividerItemDecoration(getContext()));
         if (Core.get().UserContentControl().getSelectedMaterial() != null && Core.get().UserContentControl().getSelectedMaterial().videos.length > 0)
             for (int i = 0; i < Core.get().UserContentControl().getSelectedMaterial().videos.length; i++) {
+                if(Core.get().UserContentControl().getSelectedMaterial().videos[i].time_from < System.currentTimeMillis() / 1000 &&
+                        Core.get().UserContentControl().getSelectedMaterial().videos[i].time_to > System.currentTimeMillis() / 1000)
                 list.itemAdd(new VideoRecyclerItem(Core.get().UserContentControl().getSelectedMaterial().videos[i]));
             }
         return rootView;

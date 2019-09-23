@@ -23,30 +23,47 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import mobi.medbook.android.Core;
 import mobi.medbook.android.R;
 import mobi.medbook.android.events.core.Event;
+import mobi.medbook.android.events.core.EventRouter;
 import mobi.medbook.android.events.visits.EventUserVisitQuestionnaireMPLoad;
 import mobi.medbook.android.events.visits.EventUserVisitQuestionnaireUpdate;
+import mobi.medbook.android.models.requests.AnswerRequest;
+import mobi.medbook.android.models.requests.UsetVisitQuestionnaireRequest;
 import mobi.medbook.android.recyclerviews.base.RecyclerItems;
 import mobi.medbook.android.recyclerviews.products.ProductRecyclerItem;
+import mobi.medbook.android.recyclerviews.products.ProductSwitchRecyclerItem;
 import mobi.medbook.android.recyclerviews.products.ProductsRecyclerView;
+import mobi.medbook.android.recyclerviews.products.SwitchProductsRecyclerView;
+import mobi.medbook.android.singltones.SingletoneForMPTest;
+import mobi.medbook.android.singltones.SingltonForAncetaTest;
+import mobi.medbook.android.singltones.SingltonForPatterns;
+import mobi.medbook.android.types.materials.Question;
 import mobi.medbook.android.types.visits.Product;
+import mobi.medbook.android.types.visits.ProductPlan;
+import mobi.medbook.android.types.visits.Questions;
 import mobi.medbook.android.types.visits.UserVisit;
 import mobi.medbook.android.types.visits.UserVisitQuestionnaire;
 import mobi.medbook.android.ui.custom_views.MedBookActivity;
+import mobi.medbook.android.ui.reference.ReferenceActivity;
 import mobi.medbook.android.utils.DialogBuilder;
 import mobi.medbook.android.utils.LogUtils;
 import mobi.medbook.android.utils.TextUtils;
 import mobi.medbook.android.utils.TimeUtils;
 
 
-public class MPAncetaActivity extends MedBookActivity implements IOnSelectProduct {
+public class MPAncetaActivity extends MedBookActivity implements IOnSelectProduct,IonSelectSwitchProduct {
 
     public static String KEY_ID_VISIT = "KEY_ID_VISIT";
 
@@ -58,6 +75,7 @@ public class MPAncetaActivity extends MedBookActivity implements IOnSelectProduc
     private boolean flagSaveMPAncet = true;
 
     private UserVisitQuestionnaire mpData;
+    private UsetVisitQuestionnaireRequest mpDataRequst;
 
     private int mIdVisit;
     private UserVisit userVisit;
@@ -72,10 +90,14 @@ public class MPAncetaActivity extends MedBookActivity implements IOnSelectProduc
     private TextView tvTitleVisit;
     private TextView tvDescription;
     private ImageView imPromo;
+    private ImageView ic_next;
     private TextView tvPromo;
     private ProductsRecyclerView listProducts;
+    private SwitchProductsRecyclerView listSwitchProducts;
     private EditText tvPatientFlow;
     private RelativeLayout llPatientFlow;
+    private RelativeLayout rlHeaderrv;
+    private RelativeLayout rlAnceta;
     private TextView tvTimer;
     private Handler h;
     private int visitTimer;
@@ -86,12 +108,18 @@ public class MPAncetaActivity extends MedBookActivity implements IOnSelectProduc
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visit_mp_anketa);
+        ButterKnife.bind(this);
 
         tvTimer = findViewById(R.id.activity_visit_mp_anceta_timer);
         listProducts = findViewById(R.id.activity_visit_mp_anceta_list_product);
+        listSwitchProducts = findViewById(R.id.activity_visit_mp_anceta_list_product_switch);
+        rlAnceta = findViewById(R.id.rlAnceta);
         listProducts.init();
+        listSwitchProducts.init();
         tvPromo = findViewById(R.id.activity_visit_mp_anceta_promo_text);
+        rlHeaderrv = findViewById(R.id.rlHeaderrv);
         imPromo = findViewById(R.id.activity_visit_mp_anceta_promo_im);
+        ic_next = findViewById(R.id.iv_anceta);
         tvPromo.setVisibility(View.GONE);
         imPromo.setVisibility(View.GONE);
 
@@ -174,6 +202,8 @@ public class MPAncetaActivity extends MedBookActivity implements IOnSelectProduc
         btnSend.setOnClickListener(view -> {
             mpData.data.patientFlow = Integer.parseInt(tvPatientFlow.getText().toString());
 
+            mpData.data.questionsArrResult = SingletoneForMPTest.getInstance().getList().toArray();
+
             if(isOnline()) {
                 onFinishMeetingSuccess();
             } else {
@@ -227,7 +257,7 @@ public class MPAncetaActivity extends MedBookActivity implements IOnSelectProduc
                                     finish();
                             } else {
                                 if (Core.get().VisitsControl().isStartSendMPAnceta()) {
-                                    if(visitTimer >= 600) {
+                                    if(visitTimer >= 600 ) {
                                         Core.get().VisitsControl().visitMedPredResult(userVisit.id, 1);
                                         finish();
                                     } else {
@@ -257,6 +287,7 @@ public class MPAncetaActivity extends MedBookActivity implements IOnSelectProduc
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Core.get().VisitsControl().visitMedPredResult(userVisit.id, 0);
+                        SingltonForAncetaTest.getInstance().getList().clear();
                         finish();
                     }
                 });
@@ -349,6 +380,25 @@ public class MPAncetaActivity extends MedBookActivity implements IOnSelectProduc
                         }
                         listProducts.itemsAdd(items);
                     }
+
+                    listSwitchProducts.clear();
+
+                    if (mpData.data.planProductArr != null && mpData.data.planProductArr.length > 0) {
+                        items.clear();
+                        for (int i = 0; i < mpData.data.planProductArr.length; i++) {
+                            items.add(new ProductSwitchRecyclerItem(mpData.data.planProductArr[i]));
+                        }
+                        listSwitchProducts.itemsAdd(items);
+                    } else {
+                        rlHeaderrv.setVisibility(View.GONE);
+                    }
+
+                    if (mpData.data.questionsArr != null && mpData.data.questionsArr.length > 0) {
+
+                        List<Questions> list = Arrays.asList(mpData.data.questionsArr);
+                        SingltonForAncetaTest.getInstance().setList(list);
+
+                    }
                     break;
                 } else {
                     llPatientFlow.setVisibility(View.INVISIBLE);
@@ -386,9 +436,21 @@ public class MPAncetaActivity extends MedBookActivity implements IOnSelectProduc
         }
     }
 
+
+    @OnClick(R.id.rlAnceta)
+    void onStartTestAncetaActivity() {
+       TestMPAnceta.startActivity(this, 1);
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
+        if(SingltonForAncetaTest.getInstance().getList().isEmpty() || SingltonForAncetaTest.getInstance().getList() == null ||
+                SingltonForAncetaTest.getInstance() == null ){
+            ic_next.setBackground(getResources().getDrawable(R.drawable.ic_next));
+        } else {
+            ic_next.setBackground(getResources().getDrawable(R.drawable.ic_icod_checked));
+        }
         flagSaveMPAncet = true;
         h = new Handler(hc);
         h.sendEmptyMessageDelayed(1, 1000);
@@ -397,9 +459,19 @@ public class MPAncetaActivity extends MedBookActivity implements IOnSelectProduc
     @Override
     protected void onPause() {
         super.onPause();
+
         LogUtils.logD("yjghmhbhgmnb", "h.removeMessages");
         h.removeMessages(1);
         if (flagSaveMPAncet)
             Core.get().VisitsControl().saveMPAncet(mIdVisit);
+    }
+
+    @Override
+    public void onSelectSwitchProduct(ProductPlan product) {
+        for (int i = 0; i <  mpData.data.planProductArr.length; i++)
+            if (mpData.data.planProductArr[i].productId.equals(product.productId)) {
+                mpData.data.planProductArr[i] = product;
+
+            }
     }
 }

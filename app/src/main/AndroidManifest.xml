@@ -71,6 +71,12 @@
             android:configChanges="layoutDirection|locale"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeDark" />
+
+        <activity
+            android:name="mobi.medbook.android.ui.calendar.TestMPAnceta"
+            android:configChanges="layoutDirection|locale"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeDark" />
         <activity
             android:name="mobi.medbook.android.ui.materials.VideoActivity"
             android:configChanges="layoutDirection|locale"

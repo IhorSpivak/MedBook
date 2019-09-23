@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:id="@+id/root"
+    android:layout_height="wrap_content"
+    android:minHeight="60dp">
+
+<RadioButton
+    android:id="@+id/item_test_single_choice_root"
+    android:layout_width="match_parent"
+    android:layout_centerVertical="true"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:layout_marginStart="@dimen/margin_default"
+    android:layout_marginEnd="@dimen/margin_default"
+    android:paddingTop="@dimen/padding_default"
+    android:paddingBottom="@dimen/padding_default"
+    android:scrollHorizontally="false"
+    android:textColor="#363636"
+    android:textSize="14sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentBottom="true"
+        android:background="#ececeb"/>
+
+</RelativeLayout>

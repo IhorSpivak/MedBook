@@ -1,4 +1,4 @@
-package ua.profarma.medbook.recyclerviews.base;
+package mobi.medbook.android.recyclerviews.base;
 
 import android.content.Context;
 import android.util.AttributeSet;

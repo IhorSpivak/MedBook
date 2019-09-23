@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import mobi.medbook.android.R;
+import mobi.medbook.android.recyclerviews.base.BaseRecyclerView;
 import mobi.medbook.android.recyclerviews.base.BaseViewHolder;
 import mobi.medbook.android.recyclerviews.base.RecyclerItems;
-import ua.profarma.medbook.recyclerviews.base.BaseRecyclerView;
 
 
 public class ImageCCSelectedRecyclerView extends BaseRecyclerView {

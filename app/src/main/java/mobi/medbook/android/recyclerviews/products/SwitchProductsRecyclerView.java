@@ -1,4 +1,4 @@
-package mobi.medbook.android.recyclerviews.drugs;
+package mobi.medbook.android.recyclerviews.products;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -11,22 +11,17 @@ import mobi.medbook.android.recyclerviews.base.BaseRecyclerView;
 import mobi.medbook.android.recyclerviews.base.BaseViewHolder;
 import mobi.medbook.android.recyclerviews.base.RecyclerItems;
 
+public class SwitchProductsRecyclerView extends BaseRecyclerView {
 
-
-
-public class DrugsRecyclerView extends BaseRecyclerView {
-
-    private String TAG = "AppMedbook/HistoryExchangeRecyclerView";
-
-    public DrugsRecyclerView(Context context) {
+    public SwitchProductsRecyclerView(Context context) {
         this(context, null);
     }
 
-    public DrugsRecyclerView(Context context, AttributeSet attrs) {
+    public SwitchProductsRecyclerView(Context context, AttributeSet attrs) {
         this(context, attrs, -1);
     }
 
-    public DrugsRecyclerView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SwitchProductsRecyclerView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
@@ -37,7 +32,14 @@ public class DrugsRecyclerView extends BaseRecyclerView {
 
     @Override
     public BaseViewHolder create(ViewGroup parent, int viewType) {
-        View itemView =  LayoutInflater.from(getContext()).inflate(R.layout.item_drugs, parent, false);
-        return new DrugViewHolder(itemView);
+        View itemView = LayoutInflater.from(getContext()).inflate(R.layout.item_product_switch, parent, false);
+        return new ProductSwitchViewHolder(itemView);
+    }
+
+    @Override
+    public void init() {
+        super.init();
+        //setLayoutManager(new WCLinearLayoutManager(getContext()));
+        setNestedScrollingEnabled(false);
     }
 }

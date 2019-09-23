@@ -73,7 +73,7 @@ public class MaterialsFirebaseMessagingService extends FirebaseMessagingService 
 
 
 
-        Intent resultIntent = new Intent(this, PointsActivity.class);
+        Intent resultIntent = new Intent(this, MainActivity.class);
         PendingIntent resultPendingIntent = PendingIntent.getActivity(this, 0, resultIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT);
 

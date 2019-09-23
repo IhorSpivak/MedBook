@@ -70,6 +70,8 @@ public class PagePresentationsFragment extends ViewPagerFragment implements Even
                 for (int i = 0; i < items.size(); i++) {
                     if (((PresentationRecyclerItem) items.get(i)).getPresentation().id == eventOnSendResultPresentationSuccess.getPresentationId()) {
                         ((PresentationRecyclerItem) items.get(i)).setResultTime(eventOnSendResultPresentationSuccess.getResultTime());
+                        if(Core.get().UserContentControl().getSelectedMaterial().presentations[i].time_from < System.currentTimeMillis() / 1000 &&
+                                Core.get().UserContentControl().getSelectedMaterial().presentations[i].time_to > System.currentTimeMillis() / 1000)
                         list.itemUpdate(i);
                     }
                 }

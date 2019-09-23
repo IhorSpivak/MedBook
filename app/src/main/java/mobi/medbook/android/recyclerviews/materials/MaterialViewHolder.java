@@ -51,32 +51,29 @@ public class MaterialViewHolder extends BaseViewHolder {
 
             if (material.tests.length > 0) {
                 for (int i = 0; i < material.tests.length; i++) {
-                    if (material.tests[i].time_from > System.currentTimeMillis() / 1000 || material.tests[i].time_to < System.currentTimeMillis() ) {
+                    if (material.tests[i].time_from > System.currentTimeMillis() / 1000 || material.tests[i].time_to < System.currentTimeMillis()  /1000 ) {
                         testSize = testSize - 1;
                     }
                 }
             }
 
-
          if (material.presentations.length > 0 ) {
              for (int i = 0; i < material.presentations.length; i++) {
-                 if (material.presentations[i].time_from > System.currentTimeMillis() / 1000 || material.presentations[i].time_to < System.currentTimeMillis()) {
+                 if (material.presentations[i].time_from > System.currentTimeMillis() / 1000 || material.presentations[i].time_to < System.currentTimeMillis() /1000) {
                      presentationSize = presentationSize - 1;
                  }
              }
          }
 
 
-
         if (material.videos.length > 0) {
 
             for (int i = 0; i < material.videos.length; i++) {
-                if (material.tests[i].time_from > System.currentTimeMillis() / 1000 || material.videos[i].time_to < System.currentTimeMillis()) {
+                if (material.tests[i].time_from > System.currentTimeMillis() / 1000 || material.videos[i].time_to < System.currentTimeMillis()  /1000) {
                     videoSize = videoSize - 1;
                 }
             }
         }
-
 
 
         if (material.count.total == 0) {

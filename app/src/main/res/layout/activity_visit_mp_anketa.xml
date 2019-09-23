@@ -262,18 +262,105 @@
             </RelativeLayout>
 
 
-            <mobi.medbook.android.recyclerviews.products.ProductsRecyclerView
-                android:id="@+id/activity_visit_mp_anceta_list_product"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/activity_visit_mp_anceta_block_patient_flow"
+                android:id="@+id/rlHeaderrv"
+                android:layout_marginBottom="10dp"
+                >
+
+                <TextView
+                    android:id="@+id/tvProduct"
+                    android:layout_alignParentLeft="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="64dp"
+                    android:text="Продукт"
+                    android:textStyle="bold"
+                    android:textColor="#777777"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/tvVoiced"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:textStyle="bold"
+
+                    android:text="Озвученно"
+                    android:textColor="#777777"
+                    android:textSize="14sp"
+                    />
+
+
+            </RelativeLayout>
+
+            <mobi.medbook.android.recyclerviews.products.ProductsRecyclerView
+            android:id="@+id/activity_visit_mp_anceta_list_product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rlHeaderrv"
+            />
+
+
+
+            <mobi.medbook.android.recyclerviews.products.SwitchProductsRecyclerView
+                android:id="@+id/activity_visit_mp_anceta_list_product_switch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/activity_visit_mp_anceta_list_product"
                 />
+
+            <View
+                android:id="@+id/view5"
+                style="@style/Divider2"
+                android:layout_marginBottom="20dp"
+                android:layout_below="@+id/activity_visit_mp_anceta_list_product_switch"
+                android:layout_marginTop="@dimen/margin_default" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/view5"
+                android:id="@+id/rlAnceta"
+                android:layout_marginBottom="10dp"
+                >
+
+                <TextView
+                    android:id="@+id/tvProduct"
+                    android:layout_alignParentLeft="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="64dp"
+                    android:text="Анкета ПЕП"
+                    android:layout_centerVertical="true"
+                    android:textStyle="bold"
+                    android:textColor="#777777"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:id="@+id/iv_anceta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/ic_next"
+                    android:textColor="#777777"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
 
             <View
                 android:id="@+id/view2"
                 style="@style/Divider2"
                 android:layout_marginBottom="20dp"
-                android:layout_below="@+id/activity_visit_mp_anceta_list_product"
+                android:layout_below="@+id/rlAnceta"
                 android:layout_marginTop="@dimen/margin_default" />
 
 
