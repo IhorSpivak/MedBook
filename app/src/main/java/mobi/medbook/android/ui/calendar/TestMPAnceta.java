@@ -135,7 +135,12 @@ public class TestMPAnceta extends AppCompatActivity {
         ivClose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onExitDialog();
+                if(list.size() >= SingletoneForMPTest.getInstance().getList().size()){
+                    onExitDialog();
+                } else {
+                    onNotCompleteDialog();
+                }
+
             }
         });
         setupViewPager();
@@ -221,6 +226,7 @@ public class TestMPAnceta extends AppCompatActivity {
                 .setPositiveButton("Так", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        SingletoneForMPTest.getInstance().getList().clear();
                         finish();
 
 

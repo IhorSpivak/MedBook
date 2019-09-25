@@ -79,11 +79,12 @@ public class AnswerListAdapter extends RecyclerView.Adapter<AnswerListAdapter.Re
 
         public void bind(AnswerMP item, Context context) {
             radioButton.setText(item.awnser_description);
-
+            
 
             radioButton.setOnClickListener(v -> {
                 lastCheckedPosition = getAdapterPosition();
                 SingletoneForMPTest.getInstance().getList().add(new AnswerRequest(idQuestion,item.awnser_id,item.awnser_title,item.awnser_description));
+
                 new Handler().postDelayed(new Runnable() {
 
                     @Override
@@ -95,8 +96,11 @@ public class AnswerListAdapter extends RecyclerView.Adapter<AnswerListAdapter.Re
 
             });
 
+            radioButton.setOnClickListener(v-> itemClickListener.onItemClick(item));
 
         }
+
+
 
     }
 

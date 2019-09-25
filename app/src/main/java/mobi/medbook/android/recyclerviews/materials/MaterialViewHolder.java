@@ -49,10 +49,16 @@ public class MaterialViewHolder extends BaseViewHolder {
         int presentationSize = material.presentations.length;
         int videoSize = material.videos.length;
 
+        int testBalls = 0;
+        int presentationBalls= 0;
+        int videoBalls = 0;
+
             if (material.tests.length > 0) {
                 for (int i = 0; i < material.tests.length; i++) {
                     if (material.tests[i].time_from > System.currentTimeMillis() / 1000 || material.tests[i].time_to < System.currentTimeMillis()  /1000 ) {
                         testSize = testSize - 1;
+                    } else {
+                        testBalls = testBalls + material.tests[i].test_points;
                     }
                 }
             }
@@ -61,6 +67,8 @@ public class MaterialViewHolder extends BaseViewHolder {
              for (int i = 0; i < material.presentations.length; i++) {
                  if (material.presentations[i].time_from > System.currentTimeMillis() / 1000 || material.presentations[i].time_to < System.currentTimeMillis() /1000) {
                      presentationSize = presentationSize - 1;
+                 } else {
+                     presentationBalls = presentationBalls + material.presentations[i].presentation_points;
                  }
              }
          }
@@ -71,9 +79,13 @@ public class MaterialViewHolder extends BaseViewHolder {
             for (int i = 0; i < material.videos.length; i++) {
                 if (material.tests[i].time_from > System.currentTimeMillis() / 1000 || material.videos[i].time_to < System.currentTimeMillis()  /1000) {
                     videoSize = videoSize - 1;
+                } else {
+                    videoBalls = videoBalls + material.videos[i].video_points;
                 }
             }
         }
+
+        int totalBalls = testBalls + presentationBalls + videoBalls;
 
 
         if (material.count.total == 0) {
@@ -105,9 +117,9 @@ public class MaterialViewHolder extends BaseViewHolder {
                 tvVideo.setVisibility(View.GONE);
         }
         if (tvBalls != null) {
-            if (material.count.points_available > 0) {
+            if (totalBalls > 0) {
                 tvBalls.setVisibility(View.VISIBLE);
-                tvBalls.setText(String.valueOf(material.count.points_available));
+                tvBalls.setText(String.valueOf(totalBalls));
             } else
                 tvBalls.setVisibility(View.GONE);
         }
@@ -118,11 +130,17 @@ public class MaterialViewHolder extends BaseViewHolder {
         if(material.manufacturer != null)
         if(!material.manufacturer.translations[0].logo.isEmpty() && material.manufacturer.translations[0].logo != null){
             Picasso.get().load(material.manufacturer.translations[0].logo).into(imvLogoCompany);
+
         }
+
 
 
         imvInfo.setOnClickListener(owner);
 
         rootView.setOnClickListener(owner);
+    }
+
+    private void countBalls(Material material) {
+
     }
 }

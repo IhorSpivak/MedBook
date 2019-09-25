@@ -5,4 +5,6 @@ package mobi.medbook.android.types.visits;
      public String awnser_id;
      public String awnser_description;
 
+
+
 }

@@ -40,8 +40,12 @@ public class PageTestsFragment extends ViewPagerFragment implements EventListene
         if (Core.get().UserContentControl().getSelectedMaterial() != null && Core.get().UserContentControl().getSelectedMaterial().tests.length > 0) {
             items = new RecyclerItems();
             for (int i = 0; i < Core.get().UserContentControl().getSelectedMaterial().tests.length; i++) {
-                items.add(new TestRecyclerItem(Core.get().UserContentControl().getSelectedMaterial().tests[i]));
-                list.itemAdd(new TestRecyclerItem(Core.get().UserContentControl().getSelectedMaterial().tests[i]));
+                if(Core.get().UserContentControl().getSelectedMaterial().tests[i].time_to > System.currentTimeMillis() /1000 &&
+                                Core.get().UserContentControl().getSelectedMaterial().tests[i].time_from < System.currentTimeMillis() /1000)
+                {
+                    items.add(new TestRecyclerItem(Core.get().UserContentControl().getSelectedMaterial().tests[i]));
+                    list.itemAdd(new TestRecyclerItem(Core.get().UserContentControl().getSelectedMaterial().tests[i]));
+                }
             }
         }
         return rootView;

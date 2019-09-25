@@ -202,13 +202,20 @@ public class MPAncetaActivity extends MedBookActivity implements IOnSelectProduc
         btnSend.setOnClickListener(view -> {
             mpData.data.patientFlow = Integer.parseInt(tvPatientFlow.getText().toString());
 
+
             mpData.data.questionsArrResult = SingletoneForMPTest.getInstance().getList().toArray();
 
-            if(isOnline()) {
-                onFinishMeetingSuccess();
+            if( SingletoneForMPTest.getInstance().getList().size()  < 1 && mpData.data.requiredQuestionsArr == 1){
+                Toast.makeText(this, "Заповнення анкети ПЕП обов'язкове", Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(this, "Схоже, що нема інтернет-з'єднання", Toast.LENGTH_LONG).show();
+                if(isOnline()) {
+                    onFinishMeetingSuccess();
+                } else {
+                    Toast.makeText(this, "Схоже, що нема інтернет-з'єднання", Toast.LENGTH_LONG).show();
+                }
             }
+
+
 
 
         });
@@ -440,6 +447,7 @@ public class MPAncetaActivity extends MedBookActivity implements IOnSelectProduc
     @OnClick(R.id.rlAnceta)
     void onStartTestAncetaActivity() {
        TestMPAnceta.startActivity(this, 1);
+       SingletoneForMPTest.getInstance().getList().clear();
     }
 
     @Override

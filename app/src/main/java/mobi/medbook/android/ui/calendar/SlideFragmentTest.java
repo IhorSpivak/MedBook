@@ -12,11 +12,15 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import mobi.medbook.android.R;
+import mobi.medbook.android.singltones.SingletoneForMPTest;
 import mobi.medbook.android.types.visits.AnswerMP;
+
+import static android.view.View.X;
 
 public class SlideFragmentTest extends Fragment {
 
@@ -64,6 +68,7 @@ public class SlideFragmentTest extends Fragment {
         answerListAdapter.setItemClickListener(item -> {});
 
        list = (ArrayList<AnswerMP>)getArguments().getSerializable(LIST);
+
         idQuestion = getArguments().getString(ID_QUESTION);
 
         answerListAdapter.addAll(list);

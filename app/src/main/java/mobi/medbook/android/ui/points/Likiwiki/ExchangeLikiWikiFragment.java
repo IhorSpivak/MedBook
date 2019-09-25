@@ -87,14 +87,14 @@ public class ExchangeLikiWikiFragment extends MedBookFragment {
         tvPoints.setText(String.valueOf(valuePoints));
 
         imvAdd.setOnClickListener(view -> {
-            if (valuePoints <= (points - 100)) {
-                valuePoints = valuePoints + 100;
+            if (valuePoints <= (points - 300)) {
+                valuePoints = valuePoints + 300;
                 tvPoints.setText(String.valueOf(valuePoints));
             }
         });
         imvMinus.setOnClickListener(view -> {
             if (valuePoints > 0) {
-                valuePoints = valuePoints - 100;
+                valuePoints = valuePoints - 300;
                 tvPoints.setText(String.valueOf(valuePoints));
             }
         });

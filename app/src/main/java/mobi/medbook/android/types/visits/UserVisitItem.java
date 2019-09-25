@@ -9,6 +9,7 @@ public class UserVisitItem {
     public int mpId;
     public int patientFlow;
     public int lastVisitId;
+    public int requiredQuestionsArr;
     public Product[] productsArr;
     public Promo[] promoArr;
     public ProductPlan[] planProductArr;

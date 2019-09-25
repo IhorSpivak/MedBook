@@ -39,7 +39,7 @@ public class ExchangePointsFragment extends MedBookFragment {
     private TextView tvAddNumber;
 
 
-    private int valuePoints = 100;
+    private int valuePoints = 300;
     private Double points;
 
     @Override
@@ -65,15 +65,15 @@ public class ExchangePointsFragment extends MedBookFragment {
         tvSendValue.setText(String.valueOf(valuePoints));
 
         imvAdd.setOnClickListener(view -> {
-            if (valuePoints <= (points - 100)) {
-                valuePoints = valuePoints + 100;
+            if (valuePoints <= (points - 300)) {
+                valuePoints = valuePoints + 300;
                 tvReceiveValue.setText(String.valueOf(valuePoints * 7 / 10));
                 tvSendValue.setText(String.valueOf(valuePoints));
             }
         });
         imvMinus.setOnClickListener(view -> {
-            if (valuePoints > 100) {
-                valuePoints = valuePoints - 100;
+            if (valuePoints > 300) {
+                valuePoints = valuePoints - 300;
                 tvReceiveValue.setText(String.valueOf(valuePoints * 7 / 10));
                 tvSendValue.setText(String.valueOf(valuePoints));
             }

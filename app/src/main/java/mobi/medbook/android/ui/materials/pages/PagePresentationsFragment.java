@@ -42,7 +42,10 @@ public class PagePresentationsFragment extends ViewPagerFragment implements Even
         list.addItemDecoration(new SimpleDividerItemDecoration(getContext()));
         if (Core.get().UserContentControl().getSelectedMaterial() != null && Core.get().UserContentControl().getSelectedMaterial().presentations.length > 0) {
             for (int i = 0; i < Core.get().UserContentControl().getSelectedMaterial().presentations.length; i++) {
-                items.add(new PresentationRecyclerItem(Core.get().UserContentControl().getSelectedMaterial().presentations[i]));
+                if(Core.get().UserContentControl().getSelectedMaterial().presentations[i].time_from < System.currentTimeMillis() / 1000 &&
+                        Core.get().UserContentControl().getSelectedMaterial().presentations[i].time_to > System.currentTimeMillis() / 1000) {
+                    items.add(new PresentationRecyclerItem(Core.get().UserContentControl().getSelectedMaterial().presentations[i]));
+                }
             }
             list.itemsAdd(items);
         }
