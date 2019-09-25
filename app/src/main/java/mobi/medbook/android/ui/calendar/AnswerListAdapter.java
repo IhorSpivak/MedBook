@@ -96,7 +96,6 @@ public class AnswerListAdapter extends RecyclerView.Adapter<AnswerListAdapter.Re
 
             });
 
-            radioButton.setOnClickListener(v-> itemClickListener.onItemClick(item));
 
         }
 

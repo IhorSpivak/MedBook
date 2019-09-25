@@ -27,8 +27,8 @@ android {
         targetSdkVersion 28
         multiDexEnabled true
 
-        versionCode 39
-        versionName "2.4"
+        versionCode 40
+        versionName "2.5"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 

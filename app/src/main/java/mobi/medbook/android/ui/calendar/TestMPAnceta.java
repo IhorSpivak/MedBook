@@ -151,7 +151,7 @@ public class TestMPAnceta extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (mPager.getCurrentItem() == 0) {
-            SingltonForAncetaTest.getInstance().getList().clear();
+            SingletoneForMPTest.getInstance().getList().clear();
             super.onBackPressed();
         } else {
             mPager.setCurrentItem(mPager.getCurrentItem() - 1);
@@ -204,7 +204,9 @@ public class TestMPAnceta extends AppCompatActivity {
                 .setPositiveButton("Так", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        int a = SingletoneForMPTest.getInstance().getList().size();
                             finish();
+
 
 
                     }

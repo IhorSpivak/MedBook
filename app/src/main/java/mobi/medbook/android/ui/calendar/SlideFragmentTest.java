@@ -64,14 +64,17 @@ public class SlideFragmentTest extends Fragment {
         mGridLayoutManager = new GridLayoutManager(getActivity(), 1);
         rv.setLayoutManager(mGridLayoutManager);
 
-        answerListAdapter = new AnswerListAdapter(idQuestion);
-        answerListAdapter.setItemClickListener(item -> {});
+
 
        list = (ArrayList<AnswerMP>)getArguments().getSerializable(LIST);
 
         idQuestion = getArguments().getString(ID_QUESTION);
 
+        answerListAdapter = new AnswerListAdapter(idQuestion);
+        answerListAdapter.setItemClickListener(item -> {});
+
         answerListAdapter.addAll(list);
+
 
         query = getArguments().getString(QUERY);
         tv.setText(query);

@@ -7,7 +7,7 @@ public class UserVisitItem {
     public int visitCount;
     public int doctorId;
     public int mpId;
-    public int patientFlow;
+    public int patientFlow = 0;
     public int lastVisitId;
     public int requiredQuestionsArr;
     public Product[] productsArr;

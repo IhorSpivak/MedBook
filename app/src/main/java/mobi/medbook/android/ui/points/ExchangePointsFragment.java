@@ -1,6 +1,7 @@
 package mobi.medbook.android.ui.points;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,8 +89,15 @@ public class ExchangePointsFragment extends MedBookFragment {
         btnGetCode = rootView.findViewById(R.id.fragment_exchange_points_btn_get_code);
         btnGetCode.setOnClickListener(view -> {
             pb.setVisibility(View.VISIBLE);
+            view.setEnabled(false);
 
-            //App.updateUserPhone("");
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    view.setEnabled(true);
+                }
+            }, 2000);
             if (App.getUser().phone == null || App.getUser().phone.isEmpty()) {
                 btnGetCode.setVisibility(View.GONE);
                 btnAddNumber.setVisibility(View.VISIBLE);
@@ -100,6 +108,8 @@ public class ExchangePointsFragment extends MedBookFragment {
             }
         });
         return rootView;
+
+
     }
 
     @Override

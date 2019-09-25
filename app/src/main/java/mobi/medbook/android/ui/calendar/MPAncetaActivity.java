@@ -110,6 +110,7 @@ public class MPAncetaActivity extends MedBookActivity implements IOnSelectProduc
         setContentView(R.layout.activity_visit_mp_anketa);
         ButterKnife.bind(this);
 
+
         tvTimer = findViewById(R.id.activity_visit_mp_anceta_timer);
         listProducts = findViewById(R.id.activity_visit_mp_anceta_list_product);
         listSwitchProducts = findViewById(R.id.activity_visit_mp_anceta_list_product_switch);
@@ -205,7 +206,8 @@ public class MPAncetaActivity extends MedBookActivity implements IOnSelectProduc
 
             mpData.data.questionsArrResult = SingletoneForMPTest.getInstance().getList().toArray();
 
-            if( SingletoneForMPTest.getInstance().getList().size()  < 1 && mpData.data.requiredQuestionsArr == 1){
+            int a = SingletoneForMPTest.getInstance().getList().size();
+            if( a < 1 && mpData.data.requiredQuestionsArr == 1){
                 Toast.makeText(this, "Заповнення анкети ПЕП обов'язкове", Toast.LENGTH_LONG).show();
             } else {
                 if(isOnline()) {
@@ -221,7 +223,9 @@ public class MPAncetaActivity extends MedBookActivity implements IOnSelectProduc
         });
 
         btnCancel.setOnClickListener(view -> {
-            mpData.data.patientFlow = Integer.parseInt(tvPatientFlow.getText().toString());
+            if(tvPatientFlow.getText() != null ) {
+                mpData.data.patientFlow = Integer.parseInt(tvPatientFlow.getText().toString());
+            }
             if(isOnline()){
                 onFinishMeeting();
             } else {
@@ -232,6 +236,17 @@ public class MPAncetaActivity extends MedBookActivity implements IOnSelectProduc
 //        h = new Handler(hc);
 //        h.sendEmptyMessageDelayed(1, 1000);
         onLocalizationUpdate();
+
+
+        if(SingletoneForMPTest.getInstance().getList().isEmpty() || SingletoneForMPTest.getInstance().getList() == null ||
+                SingletoneForMPTest.getInstance() == null ){
+            ic_next.setBackground(getResources().getDrawable(R.drawable.ic_next));
+        }
+
+        if(SingletoneForMPTest.getInstance().getList().size() > 0){
+            ic_next.setBackground(getResources().getDrawable(R.drawable.ic_icod_checked));
+
+        }
 
     }
 
@@ -264,8 +279,9 @@ public class MPAncetaActivity extends MedBookActivity implements IOnSelectProduc
                                     finish();
                             } else {
                                 if (Core.get().VisitsControl().isStartSendMPAnceta()) {
-                                    if(visitTimer >= 600 ) {
+                                    if(visitTimer >= 100 ) {
                                         Core.get().VisitsControl().visitMedPredResult(userVisit.id, 1);
+                                        SingletoneForMPTest.getInstance().getList().clear();
                                         finish();
                                     } else {
                                         DialogBuilder.showInfoDialog(MPAncetaActivity.this, "Повідомлення", "Мінимальна тривалість зустрічі 10 хвилин");
@@ -294,7 +310,7 @@ public class MPAncetaActivity extends MedBookActivity implements IOnSelectProduc
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         Core.get().VisitsControl().visitMedPredResult(userVisit.id, 0);
-                        SingltonForAncetaTest.getInstance().getList().clear();
+                        SingletoneForMPTest.getInstance().getList().clear();
                         finish();
                     }
                 });
@@ -453,10 +469,13 @@ public class MPAncetaActivity extends MedBookActivity implements IOnSelectProduc
     @Override
     protected void onResume() {
         super.onResume();
-        if(SingltonForAncetaTest.getInstance().getList().isEmpty() || SingltonForAncetaTest.getInstance().getList() == null ||
-                SingltonForAncetaTest.getInstance() == null ){
+        int a = SingletoneForMPTest.getInstance().getList().size();
+        if(SingletoneForMPTest.getInstance().getList().isEmpty() || SingletoneForMPTest.getInstance().getList() == null ||
+                SingletoneForMPTest.getInstance() == null ){
             ic_next.setBackground(getResources().getDrawable(R.drawable.ic_next));
-        } else {
+        }
+
+        if(a > 0){
             ic_next.setBackground(getResources().getDrawable(R.drawable.ic_icod_checked));
         }
         flagSaveMPAncet = true;
