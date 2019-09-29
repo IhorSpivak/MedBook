@@ -232,7 +232,7 @@ public class UserControl {
                         if (response.code() != ApiRest.CODE_401 && response.code() != ApiRest.CODE_521) {
                             if (response.isSuccessful() && response.body() != null) {
                                 if (response.body().success) {
-                                    if(response.body().versions.android.equals("1.0.1")) {
+                                    if(response.body().versions.android.equals("1.0.2")) {
                                         App.setUserInfo(response.body().items[0]);
                                         EventRouter.send(new EventGetUserSuccess());
                                     } else {

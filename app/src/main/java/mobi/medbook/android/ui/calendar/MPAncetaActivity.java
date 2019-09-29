@@ -279,7 +279,7 @@ public class MPAncetaActivity extends MedBookActivity implements IOnSelectProduc
                                     finish();
                             } else {
                                 if (Core.get().VisitsControl().isStartSendMPAnceta()) {
-                                    if(visitTimer >= 100 ) {
+                                    if(visitTimer >= 600 ) {
                                         Core.get().VisitsControl().visitMedPredResult(userVisit.id, 1);
                                         SingletoneForMPTest.getInstance().getList().clear();
                                         finish();
